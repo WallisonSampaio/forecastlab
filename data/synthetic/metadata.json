@@ -1,0 +1,1563 @@
+{
+  "generator_version": "1.0.0",
+  "random_seed": 42,
+  "company": "ForecastLab Demo Co.",
+  "start": "2021-10-01",
+  "end": "2026-09-01",
+  "n_months": 60,
+  "n_series": 220,
+  "n_rows": 12664,
+  "sku_patterns": {
+    "SKU-10101": "Seasonal",
+    "SKU-10102": "Trending",
+    "SKU-10103": "Stable",
+    "SKU-10201": "Promo Driven",
+    "SKU-10202": "Seasonal",
+    "SKU-10203": "New Product (Launch)",
+    "SKU-20101": "Stable",
+    "SKU-20102": "Promo Driven",
+    "SKU-20103": "Seasonal",
+    "SKU-20201": "Distribution Driven",
+    "SKU-20202": "Trending",
+    "SKU-20203": "Declining",
+    "SKU-30101": "Seasonal",
+    "SKU-30102": "Seasonal",
+    "SKU-30103": "Intermittent",
+    "SKU-30201": "Stable",
+    "SKU-30202": "Structural Change",
+    "SKU-30203": "Volatile",
+    "SKU-40101": "Stable",
+    "SKU-40102": "Structural Change",
+    "SKU-40103": "Intermittent",
+    "SKU-40201": "Volatile",
+    "SKU-40202": "Intermittent",
+    "SKU-40203": "Declining"
+  },
+  "true_price_elasticity": {
+    "Beverages": -1.2,
+    "Snacks": -1.5,
+    "Personal Care": -0.8,
+    "Home Care": -1.0
+  },
+  "true_distribution_elasticity": 0.9,
+  "true_marketing_elasticity": 0.07,
+  "price_events": {
+    "SKU-20101": [
+      {
+        "type": "Price Reduction",
+        "month_index": 40,
+        "change": -0.08
+      }
+    ],
+    "SKU-30202": [
+      {
+        "type": "Price Increase",
+        "month_index": 34,
+        "change": 0.15
+      }
+    ]
+  },
+  "store_openings": {
+    "Atlas Hipermercados": [
+      [
+        28,
+        0.1
+      ]
+    ],
+    "MaxiCompra Atacarejo": [
+      [
+        20,
+        0.12
+      ],
+      [
+        46,
+        0.09
+      ]
+    ],
+    "Planalto Atacado": [
+      [
+        50,
+        0.14
+      ]
+    ]
+  },
+  "series_events": [
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-10102",
+      "pattern": "trending",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 44
+        }
+      ],
+      "mean_units": 12416.166666666666
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-10202",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 46
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 39
+        }
+      ],
+      "mean_units": 4094.9166666666665
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 49
+        }
+      ],
+      "mean_units": 4130.277777777777
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 54
+        }
+      ],
+      "mean_units": 7854.016666666666
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 11
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 30
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 40
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 45
+        }
+      ],
+      "mean_units": 10757.483333333334
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 4873.65
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-30203",
+      "pattern": "volatile",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 15
+        }
+      ],
+      "mean_units": 3923.55
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-40101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 16
+        }
+      ],
+      "mean_units": 7673.683333333333
+    },
+    {
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-40203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 50
+        }
+      ],
+      "mean_units": 2136.116666666667
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-10201",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 18
+        }
+      ],
+      "mean_units": 4161.95
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-10202",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 36
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 11
+        }
+      ],
+      "mean_units": 2607.2833333333333
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 44
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 52
+        }
+      ],
+      "mean_units": 1662.0
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-20101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 24
+        }
+      ],
+      "mean_units": 6627.5
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 41
+        }
+      ],
+      "mean_units": 4800.333333333333
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-20103",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 42
+        }
+      ],
+      "mean_units": 1779.9333333333334
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 15
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 51
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 52
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 54
+        }
+      ],
+      "mean_units": 3511.616666666667
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 2890.0666666666666
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-30203",
+      "pattern": "volatile",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 26
+        }
+      ],
+      "mean_units": 1770.5666666666666
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 2621.15
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-40201",
+      "pattern": "volatile",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 20
+        }
+      ],
+      "mean_units": 2069.0
+    },
+    {
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-40202",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 23
+        }
+      ],
+      "mean_units": 215.98333333333332
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-10101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 36
+        }
+      ],
+      "mean_units": 11437.583333333334
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 25
+        }
+      ],
+      "mean_units": 7375.9
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 44
+        }
+      ],
+      "mean_units": 2581.1875
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-20101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 19
+        }
+      ],
+      "mean_units": 8391.683333333332
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 39
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 13
+        }
+      ],
+      "mean_units": 7995.683333333333
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-20103",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 31
+        }
+      ],
+      "mean_units": 2150.3166666666666
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-30101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 20
+        }
+      ],
+      "mean_units": 3815.366666666667
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-30201",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 4738.15
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-40101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 19
+        }
+      ],
+      "mean_units": 5723.583333333333
+    },
+    {
+      "customer": "MaxiCompra Atacarejo",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 44
+        }
+      ],
+      "mean_units": 4619.316666666667
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 3353.0333333333333
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-10201",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 14
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 25
+        }
+      ],
+      "mean_units": 3657.9666666666667
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 44
+        }
+      ],
+      "mean_units": 1393.3125
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-20101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 12
+        }
+      ],
+      "mean_units": 4807.933333333333
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 16
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 36
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 38
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 42
+        }
+      ],
+      "mean_units": 4387.25
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-30203",
+      "pattern": "volatile",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 50
+        }
+      ],
+      "mean_units": 1083.1166666666666
+    },
+    {
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-40203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 46
+        }
+      ],
+      "mean_units": 983.0666666666667
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "One-off bulk order (outlier)",
+          "month_index": 14
+        }
+      ],
+      "mean_units": 4033.3333333333335
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 17
+        }
+      ],
+      "mean_units": 1325.0555555555557
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 6
+        },
+        {
+          "type": "One-off bulk order (outlier)",
+          "month_index": 16
+        }
+      ],
+      "mean_units": 4149.666666666667
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-20103",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 7
+        }
+      ],
+      "mean_units": 1414.7166666666667
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 36
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 39
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 53
+        }
+      ],
+      "mean_units": 2030.7666666666667
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-30101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 39
+        }
+      ],
+      "mean_units": 1076.6333333333334
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-40101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "One-off bulk order (outlier)",
+          "month_index": 46
+        }
+      ],
+      "mean_units": 2338.1
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 43
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 51
+        }
+      ],
+      "mean_units": 1328.4833333333333
+    },
+    {
+      "customer": "Vila Verde Mercados",
+      "sku": "SKU-40203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 21
+        }
+      ],
+      "mean_units": 882.8
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-10101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 14
+        }
+      ],
+      "mean_units": 8595.25
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-10102",
+      "pattern": "trending",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 40
+        }
+      ],
+      "mean_units": 5906.2
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 47
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 51
+        }
+      ],
+      "mean_units": 2106.9444444444443
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 53
+        }
+      ],
+      "mean_units": 4839.416666666667
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-20203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 7
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 1569.05
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 38
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 37
+        }
+      ],
+      "mean_units": 1940.2
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 11
+        }
+      ],
+      "mean_units": 2364.5833333333335
+    },
+    {
+      "customer": "ClickCesta Online",
+      "sku": "SKU-40202",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 53
+        }
+      ],
+      "mean_units": 124.0
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 48
+        }
+      ],
+      "mean_units": 5090.6
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 42
+        }
+      ],
+      "mean_units": 1249.7777777777778
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 40
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 41
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 44
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 54
+        }
+      ],
+      "mean_units": 3311.4333333333334
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-20203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 15
+        }
+      ],
+      "mean_units": 1889.0166666666667
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-30103",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 19
+        }
+      ],
+      "mean_units": 245.21666666666667
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-40101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 55
+        }
+      ],
+      "mean_units": 3905.6666666666665
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 41
+        }
+      ],
+      "mean_units": 2545.5833333333335
+    },
+    {
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-40201",
+      "pattern": "volatile",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 30
+        }
+      ],
+      "mean_units": 2036.8333333333333
+    },
+    {
+      "customer": "FarmaVida Drogarias",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 46
+        }
+      ],
+      "mean_units": 4586.85
+    },
+    {
+      "customer": "FarmaVida Drogarias",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 13
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 38
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 49
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 50
+        }
+      ],
+      "mean_units": 2930.016666666667
+    },
+    {
+      "customer": "FarmaVida Drogarias",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 1879.8333333333333
+    },
+    {
+      "customer": "Amaz\u00f4nia Distribui\u00e7\u00e3o",
+      "sku": "SKU-10102",
+      "pattern": "trending",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 6
+        }
+      ],
+      "mean_units": 2389.2166666666667
+    },
+    {
+      "customer": "Amaz\u00f4nia Distribui\u00e7\u00e3o",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 1057.4705882352941
+    },
+    {
+      "customer": "Amaz\u00f4nia Distribui\u00e7\u00e3o",
+      "sku": "SKU-30102",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 50
+        }
+      ],
+      "mean_units": 864.2166666666667
+    },
+    {
+      "customer": "Amaz\u00f4nia Distribui\u00e7\u00e3o",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 44
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 41
+        },
+        {
+          "type": "One-off bulk order (outlier)",
+          "month_index": 55
+        }
+      ],
+      "mean_units": 1344.7
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-10101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 27
+        }
+      ],
+      "mean_units": 4361.816666666667
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 11
+        }
+      ],
+      "mean_units": 3962.9
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 1319.5882352941176
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 23
+        },
+        {
+          "type": "One-off bulk order (outlier)",
+          "month_index": 49
+        }
+      ],
+      "mean_units": 3484.1
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-30103",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 26
+        }
+      ],
+      "mean_units": 135.73333333333332
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 45
+        }
+      ],
+      "mean_units": 2194.3333333333335
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 45
+        }
+      ],
+      "mean_units": 1420.35
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-40103",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 26
+        }
+      ],
+      "mean_units": 110.26666666666667
+    },
+    {
+      "customer": "Serra Ga\u00facha Supermercados",
+      "sku": "SKU-40203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Delisting",
+          "month_index": 52
+        }
+      ],
+      "mean_units": 972.5192307692307
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-10101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 40
+        }
+      ],
+      "mean_units": 5945.833333333333
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-10102",
+      "pattern": "trending",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 40
+        }
+      ],
+      "mean_units": 5389.966666666666
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 30
+        }
+      ],
+      "mean_units": 3901.883333333333
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 44
+        }
+      ],
+      "mean_units": 1684.5
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-20201",
+      "pattern": "distribution_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 30
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 31
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 46
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 55
+        }
+      ],
+      "mean_units": 4889.433333333333
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 45
+        }
+      ],
+      "mean_units": 2126.5
+    },
+    {
+      "customer": "Planalto Atacado",
+      "sku": "SKU-40202",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 55
+        }
+      ],
+      "mean_units": 197.3
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-10103",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 28
+        }
+      ],
+      "mean_units": 3600.516666666667
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 943.3529411764706
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 12
+        }
+      ],
+      "mean_units": 3876.25
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-20103",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 30
+        }
+      ],
+      "mean_units": 1186.2
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-20203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 21
+        }
+      ],
+      "mean_units": 1636.5333333333333
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-30101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 9
+        }
+      ],
+      "mean_units": 1733.0833333333333
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 1892.0666666666666
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-40101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "One-off bulk order (outlier)",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 3086.5666666666666
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-40102",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Customer Gain (institutional contract)",
+          "month_index": 42
+        },
+        {
+          "type": "Distribution Gain",
+          "month_index": 48
+        }
+      ],
+      "mean_units": 1574.9166666666667
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-40201",
+      "pattern": "volatile",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 26
+        }
+      ],
+      "mean_units": 1270.6166666666666
+    },
+    {
+      "customer": "Litoral Market",
+      "sku": "SKU-40202",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 26
+        }
+      ],
+      "mean_units": 159.7
+    },
+    {
+      "customer": "CuraMais Farm\u00e1cias",
+      "sku": "SKU-20202",
+      "pattern": "trending",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 55
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 30
+        }
+      ],
+      "mean_units": 1751.3666666666666
+    },
+    {
+      "customer": "CuraMais Farm\u00e1cias",
+      "sku": "SKU-30102",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 16
+        }
+      ],
+      "mean_units": 545.5166666666667
+    },
+    {
+      "customer": "CuraMais Farm\u00e1cias",
+      "sku": "SKU-30103",
+      "pattern": "intermittent",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 29
+        }
+      ],
+      "mean_units": 108.16666666666667
+    },
+    {
+      "customer": "CuraMais Farm\u00e1cias",
+      "sku": "SKU-30201",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 23
+        }
+      ],
+      "mean_units": 1521.9166666666667
+    },
+    {
+      "customer": "CuraMais Farm\u00e1cias",
+      "sku": "SKU-30202",
+      "pattern": "structural_change",
+      "events": [
+        {
+          "type": "Competitor Action",
+          "month_index": 34
+        }
+      ],
+      "mean_units": 1342.1833333333334
+    },
+    {
+      "customer": "Ponto Certo Conveni\u00eancia",
+      "sku": "SKU-10101",
+      "pattern": "seasonal",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 30
+        }
+      ],
+      "mean_units": 2977.3166666666666
+    },
+    {
+      "customer": "Ponto Certo Conveni\u00eancia",
+      "sku": "SKU-10203",
+      "pattern": "launch",
+      "events": [
+        {
+          "type": "New Product",
+          "month_index": 44
+        }
+      ],
+      "mean_units": 705.625
+    },
+    {
+      "customer": "Ponto Certo Conveni\u00eancia",
+      "sku": "SKU-20101",
+      "pattern": "stable",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 16
+        }
+      ],
+      "mean_units": 2882.633333333333
+    },
+    {
+      "customer": "Ponto Certo Conveni\u00eancia",
+      "sku": "SKU-20102",
+      "pattern": "promo_driven",
+      "events": [
+        {
+          "type": "Distribution Gain",
+          "month_index": 18
+        }
+      ],
+      "mean_units": 2092.4666666666667
+    },
+    {
+      "customer": "Ponto Certo Conveni\u00eancia",
+      "sku": "SKU-20203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Distribution Loss",
+          "month_index": 43
+        }
+      ],
+      "mean_units": 913.2
+    },
+    {
+      "customer": "Ponto Certo Conveni\u00eancia",
+      "sku": "SKU-40203",
+      "pattern": "declining",
+      "events": [
+        {
+          "type": "Delisting",
+          "month_index": 49
+        },
+        {
+          "type": "Distribution Loss",
+          "month_index": 45
+        }
+      ],
+      "mean_units": 633.4897959183673
+    }
+  ],
+  "disclaimer": "All data is synthetic and fictitious. No real company, customer or product is represented."
+}

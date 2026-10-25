@@ -1,0 +1,54 @@
+# ForecastLab — AI Demand Planning & S&OP Decision Intelligence
+# Developed by Wallison Sampaio · https://www.linkedin.com/in/wallisonsampaio
+#
+#   docker compose up        ->  http://localhost:3000
+#
+# The first start generates the synthetic demo dataset and runs the first
+# forecast (a few minutes). Ollama pulls the local LLM once (~2 GB).
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000" # local only; remove 127.0.0.1 to expose on your network
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    environment:
+      FORECASTLAB_DB_PATH: /data/forecastlab.duckdb
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2:3b}
+      FORECASTLAB_DEMO_SEED: ${FORECASTLAB_DEMO_SEED:-42}
+      FORECASTLAB_CORS: http://localhost:3000
+    volumes:
+      - forecastlab-data:/data
+    ports:
+      - "127.0.0.1:8000:8000" # API docs at http://localhost:8000/docs (local only)
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-models:/root/.ollama
+    restart: unless-stopped
+
+  # One-shot job that downloads the model into the shared volume.
+  ollama-pull:
+    image: ollama/ollama:latest
+    depends_on:
+      - ollama
+    environment:
+      OLLAMA_HOST: ollama:11434
+    entrypoint: ["/bin/sh", "-c", "sleep 5 && ollama pull ${OLLAMA_MODEL:-llama3.2:3b}"]
+    restart: "no"
+
+volumes:
+  forecastlab-data:
+  ollama-models:
