@@ -1,4 +1,4 @@
-import { ArrowRight, ThumbsDown, ThumbsUp } from "lucide-react";
+import { ArrowRight, ClipboardList, Gauge, Sigma, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useState } from "react";
 
 import { BarChart, SimpleLineChart } from "../charts/BasicCharts";
@@ -83,12 +83,15 @@ export default function FVA() {
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
         <KpiCard
           label="Overrides adding value"
+          icon={<ThumbsUp />}
+          tone="green"
           value={pct(s.value_added_pct, 0)}
           hint={`${s.improved ?? 0} improved · ${s.worsened ?? 0} worsened · ${s.neutral ?? 0} neutral`}
-          accent={STATUS.good}
         />
         <KpiCard
           label="FVA of overrides"
+          icon={<Gauge />}
+          tone="blue"
           value={`${pct(s.fva_pp_overridden, 1, true)}`}
           deltaTone={(s.fva_pp_overridden ?? 0) >= 0 ? "good" : "bad"}
           delta="WMAPE points on overridden cells"
@@ -96,12 +99,15 @@ export default function FVA() {
         />
         <KpiCard
           label="FVA statistical vs naive"
+          icon={<Sigma />}
+          tone="navy"
           value={pct(st.fva_statistical_vs_naive, 1, true)}
           hint={`naive ${pct(st.naive)} → statistical ${pct(st.statistical)}`}
-          accent={SERIES.base}
         />
         <KpiCard
           label="Overrides evaluated"
+          icon={<ClipboardList />}
+          tone="yellow"
           value={full(s.overrides)}
           hint={`${full(data.cells_evaluated)} cells · ${data.pending_overrides} pending (future)`}
         />

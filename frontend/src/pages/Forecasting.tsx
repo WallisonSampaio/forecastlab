@@ -1,6 +1,19 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { ChevronRight, GitBranch, LineChart, Plus, Search, Trash2, Trophy } from "lucide-react";
+import {
+  ChartLine,
+  ChevronRight,
+  Crosshair,
+  GitBranch,
+  History,
+  LineChart,
+  PiggyBank,
+  Plus,
+  Search,
+  Trash2,
+  Trophy,
+  Users,
+} from "lucide-react";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -692,29 +705,39 @@ function HierarchyExplorer() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 2xl:grid-cols-5">
           <KpiCard
             label="Actual LTM"
+            icon={<History />}
+            tone="navy"
             value={fmt(t.actual_ltm)}
             delta={pct(t.actual_ltm / t.actual_prior_ltm - 1, 1, true)}
             hint="YoY"
           />
           <KpiCard
             label="Statistical 12M"
+            icon={<ChartLine />}
+            tone="blue"
             value={fmt(t.base ?? 0)}
             hint={`P10 ${fmt(t.p10 ?? 0)} · P90 ${fmt(t.p90 ?? 0)}`}
           />
           <KpiCard
             label="Consensus 12M"
+            icon={<Users />}
+            tone="green"
             value={fmt(t.consensus ?? 0)}
             delta={pct((t.consensus ?? 0) / t.actual_ltm - 1, 1, true)}
             hint="vs LTM"
           />
           <KpiCard
             label="vs Budget"
+            icon={<PiggyBank />}
+            tone="orange"
             value={pct((t.consensus ?? 0) / (t.budget ?? 1) - 1, 1, true)}
             deltaTone={(t.consensus ?? 0) >= (t.budget ?? 0) ? "good" : "bad"}
             hint={`Budget ${fmt(t.budget ?? 0)}`}
           />
           <KpiCard
             label="Accuracy"
+            icon={<Crosshair />}
+            tone="green"
             value={pct(agg?.metrics.accuracy)}
             hint={`${agg?.n_series} series · bias ${pct(agg?.metrics.bias, 1, true)}`}
           />

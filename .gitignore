@@ -28,6 +28,10 @@ database/*.duckdb.wal
 secrets/
 credentials*.json
 
+# Optional white-label client logo (third-party trademarks stay local)
+frontend/public/brand/*
+!frontend/public/brand/README.md
+
 # OS / editors
 .DS_Store
 Thumbs.db

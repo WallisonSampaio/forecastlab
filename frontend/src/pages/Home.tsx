@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { Logo } from "../components/Layout";
+import { ClientLogo, Logo } from "../components/Layout";
 import { useGet } from "../hooks/useApi";
 import { BRAND } from "../lib/branding";
 import { pct } from "../lib/format";
@@ -75,7 +75,10 @@ export default function Home() {
           }}
         />
         <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-          <Logo dark size={34} />
+          <span className="flex items-center gap-3">
+            <Logo dark size={34} />
+            <ClientLogo variant="inline" />
+          </span>
           <nav className="flex items-center gap-2">
             <a
               href={BRAND.linkedin}

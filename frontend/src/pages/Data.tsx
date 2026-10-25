@@ -12,6 +12,12 @@ import {
   Table2,
   TriangleAlert,
   UploadCloud,
+  Activity,
+  CalendarDays,
+  CalendarRange,
+  CircleSlash,
+  Tag,
+  TrendingUp,
 } from "lucide-react";
 import { useRef, useState } from "react";
 
@@ -394,23 +400,44 @@ function ExploreTab() {
       {data && (
         <>
           <div className="grid grid-cols-2 gap-4 xl:grid-cols-6">
-            <KpiCard label="Last 12 months" value={formatValue(data.kpis.total_ltm, fmt)} />
-            <KpiCard label="YoY growth" value={pct(data.kpis.yoy_growth, 1, true)} />
+            <KpiCard
+              label="Last 12 months"
+              value={formatValue(data.kpis.total_ltm, fmt)}
+              icon={<CalendarRange />}
+              tone="navy"
+            />
+            <KpiCard
+              label="YoY growth"
+              value={pct(data.kpis.yoy_growth, 1, true)}
+              icon={<TrendingUp />}
+              tone="green"
+            />
             <KpiCard
               label="Peak month"
               value={data.kpis.peak_month ? MONTHS[data.kpis.peak_month - 1] : "—"}
               hint={`amplitude ${pct(data.kpis.seasonal_amplitude, 0)}`}
+              icon={<CalendarDays />}
+              tone="yellow"
             />
-            <KpiCard label="Volatility (CV)" value={pct(data.kpis.volatility_cv)} hint="rolling 12M, total" />
+            <KpiCard
+              label="Volatility (CV)"
+              value={pct(data.kpis.volatility_cv)}
+              hint="rolling 12M, total"
+              icon={<Activity />}
+              tone="orange"
+            />
             <KpiCard
               label="Promo uplift"
               value={pct(data.promotion?.uplift, 0, true)}
               hint={`${pct(data.promotion?.promo_share, 0)} of months on promo`}
+              icon={<Tag />}
             />
             <KpiCard
               label="Zero-demand share"
               value={pct(data.kpis.zero_demand_share)}
               hint="intermittency"
+              icon={<CircleSlash />}
+              tone="red"
             />
           </div>
           <div className="mt-5 grid gap-5 xl:grid-cols-[1.6fr_1fr]">

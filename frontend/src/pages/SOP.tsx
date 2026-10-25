@@ -1,5 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
-import { CheckCircle2, CircleAlert, Scale } from "lucide-react";
+import {
+  ArrowLeftRight,
+  ChartLine,
+  History,
+  PiggyBank,
+  Rocket,
+  Scale,
+  ShieldAlert,
+  Target,
+  Users,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { TimelineChart } from "../charts/TimelineChart";
@@ -61,41 +71,47 @@ export default function SOP() {
               value={f(k.actual_ltm)}
               delta={pct(k.actual_growth, 1, true)}
               hint="YoY"
-              accent={SERIES.actual}
+              icon={<History />}
+              tone="navy"
             />
             <KpiCard
               label="Statistical 12M"
               value={f(k.statistical)}
               hint={`P10 ${f(k.p10)} · P90 ${f(k.p90)}`}
-              accent={SERIES.base}
+              icon={<ChartLine />}
             />
             <KpiCard
               label="Consensus 12M"
               value={f(k.consensus)}
               delta={pct(k.forecast_growth, 1, true)}
               hint={`vs LTM · events ${f(k.incremental)}`}
-              accent={SERIES.consensus}
+              icon={<Users />}
+              tone="green"
             />
-            <KpiCard label="Budget 12M" value={f(k.budget)} accent={SERIES.budget} />
-            <KpiCard label="Sales target 12M" value={f(k.target)} accent={SERIES.target} />
+            <KpiCard label="Budget 12M" value={f(k.budget)} icon={<PiggyBank />} tone="orange" />
+            <KpiCard label="Sales target 12M" value={f(k.target)} icon={<Target />} tone="yellow" />
             <KpiCard
               label="Gap vs budget"
               value={f(k.gap_vs_budget)}
               delta={pct(k.gap_vs_budget_pct, 1, true)}
               deltaTone={(k.gap_vs_budget ?? 0) >= 0 ? "good" : "bad"}
               hint={`vs target ${pct(k.gap_vs_target_pct, 1, true)}`}
+              icon={<ArrowLeftRight />}
+              tone="navy"
             />
             <KpiCard
               label="Risk"
               value={f(k.risk)}
               hint="Σ series below budget"
-              icon={<CircleAlert size={16} className="text-red-600" />}
+              icon={<ShieldAlert />}
+              tone="red"
             />
             <KpiCard
               label="Opportunity"
               value={f(k.opportunity)}
               hint="Σ series above budget"
-              icon={<CheckCircle2 size={16} className="text-emerald-600" />}
+              icon={<Rocket />}
+              tone="green"
             />
           </div>
 

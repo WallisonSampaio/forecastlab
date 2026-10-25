@@ -1,6 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { Copy, Lock, Plus, Save, Trash2 } from "lucide-react";
+import {
+  Copy,
+  GitCompareArrows,
+  Lock,
+  Package,
+  PiggyBank,
+  Plus,
+  Save,
+  Target,
+  Trash2,
+  Wallet,
+} from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { BarChart, SimpleLineChart } from "../charts/BasicCharts";
@@ -341,25 +352,38 @@ export default function Scenarios() {
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 2xl:grid-cols-5">
             <KpiCard
               label="Scenario revenue 12M"
+              icon={<Wallet />}
+              tone="green"
               value={money(t?.revenue)}
               hint={`base ${money(t?.base_revenue)}`}
-              accent={SERIES.consensus}
             />
             <KpiCard
               label="vs Base"
+              icon={<GitCompareArrows />}
+              tone="blue"
               value={pct(t?.vs_base_revenue, 1, true)}
               deltaTone={(t?.vs_base_revenue ?? 0) >= 0 ? "good" : "bad"}
               delta={`${pct(t?.vs_base_units, 1, true)} units`}
             />
-            <KpiCard label="Scenario units" value={units(t?.units)} hint={`base ${units(t?.base_units)}`} />
+            <KpiCard
+              label="Scenario units"
+              icon={<Package />}
+              tone="navy"
+              value={units(t?.units)}
+              hint={`base ${units(t?.base_units)}`}
+            />
             <KpiCard
               label="vs Budget"
+              icon={<PiggyBank />}
+              tone="orange"
               value={pct(t?.vs_budget_revenue, 1, true)}
               deltaTone={(t?.vs_budget_revenue ?? 0) >= 0 ? "good" : "bad"}
               hint={money(t?.budget_revenue)}
             />
             <KpiCard
               label="vs Target"
+              icon={<Target />}
+              tone="yellow"
               value={pct(t?.vs_target_revenue, 1, true)}
               hint={money(t?.target_revenue)}
             />

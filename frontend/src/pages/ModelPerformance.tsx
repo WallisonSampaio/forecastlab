@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { BarChart3, Boxes, Grid3x3, History, ListOrdered } from "lucide-react";
+import { Boxes, Grid3x3, History, Layers, ListOrdered, ShieldCheck, Trophy } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -85,13 +85,26 @@ function LeaderboardTab() {
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
         <KpiCard
           label="Models competing"
+          icon={<Boxes />}
+          tone="navy"
           value={lb.length}
           hint="routed per demand pattern"
-          icon={<BarChart3 size={16} />}
         />
-        <KpiCard label="Series" value={total} hint="Customer × SKU" />
-        <KpiCard label="Best pooled WMAPE" value={pct(lb[0].wmape)} hint={lb[0].model} />
-        <KpiCard label="High confidence" value={pct(total ? high / total : 0, 0)} hint={`${high} series`} />
+        <KpiCard label="Series" icon={<Layers />} tone="blue" value={total} hint="Customer × SKU" />
+        <KpiCard
+          label="Best pooled WMAPE"
+          icon={<Trophy />}
+          tone="yellow"
+          value={pct(lb[0].wmape)}
+          hint={lb[0].model}
+        />
+        <KpiCard
+          label="High confidence"
+          icon={<ShieldCheck />}
+          tone="green"
+          value={pct(total ? high / total : 0, 0)}
+          hint={`${high} series`}
+        />
       </div>
       <div className="grid gap-5 xl:grid-cols-[1.4fr_1fr]">
         <Card

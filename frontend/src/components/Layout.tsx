@@ -35,6 +35,34 @@ const NAV = [
   { to: "/app/settings", label: "Settings", icon: Settings },
 ];
 
+const CLIENT_LOGO = import.meta.env.VITE_CLIENT_LOGO_URL;
+const CLIENT_NAME = import.meta.env.VITE_CLIENT_NAME ?? "Client";
+
+/**
+ * Optional white-label logo for private demos. The file lives in
+ * frontend/public/brand/ (git-ignored) and is enabled with VITE_CLIENT_LOGO_URL,
+ * so third-party trademarks never reach the public repository.
+ */
+export function ClientLogo({ variant = "sidebar" }: { variant?: "sidebar" | "inline" }) {
+  if (!CLIENT_LOGO) return null;
+  if (variant === "inline") {
+    return (
+      <span className="inline-flex items-center gap-3">
+        <span className="h-7 w-px bg-white/30" aria-hidden />
+        <img src={CLIENT_LOGO} alt={CLIENT_NAME} className="h-8 w-auto max-w-[140px] object-contain" />
+      </span>
+    );
+  }
+  return (
+    <div className="mx-2 mt-4 flex items-center gap-2 rounded-lg bg-white px-3 py-2">
+      <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted">
+        Prepared for
+      </span>
+      <img src={CLIENT_LOGO} alt={CLIENT_NAME} className="ml-auto h-7 w-auto max-w-[120px] object-contain" />
+    </div>
+  );
+}
+
 export function Logo({ dark = false, size = 30 }: { dark?: boolean; size?: number }) {
   return (
     <span className="inline-flex items-center gap-2.5">
@@ -170,6 +198,7 @@ export function AppLayout() {
           <Logo dark />
         </Link>
         <div className="mt-1 px-2 text-[11px] text-blue-200/70">AI Demand Planning & S&OP</div>
+        <ClientLogo />
         <nav className="mt-7 flex flex-col gap-0.5">
           {NAV.map(({ to, label, icon: Icon }) => (
             <NavLink

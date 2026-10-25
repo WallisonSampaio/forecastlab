@@ -35,6 +35,17 @@ export function Card({
   );
 }
 
+/** Icon badge colors for KPI cards (brand blue/navy/yellow + status tints). */
+const KPI_TONES = {
+  blue: "bg-[#eaf2ff] text-brand",
+  navy: "bg-[#e8e9f4] text-navy",
+  yellow: "bg-[#fff6b3] text-navy",
+  green: "bg-emerald-50 text-emerald-700",
+  red: "bg-red-50 text-red-700",
+  orange: "bg-orange-50 text-orange-700",
+} as const;
+export type KpiTone = keyof typeof KPI_TONES;
+
 export function KpiCard({
   label,
   value,
@@ -42,7 +53,7 @@ export function KpiCard({
   deltaTone = "neutral",
   hint,
   icon,
-  accent,
+  tone = "blue",
 }: {
   label: string;
   value: ReactNode;
@@ -50,35 +61,44 @@ export function KpiCard({
   deltaTone?: "good" | "bad" | "neutral";
   hint?: ReactNode;
   icon?: ReactNode;
-  accent?: string;
+  tone?: KpiTone;
 }) {
   return (
-    <div className="card relative overflow-hidden px-5 py-4">
-      {accent && <span className="absolute inset-y-0 left-0 w-1" style={{ background: accent }} />}
-      <div className="flex items-center justify-between gap-2">
-        <span className="label-xs">{label}</span>
-        {icon && <span className="text-muted">{icon}</span>}
-      </div>
-      <div className="mt-2 whitespace-nowrap text-[24px] font-semibold leading-tight tracking-tight text-ink 2xl:text-[26px]">
-        {value}
-      </div>
-      {(delta || hint) && (
-        <div className="mt-1 flex flex-wrap items-center gap-x-2 text-xs">
-          {delta && (
-            <span
-              className={clsx(
-                "font-medium",
-                deltaTone === "good" && "text-emerald-700",
-                deltaTone === "bad" && "text-red-700",
-                deltaTone === "neutral" && "text-ink-2",
-              )}
-            >
-              {delta}
-            </span>
+    <div className="card flex items-start gap-3.5 px-4 py-4 transition-shadow hover:shadow-md">
+      {icon && (
+        <div
+          aria-hidden
+          className={clsx(
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl [&>svg]:h-[22px] [&>svg]:w-[22px]",
+            KPI_TONES[tone],
           )}
-          {hint && <span className="text-muted">{hint}</span>}
+        >
+          {icon}
         </div>
       )}
+      <div className="min-w-0 flex-1">
+        <div className="truncate text-[13px] font-medium text-muted">{label}</div>
+        <div className="mt-0.5 whitespace-nowrap text-[22px] font-semibold leading-tight tracking-tight text-ink 2xl:text-[24px]">
+          {value}
+        </div>
+        {(delta || hint) && (
+          <div className="mt-1 flex flex-wrap items-center gap-x-2 text-xs">
+            {delta && (
+              <span
+                className={clsx(
+                  "font-medium",
+                  deltaTone === "good" && "text-emerald-700",
+                  deltaTone === "bad" && "text-red-700",
+                  deltaTone === "neutral" && "text-ink-2",
+                )}
+              >
+                {delta}
+              </span>
+            )}
+            {hint && <span className="text-muted">{hint}</span>}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

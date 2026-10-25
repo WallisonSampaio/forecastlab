@@ -253,6 +253,12 @@ forecastlab/
 * Phase 2 — Enterprise ready: PostgreSQL / Azure SQL, Data Lake, Entra ID + RBAC, enterprise LLM, ERP/SAP connectors,
   Snowflake / Databricks, AKS / Container Apps, Terraform — see [docs/enterprise_readiness.md](docs/enterprise_readiness.md).
 
+## White-label (optional client logo)
+
+For private demos to a specific company, ForecastLab can show a "Prepared for" client logo next to its own brand.
+The logo file and its setting stay on your machine (git-ignored) — see
+[frontend/public/brand/README.md](frontend/public/brand/README.md). Only use logos you are authorized to use.
+
 ## Security
 
 Local-first and safe by default: no credentials or API keys are needed or stored, the API and Docker ports bind to

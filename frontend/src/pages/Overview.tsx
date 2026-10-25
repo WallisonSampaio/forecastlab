@@ -1,4 +1,14 @@
-import { AlertTriangle, ArrowRight, Gauge, Package, Scale, Target, TrendingUp, Wallet } from "lucide-react";
+import {
+  ArrowRight,
+  Crosshair,
+  PackageSearch,
+  Percent,
+  PiggyBank,
+  Scale,
+  ShieldAlert,
+  Target,
+  Wallet,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { BarChart } from "../charts/BasicCharts";
@@ -87,20 +97,21 @@ export default function Overview() {
               label="Forecast Accuracy"
               value={pct(k.accuracy)}
               hint="1 − WMAPE · rolling-origin backtest"
-              icon={<Gauge size={16} />}
-              accent="#1baf7a"
+              icon={<Crosshair />}
+              tone="green"
             />
             <KpiCard
               label="WMAPE"
               value={pct(k.wmape)}
               hint="Weighted error, last 12 months"
-              icon={<Scale size={16} />}
+              icon={<Percent />}
             />
             <KpiCard
               label="Bias"
               value={pct(k.bias, 1, true)}
               delta={<BiasBadge value={k.bias_class} />}
-              icon={<TrendingUp size={16} />}
+              icon={<Scale />}
+              tone="navy"
             />
             <KpiCard
               label="Revenue Forecast 12M"
@@ -108,8 +119,7 @@ export default function Overview() {
               delta={`${pct(k.revenue_forecast / k.revenue_ltm - 1, 1, true)} vs LTM`}
               deltaTone={k.revenue_forecast >= k.revenue_ltm ? "good" : "bad"}
               hint="Consensus"
-              icon={<Wallet size={16} />}
-              accent="#2a78d6"
+              icon={<Wallet />}
             />
             <KpiCard
               label="Budget Gap"
@@ -117,7 +127,8 @@ export default function Overview() {
               delta={pct(k.budget_gap_pct, 1, true)}
               deltaTone={k.budget_gap >= 0 ? "good" : "bad"}
               hint={`Budget ${money(k.budget)}`}
-              accent="#eb6834"
+              icon={<PiggyBank />}
+              tone="orange"
             />
             <KpiCard
               label="Target Gap"
@@ -125,21 +136,22 @@ export default function Overview() {
               delta={pct(k.target_gap_pct, 1, true)}
               deltaTone={k.target_gap >= 0 ? "good" : "bad"}
               hint={`Target ${money(k.target)}`}
-              icon={<Target size={16} />}
-              accent="#eda100"
+              icon={<Target />}
+              tone="yellow"
             />
             <KpiCard
               label="Risk SKUs"
               value={k.risk_skus}
               hint="SKUs with high/critical alerts"
-              icon={<AlertTriangle size={16} />}
-              accent="#d03b3b"
+              icon={<ShieldAlert />}
+              tone="red"
             />
             <KpiCard
               label="Overforecasted SKUs"
               value={k.overforecasted_skus}
               hint={`${k.overforecasted_series} series with bias > +5%`}
-              icon={<Package size={16} />}
+              icon={<PackageSearch />}
+              tone="orange"
             />
           </div>
 
