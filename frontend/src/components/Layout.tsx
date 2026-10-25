@@ -14,7 +14,7 @@ import {
   SplitSquareHorizontal,
   Target,
 } from "lucide-react";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 
 import { useGet, useJob } from "../hooks/useApi";
@@ -44,21 +44,26 @@ const CLIENT_NAME = import.meta.env.VITE_CLIENT_NAME ?? "Client";
  * so third-party trademarks never reach the public repository.
  */
 export function ClientLogo({ variant = "sidebar" }: { variant?: "sidebar" | "inline" }) {
-  if (!CLIENT_LOGO) return null;
+  const [missing, setMissing] = useState(false);
+  if (!CLIENT_LOGO || missing) return null;
+  // object-cover on a wide box crops the empty margin of square, padded logo files.
+  const img = (cls: string) => (
+    <img src={CLIENT_LOGO} alt={CLIENT_NAME} onError={() => setMissing(true)} className={cls} />
+  );
   if (variant === "inline") {
     return (
       <span className="inline-flex items-center gap-3">
         <span className="h-7 w-px bg-white/30" aria-hidden />
-        <img src={CLIENT_LOGO} alt={CLIENT_NAME} className="h-8 w-auto max-w-[140px] object-contain" />
+        <span className="rounded-lg bg-white px-2 py-1">{img("h-9 w-[132px] object-cover")}</span>
       </span>
     );
   }
   return (
-    <div className="mx-2 mt-4 flex items-center gap-2 rounded-lg bg-white px-3 py-2">
+    <div className="mx-2 mt-4 flex items-center gap-2 rounded-lg bg-white px-3 py-1.5">
       <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted">
         Prepared for
       </span>
-      <img src={CLIENT_LOGO} alt={CLIENT_NAME} className="ml-auto h-7 w-auto max-w-[120px] object-contain" />
+      {img("ml-auto h-9 w-[112px] object-cover")}
     </div>
   );
 }
