@@ -63,7 +63,12 @@ SERIES_TYPE_PT = {
     "New Product": "Lançamento",
     "New Product (Launch)": "Lançamento",
 }
-MODEL_PT = {"Naive": "Ingênuo", "Seasonal Naive": "Ingênuo sazonal", "Moving Average": "Média Móvel", "Regression": "Regressão"}
+MODEL_PT = {
+    "Naive": "Ingênuo",
+    "Seasonal Naive": "Ingênuo sazonal",
+    "Moving Average": "Média Móvel",
+    "Regression": "Regressão",
+}
 CLASS_LABEL = {
     "REALISTIC": ("REALISTIC", "REALISTA"),
     "STRETCH": ("STRETCH", "DESAFIADORA"),
