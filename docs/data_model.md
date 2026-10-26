@@ -1,62 +1,88 @@
-# Data model
+# Modelo de dados
 
-> ForecastLab · Developed by Wallison Sampaio · [LinkedIn](https://www.linkedin.com/in/wallisonsampaio)
+> ForecastLab · Desenvolvido por Wallison Sampaio · [LinkedIn](https://www.linkedin.com/in/wallisonsampaio)
 
-## Upload format
+## Formato do arquivo carregado
 
-Minimum columns: `Date, Region, Channel, Customer, SKU, Units`.
-Optional: `CustomerLocation, CustomerPotential, Product, Category, Brand, Revenue, Price, Promotion, Distribution,
+Colunas mínimas: `Date, Region, Channel, Customer, SKU, Units`.
+Opcionais: `CustomerLocation, CustomerPotential, Product, Category, Brand, Revenue, Price, Promotion, Distribution,
 StockOut, Holiday, MarketingInvestment, MerchandisingEvent`.
 
-* Column names are matched case/accent-insensitively with EN/PT aliases (e.g. `Data`, `Região`, `Cliente`,
-  `Quantidade`, `Preço`, `Promoção`).
-* Any day of the month is accepted; rows are aggregated to **Customer × SKU × Month**.
-* An Excel sheet named `Plan…` with `Date, Customer, SKU, BudgetUnits, TargetUnits[, BudgetRevenue, TargetRevenue]`
-  is used as the plan; otherwise budget = same month last year × 1.05 and target = budget × 1.05.
-* Download the template from **Data → Download template** (`/api/data/template`).
+* Os nomes das colunas são reconhecidos sem diferenciar maiúsculas/minúsculas nem acentos, com sinônimos em PT e EN
+  (ex.: `Data`, `Região`, `Canal`, `Cliente`, `Produto`, `Quantidade` / `Unidades`, `Receita` / `Faturamento`,
+  `Preço`, `Promoção`, `Distribuição`, `Ruptura`, `Feriado`).
+* Qualquer dia do mês é aceito; as linhas são agregadas em **Cliente × SKU × Mês**.
+* Em arquivos Excel, os dados de vendas são lidos da aba `Dados` (ou `Data` / `Sales`); se ela não existir, vale a
+  primeira aba.
+* Em arquivos Excel, uma aba cujo nome comece com `Plan` (ex.: `Plano`), `Budget` ou `Orcamento` (sem cedilha),
+  com as colunas `Date, Customer, SKU, BudgetUnits, TargetUnits[, BudgetRevenue, TargetRevenue]`, é usada como
+  plano. Sem essa aba, o plano é derivado: orçamento = mesmo mês do ano anterior × 1,05 e meta = orçamento × 1,05.
+  Nesse caso a jornada avisa que o orçamento foi "estimado automaticamente" e que os desvios vs orçamento são
+  ilustrativos.
+* Baixe o modelo de planilha na **Entrada** (etapa 1, "Baixar modelo de planilha (.xlsx)"; `/api/data/template`).
+  O modelo traz a aba de vendas e a aba "Plano (opcional)" para orçamento e meta.
+* Os valores dos dados (regiões, canais, clientes, categorias…) são exibidos como foram carregados; a base de
+  demonstração já vem em português.
 
-## Validation rules
+## Regras de validação (Diagnóstico da base)
 
-| Severity | Checks |
+| Severidade | Verificações |
 |---|---|
-| Critical (blocks the forecast) | missing required columns, empty file, invalid dates, missing Date/Customer/SKU/Region/Channel, negative or non-numeric units, < 6 months of history |
-| Warning | duplicated rows, future dates, missing units (≤ 20%), negative revenue/price/marketing, distribution outside 0–100, outliers (robust z > 3.5), short series (< 12 months) |
-| Info | rows aggregated to monthly, zero-demand periods, optional columns missing |
+| Crítico (bloqueia o forecast) | colunas obrigatórias ausentes, arquivo vazio, datas inválidas, Data/Cliente/SKU/Região/Canal em branco, unidades negativas ou não numéricas, menos de 6 meses de histórico |
+| Atenção | linhas duplicadas, datas futuras, unidades em branco (≤ 20%), receita/preço/marketing negativos, distribuição fora de 0–100, outliers (z robusto > 3,5), séries curtas (< 12 meses) |
+| Info | linhas agregadas por mês, períodos com demanda zero, colunas opcionais ausentes |
 
-**Data Quality Score** = 35% Completeness + 30% Consistency + 20% Historical Depth (median months / 48) +
-15% Granularity (hierarchy attributes present).
+**Score de qualidade dos dados** (0–100) = 35% Completude + 30% Consistência + 20% Profundidade do histórico
+(mediana de meses / 48) + 15% Granularidade (atributos de hierarquia presentes).
 
-## DuckDB tables
+Os códigos das verificações e os status da base (`valid`, `warnings`, `blocked`) continuam em inglês na API e são
+exibidos em português na interface ("Válido", "Com alertas", "Bloqueado").
 
-| Table | Grain | Key columns |
+## Tabelas do DuckDB
+
+| Tabela | Granularidade | Colunas principais |
 |---|---|---|
-| `datasets` | dataset version | `dataset_version`, name, source, rows, series, period, quality score, status, active flag, validation JSON |
-| `sales` | version × date × customer × sku | all canonical fields |
-| `plan` | version × date × customer × sku | budget/target units & revenue |
-| `historical_overrides` | version × date × customer × sku | planner, event type, adjustment %, comment |
-| `overrides` | override | customer (nullable = all), sku (nullable = all), month, event type, uplift %, comment, author |
-| `forecast_runs` | run | run id, timestamps, dataset version, horizon, engine version, scenario, status, duration, params, summary |
-| `series_selection` | run × series | series type, champion, challenger, WMAPE, bias, confidence |
-| `series_profiles` | run × series | profiling statistics and classification reason |
-| `model_registry` | run × series × model | model version, training date, metrics, rank, parameters, champion/challenger flags |
-| `backtest_results` | run × series × model × month | fold, origin, horizon step, actual, forecast |
-| `forecasts` | run × series × month × role | champion/challenger P50, σ, P10, P90 |
-| `scenarios` | scenario | name, kind, description, parameters JSON |
-| `app_state` | key | active dataset, active run |
+| `datasets` | versão da base | `dataset_version`, nome, origem, linhas, séries, período, score de qualidade, status, flag de ativa, JSON da validação |
+| `sales` | versão × data × cliente × SKU | todos os campos canônicos |
+| `plan` | versão × data × cliente × SKU | orçamento e meta em unidades e receita |
+| `historical_overrides` | versão × data × cliente × SKU | planejador, tipo de evento, % de ajuste, comentário |
+| `overrides` | ajuste comercial | cliente (nulo = todos), SKU (nulo = todos), mês, tipo de evento, % de uplift, comentário, autor |
+| `forecast_runs` | execução | id da execução, datas/horas, versão da base, horizonte, versão do motor, cenário, status, duração, parâmetros, resumo |
+| `series_selection` | execução × série | tipo da série, campeão, desafiante, WMAPE, viés, confiança |
+| `series_profiles` | execução × série | estatísticas do perfil e justificativa da classificação |
+| `model_registry` | execução × série × modelo | versão do modelo, data de treino, métricas, posição no ranking, parâmetros, flags de campeão/desafiante |
+| `backtest_results` | execução × série × modelo × mês | fold, origem, passo do horizonte, real, forecast |
+| `forecasts` | execução × série × mês × papel | P50 do campeão/desafiante, σ, P10, P90 |
+| `scenarios` | cenário | nome, tipo, descrição, JSON de parâmetros |
+| `app_state` | chave | base ativa, execução ativa |
 
-Series id = `"{Customer}|{SKU}"`.
+Id da série = `"{Customer}|{SKU}"`. Os nomes das tabelas e colunas permanecem em inglês (contrato técnico estável).
 
-## Synthetic generator
+## Gerador sintético
 
-`python -m synthetic_data_generator --seed 42` writes `data/synthetic/`:
+`python -m synthetic_data_generator --seed 42` grava em `data/synthetic/`:
 
-| File | Content |
+| Arquivo | Conteúdo |
 |---|---|
-| `sales_history.csv/.parquet` | 60 months × 220 series, every PRD field |
-| `budget_target_plan.csv` | budget & target, last 12 history months + 12 future months |
-| `historical_overrides.csv` | planner adjustments (informed and optimistic) for FVA |
-| `pending_commercial_events.csv` | future commercial events seeded into the consensus |
-| `metadata.json` | seed, patterns per SKU, true elasticities, events (ground truth for validation) |
+| `sales_history.csv/.parquet` | 60 meses × 220 séries, todos os campos do PRD |
+| `budget_target_plan.csv` | orçamento e meta: últimos 12 meses do histórico + 12 meses futuros |
+| `historical_overrides.csv` | ajustes de planejadores (informados e otimistas) para o FVA |
+| `pending_commercial_events.csv` | eventos comerciais futuros que alimentam o consenso |
+| `metadata.json` | semente, padrões por SKU, elasticidades verdadeiras, eventos (gabarito para validação) |
 
-Demand = level × trend × seasonality × calendar events × store openings × distribution^0.9 × relative price^ε ×
-promotion × merchandising × marketing^0.07 × structural breaks × noise × (1 − stock-out loss).
+Com `--samples ../data/samples` ele também grava `forecastlab_sample_upload.xlsx` (e a versão `.csv`), o recorte
+das regiões **Sul** e **Centro-Oeste**, pronto para ser carregado como exemplo na **Entrada** (etapa 1).
+
+Os valores de negócio são gerados em português:
+
+| Campo | Valores |
+|---|---|
+| Região | Sudeste, Sul, Nordeste, Centro-Oeste, Norte |
+| Canal | Varejo Moderno, Atacarejo, Varejo Tradicional, E-commerce, Farma |
+| Categoria | Bebidas, Snacks, Cuidados Pessoais, Limpeza |
+| Tipo de evento | Promoção, Merchandising, Ganho de distribuição, Perda de distribuição, Nova loja, Ganho de cliente, Perda de cliente, Campanha, Mudança de preço, Lançamento, Deslistagem, Ação de concorrente |
+| Planejador | Key Account (KAM), Diretor de Vendas, Trade Marketing, Planejador de Demanda, Marketing |
+
+Demanda = nível × tendência × sazonalidade × eventos de calendário × abertura de lojas × distribuição^0,9 ×
+preço relativo^ε × promoção × merchandising × marketing^0,07 × quebras estruturais × ruído × (1 − perda por
+ruptura).

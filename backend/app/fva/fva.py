@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 
 from app import db
-from app.services import datasets
+from app.services import datasets, ptbr
 from app.services.context import PlanningContext, clean, filter_ids, records
 
 TOLERANCE = 0.005  # changes smaller than 0.5% of actual are "neutral"
@@ -36,9 +36,9 @@ def evaluate_override(statistical: float, override_pct: float, actual: float) ->
     tol = TOLERANCE * max(abs(actual), 1e-9)
     outcome = "Improved" if fva > tol else "Worsened" if fva < -tol else "Neutral"
     message = {
-        "Improved": "Override improved forecast accuracy.",
-        "Worsened": "Override reduced forecast accuracy.",
-        "Neutral": "Override had no material effect on accuracy.",
+        "Improved": "O ajuste melhorou a acurácia do forecast.",
+        "Worsened": "O ajuste reduziu a acurácia do forecast.",
+        "Neutral": "O ajuste não teve efeito relevante na acurácia.",
     }[outcome]
     return {
         "statistical": statistical,
@@ -73,7 +73,7 @@ def _group(df: pd.DataFrame, key: str) -> list[dict[str, Any]]:
 
 def fva_report(ctx: PlanningContext, filters: dict[str, Any] | None = None) -> dict[str, Any]:
     if not ctx.has_run:
-        return {"available": False, "message": "Run a forecast first."}
+        return {"available": False, "message": "Execute um forecast primeiro."}
     ids = filter_ids(ctx, filters)
     bt = ctx.backtest[ctx.backtest["series_id"].isin(ids)].copy()
     naive = db.query_df(
@@ -92,6 +92,9 @@ def fva_report(ctx: PlanningContext, filters: dict[str, Any] | None = None) -> d
         detail = pd.DataFrame()
     else:
         ov["series_id"] = ov["customer"] + "|" + ov["sku"]
+        # datasets stored by older (English) versions: show planners/event types with the current labels
+        ov["planner"] = ov["planner"].map(lambda v: ptbr.label(ptbr.PLANNER, v))
+        ov["event_type"] = ov["event_type"].map(lambda v: ptbr.label(ptbr.EVENT_TYPE, v))
         agg = (
             ov.groupby(["series_id", "date"])
             .agg(

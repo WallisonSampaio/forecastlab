@@ -2,18 +2,39 @@ import { CATEGORICAL, SERIES, STATUS } from "../lib/colors";
 import type { ChartSpec } from "../types";
 import { BarChart, SimpleLineChart, WaterfallChart } from "./BasicCharts";
 
+/** Fixed colors for well-known series names (Portuguese and English) so roles never change color. */
 const NAMED: Record<string, string> = {
-  Actual: SERIES.actual,
+  // Actuals
   Real: SERIES.actual,
+  Realizado: SERIES.actual,
+  Actual: SERIES.actual,
+  Actuals: SERIES.actual,
+  // Statistical / base forecast
   Base: SERIES.base,
+  Estatístico: SERIES.base,
+  "Forecast estatístico": SERIES.base,
+  "Statistical Forecast": SERIES.base,
+  Statistical: SERIES.base,
+  // Consensus
+  Consenso: SERIES.consensus,
+  "Forecast de consenso": SERIES.consensus,
   Consensus: SERIES.consensus,
-  Budget: SERIES.budget,
+  "Consensus Forecast": SERIES.consensus,
+  // Budget
   Orçamento: SERIES.budget,
-  Target: SERIES.target,
+  Budget: SERIES.budget,
+  // Target
   Meta: SERIES.target,
-  Scenario: SERIES.consensus,
+  Target: SERIES.target,
+  // Scenario
   Cenário: SERIES.consensus,
+  Scenario: SERIES.consensus,
+  // Challenger
+  Desafiante: SERIES.challenger,
+  Challenger: SERIES.challenger,
 };
+
+const BIAS_RE = /bias|vi[eé]s/i;
 
 /** Renders a chart spec produced by the AI Analyst (dynamic charts). */
 export function ChartRenderer({ spec, height = 300 }: { spec: ChartSpec; height?: number }) {
@@ -41,8 +62,8 @@ export function ChartRenderer({ spec, height = 300 }: { spec: ChartSpec; height?
   const signed =
     spec.format === "percent_signed" ||
     (spec.format === "currency" && series[0]?.data.some((v) => (v ?? 0) < 0));
-  // Bias: over-forecast (positive) is red, under-forecast blue. Gaps / FVA: positive is good.
-  const isBias = /bias|viés/i.test(spec.title ?? "");
+  // Bias ("Viés"): over-forecast (positive) is red, under-forecast blue. Gaps / FVA: positive is good.
+  const isBias = BIAS_RE.test(spec.title ?? "") || series.some((s) => BIAS_RE.test(s.name));
   const signColors = isBias
     ? { positive: STATUS.critical, negative: SERIES.base }
     : { positive: STATUS.good, negative: STATUS.critical };
@@ -54,7 +75,7 @@ export function ChartRenderer({ spec, height = 300 }: { spec: ChartSpec; height?
       horizontal={spec.horizontal}
       highlight={spec.highlight}
       signColors={signed ? signColors : undefined}
-      height={spec.horizontal ? Math.max(220, x.length * 30 + 40) : height}
+      height={spec.horizontal ? Math.max(220, x.length * 32 + 40) : height}
     />
   );
 }

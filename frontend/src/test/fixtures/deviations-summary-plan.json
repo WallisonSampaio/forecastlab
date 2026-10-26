@@ -1,0 +1,390 @@
+{
+  "available": true,
+  "cmp": "fc_pl",
+  "lens": "plan",
+  "measure": "revenue",
+  "period": {
+    "code": "h",
+    "label": "Próximos 12 meses (out/2026–set/2027)",
+    "months": [
+      "2026-10-01",
+      "2026-11-01",
+      "2026-12-01",
+      "2027-01-01",
+      "2027-02-01",
+      "2027-03-01",
+      "2027-04-01",
+      "2027-05-01",
+      "2027-06-01",
+      "2027-07-01",
+      "2027-08-01",
+      "2027-09-01"
+    ],
+    "kind": "future"
+  },
+  "periods": [
+    {
+      "code": "h",
+      "label": "Próximos 12 meses (out/2026–set/2027)"
+    },
+    {
+      "code": "t1",
+      "label": "T1 · out–dez/2026"
+    },
+    {
+      "code": "t2",
+      "label": "T2 · jan–mar/2027"
+    },
+    {
+      "code": "t3",
+      "label": "T3 · abr–jun/2027"
+    },
+    {
+      "code": "t4",
+      "label": "T4 · jul–set/2027"
+    },
+    {
+      "code": "2026-10",
+      "label": "out/2026"
+    },
+    {
+      "code": "2026-11",
+      "label": "nov/2026"
+    },
+    {
+      "code": "2026-12",
+      "label": "dez/2026"
+    },
+    {
+      "code": "2027-01",
+      "label": "jan/2027"
+    },
+    {
+      "code": "2027-02",
+      "label": "fev/2027"
+    },
+    {
+      "code": "2027-03",
+      "label": "mar/2027"
+    },
+    {
+      "code": "2027-04",
+      "label": "abr/2027"
+    },
+    {
+      "code": "2027-05",
+      "label": "mai/2027"
+    },
+    {
+      "code": "2027-06",
+      "label": "jun/2027"
+    },
+    {
+      "code": "2027-07",
+      "label": "jul/2027"
+    },
+    {
+      "code": "2027-08",
+      "label": "ago/2027"
+    },
+    {
+      "code": "2027-09",
+      "label": "set/2027"
+    }
+  ],
+  "comparisons": [
+    {
+      "cmp": "fc_pl",
+      "label": "Consenso × Orçamento · próximos 12 meses",
+      "available": true
+    },
+    {
+      "cmp": "fc_tg",
+      "label": "Consenso × Meta · próximos 12 meses",
+      "available": true
+    },
+    {
+      "cmp": "ac_pl",
+      "label": "Real × Orçamento · últimos 12 meses",
+      "available": true
+    },
+    {
+      "cmp": "ac_fc",
+      "label": "Real × Estatístico (campeão)",
+      "available": true
+    },
+    {
+      "cmp": "ac_cs",
+      "label": "Real × Consenso histórico (com ajustes)",
+      "available": true
+    }
+  ],
+  "node": {
+    "label": "Empresa toda",
+    "path": [],
+    "n_series": 220
+  },
+  "headline": "Empresa toda: consenso R$ 4,09 mi abaixo do orçamento (-4,2%) nos próximos 12 meses — Nordeste responde por 55% das perdas.",
+  "notices": [],
+  "kpis": [
+    {
+      "id": "variance",
+      "label": "Desvio vs orçamento",
+      "value": -4086087.1448588967,
+      "format": "currency_signed",
+      "text": null,
+      "delta": "-4,2%",
+      "delta_tone": "bad",
+      "hint": "R$ 94,30 mi vs R$ 98,39 mi"
+    },
+    {
+      "id": "prob_hit",
+      "label": "Chance de atingir o orçamento",
+      "value": 0.4235369706214761,
+      "format": "percent",
+      "text": null,
+      "delta": null,
+      "delta_tone": "neutral",
+      "hint": "faixa P10–P90 R$ 67,15 mi–R$ 121,45 mi"
+    },
+    {
+      "id": "concentration",
+      "label": "Concentração",
+      "value": 1,
+      "format": "text",
+      "text": "1 de 5 regiões",
+      "delta": null,
+      "delta_tone": "neutral",
+      "hint": "55% das perdas"
+    },
+    {
+      "id": "main_driver",
+      "label": "Principal fator",
+      "value": -2101152.5443905825,
+      "format": "text",
+      "text": "Mix",
+      "delta": null,
+      "delta_tone": "neutral",
+      "hint": "-R$ 2,10 mi (51% do desvio)"
+    }
+  ],
+  "breakdown": {
+    "level": "region",
+    "level_label": "Região",
+    "next_level": "channel",
+    "levels": [
+      {
+        "value": "region",
+        "label": "Região",
+        "disabled": false
+      },
+      {
+        "value": "channel",
+        "label": "Canal",
+        "disabled": false
+      },
+      {
+        "value": "customer",
+        "label": "Cliente",
+        "disabled": false
+      },
+      {
+        "value": "category",
+        "label": "Categoria",
+        "disabled": false
+      },
+      {
+        "value": "brand",
+        "label": "Marca",
+        "disabled": false
+      },
+      {
+        "value": "sku",
+        "label": "SKU",
+        "disabled": false
+      },
+      {
+        "value": "series",
+        "label": "Série",
+        "disabled": true,
+        "reason": "Filtre um cliente ou SKU (ou um recorte com até 60 séries)"
+      }
+    ],
+    "rows": [
+      {
+        "key": "Nordeste",
+        "label": "Nordeste",
+        "x": 16257161.756420972,
+        "p": 18588200.169999994,
+        "variance": -2331038.4135790225,
+        "variance_pct": -0.125404202249831,
+        "share_of_adverse": 0.5506548922855262,
+        "share_of_favorable": null,
+        "cum_share": 0.5506548922855262,
+        "prob_hit": 0.2999006436863816,
+        "growth_plan": 0.1599599727010459,
+        "growth_fc": 0.014496117682735399,
+        "realized_variance_pct": -0.07860649054426269,
+        "effects": {
+          "volume": -1412918.8609970908,
+          "mix": -573546.0300300256,
+          "price": -302477.1486095662,
+          "events": -42096.37394234771
+        },
+        "tags": [
+          {
+            "code": "premissa_otimista",
+            "label": "Premissa de crescimento otimista"
+          },
+          {
+            "code": "queda_estrutural",
+            "label": "Queda estrutural"
+          }
+        ],
+        "is_exception": true,
+        "n_series": 52,
+        "drillable": true
+      },
+      {
+        "key": "Sul",
+        "label": "Sul",
+        "x": 18023373.77308075,
+        "p": 19601990.03000001,
+        "variance": -1578616.2569192573,
+        "variance_pct": -0.08053346902550468,
+        "share_of_adverse": 0.3729122436808722,
+        "share_of_favorable": null,
+        "cum_share": 0.9235671359663984,
+        "prob_hit": 0.3550270974615759,
+        "growth_plan": 0.15767784289495612,
+        "growth_fc": 0.06444603019266193,
+        "realized_variance_pct": -0.10218654887908817,
+        "effects": {
+          "volume": -1402523.3982231978,
+          "mix": -262090.79429779758,
+          "price": 72126.20748982075,
+          "events": 13871.728111973125
+        },
+        "tags": [
+          {
+            "code": "premissa_otimista",
+            "label": "Premissa de crescimento otimista"
+          }
+        ],
+        "is_exception": true,
+        "n_series": 49,
+        "drillable": true
+      },
+      {
+        "key": "Sudeste",
+        "label": "Sudeste",
+        "x": 43701468.9945351,
+        "p": 43872999.830000006,
+        "variance": -171530.83546490222,
+        "variance_pct": -0.00390971294713271,
+        "share_of_adverse": 0.04052026477828356,
+        "share_of_favorable": null,
+        "cum_share": 0.9640874007446819,
+        "prob_hit": 0.49222314734737305,
+        "growth_plan": 0.10585269611516157,
+        "growth_fc": 0.10152912951153859,
+        "realized_variance_pct": -0.020165816267146478,
+        "effects": {
+          "volume": 1415208.9883725166,
+          "mix": -1066150.159345612,
+          "price": -677826.2421552007,
+          "events": 157236.5776632928
+        },
+        "tags": [
+          {
+            "code": "preco",
+            "label": "Preço abaixo do orçado"
+          },
+          {
+            "code": "mix",
+            "label": "Mix desfavorável"
+          }
+        ],
+        "is_exception": false,
+        "n_series": 69,
+        "drillable": true
+      },
+      {
+        "key": "Centro-Oeste",
+        "label": "Centro-Oeste",
+        "x": 12798854.495466454,
+        "p": 12950880.110000009,
+        "variance": -152025.61453355476,
+        "variance_pct": -0.011738631910905293,
+        "share_of_adverse": 0.035912599255317944,
+        "share_of_favorable": null,
+        "cum_share": 0.9999999999999999,
+        "prob_hit": 0.4793852126181364,
+        "growth_plan": 0.08643644466813893,
+        "growth_fc": 0.07368316714958723,
+        "realized_variance_pct": 0.04332307286490268,
+        "effects": {
+          "volume": -66008.14503215427,
+          "mix": -176079.9137231271,
+          "price": 90062.44422174676,
+          "events": 0.0
+        },
+        "tags": [
+          {
+            "code": "mix",
+            "label": "Mix desfavorável"
+          },
+          {
+            "code": "incerteza",
+            "label": "Dentro da incerteza"
+          }
+        ],
+        "is_exception": false,
+        "n_series": 36,
+        "drillable": true
+      },
+      {
+        "key": "Norte",
+        "label": "Norte",
+        "x": 3520410.97563787,
+        "p": 3373286.9999999995,
+        "variance": 147123.97563787038,
+        "variance_pct": 0.043614425822015856,
+        "share_of_adverse": null,
+        "share_of_favorable": 1.0,
+        "cum_share": 1.0,
+        "prob_hit": 0.5718409482936277,
+        "growth_plan": 0.0192374012988219,
+        "growth_fc": 0.0636908553327935,
+        "realized_variance_pct": 0.009708613046592936,
+        "effects": {
+          "volume": 63820.24179118065,
+          "mix": -23285.646994019557,
+          "price": 106589.38084070945,
+          "events": 0.0
+        },
+        "tags": [
+          {
+            "code": "preco",
+            "label": "Preço acima do orçado"
+          },
+          {
+            "code": "incerteza",
+            "label": "Dentro da incerteza"
+          }
+        ],
+        "is_exception": false,
+        "n_series": 14,
+        "drillable": true
+      }
+    ],
+    "others": null,
+    "n_members": 5
+  },
+  "concentration": {
+    "n_top": 1,
+    "share": 0.5506548922855262,
+    "members": ["Nordeste"],
+    "n_members": 5
+  }
+}

@@ -24,7 +24,7 @@ services:
     environment:
       FORECASTLAB_DB_PATH: /data/forecastlab.duckdb
       OLLAMA_URL: http://ollama:11434
-      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2:3b}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:1.7b}
       FORECASTLAB_DEMO_SEED: ${FORECASTLAB_DEMO_SEED:-42}
       FORECASTLAB_CORS: http://localhost:3000
     volumes:
@@ -46,7 +46,7 @@ services:
       - ollama
     environment:
       OLLAMA_HOST: ollama:11434
-    entrypoint: ["/bin/sh", "-c", "sleep 5 && ollama pull ${OLLAMA_MODEL:-llama3.2:3b}"]
+    entrypoint: ["/bin/sh", "-c", "sleep 5 && ollama pull ${OLLAMA_MODEL:-qwen3:1.7b}"]
     restart: "no"
 
 volumes:

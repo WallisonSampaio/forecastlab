@@ -19,13 +19,16 @@ SUB_FONT = Font(size=11, color=SLATE, name="Calibri")
 LINK_FONT = Font(size=10, color=INDIGO, underline="single", name="Calibri")
 THIN = Border(bottom=Side(style="thin", color="E2E8F0"))
 
+# Excel number formats are stored in the invariant (US) notation and rendered with the viewer's locale:
+# in a pt-BR Excel "#,##0" shows 1.234.567 and "0.0%" shows 14,8%.
 FORMATS = {
     "units": "#,##0",
     "currency": '"R$" #,##0',
     "currency2": '"R$" #,##0.00',
     "percent": "0.0%",
     "number": "#,##0.00",
-    "date": "yyyy-mm",
+    "date": "mm/yyyy",
+    "datetime": "dd/mm/yyyy hh:mm",
 }
 
 
@@ -55,8 +58,8 @@ def style_table(
 
 
 def signature_rows(ws: Worksheet, row: int) -> int:
-    ws.cell(row=row, column=1, value=AUTHOR["signature_en"]).font = Font(bold=True, size=11, color=NAVY)
-    ws.cell(row=row + 1, column=1, value=AUTHOR["title_en"]).font = SUB_FONT
+    ws.cell(row=row, column=1, value=AUTHOR["signature_pt"]).font = Font(bold=True, size=11, color=NAVY)
+    ws.cell(row=row + 1, column=1, value=AUTHOR["title_pt"]).font = SUB_FONT
     c = ws.cell(row=row + 2, column=1, value=AUTHOR["linkedin"])
     c.hyperlink = AUTHOR["linkedin"]
     c.font = LINK_FONT

@@ -29,13 +29,13 @@ def excel(
     scenario_id: str | None = None, filters: dict = Depends(filters_dep), ctx: PlanningContext = Depends(ctx_dep)
 ) -> StreamingResponse:
     require_run(ctx)
-    return _xlsx(build_workbook(ctx, filters, scenario_id), f"forecastlab_plan_{datetime.now():%Y%m%d_%H%M}.xlsx")
+    return _xlsx(build_workbook(ctx, filters, scenario_id), f"forecastlab_plano_{datetime.now():%Y%m%d_%H%M}.xlsx")
 
 
 @router.get("/executive-excel")
 def executive_excel(filters: dict = Depends(filters_dep), ctx: PlanningContext = Depends(ctx_dep)):
     require_run(ctx)
-    return _xlsx(build_executive_workbook(ctx, filters), f"forecastlab_executive_{datetime.now():%Y%m%d}.xlsx")
+    return _xlsx(build_executive_workbook(ctx, filters), f"forecastlab_executivo_{datetime.now():%Y%m%d}.xlsx")
 
 
 @router.get("/executive-html", response_class=HTMLResponse)
@@ -44,7 +44,7 @@ def executive_html(
 ) -> HTMLResponse:
     require_run(ctx)
     headers = (
-        {"Content-Disposition": f'attachment; filename="forecastlab_executive_{datetime.now():%Y%m%d}.html"'}
+        {"Content-Disposition": f'attachment; filename="forecastlab_relatorio_executivo_{datetime.now():%Y%m%d}.html"'}
         if download
         else None
     )

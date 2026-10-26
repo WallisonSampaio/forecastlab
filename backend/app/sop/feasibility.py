@@ -22,15 +22,17 @@ from scipy.stats import norm
 
 from app.scenarios.elasticity import estimate_elasticities, for_category
 from app.services.context import Z90, PlanningContext, clean, filter_ids, horizon_totals
+from app.services.ptbr import measure as fmt_measure
+from app.services.ptbr import pct
 
 # Largest single-lever move considered commercially plausible within a planning year.
 PLAUSIBLE = {"Distribution": 0.20, "Price": 0.08, "Marketing": 0.50}
 
 CLASSES = {
-    "REALISTIC": {"color": "green", "emoji": "🟢", "label": "Realistic"},
-    "STRETCH": {"color": "yellow", "emoji": "🟡", "label": "Stretch"},
-    "AGGRESSIVE": {"color": "red", "emoji": "🔴", "label": "Aggressive"},
-    "UNDERESTIMATED": {"color": "blue", "emoji": "🔵", "label": "Underestimated"},
+    "REALISTIC": {"color": "green", "emoji": "🟢", "label": "Realista"},
+    "STRETCH": {"color": "yellow", "emoji": "🟡", "label": "Desafiadora"},
+    "AGGRESSIVE": {"color": "red", "emoji": "🔴", "label": "Agressiva"},
+    "UNDERESTIMATED": {"color": "blue", "emoji": "🔵", "label": "Subestimada"},
 }
 
 
@@ -80,7 +82,7 @@ def assess(
     measure: str = "revenue",
 ) -> dict[str, Any]:
     if not ctx.has_run:
-        return {"available": False, "message": "Run a forecast first."}
+        return {"available": False, "message": "Execute um forecast primeiro."}
     ids = filter_ids(ctx, filters)
     sel_months = (
         pd.DatetimeIndex([pd.Timestamp(m).to_period("M").to_timestamp() for m in months])
@@ -89,11 +91,11 @@ def assess(
     )
     sel_months = sel_months[sel_months.isin(ctx.future_dates)]
     if len(sel_months) == 0:
-        return {"available": False, "message": "Selected months are outside the forecast horizon."}
+        return {"available": False, "message": "Os meses selecionados estão fora do horizonte do forecast."}
     t = horizon_totals(ctx, ids, measure, sel_months)
     target = t.get("target")
     if target is None:
-        return {"available": False, "message": "No target available for this selection."}
+        return {"available": False, "message": "Não há meta disponível para esta seleção."}
     cons, base, budget = t["consensus"], t["base"], t.get("budget") or 0.0
     sigma_c = t["sigma"] * (cons / base if base else 1.0)
     p10c, p90c = max(0.0, cons - Z90 * sigma_c), cons + Z90 * sigma_c
@@ -116,22 +118,27 @@ def assess(
         annualized = target_units * 12 / len(sel_months)
         capacity_ratio = annualized / potential
         if capacity_ratio > 1.0:
-            reasons.append(f"Target implies {capacity_ratio:.0%} of the customers' addressable potential")
+            reasons.append(f"A meta implica {pct(capacity_ratio)} do potencial endereçável dos clientes")
             cls = "AGGRESSIVE"
     if required_growth is not None and hist_growth is not None and prob < 0.5:
         if required_growth > max(2 * abs(hist_growth), hist_growth + 0.15):
-            reasons.append(f"Required growth {required_growth:+.1%} is far above historical growth {hist_growth:+.1%}")
+            reasons.append(
+                f"O crescimento necessário de {pct(required_growth, 1, signed=True)} está muito acima do "
+                f"crescimento histórico de {pct(hist_growth, 1, signed=True)}"
+            )
             cls = "AGGRESSIVE" if cls == "STRETCH" else cls
     if target > p90c:
-        reasons.append("Target is above the P90 of the consensus forecast")
+        reasons.append("A meta está acima do P90 do forecast de consenso")
     elif target > cons:
-        reasons.append("Target is above the consensus (P50) but inside the P10-P90 range")
+        reasons.append("A meta está acima do consenso (P50), mas dentro da faixa P10-P90")
     elif target < p10c:
-        reasons.append("Target is below the P10 of the consensus forecast - likely underestimated")
+        reasons.append("A meta está abaixo do P10 do forecast de consenso - provavelmente subestimada")
     else:
-        reasons.append("Target is at or below the consensus forecast")
+        reasons.append("A meta está igual ou abaixo do forecast de consenso")
     if t.get("incremental"):
-        reasons.append(f"Consensus already includes {t['incremental']:,.0f} of planned commercial events")
+        reasons.append(
+            f"O consenso já inclui {fmt_measure(t['incremental'], measure)} de eventos comerciais planejados"
+        )
 
     gap = target - cons
     gap_pct = gap / cons if cons else None
@@ -206,19 +213,19 @@ def _levers(
             "lever": "Distribution",
             "required_change": g ** (1 / e_d) - 1 if e_d > 0 else None,
             "elasticity": e_d,
-            "note": "Numeric distribution increase needed",
+            "note": "Aumento necessário na distribuição numérica",
         },
         {
             "lever": "Price",
             "required_change": g ** (1 / e_p) - 1 if e_p < 0 else None,
             "elasticity": e_p,
-            "note": "Price reduction needed (volume effect only; revenue impact differs)",
+            "note": "Redução de preço necessária (apenas efeito em volume; o impacto em receita é diferente)",
         },
         {
             "lever": "Marketing",
             "required_change": g ** (1 / e_m) - 1 if e_m > 0 else None,
             "elasticity": e_m,
-            "note": "Marketing investment increase needed",
+            "note": "Aumento necessário no investimento em marketing",
         },
     ]
     if promo > 0 and n_months:
@@ -228,7 +235,7 @@ def _levers(
                 "lever": "Promotions",
                 "required_change": months_needed,
                 "elasticity": promo,
-                "note": f"Promoted months needed across the selection (uplift {promo:.0%} per promo month)",
+                "note": f"Meses com promoção necessários na seleção (uplift de {pct(promo)} por mês promocional)",
             }
         )
     for o in out:
@@ -242,22 +249,27 @@ def _levers(
 
 
 def _recommendation(cls: str, gap: float, gap_pct: float | None, measure: str) -> str:
-    unit = "revenue" if measure == "revenue" else "units"
+    gap_txt = fmt_measure(gap, measure)
     if cls == "UNDERESTIMATED":
         return (
-            "The target sits below the likely outcome. Consider raising it or reallocating effort to "
-            "where targets are aggressive."
+            "A meta está abaixo do resultado mais provável. Considere elevá-la ou realocar o esforço comercial "
+            "para onde as metas estão agressivas."
         )
     if cls == "REALISTIC":
-        return "The target is supported by the consensus forecast. Protect the base: availability and execution."
+        return "A meta é sustentada pelo forecast de consenso. Proteja a base: disponibilidade e execução."
     if cls == "STRETCH":
         return (
-            f"Closing the {gap_pct:+.1%} gap ({gap:,.0f} {unit}) needs incremental commercial actions "
-            "(distribution, promotions or marketing). Validate the plan in the S&OP meeting."
+            f"Fechar o gap de {pct(gap_pct, 1, signed=True)} ({gap_txt}) exige ações comerciais incrementais "
+            "(distribuição, promoções ou marketing). Valide o plano na reunião de S&OP."
+        )
+    if gap <= 0:
+        return (
+            "A meta está próxima do forecast, mas exige mais do que o potencial endereçável dos clientes. "
+            "Revise a meta ou o potencial cadastrado antes de comprometê-la."
         )
     return (
-        f"The target requires {gap_pct:+.1%} over the consensus ({gap:,.0f} {unit}). It is statistically "
-        "unlikely without structural changes - recalibrate the target or commit concrete growth levers."
+        f"A meta exige {pct(gap_pct, 1, signed=True)} sobre o consenso ({gap_txt}). É estatisticamente improvável "
+        "sem mudanças estruturais - recalibre a meta ou comprometa alavancas de crescimento concretas."
     )
 
 

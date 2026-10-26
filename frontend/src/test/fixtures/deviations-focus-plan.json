@@ -1,0 +1,311 @@
+{
+  "available": true,
+  "cmp": "fc_pl",
+  "lens": "plan",
+  "measure": "revenue",
+  "period": {
+    "code": "h",
+    "label": "Próximos 12 meses (out/2026–set/2027)",
+    "months": [
+      "2026-10-01",
+      "2026-11-01",
+      "2026-12-01",
+      "2027-01-01",
+      "2027-02-01",
+      "2027-03-01",
+      "2027-04-01",
+      "2027-05-01",
+      "2027-06-01",
+      "2027-07-01",
+      "2027-08-01",
+      "2027-09-01"
+    ],
+    "kind": "future"
+  },
+  "focus": {
+    "level": null,
+    "member": null,
+    "label": "Empresa toda"
+  },
+  "headline": "Empresa toda: consenso R$ 4,09 mi abaixo do orçamento (-4,2%) nos próximos 12 meses — Nordeste responde por 55% das perdas.",
+  "bridge": [
+    {
+      "key": "reference",
+      "label": "Orçamento",
+      "value": 98387357.14,
+      "kind": "total",
+      "help": "Orçamento do recorte no período.",
+      "notation": "PL"
+    },
+    {
+      "key": "volume",
+      "label": "Volume",
+      "value": -1402421.1740887458,
+      "kind": "delta",
+      "help": "Diferença de unidades frente ao orçado, valorizada ao preço médio orçado do recorte."
+    },
+    {
+      "key": "mix",
+      "label": "Mix",
+      "value": -2101152.5443905825,
+      "kind": "delta",
+      "help": "Composição Cliente × SKU × mês: vender mais (ou menos) itens de preço orçado acima da média."
+    },
+    {
+      "key": "price",
+      "label": "Preço",
+      "value": -711525.3582124903,
+      "kind": "delta",
+      "help": "Preço atual de cada série frente ao preço implícito no orçamento."
+    },
+    {
+      "key": "events",
+      "label": "Eventos comerciais",
+      "value": 129011.9318329182,
+      "kind": "delta",
+      "help": "Eventos comerciais cadastrados: ajustes do consenso sobre o forecast estatístico."
+    },
+    {
+      "key": "compared",
+      "label": "Consenso",
+      "value": 94301269.9951411,
+      "kind": "total",
+      "help": "Consenso = forecast estatístico + eventos comerciais.",
+      "notation": "FC"
+    }
+  ],
+  "bridge_note": "Volume valorizado ao preço médio orçado do recorte; mix no nível Cliente × SKU × mês.",
+  "drivers": {
+    "plan_price_premium": 0.007975296620431394,
+    "price_promo": null,
+    "reg_price_gap": null,
+    "avg_price_gap": null,
+    "volume_split": null,
+    "events": [
+      {
+        "event_type": "Nova loja",
+        "value": 80833.37387675585,
+        "n": 1
+      },
+      {
+        "event_type": "Merchandising",
+        "value": 44092.003659091264,
+        "n": 1
+      },
+      {
+        "event_type": "Perda de cliente",
+        "value": -42096.37394234772,
+        "n": 1
+      },
+      {
+        "event_type": "Promoção",
+        "value": 39535.74443803855,
+        "n": 2
+      },
+      {
+        "event_type": "Ganho de distribuição",
+        "value": 6647.183801380251,
+        "n": 1
+      }
+    ]
+  },
+  "causes": null,
+  "split": null,
+  "by_model": null,
+  "fva": null,
+  "monthly": [
+    {
+      "date": "2026-10-01",
+      "x": 7477216.432109921,
+      "p": 7207727.92,
+      "py": 6344973.51,
+      "target": 7762098.61,
+      "low": 6541741.082511978,
+      "high": 8412691.781707864,
+      "variance": 269488.5121099213,
+      "variance_pct": 0.03738882975342961
+    },
+    {
+      "date": "2026-11-01",
+      "x": 8544928.721890066,
+      "p": 9121388.1,
+      "py": 7976219.17,
+      "target": 9827305.58,
+      "low": 7217981.414129833,
+      "high": 9871876.029650299,
+      "variance": -576459.3781099338,
+      "variance_pct": -0.06319864606023438
+    },
+    {
+      "date": "2026-12-01",
+      "x": 9975358.044611964,
+      "p": 11318891.32,
+      "py": 9923580.96,
+      "target": 12148825.68,
+      "low": 8347873.578260576,
+      "high": 11602842.510963352,
+      "variance": -1343533.275388036,
+      "variance_pct": -0.11869831040908306
+    },
+    {
+      "date": "2027-01-01",
+      "x": 8155468.854568063,
+      "p": 8307744.09,
+      "py": 7267167.17,
+      "target": 8939029.44,
+      "low": 6281330.412352344,
+      "high": 10029607.296783783,
+      "variance": -152275.23543193657,
+      "variance_pct": -0.018329312239556066
+    },
+    {
+      "date": "2027-02-01",
+      "x": 8287982.782040055,
+      "p": 8798147.13,
+      "py": 7603394.11,
+      "target": 9468903.32,
+      "low": 6175594.0086020455,
+      "high": 10400371.555478064,
+      "variance": -510164.3479599459,
+      "variance_pct": -0.057985430389130795
+    },
+    {
+      "date": "2027-03-01",
+      "x": 7776305.339123568,
+      "p": 7739476.96,
+      "py": 6771409.89,
+      "target": 8347742.22,
+      "low": 5484868.065656898,
+      "high": 10067742.612590238,
+      "variance": 36828.3791235676,
+      "variance_pct": 0.004758510079415961
+    },
+    {
+      "date": "2027-04-01",
+      "x": 7090536.625962222,
+      "p": 7179485.49,
+      "py": 6574542.83,
+      "target": 7751163.31,
+      "low": 4630109.002817162,
+      "high": 9550964.249107283,
+      "variance": -88948.86403777823,
+      "variance_pct": -0.012389308977874712
+    },
+    {
+      "date": "2027-05-01",
+      "x": 7441555.051748311,
+      "p": 8130091.99,
+      "py": 7434193.0200000005,
+      "target": 8748977.52,
+      "low": 4793265.60861928,
+      "high": 10089844.494877342,
+      "variance": -688536.9382516891,
+      "variance_pct": -0.08468993205717579
+    },
+    {
+      "date": "2027-06-01",
+      "x": 7308766.34744684,
+      "p": 7694402.86,
+      "py": 7023633.06,
+      "target": 8308887.21,
+      "low": 4502340.29865301,
+      "high": 10115192.39624067,
+      "variance": -385636.5125531601,
+      "variance_pct": -0.05011909560362687
+    },
+    {
+      "date": "2027-07-01",
+      "x": 7475063.186924644,
+      "p": 7589758.49,
+      "py": 6971833.64,
+      "target": 8196186.23,
+      "low": 4516830.387252863,
+      "high": 10433295.986596424,
+      "variance": -114695.30307535641,
+      "variance_pct": -0.015111851480712452
+    },
+    {
+      "date": "2027-08-01",
+      "x": 7370136.6057830565,
+      "p": 7561156.25,
+      "py": 6870932.52,
+      "target": 8173261.63,
+      "low": 4267515.870540133,
+      "high": 10472757.34102598,
+      "variance": -191019.64421694353,
+      "variance_pct": -0.025263284860294156
+    },
+    {
+      "date": "2027-09-01",
+      "x": 7397952.002932388,
+      "p": 7739086.54,
+      "py": 7098735.91,
+      "target": 8331342.64,
+      "low": 4157370.3334685965,
+      "high": 10638533.67239618,
+      "variance": -341134.5370676117,
+      "variance_pct": -0.04407943176554939
+    }
+  ],
+  "quarters": [
+    {
+      "code": "t1",
+      "label": "T1 · out–dez/2026",
+      "start": "2026-10-01",
+      "end": "2026-12-01",
+      "variance": -1650504.1413880484
+    },
+    {
+      "code": "t2",
+      "label": "T2 · jan–mar/2027",
+      "start": "2027-01-01",
+      "end": "2027-03-01",
+      "variance": -625611.2042683149
+    },
+    {
+      "code": "t3",
+      "label": "T3 · abr–jun/2027",
+      "start": "2027-04-01",
+      "end": "2027-06-01",
+      "variance": -1163122.3148426274
+    },
+    {
+      "code": "t4",
+      "label": "T4 · jul–set/2027",
+      "start": "2027-07-01",
+      "end": "2027-09-01",
+      "variance": -646849.4843599116
+    }
+  ],
+  "diagnosis": [
+    "O orçamento supõe +12,0% de crescimento sobre o ano anterior; o forecast indica +7,3%.",
+    "Eventos comerciais somam +R$ 129,0 mil (6 ajustes; maior: Nova loja)."
+  ],
+  "actions": [
+    {
+      "kind": "ask_ai",
+      "label": "Perguntar à IA",
+      "prefill": {
+        "question": "Onde estamos abaixo do orçamento?",
+        "filters": {}
+      }
+    }
+  ],
+  "tags": [
+    {
+      "code": "queda_estrutural",
+      "label": "Queda estrutural"
+    },
+    {
+      "code": "mix",
+      "label": "Mix desfavorável"
+    }
+  ],
+  "effects": {
+    "volume": -1402421.1740887458,
+    "mix": -2101152.5443905825,
+    "price": -711525.3582124903,
+    "events": 129011.9318329182
+  },
+  "realized_variance_pct": -0.03919306786589495
+}

@@ -1,383 +1,383 @@
 Date,Customer,SKU,Planner,EventType,AdjustmentPct,Comment
-2025-10-01,Atlas Hipermercados,SKU-20101,Key Account Manager,Customer Gain,0.2573,Customer signalled stronger orders
-2025-10-01,Atlas Hipermercados,SKU-30101,Key Account Manager,Distribution Gain,0.2093,Expect new listings in additional stores
-2025-10-01,Atlas Hipermercados,SKU-40101,Marketing,New Store,0.0831,New stores expected to open
-2025-10-01,Bom Sabor Distribuidora,SKU-10201,Trade Marketing,Merchandising,0.6632,Extra shelf space in key stores
-2025-10-01,Bom Sabor Distribuidora,SKU-10203,Sales Director,Customer Gain,0.1383,Customer signalled stronger orders
-2025-10-01,Bom Sabor Distribuidora,SKU-20201,Sales Director,Customer Gain,0.2916,Customer signalled stronger orders
-2025-10-01,ClickCesta Online,SKU-10203,Demand Planner,Promotion,0.2843,Price-off negotiated for the month
-2025-10-01,ClickCesta Online,SKU-30103,Marketing,Campaign,0.0838,Brand campaign should lift sell-out
-2025-10-01,CuraMais Farmácias,SKU-10101,Trade Marketing,Merchandising,0.1482,Checkout display negotiated
-2025-10-01,CuraMais Farmácias,SKU-30201,Trade Marketing,Merchandising,0.0855,End-cap display confirmed
-2025-10-01,FarmaVida Drogarias,SKU-30201,Trade Marketing,Promotion,0.1749,Joint business plan promo confirmed
-2025-10-01,Litoral Market,SKU-10102,Trade Marketing,Promotion,0.3176,Promotion agreed with customer - leaflet + price off
-2025-10-01,Litoral Market,SKU-30102,Trade Marketing,Merchandising,0.2032,Extra shelf space in key stores
-2025-10-01,Litoral Market,SKU-30202,Trade Marketing,Merchandising,0.113,Checkout display negotiated
-2025-10-01,Litoral Market,SKU-40203,Demand Planner,Promotion,0.2716,Promotion agreed with customer - leaflet + price off
-2025-10-01,MaxiCompra Atacarejo,SKU-10203,Trade Marketing,Promotion,0.259,Price-off negotiated for the month
-2025-10-01,Nordeste Atacadista,SKU-10102,Key Account Manager,Competitor Action,-0.1581,Competitor promotion expected
-2025-10-01,Nordeste Atacadista,SKU-20202,Key Account Manager,Price Change,-0.2133,Price increase may reduce volume
-2025-10-01,Nordeste Atacadista,SKU-20203,Demand Planner,Promotion,0.2627,Price-off negotiated for the month
-2025-10-01,Nordeste Atacadista,SKU-40101,Key Account Manager,Competitor Action,-0.1222,Competitor promotion expected
-2025-10-01,Planalto Atacado,SKU-10201,Trade Marketing,Promotion,1.2159,Price-off negotiated for the month
-2025-10-01,Planalto Atacado,SKU-30203,Demand Planner,Promotion,0.2047,Promotion agreed with customer - leaflet + price off
-2025-10-01,Serra Gaúcha Supermercados,SKU-40101,Marketing,New Store,0.2835,New stores expected to open
-2025-10-01,Serra Gaúcha Supermercados,SKU-40202,Trade Marketing,Merchandising,0.0899,Checkout display negotiated
-2025-10-01,Vila Verde Mercados,SKU-20201,Marketing,Campaign,0.0953,Brand campaign should lift sell-out
-2025-10-01,Vila Verde Mercados,SKU-30201,Trade Marketing,Merchandising,0.1597,Checkout display negotiated
-2025-10-01,Vila Verde Mercados,SKU-40103,Trade Marketing,Promotion,0.2282,Price-off negotiated for the month
-2025-11-01,Amazônia Distribuição,SKU-10202,Trade Marketing,Promotion,0.1874,Promotion agreed with customer - leaflet + price off
-2025-11-01,Amazônia Distribuição,SKU-30101,Key Account Manager,Competitor Action,-0.1735,Competitor promotion expected
-2025-11-01,Atlas Hipermercados,SKU-20202,Demand Planner,Promotion,0.3011,Promotion agreed with customer - leaflet + price off
-2025-11-01,Bom Sabor Distribuidora,SKU-10103,Trade Marketing,Promotion,0.195,Promotion agreed with customer - leaflet + price off
-2025-11-01,Bom Sabor Distribuidora,SKU-40203,Sales Director,Campaign,0.1392,Brand campaign should lift sell-out
-2025-11-01,ClickCesta Online,SKU-40202,Sales Director,Customer Gain,0.2629,Customer signalled stronger orders
-2025-11-01,CuraMais Farmácias,SKU-30201,Demand Planner,Promotion,0.2218,Price-off negotiated for the month
-2025-11-01,Litoral Market,SKU-20102,Trade Marketing,Promotion,1.2164,Price-off negotiated for the month
-2025-11-01,Litoral Market,SKU-40203,Key Account Manager,New Store,0.145,New stores expected to open
-2025-11-01,MaxiCompra Atacarejo,SKU-20102,Demand Planner,Customer Loss,-0.127,Customer reducing inventory levels
-2025-11-01,Nordeste Atacadista,SKU-20203,Trade Marketing,Merchandising,0.101,Extra shelf space in key stores
-2025-11-01,Nordeste Atacadista,SKU-30103,Trade Marketing,Merchandising,0.0814,Checkout display negotiated
-2025-11-01,Nordeste Atacadista,SKU-40101,Sales Director,Customer Gain,0.1246,Customer signalled stronger orders
-2025-11-01,Nordeste Atacadista,SKU-40102,Trade Marketing,Merchandising,0.1269,Extra shelf space in key stores
-2025-11-01,Planalto Atacado,SKU-10102,Trade Marketing,Promotion,0.1353,Promotion agreed with customer - leaflet + price off
-2025-11-01,Planalto Atacado,SKU-10202,Demand Planner,Promotion,0.1687,Joint business plan promo confirmed
-2025-11-01,Planalto Atacado,SKU-30203,Key Account Manager,New Store,0.1391,New stores expected to open
-2025-11-01,Planalto Atacado,SKU-40201,Key Account Manager,Campaign,0.2693,Brand campaign should lift sell-out
-2025-11-01,Ponto Certo Conveniência,SKU-10202,Key Account Manager,New Store,0.154,New stores expected to open
-2025-11-01,Ponto Certo Conveniência,SKU-20102,Trade Marketing,Merchandising,0.1117,Checkout display negotiated
-2025-11-01,Rede Horizonte Supermercados,SKU-10101,Marketing,Distribution Gain,0.1756,Expect new listings in additional stores
-2025-11-01,Rede Horizonte Supermercados,SKU-10201,Trade Marketing,Merchandising,0.1778,Extra shelf space in key stores
-2025-11-01,Rede Horizonte Supermercados,SKU-30203,Key Account Manager,Distribution Gain,0.1146,Expect new listings in additional stores
-2025-11-01,Serra Gaúcha Supermercados,SKU-10201,Trade Marketing,Promotion,0.6258,Joint business plan promo confirmed
-2025-11-01,Serra Gaúcha Supermercados,SKU-30203,Trade Marketing,Merchandising,0.3373,End-cap display confirmed
-2025-11-01,Vila Verde Mercados,SKU-10202,Trade Marketing,Promotion,0.2414,Joint business plan promo confirmed
-2025-11-01,Vila Verde Mercados,SKU-30102,Demand Planner,Competitor Action,-0.2151,Competitor promotion expected
-2025-11-01,Vila Verde Mercados,SKU-30103,Sales Director,Campaign,0.2049,Brand campaign should lift sell-out
-2025-12-01,Amazônia Distribuição,SKU-10103,Trade Marketing,Merchandising,0.2043,End-cap display confirmed
-2025-12-01,Atlas Hipermercados,SKU-20101,Key Account Manager,Distribution Gain,0.0896,Expect new listings in additional stores
-2025-12-01,Bom Sabor Distribuidora,SKU-10201,Demand Planner,Promotion,0.7245,Promotion agreed with customer - leaflet + price off
-2025-12-01,Bom Sabor Distribuidora,SKU-20201,Demand Planner,Promotion,0.3003,Promotion agreed with customer - leaflet + price off
-2025-12-01,Bom Sabor Distribuidora,SKU-30203,Trade Marketing,Promotion,0.3191,Joint business plan promo confirmed
-2025-12-01,ClickCesta Online,SKU-10203,Demand Planner,Promotion,0.1285,Price-off negotiated for the month
-2025-12-01,ClickCesta Online,SKU-30202,Key Account Manager,New Store,0.1717,New stores expected to open
-2025-12-01,ClickCesta Online,SKU-30203,Trade Marketing,Promotion,0.2238,Promotion agreed with customer - leaflet + price off
-2025-12-01,Litoral Market,SKU-30101,Demand Planner,Promotion,0.1174,Joint business plan promo confirmed
-2025-12-01,Litoral Market,SKU-30202,Key Account Manager,Competitor Action,-0.1773,Competitor promotion expected
-2025-12-01,Litoral Market,SKU-40101,Trade Marketing,Merchandising,0.1673,End-cap display confirmed
-2025-12-01,MaxiCompra Atacarejo,SKU-10101,Marketing,New Store,0.2603,New stores expected to open
-2025-12-01,MaxiCompra Atacarejo,SKU-30101,Marketing,New Store,0.1945,New stores expected to open
-2025-12-01,Nordeste Atacadista,SKU-30103,Key Account Manager,Price Change,-0.0993,Price increase may reduce volume
-2025-12-01,Planalto Atacado,SKU-10101,Demand Planner,Promotion,0.1767,Promotion agreed with customer - leaflet + price off
-2025-12-01,Planalto Atacado,SKU-10103,Key Account Manager,Competitor Action,0.2716,Competitor out of stock - opportunity
-2025-12-01,Planalto Atacado,SKU-10203,Trade Marketing,Promotion,0.3677,Price-off negotiated for the month
-2025-12-01,Planalto Atacado,SKU-20202,Demand Planner,Promotion,0.1587,Price-off negotiated for the month
-2025-12-01,Ponto Certo Conveniência,SKU-10203,Trade Marketing,Promotion,0.3473,Price-off negotiated for the month
-2025-12-01,Ponto Certo Conveniência,SKU-20101,Demand Planner,Promotion,0.244,Promotion agreed with customer - leaflet + price off
-2025-12-01,Ponto Certo Conveniência,SKU-30201,Trade Marketing,Merchandising,0.1418,Checkout display negotiated
-2025-12-01,Rede Horizonte Supermercados,SKU-10102,Demand Planner,Promotion,0.1384,Joint business plan promo confirmed
-2025-12-01,Rede Horizonte Supermercados,SKU-10201,Demand Planner,Promotion,0.8426,Promotion agreed with customer - leaflet + price off
-2025-12-01,Rede Horizonte Supermercados,SKU-10203,Demand Planner,Promotion,0.1754,Joint business plan promo confirmed
-2025-12-01,Rede Horizonte Supermercados,SKU-40201,Trade Marketing,Merchandising,0.2943,Extra shelf space in key stores
-2025-12-01,Serra Gaúcha Supermercados,SKU-10201,Trade Marketing,Merchandising,0.6077,End-cap display confirmed
-2025-12-01,Serra Gaúcha Supermercados,SKU-10202,Trade Marketing,Merchandising,0.1025,Checkout display negotiated
-2025-12-01,Serra Gaúcha Supermercados,SKU-20102,Trade Marketing,Merchandising,0.1429,Checkout display negotiated
-2025-12-01,Serra Gaúcha Supermercados,SKU-20203,Trade Marketing,Merchandising,0.5974,Extra shelf space in key stores
-2025-12-01,Vila Verde Mercados,SKU-10202,Trade Marketing,Merchandising,0.1124,End-cap display confirmed
-2025-12-01,Vila Verde Mercados,SKU-20101,Sales Director,New Store,0.2172,New stores expected to open
-2025-12-01,Vila Verde Mercados,SKU-30101,Trade Marketing,Merchandising,0.1371,End-cap display confirmed
-2025-12-01,Vila Verde Mercados,SKU-40103,Trade Marketing,Merchandising,0.1179,Extra shelf space in key stores
-2025-12-01,Vila Verde Mercados,SKU-40203,Sales Director,New Store,0.2715,New stores expected to open
-2026-01-01,Amazônia Distribuição,SKU-10102,Trade Marketing,Merchandising,0.1286,Extra shelf space in key stores
-2026-01-01,Atlas Hipermercados,SKU-10201,Trade Marketing,Merchandising,0.1198,Extra shelf space in key stores
-2026-01-01,Atlas Hipermercados,SKU-20102,Demand Planner,Promotion,0.797,Joint business plan promo confirmed
-2026-01-01,Atlas Hipermercados,SKU-20201,Marketing,Campaign,0.1557,Brand campaign should lift sell-out
-2026-01-01,Atlas Hipermercados,SKU-30102,Trade Marketing,Merchandising,0.4112,Checkout display negotiated
-2026-01-01,Atlas Hipermercados,SKU-30202,Trade Marketing,Merchandising,0.0699,End-cap display confirmed
-2026-01-01,Atlas Hipermercados,SKU-40202,Trade Marketing,Promotion,0.173,Price-off negotiated for the month
-2026-01-01,Bom Sabor Distribuidora,SKU-20101,Trade Marketing,Promotion,0.3509,Promotion agreed with customer - leaflet + price off
-2026-01-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Promotion,0.5155,Joint business plan promo confirmed
-2026-01-01,Bom Sabor Distribuidora,SKU-20202,Sales Director,Campaign,0.084,Brand campaign should lift sell-out
-2026-01-01,Bom Sabor Distribuidora,SKU-20203,Demand Planner,Promotion,0.1725,Promotion agreed with customer - leaflet + price off
-2026-01-01,Bom Sabor Distribuidora,SKU-40201,Sales Director,Competitor Action,0.1217,Competitor out of stock - opportunity
-2026-01-01,FarmaVida Drogarias,SKU-20201,Sales Director,Customer Gain,0.1467,Customer signalled stronger orders
-2026-01-01,Litoral Market,SKU-10101,Trade Marketing,Merchandising,0.1039,Extra shelf space in key stores
-2026-01-01,Litoral Market,SKU-20102,Sales Director,Competitor Action,0.1467,Competitor out of stock - opportunity
-2026-01-01,Litoral Market,SKU-20103,Trade Marketing,Promotion,0.1705,Promotion agreed with customer - leaflet + price off
-2026-01-01,Litoral Market,SKU-30103,Trade Marketing,Promotion,0.2632,Promotion agreed with customer - leaflet + price off
-2026-01-01,Litoral Market,SKU-40201,Trade Marketing,Merchandising,0.1604,Checkout display negotiated
-2026-01-01,MaxiCompra Atacarejo,SKU-10103,Trade Marketing,Merchandising,0.1974,Extra shelf space in key stores
-2026-01-01,MaxiCompra Atacarejo,SKU-40101,Demand Planner,Customer Loss,-0.1399,Customer reducing inventory levels
-2026-01-01,Nordeste Atacadista,SKU-10201,Demand Planner,Promotion,0.5065,Price-off negotiated for the month
-2026-01-01,Nordeste Atacadista,SKU-20101,Trade Marketing,Merchandising,0.071,Checkout display negotiated
-2026-01-01,Ponto Certo Conveniência,SKU-10203,Trade Marketing,Merchandising,0.1364,End-cap display confirmed
-2026-01-01,Rede Horizonte Supermercados,SKU-10202,Key Account Manager,Customer Gain,0.1154,Customer signalled stronger orders
-2026-01-01,Rede Horizonte Supermercados,SKU-20102,Demand Planner,Promotion,0.6043,Joint business plan promo confirmed
-2026-01-01,Rede Horizonte Supermercados,SKU-30203,Trade Marketing,Promotion,0.376,Price-off negotiated for the month
-2026-01-01,Serra Gaúcha Supermercados,SKU-20102,Demand Planner,Promotion,0.4828,Joint business plan promo confirmed
-2026-01-01,Serra Gaúcha Supermercados,SKU-20203,Trade Marketing,Merchandising,0.085,End-cap display confirmed
-2026-01-01,Serra Gaúcha Supermercados,SKU-30202,Trade Marketing,Merchandising,0.3279,End-cap display confirmed
-2026-01-01,Serra Gaúcha Supermercados,SKU-40201,Trade Marketing,Merchandising,0.1865,End-cap display confirmed
-2026-01-01,Vila Verde Mercados,SKU-10103,Sales Director,Distribution Gain,0.1625,Expect new listings in additional stores
-2026-01-01,Vila Verde Mercados,SKU-10202,Marketing,Distribution Gain,0.1945,Expect new listings in additional stores
-2026-02-01,Amazônia Distribuição,SKU-30101,Demand Planner,Price Change,-0.2062,Price increase may reduce volume
-2026-02-01,Amazônia Distribuição,SKU-40102,Trade Marketing,Merchandising,0.1083,Checkout display negotiated
-2026-02-01,Amazônia Distribuição,SKU-40103,Marketing,Competitor Action,0.2942,Competitor out of stock - opportunity
-2026-02-01,Atlas Hipermercados,SKU-10201,Sales Director,Customer Gain,0.2742,Customer signalled stronger orders
-2026-02-01,Atlas Hipermercados,SKU-20201,Trade Marketing,Merchandising,0.2516,Checkout display negotiated
-2026-02-01,Bom Sabor Distribuidora,SKU-10102,Trade Marketing,Merchandising,0.1618,End-cap display confirmed
-2026-02-01,Bom Sabor Distribuidora,SKU-10103,Trade Marketing,Merchandising,0.1912,Checkout display negotiated
-2026-02-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Promotion,0.4351,Price-off negotiated for the month
-2026-02-01,Bom Sabor Distribuidora,SKU-40201,Key Account Manager,Customer Loss,-0.1706,Customer reducing inventory levels
-2026-02-01,ClickCesta Online,SKU-10203,Trade Marketing,Merchandising,0.1296,End-cap display confirmed
-2026-02-01,ClickCesta Online,SKU-20102,Demand Planner,Promotion,0.7117,Promotion agreed with customer - leaflet + price off
-2026-02-01,ClickCesta Online,SKU-20203,Demand Planner,Promotion,0.3643,Promotion agreed with customer - leaflet + price off
-2026-02-01,ClickCesta Online,SKU-30202,Key Account Manager,Customer Gain,0.1168,Customer signalled stronger orders
-2026-02-01,ClickCesta Online,SKU-40101,Trade Marketing,Merchandising,0.1762,Checkout display negotiated
-2026-02-01,CuraMais Farmácias,SKU-30102,Marketing,Distribution Gain,0.2783,Expect new listings in additional stores
-2026-02-01,FarmaVida Drogarias,SKU-10103,Trade Marketing,Merchandising,0.0818,End-cap display confirmed
-2026-02-01,FarmaVida Drogarias,SKU-30103,Demand Planner,Promotion,0.2033,Price-off negotiated for the month
-2026-02-01,FarmaVida Drogarias,SKU-30201,Demand Planner,Promotion,0.2133,Promotion agreed with customer - leaflet + price off
-2026-02-01,Litoral Market,SKU-10201,Sales Director,Customer Gain,0.088,Customer signalled stronger orders
-2026-02-01,Litoral Market,SKU-10203,Trade Marketing,Promotion,0.4669,Price-off negotiated for the month
-2026-02-01,Litoral Market,SKU-20203,Demand Planner,Promotion,0.2502,Price-off negotiated for the month
-2026-02-01,Litoral Market,SKU-40201,Trade Marketing,Promotion,0.3121,Promotion agreed with customer - leaflet + price off
-2026-02-01,MaxiCompra Atacarejo,SKU-10203,Demand Planner,Promotion,0.1327,Price-off negotiated for the month
-2026-02-01,MaxiCompra Atacarejo,SKU-20102,Trade Marketing,Merchandising,0.1141,Checkout display negotiated
-2026-02-01,MaxiCompra Atacarejo,SKU-20202,Demand Planner,Promotion,0.3634,Price-off negotiated for the month
-2026-02-01,MaxiCompra Atacarejo,SKU-40101,Key Account Manager,Campaign,0.186,Brand campaign should lift sell-out
-2026-02-01,Nordeste Atacadista,SKU-20101,Demand Planner,Promotion,0.1511,Price-off negotiated for the month
-2026-02-01,Nordeste Atacadista,SKU-20202,Trade Marketing,Merchandising,0.2034,End-cap display confirmed
-2026-02-01,Planalto Atacado,SKU-10201,Demand Planner,Promotion,0.6858,Price-off negotiated for the month
-2026-02-01,Planalto Atacado,SKU-20201,Key Account Manager,Competitor Action,0.2667,Competitor out of stock - opportunity
-2026-02-01,Planalto Atacado,SKU-30203,Key Account Manager,Distribution Gain,0.1379,Expect new listings in additional stores
-2026-02-01,Planalto Atacado,SKU-40102,Trade Marketing,Promotion,0.2175,Price-off negotiated for the month
-2026-02-01,Ponto Certo Conveniência,SKU-10101,Key Account Manager,New Store,0.1834,New stores expected to open
-2026-02-01,Ponto Certo Conveniência,SKU-20101,Trade Marketing,Promotion,0.2707,Price-off negotiated for the month
-2026-02-01,Ponto Certo Conveniência,SKU-20102,Demand Planner,Promotion,0.8342,Joint business plan promo confirmed
-2026-02-01,Ponto Certo Conveniência,SKU-40103,Trade Marketing,Merchandising,0.0967,Checkout display negotiated
-2026-02-01,Rede Horizonte Supermercados,SKU-10201,Trade Marketing,Merchandising,1.0865,Checkout display negotiated
-2026-02-01,Rede Horizonte Supermercados,SKU-10203,Trade Marketing,Promotion,0.3013,Promotion agreed with customer - leaflet + price off
-2026-02-01,Rede Horizonte Supermercados,SKU-30101,Demand Planner,Customer Loss,-0.1832,Customer reducing inventory levels
-2026-02-01,Rede Horizonte Supermercados,SKU-40201,Sales Director,Campaign,0.1636,Brand campaign should lift sell-out
-2026-02-01,Rede Horizonte Supermercados,SKU-40202,Trade Marketing,Merchandising,0.1616,Extra shelf space in key stores
-2026-02-01,Serra Gaúcha Supermercados,SKU-10101,Key Account Manager,Distribution Gain,0.2571,Expect new listings in additional stores
-2026-02-01,Serra Gaúcha Supermercados,SKU-10103,Trade Marketing,Promotion,0.1899,Joint business plan promo confirmed
-2026-02-01,Serra Gaúcha Supermercados,SKU-10201,Trade Marketing,Promotion,0.7672,Joint business plan promo confirmed
-2026-02-01,Serra Gaúcha Supermercados,SKU-10202,Demand Planner,Promotion,0.2739,Price-off negotiated for the month
-2026-02-01,Serra Gaúcha Supermercados,SKU-20101,Sales Director,Competitor Action,0.1094,Competitor out of stock - opportunity
-2026-02-01,Serra Gaúcha Supermercados,SKU-30101,Trade Marketing,Promotion,0.446,Promotion agreed with customer - leaflet + price off
-2026-02-01,Vila Verde Mercados,SKU-10103,Demand Planner,Promotion,0.5387,Price-off negotiated for the month
-2026-02-01,Vila Verde Mercados,SKU-10201,Demand Planner,Promotion,0.6001,Price-off negotiated for the month
-2026-02-01,Vila Verde Mercados,SKU-20102,Demand Planner,Promotion,0.7952,Price-off negotiated for the month
-2026-02-01,Vila Verde Mercados,SKU-20103,Trade Marketing,Promotion,0.1365,Promotion agreed with customer - leaflet + price off
-2026-02-01,Vila Verde Mercados,SKU-30103,Marketing,New Store,0.092,New stores expected to open
-2026-03-01,Atlas Hipermercados,SKU-10101,Demand Planner,Promotion,0.2501,Price-off negotiated for the month
-2026-03-01,Atlas Hipermercados,SKU-10202,Sales Director,Distribution Gain,0.2203,Expect new listings in additional stores
-2026-03-01,Atlas Hipermercados,SKU-30103,Trade Marketing,Merchandising,0.1729,End-cap display confirmed
-2026-03-01,Atlas Hipermercados,SKU-30203,Trade Marketing,Promotion,0.432,Joint business plan promo confirmed
-2026-03-01,Bom Sabor Distribuidora,SKU-20101,Trade Marketing,Promotion,0.2951,Promotion agreed with customer - leaflet + price off
-2026-03-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Merchandising,0.0372,Extra shelf space in key stores
-2026-03-01,Bom Sabor Distribuidora,SKU-20203,Sales Director,Competitor Action,0.1618,Competitor out of stock - opportunity
-2026-03-01,Bom Sabor Distribuidora,SKU-30203,Trade Marketing,Merchandising,0.1329,End-cap display confirmed
-2026-03-01,Bom Sabor Distribuidora,SKU-40201,Trade Marketing,Merchandising,0.0875,Extra shelf space in key stores
-2026-03-01,CuraMais Farmácias,SKU-30201,Key Account Manager,Distribution Gain,0.2715,Expect new listings in additional stores
-2026-03-01,FarmaVida Drogarias,SKU-10101,Trade Marketing,Promotion,0.5012,Promotion agreed with customer - leaflet + price off
-2026-03-01,Litoral Market,SKU-10101,Demand Planner,Promotion,0.154,Joint business plan promo confirmed
-2026-03-01,MaxiCompra Atacarejo,SKU-20101,Sales Director,Distribution Gain,0.145,Expect new listings in additional stores
-2026-03-01,MaxiCompra Atacarejo,SKU-20203,Trade Marketing,Promotion,0.1504,Price-off negotiated for the month
-2026-03-01,MaxiCompra Atacarejo,SKU-30101,Trade Marketing,Promotion,0.2499,Promotion agreed with customer - leaflet + price off
-2026-03-01,Nordeste Atacadista,SKU-10103,Trade Marketing,Merchandising,0.3798,End-cap display confirmed
-2026-03-01,Planalto Atacado,SKU-10102,Trade Marketing,Promotion,0.165,Promotion agreed with customer - leaflet + price off
-2026-03-01,Ponto Certo Conveniência,SKU-10203,Demand Planner,Promotion,0.466,Price-off negotiated for the month
-2026-03-01,Rede Horizonte Supermercados,SKU-10101,Demand Planner,Promotion,0.171,Promotion agreed with customer - leaflet + price off
-2026-03-01,Rede Horizonte Supermercados,SKU-10202,Trade Marketing,Merchandising,0.0973,Extra shelf space in key stores
-2026-03-01,Rede Horizonte Supermercados,SKU-20103,Trade Marketing,Merchandising,0.2076,Extra shelf space in key stores
-2026-03-01,Rede Horizonte Supermercados,SKU-30101,Demand Planner,Promotion,0.3832,Promotion agreed with customer - leaflet + price off
-2026-03-01,Serra Gaúcha Supermercados,SKU-20102,Trade Marketing,Promotion,1.0291,Price-off negotiated for the month
-2026-03-01,Vila Verde Mercados,SKU-10101,Trade Marketing,Merchandising,0.3276,Checkout display negotiated
-2026-03-01,Vila Verde Mercados,SKU-20103,Trade Marketing,Merchandising,0.1357,Checkout display negotiated
-2026-04-01,Atlas Hipermercados,SKU-20102,Demand Planner,Customer Loss,-0.0976,Customer reducing inventory levels
-2026-04-01,Atlas Hipermercados,SKU-30201,Key Account Manager,Distribution Gain,0.2519,Expect new listings in additional stores
-2026-04-01,Bom Sabor Distribuidora,SKU-10201,Sales Director,New Store,0.1502,New stores expected to open
-2026-04-01,ClickCesta Online,SKU-20203,Trade Marketing,Merchandising,0.0771,Extra shelf space in key stores
-2026-04-01,ClickCesta Online,SKU-30203,Trade Marketing,Promotion,0.2244,Price-off negotiated for the month
-2026-04-01,ClickCesta Online,SKU-40102,Key Account Manager,Customer Loss,-0.0917,Customer reducing inventory levels
-2026-04-01,FarmaVida Drogarias,SKU-30103,Trade Marketing,Merchandising,0.4736,Checkout display negotiated
-2026-04-01,Litoral Market,SKU-40102,Demand Planner,Promotion,0.2848,Price-off negotiated for the month
-2026-04-01,Litoral Market,SKU-40202,Trade Marketing,Promotion,0.1423,Joint business plan promo confirmed
-2026-04-01,Litoral Market,SKU-40203,Key Account Manager,Competitor Action,0.2898,Competitor out of stock - opportunity
-2026-04-01,MaxiCompra Atacarejo,SKU-20202,Trade Marketing,Merchandising,0.401,Checkout display negotiated
-2026-04-01,MaxiCompra Atacarejo,SKU-30203,Trade Marketing,Merchandising,0.5372,End-cap display confirmed
-2026-04-01,Nordeste Atacadista,SKU-10102,Demand Planner,Promotion,0.1601,Price-off negotiated for the month
-2026-04-01,Nordeste Atacadista,SKU-20202,Trade Marketing,Promotion,0.1756,Price-off negotiated for the month
-2026-04-01,Nordeste Atacadista,SKU-40101,Trade Marketing,Merchandising,0.1133,Checkout display negotiated
-2026-04-01,Planalto Atacado,SKU-10103,Marketing,Distribution Gain,0.283,Expect new listings in additional stores
-2026-04-01,Planalto Atacado,SKU-10201,Demand Planner,Promotion,0.7577,Joint business plan promo confirmed
-2026-04-01,Planalto Atacado,SKU-20201,Trade Marketing,Merchandising,0.1363,End-cap display confirmed
-2026-04-01,Ponto Certo Conveniência,SKU-10202,Trade Marketing,Merchandising,0.1519,Checkout display negotiated
-2026-04-01,Rede Horizonte Supermercados,SKU-20103,Trade Marketing,Merchandising,0.1615,Checkout display negotiated
-2026-04-01,Vila Verde Mercados,SKU-20103,Trade Marketing,Merchandising,0.1418,Checkout display negotiated
-2026-04-01,Vila Verde Mercados,SKU-20202,Trade Marketing,Promotion,0.2397,Price-off negotiated for the month
-2026-04-01,Vila Verde Mercados,SKU-40101,Key Account Manager,Customer Gain,0.1326,Customer signalled stronger orders
-2026-04-01,Vila Verde Mercados,SKU-40202,Trade Marketing,Merchandising,0.1341,Checkout display negotiated
-2026-04-01,Vila Verde Mercados,SKU-40203,Demand Planner,Price Change,-0.1124,Price increase may reduce volume
-2026-05-01,Amazônia Distribuição,SKU-10102,Trade Marketing,Merchandising,0.133,End-cap display confirmed
-2026-05-01,Amazônia Distribuição,SKU-20102,Trade Marketing,Merchandising,0.1436,End-cap display confirmed
-2026-05-01,Amazônia Distribuição,SKU-20103,Trade Marketing,Promotion,0.1302,Price-off negotiated for the month
-2026-05-01,Amazônia Distribuição,SKU-40202,Sales Director,New Store,0.145,New stores expected to open
-2026-05-01,Atlas Hipermercados,SKU-10102,Trade Marketing,Promotion,0.2599,Promotion agreed with customer - leaflet + price off
-2026-05-01,Atlas Hipermercados,SKU-20201,Trade Marketing,Merchandising,0.2231,Checkout display negotiated
-2026-05-01,Bom Sabor Distribuidora,SKU-10103,Trade Marketing,Merchandising,0.1955,Checkout display negotiated
-2026-05-01,Bom Sabor Distribuidora,SKU-30203,Demand Planner,Promotion,0.2146,Joint business plan promo confirmed
-2026-05-01,Litoral Market,SKU-10201,Trade Marketing,Merchandising,0.1345,End-cap display confirmed
-2026-05-01,Litoral Market,SKU-20102,Trade Marketing,Promotion,1.1315,Joint business plan promo confirmed
-2026-05-01,MaxiCompra Atacarejo,SKU-10203,Demand Planner,Promotion,0.2343,Price-off negotiated for the month
-2026-05-01,MaxiCompra Atacarejo,SKU-40202,Demand Planner,Competitor Action,-0.1301,Competitor promotion expected
-2026-05-01,Nordeste Atacadista,SKU-10201,Demand Planner,Promotion,0.8294,Promotion agreed with customer - leaflet + price off
-2026-05-01,Nordeste Atacadista,SKU-20201,Trade Marketing,Merchandising,0.1493,End-cap display confirmed
-2026-05-01,Nordeste Atacadista,SKU-20203,Trade Marketing,Promotion,0.243,Joint business plan promo confirmed
-2026-05-01,Planalto Atacado,SKU-20101,Key Account Manager,Customer Gain,0.24,Customer signalled stronger orders
-2026-05-01,Planalto Atacado,SKU-20103,Sales Director,New Store,0.1214,New stores expected to open
-2026-05-01,Planalto Atacado,SKU-20202,Trade Marketing,Merchandising,0.135,Checkout display negotiated
-2026-05-01,Ponto Certo Conveniência,SKU-10101,Sales Director,Distribution Gain,0.2987,Expect new listings in additional stores
-2026-05-01,Rede Horizonte Supermercados,SKU-10102,Trade Marketing,Promotion,0.2277,Promotion agreed with customer - leaflet + price off
-2026-05-01,Rede Horizonte Supermercados,SKU-30102,Trade Marketing,Merchandising,0.3132,Checkout display negotiated
-2026-05-01,Rede Horizonte Supermercados,SKU-30202,Trade Marketing,Promotion,0.2243,Joint business plan promo confirmed
-2026-05-01,Serra Gaúcha Supermercados,SKU-20202,Trade Marketing,Promotion,0.1789,Joint business plan promo confirmed
-2026-05-01,Serra Gaúcha Supermercados,SKU-30103,Key Account Manager,Competitor Action,0.2049,Competitor out of stock - opportunity
-2026-05-01,Vila Verde Mercados,SKU-20102,Key Account Manager,Customer Loss,-0.0837,Customer reducing inventory levels
-2026-05-01,Vila Verde Mercados,SKU-20203,Trade Marketing,Merchandising,0.5179,Checkout display negotiated
-2026-05-01,Vila Verde Mercados,SKU-40103,Demand Planner,Competitor Action,-0.0876,Competitor promotion expected
-2026-06-01,Amazônia Distribuição,SKU-20101,Sales Director,Customer Gain,0.2646,Customer signalled stronger orders
-2026-06-01,Amazônia Distribuição,SKU-20102,Sales Director,New Store,0.241,New stores expected to open
-2026-06-01,Amazônia Distribuição,SKU-20202,Trade Marketing,Merchandising,0.1285,Checkout display negotiated
-2026-06-01,Amazônia Distribuição,SKU-40202,Sales Director,Campaign,0.1694,Brand campaign should lift sell-out
-2026-06-01,Atlas Hipermercados,SKU-10101,Trade Marketing,Promotion,0.1796,Joint business plan promo confirmed
-2026-06-01,Atlas Hipermercados,SKU-10203,Trade Marketing,Promotion,0.1659,Promotion agreed with customer - leaflet + price off
-2026-06-01,Atlas Hipermercados,SKU-20102,Sales Director,Customer Gain,0.187,Customer signalled stronger orders
-2026-06-01,Atlas Hipermercados,SKU-40101,Trade Marketing,Merchandising,0.1723,Extra shelf space in key stores
-2026-06-01,Bom Sabor Distribuidora,SKU-20201,Trade Marketing,Merchandising,0.2881,End-cap display confirmed
-2026-06-01,Bom Sabor Distribuidora,SKU-20203,Demand Planner,Customer Loss,-0.2096,Customer reducing inventory levels
-2026-06-01,Bom Sabor Distribuidora,SKU-40203,Sales Director,Distribution Gain,0.2438,Expect new listings in additional stores
-2026-06-01,ClickCesta Online,SKU-20203,Key Account Manager,Competitor Action,-0.1214,Competitor promotion expected
-2026-06-01,ClickCesta Online,SKU-40203,Trade Marketing,Promotion,0.2263,Joint business plan promo confirmed
-2026-06-01,CuraMais Farmácias,SKU-30103,Trade Marketing,Promotion,0.1886,Promotion agreed with customer - leaflet + price off
-2026-06-01,Litoral Market,SKU-10102,Demand Planner,Customer Loss,-0.1263,Customer reducing inventory levels
-2026-06-01,Litoral Market,SKU-10202,Demand Planner,Promotion,0.2287,Joint business plan promo confirmed
-2026-06-01,Litoral Market,SKU-20101,Trade Marketing,Merchandising,0.1239,Checkout display negotiated
-2026-06-01,Litoral Market,SKU-30203,Trade Marketing,Merchandising,0.308,Extra shelf space in key stores
-2026-06-01,MaxiCompra Atacarejo,SKU-20101,Trade Marketing,Merchandising,0.1776,Extra shelf space in key stores
-2026-06-01,MaxiCompra Atacarejo,SKU-20102,Trade Marketing,Merchandising,0.0774,End-cap display confirmed
-2026-06-01,MaxiCompra Atacarejo,SKU-40102,Trade Marketing,Promotion,0.3512,Price-off negotiated for the month
-2026-06-01,Nordeste Atacadista,SKU-10201,Trade Marketing,Promotion,0.4628,Promotion agreed with customer - leaflet + price off
-2026-06-01,Nordeste Atacadista,SKU-40101,Trade Marketing,Promotion,0.2746,Joint business plan promo confirmed
-2026-06-01,Planalto Atacado,SKU-10103,Key Account Manager,Campaign,0.1683,Brand campaign should lift sell-out
-2026-06-01,Planalto Atacado,SKU-20202,Trade Marketing,Merchandising,0.1137,End-cap display confirmed
-2026-06-01,Ponto Certo Conveniência,SKU-20102,Trade Marketing,Promotion,0.7936,Price-off negotiated for the month
-2026-06-01,Ponto Certo Conveniência,SKU-30201,Key Account Manager,Distribution Gain,0.0839,Expect new listings in additional stores
-2026-06-01,Ponto Certo Conveniência,SKU-40103,Trade Marketing,Merchandising,0.2234,Checkout display negotiated
-2026-06-01,Ponto Certo Conveniência,SKU-40202,Trade Marketing,Merchandising,0.153,End-cap display confirmed
-2026-06-01,Rede Horizonte Supermercados,SKU-10103,Key Account Manager,Customer Loss,-0.1753,Customer reducing inventory levels
-2026-06-01,Rede Horizonte Supermercados,SKU-10201,Trade Marketing,Merchandising,0.1594,Extra shelf space in key stores
-2026-06-01,Rede Horizonte Supermercados,SKU-20103,Key Account Manager,Competitor Action,0.08,Competitor out of stock - opportunity
-2026-06-01,Rede Horizonte Supermercados,SKU-30102,Sales Director,Customer Gain,0.1685,Customer signalled stronger orders
-2026-06-01,Serra Gaúcha Supermercados,SKU-10103,Trade Marketing,Promotion,0.161,Promotion agreed with customer - leaflet + price off
-2026-06-01,Serra Gaúcha Supermercados,SKU-20202,Trade Marketing,Promotion,0.1441,Joint business plan promo confirmed
-2026-06-01,Serra Gaúcha Supermercados,SKU-40101,Trade Marketing,Promotion,0.3135,Price-off negotiated for the month
-2026-06-01,Vila Verde Mercados,SKU-10101,Trade Marketing,Merchandising,0.1361,Checkout display negotiated
-2026-06-01,Vila Verde Mercados,SKU-10201,Sales Director,Customer Gain,0.1648,Customer signalled stronger orders
-2026-06-01,Vila Verde Mercados,SKU-20203,Trade Marketing,Merchandising,0.176,Checkout display negotiated
-2026-06-01,Vila Verde Mercados,SKU-40203,Demand Planner,Promotion,0.3163,Joint business plan promo confirmed
-2026-07-01,Amazônia Distribuição,SKU-20202,Trade Marketing,Merchandising,0.1268,Checkout display negotiated
-2026-07-01,Amazônia Distribuição,SKU-30101,Key Account Manager,Campaign,0.0893,Brand campaign should lift sell-out
-2026-07-01,Amazônia Distribuição,SKU-40102,Key Account Manager,Customer Loss,-0.1339,Customer reducing inventory levels
-2026-07-01,Atlas Hipermercados,SKU-10203,Trade Marketing,Merchandising,0.1564,Checkout display negotiated
-2026-07-01,Atlas Hipermercados,SKU-30102,Trade Marketing,Promotion,0.1419,Joint business plan promo confirmed
-2026-07-01,Atlas Hipermercados,SKU-30201,Demand Planner,Price Change,-0.1396,Price increase may reduce volume
-2026-07-01,Bom Sabor Distribuidora,SKU-20202,Trade Marketing,Merchandising,0.1666,End-cap display confirmed
-2026-07-01,Bom Sabor Distribuidora,SKU-20203,Key Account Manager,Campaign,0.1211,Brand campaign should lift sell-out
-2026-07-01,ClickCesta Online,SKU-30202,Key Account Manager,Distribution Gain,0.0991,Expect new listings in additional stores
-2026-07-01,ClickCesta Online,SKU-40202,Trade Marketing,Promotion,0.3189,Promotion agreed with customer - leaflet + price off
-2026-07-01,CuraMais Farmácias,SKU-30102,Trade Marketing,Merchandising,0.1076,Extra shelf space in key stores
-2026-07-01,FarmaVida Drogarias,SKU-30102,Key Account Manager,Distribution Gain,0.1516,Expect new listings in additional stores
-2026-07-01,FarmaVida Drogarias,SKU-30103,Key Account Manager,Competitor Action,0.2036,Competitor out of stock - opportunity
-2026-07-01,Litoral Market,SKU-10201,Demand Planner,Promotion,0.4843,Joint business plan promo confirmed
-2026-07-01,Litoral Market,SKU-20102,Demand Planner,Promotion,0.7668,Joint business plan promo confirmed
-2026-07-01,Litoral Market,SKU-40101,Trade Marketing,Merchandising,0.143,Extra shelf space in key stores
-2026-07-01,Litoral Market,SKU-40201,Trade Marketing,Promotion,0.4745,Price-off negotiated for the month
-2026-07-01,Planalto Atacado,SKU-10203,Trade Marketing,Promotion,0.1781,Joint business plan promo confirmed
-2026-07-01,Planalto Atacado,SKU-20201,Demand Planner,Price Change,-0.1296,Price increase may reduce volume
-2026-07-01,Ponto Certo Conveniência,SKU-20102,Demand Planner,Promotion,0.5237,Promotion agreed with customer - leaflet + price off
-2026-07-01,Ponto Certo Conveniência,SKU-20103,Key Account Manager,Customer Loss,-0.1654,Customer reducing inventory levels
-2026-07-01,Rede Horizonte Supermercados,SKU-10201,Sales Director,Competitor Action,0.0933,Competitor out of stock - opportunity
-2026-07-01,Rede Horizonte Supermercados,SKU-10203,Trade Marketing,Merchandising,0.0842,Extra shelf space in key stores
-2026-07-01,Rede Horizonte Supermercados,SKU-30202,Trade Marketing,Merchandising,0.0818,Checkout display negotiated
-2026-07-01,Serra Gaúcha Supermercados,SKU-30203,Demand Planner,Promotion,0.2309,Promotion agreed with customer - leaflet + price off
-2026-07-01,Vila Verde Mercados,SKU-10202,Trade Marketing,Promotion,0.1667,Joint business plan promo confirmed
-2026-07-01,Vila Verde Mercados,SKU-20203,Trade Marketing,Merchandising,0.1391,Extra shelf space in key stores
-2026-07-01,Vila Verde Mercados,SKU-30103,Trade Marketing,Merchandising,0.1565,Checkout display negotiated
-2026-07-01,Vila Verde Mercados,SKU-30201,Key Account Manager,Campaign,0.2195,Brand campaign should lift sell-out
-2026-08-01,Amazônia Distribuição,SKU-10203,Trade Marketing,Promotion,0.1958,Joint business plan promo confirmed
-2026-08-01,Amazônia Distribuição,SKU-40103,Key Account Manager,New Store,0.1799,New stores expected to open
-2026-08-01,Atlas Hipermercados,SKU-10202,Demand Planner,Promotion,0.3521,Joint business plan promo confirmed
-2026-08-01,Atlas Hipermercados,SKU-20101,Trade Marketing,Merchandising,0.1038,Extra shelf space in key stores
-2026-08-01,Atlas Hipermercados,SKU-20201,Trade Marketing,Promotion,0.2561,Joint business plan promo confirmed
-2026-08-01,Bom Sabor Distribuidora,SKU-20101,Demand Planner,Promotion,0.2882,Price-off negotiated for the month
-2026-08-01,FarmaVida Drogarias,SKU-30102,Demand Planner,Promotion,0.3852,Price-off negotiated for the month
-2026-08-01,Litoral Market,SKU-10203,Trade Marketing,Promotion,0.4447,Joint business plan promo confirmed
-2026-08-01,Litoral Market,SKU-30203,Trade Marketing,Merchandising,0.1219,End-cap display confirmed
-2026-08-01,Litoral Market,SKU-40203,Key Account Manager,New Store,0.2633,New stores expected to open
-2026-08-01,MaxiCompra Atacarejo,SKU-10101,Trade Marketing,Merchandising,0.0954,Checkout display negotiated
-2026-08-01,MaxiCompra Atacarejo,SKU-10102,Trade Marketing,Merchandising,0.3234,End-cap display confirmed
-2026-08-01,MaxiCompra Atacarejo,SKU-20102,Demand Planner,Promotion,0.3947,Joint business plan promo confirmed
-2026-08-01,MaxiCompra Atacarejo,SKU-30203,Demand Planner,Promotion,0.4606,Price-off negotiated for the month
-2026-08-01,MaxiCompra Atacarejo,SKU-40201,Trade Marketing,Promotion,0.1684,Joint business plan promo confirmed
-2026-08-01,Nordeste Atacadista,SKU-40201,Demand Planner,Promotion,0.1361,Promotion agreed with customer - leaflet + price off
-2026-08-01,Planalto Atacado,SKU-10201,Trade Marketing,Merchandising,-0.0298,Extra shelf space in key stores
-2026-08-01,Ponto Certo Conveniência,SKU-40103,Trade Marketing,Merchandising,0.4544,Extra shelf space in key stores
-2026-08-01,Rede Horizonte Supermercados,SKU-20102,Demand Planner,Promotion,1.1433,Price-off negotiated for the month
-2026-08-01,Rede Horizonte Supermercados,SKU-30101,Key Account Manager,Price Change,-0.1028,Price increase may reduce volume
-2026-08-01,Serra Gaúcha Supermercados,SKU-10103,Demand Planner,Promotion,0.1796,Promotion agreed with customer - leaflet + price off
-2026-08-01,Serra Gaúcha Supermercados,SKU-10203,Demand Planner,Competitor Action,-0.1874,Competitor promotion expected
-2026-08-01,Serra Gaúcha Supermercados,SKU-20202,Demand Planner,Promotion,0.3273,Price-off negotiated for the month
-2026-08-01,Serra Gaúcha Supermercados,SKU-40103,Trade Marketing,Promotion,0.1402,Promotion agreed with customer - leaflet + price off
-2026-08-01,Vila Verde Mercados,SKU-30102,Demand Planner,Customer Loss,-0.1258,Customer reducing inventory levels
-2026-09-01,Amazônia Distribuição,SKU-10103,Demand Planner,Promotion,0.2519,Promotion agreed with customer - leaflet + price off
-2026-09-01,Amazônia Distribuição,SKU-20101,Demand Planner,Promotion,0.4091,Promotion agreed with customer - leaflet + price off
-2026-09-01,Amazônia Distribuição,SKU-20102,Demand Planner,Promotion,0.8577,Promotion agreed with customer - leaflet + price off
-2026-09-01,Atlas Hipermercados,SKU-10101,Trade Marketing,Merchandising,0.2354,End-cap display confirmed
-2026-09-01,Atlas Hipermercados,SKU-40201,Key Account Manager,Distribution Gain,0.2444,Expect new listings in additional stores
-2026-09-01,Bom Sabor Distribuidora,SKU-10201,Trade Marketing,Promotion,1.0575,Joint business plan promo confirmed
-2026-09-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Promotion,0.7338,Price-off negotiated for the month
-2026-09-01,Bom Sabor Distribuidora,SKU-40203,Sales Director,Competitor Action,0.2698,Competitor out of stock - opportunity
-2026-09-01,ClickCesta Online,SKU-30101,Sales Director,Customer Gain,0.2533,Customer signalled stronger orders
-2026-09-01,ClickCesta Online,SKU-40101,Demand Planner,Price Change,-0.1517,Price increase may reduce volume
-2026-09-01,CuraMais Farmácias,SKU-10101,Trade Marketing,Merchandising,0.1021,End-cap display confirmed
-2026-09-01,CuraMais Farmácias,SKU-30201,Demand Planner,Promotion,0.2566,Joint business plan promo confirmed
-2026-09-01,FarmaVida Drogarias,SKU-30102,Trade Marketing,Merchandising,0.271,Extra shelf space in key stores
-2026-09-01,FarmaVida Drogarias,SKU-30201,Sales Director,Customer Gain,0.1142,Customer signalled stronger orders
-2026-09-01,Litoral Market,SKU-10201,Trade Marketing,Merchandising,0.1345,Checkout display negotiated
-2026-09-01,Litoral Market,SKU-30102,Marketing,Distribution Gain,0.2009,Expect new listings in additional stores
-2026-09-01,Litoral Market,SKU-40203,Demand Planner,Promotion,0.3271,Price-off negotiated for the month
-2026-09-01,MaxiCompra Atacarejo,SKU-10102,Key Account Manager,Price Change,-0.2037,Price increase may reduce volume
-2026-09-01,MaxiCompra Atacarejo,SKU-30201,Trade Marketing,Promotion,0.2201,Joint business plan promo confirmed
-2026-09-01,MaxiCompra Atacarejo,SKU-40101,Trade Marketing,Promotion,0.3209,Promotion agreed with customer - leaflet + price off
-2026-09-01,Nordeste Atacadista,SKU-10201,Trade Marketing,Merchandising,0.1637,End-cap display confirmed
-2026-09-01,Nordeste Atacadista,SKU-10202,Trade Marketing,Merchandising,0.0928,End-cap display confirmed
-2026-09-01,Nordeste Atacadista,SKU-20101,Sales Director,Competitor Action,0.1924,Competitor out of stock - opportunity
-2026-09-01,Nordeste Atacadista,SKU-40102,Trade Marketing,Merchandising,0.1646,Extra shelf space in key stores
-2026-09-01,Nordeste Atacadista,SKU-40202,Key Account Manager,Customer Gain,0.291,Customer signalled stronger orders
-2026-09-01,Planalto Atacado,SKU-20103,Key Account Manager,Distribution Gain,0.2816,Expect new listings in additional stores
-2026-09-01,Planalto Atacado,SKU-30203,Demand Planner,Promotion,0.1086,Joint business plan promo confirmed
-2026-09-01,Ponto Certo Conveniência,SKU-10202,Trade Marketing,Promotion,0.2338,Joint business plan promo confirmed
-2026-09-01,Ponto Certo Conveniência,SKU-40202,Trade Marketing,Merchandising,0.1616,End-cap display confirmed
-2026-09-01,Rede Horizonte Supermercados,SKU-10103,Trade Marketing,Promotion,0.1844,Joint business plan promo confirmed
-2026-09-01,Rede Horizonte Supermercados,SKU-20102,Trade Marketing,Promotion,0.4884,Promotion agreed with customer - leaflet + price off
-2026-09-01,Rede Horizonte Supermercados,SKU-20201,Trade Marketing,Merchandising,0.16,Checkout display negotiated
-2026-09-01,Rede Horizonte Supermercados,SKU-30101,Trade Marketing,Promotion,0.2513,Promotion agreed with customer - leaflet + price off
-2026-09-01,Rede Horizonte Supermercados,SKU-30202,Key Account Manager,Competitor Action,0.177,Competitor out of stock - opportunity
-2026-09-01,Serra Gaúcha Supermercados,SKU-10201,Demand Planner,Promotion,0.8967,Promotion agreed with customer - leaflet + price off
-2026-09-01,Serra Gaúcha Supermercados,SKU-20202,Sales Director,Distribution Gain,0.2923,Expect new listings in additional stores
-2026-09-01,Vila Verde Mercados,SKU-10101,Trade Marketing,Merchandising,0.1643,Checkout display negotiated
-2026-09-01,Vila Verde Mercados,SKU-20102,Demand Planner,Promotion,0.6646,Price-off negotiated for the month
+2025-10-01,Atlas Hipermercados,SKU-20101,Key Account (KAM),Ganho de cliente,0.2573,Cliente sinalizou pedidos mais fortes
+2025-10-01,Atlas Hipermercados,SKU-30101,Key Account (KAM),Ganho de distribuição,0.2093,Expectativa de novas listagens em lojas adicionais
+2025-10-01,Atlas Hipermercados,SKU-40101,Marketing,Nova loja,0.0831,Abertura de novas lojas prevista
+2025-10-01,Bom Sabor Distribuidora,SKU-10201,Trade Marketing,Merchandising,0.6632,Espaço extra de gôndola nas lojas-chave
+2025-10-01,Bom Sabor Distribuidora,SKU-10203,Diretor de Vendas,Ganho de cliente,0.1383,Cliente sinalizou pedidos mais fortes
+2025-10-01,Bom Sabor Distribuidora,SKU-20201,Diretor de Vendas,Ganho de cliente,0.2916,Cliente sinalizou pedidos mais fortes
+2025-10-01,ClickCesta Online,SKU-10203,Planejador de Demanda,Promoção,0.2843,Desconto de preço negociado para o mês
+2025-10-01,ClickCesta Online,SKU-30103,Marketing,Campanha,0.0838,Campanha da marca deve impulsionar o sell-out
+2025-10-01,CuraMais Farmácias,SKU-10101,Trade Marketing,Merchandising,0.1482,Display de checkout negociado
+2025-10-01,CuraMais Farmácias,SKU-30201,Trade Marketing,Merchandising,0.0855,Ponta de gôndola confirmada
+2025-10-01,FarmaVida Drogarias,SKU-30201,Trade Marketing,Promoção,0.1749,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-10-01,Litoral Market,SKU-10102,Trade Marketing,Promoção,0.3176,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-10-01,Litoral Market,SKU-30102,Trade Marketing,Merchandising,0.2032,Espaço extra de gôndola nas lojas-chave
+2025-10-01,Litoral Market,SKU-30202,Trade Marketing,Merchandising,0.113,Display de checkout negociado
+2025-10-01,Litoral Market,SKU-40203,Planejador de Demanda,Promoção,0.2716,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-10-01,MaxiCompra Atacarejo,SKU-10203,Trade Marketing,Promoção,0.259,Desconto de preço negociado para o mês
+2025-10-01,Nordeste Atacadista,SKU-10102,Key Account (KAM),Ação de concorrente,-0.1581,Promoção do concorrente prevista
+2025-10-01,Nordeste Atacadista,SKU-20202,Key Account (KAM),Mudança de preço,-0.2133,Aumento de preço pode reduzir o volume
+2025-10-01,Nordeste Atacadista,SKU-20203,Planejador de Demanda,Promoção,0.2627,Desconto de preço negociado para o mês
+2025-10-01,Nordeste Atacadista,SKU-40101,Key Account (KAM),Ação de concorrente,-0.1222,Promoção do concorrente prevista
+2025-10-01,Planalto Atacado,SKU-10201,Trade Marketing,Promoção,1.2159,Desconto de preço negociado para o mês
+2025-10-01,Planalto Atacado,SKU-30203,Planejador de Demanda,Promoção,0.2047,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-10-01,Serra Gaúcha Supermercados,SKU-40101,Marketing,Nova loja,0.2835,Abertura de novas lojas prevista
+2025-10-01,Serra Gaúcha Supermercados,SKU-40202,Trade Marketing,Merchandising,0.0899,Display de checkout negociado
+2025-10-01,Vila Verde Mercados,SKU-20201,Marketing,Campanha,0.0953,Campanha da marca deve impulsionar o sell-out
+2025-10-01,Vila Verde Mercados,SKU-30201,Trade Marketing,Merchandising,0.1597,Display de checkout negociado
+2025-10-01,Vila Verde Mercados,SKU-40103,Trade Marketing,Promoção,0.2282,Desconto de preço negociado para o mês
+2025-11-01,Amazônia Distribuição,SKU-10202,Trade Marketing,Promoção,0.1874,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-11-01,Amazônia Distribuição,SKU-30101,Key Account (KAM),Ação de concorrente,-0.1735,Promoção do concorrente prevista
+2025-11-01,Atlas Hipermercados,SKU-20202,Planejador de Demanda,Promoção,0.3011,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-11-01,Bom Sabor Distribuidora,SKU-10103,Trade Marketing,Promoção,0.195,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-11-01,Bom Sabor Distribuidora,SKU-40203,Diretor de Vendas,Campanha,0.1392,Campanha da marca deve impulsionar o sell-out
+2025-11-01,ClickCesta Online,SKU-40202,Diretor de Vendas,Ganho de cliente,0.2629,Cliente sinalizou pedidos mais fortes
+2025-11-01,CuraMais Farmácias,SKU-30201,Planejador de Demanda,Promoção,0.2218,Desconto de preço negociado para o mês
+2025-11-01,Litoral Market,SKU-20102,Trade Marketing,Promoção,1.2164,Desconto de preço negociado para o mês
+2025-11-01,Litoral Market,SKU-40203,Key Account (KAM),Nova loja,0.145,Abertura de novas lojas prevista
+2025-11-01,MaxiCompra Atacarejo,SKU-20102,Planejador de Demanda,Perda de cliente,-0.127,Cliente reduzindo os níveis de estoque
+2025-11-01,Nordeste Atacadista,SKU-20203,Trade Marketing,Merchandising,0.101,Espaço extra de gôndola nas lojas-chave
+2025-11-01,Nordeste Atacadista,SKU-30103,Trade Marketing,Merchandising,0.0814,Display de checkout negociado
+2025-11-01,Nordeste Atacadista,SKU-40101,Diretor de Vendas,Ganho de cliente,0.1246,Cliente sinalizou pedidos mais fortes
+2025-11-01,Nordeste Atacadista,SKU-40102,Trade Marketing,Merchandising,0.1269,Espaço extra de gôndola nas lojas-chave
+2025-11-01,Planalto Atacado,SKU-10102,Trade Marketing,Promoção,0.1353,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-11-01,Planalto Atacado,SKU-10202,Planejador de Demanda,Promoção,0.1687,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-11-01,Planalto Atacado,SKU-30203,Key Account (KAM),Nova loja,0.1391,Abertura de novas lojas prevista
+2025-11-01,Planalto Atacado,SKU-40201,Key Account (KAM),Campanha,0.2693,Campanha da marca deve impulsionar o sell-out
+2025-11-01,Ponto Certo Conveniência,SKU-10202,Key Account (KAM),Nova loja,0.154,Abertura de novas lojas prevista
+2025-11-01,Ponto Certo Conveniência,SKU-20102,Trade Marketing,Merchandising,0.1117,Display de checkout negociado
+2025-11-01,Rede Horizonte Supermercados,SKU-10101,Marketing,Ganho de distribuição,0.1756,Expectativa de novas listagens em lojas adicionais
+2025-11-01,Rede Horizonte Supermercados,SKU-10201,Trade Marketing,Merchandising,0.1778,Espaço extra de gôndola nas lojas-chave
+2025-11-01,Rede Horizonte Supermercados,SKU-30203,Key Account (KAM),Ganho de distribuição,0.1146,Expectativa de novas listagens em lojas adicionais
+2025-11-01,Serra Gaúcha Supermercados,SKU-10201,Trade Marketing,Promoção,0.6258,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-11-01,Serra Gaúcha Supermercados,SKU-30203,Trade Marketing,Merchandising,0.3373,Ponta de gôndola confirmada
+2025-11-01,Vila Verde Mercados,SKU-10202,Trade Marketing,Promoção,0.2414,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-11-01,Vila Verde Mercados,SKU-30102,Planejador de Demanda,Ação de concorrente,-0.2151,Promoção do concorrente prevista
+2025-11-01,Vila Verde Mercados,SKU-30103,Diretor de Vendas,Campanha,0.2049,Campanha da marca deve impulsionar o sell-out
+2025-12-01,Amazônia Distribuição,SKU-10103,Trade Marketing,Merchandising,0.2043,Ponta de gôndola confirmada
+2025-12-01,Atlas Hipermercados,SKU-20101,Key Account (KAM),Ganho de distribuição,0.0896,Expectativa de novas listagens em lojas adicionais
+2025-12-01,Bom Sabor Distribuidora,SKU-10201,Planejador de Demanda,Promoção,0.7245,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-12-01,Bom Sabor Distribuidora,SKU-20201,Planejador de Demanda,Promoção,0.3003,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-12-01,Bom Sabor Distribuidora,SKU-30203,Trade Marketing,Promoção,0.3191,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-12-01,ClickCesta Online,SKU-10203,Planejador de Demanda,Promoção,0.1285,Desconto de preço negociado para o mês
+2025-12-01,ClickCesta Online,SKU-30202,Key Account (KAM),Nova loja,0.1717,Abertura de novas lojas prevista
+2025-12-01,ClickCesta Online,SKU-30203,Trade Marketing,Promoção,0.2238,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-12-01,Litoral Market,SKU-30101,Planejador de Demanda,Promoção,0.1174,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-12-01,Litoral Market,SKU-30202,Key Account (KAM),Ação de concorrente,-0.1773,Promoção do concorrente prevista
+2025-12-01,Litoral Market,SKU-40101,Trade Marketing,Merchandising,0.1673,Ponta de gôndola confirmada
+2025-12-01,MaxiCompra Atacarejo,SKU-10101,Marketing,Nova loja,0.2603,Abertura de novas lojas prevista
+2025-12-01,MaxiCompra Atacarejo,SKU-30101,Marketing,Nova loja,0.1945,Abertura de novas lojas prevista
+2025-12-01,Nordeste Atacadista,SKU-30103,Key Account (KAM),Mudança de preço,-0.0993,Aumento de preço pode reduzir o volume
+2025-12-01,Planalto Atacado,SKU-10101,Planejador de Demanda,Promoção,0.1767,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-12-01,Planalto Atacado,SKU-10103,Key Account (KAM),Ação de concorrente,0.2716,Concorrente em ruptura - oportunidade
+2025-12-01,Planalto Atacado,SKU-10203,Trade Marketing,Promoção,0.3677,Desconto de preço negociado para o mês
+2025-12-01,Planalto Atacado,SKU-20202,Planejador de Demanda,Promoção,0.1587,Desconto de preço negociado para o mês
+2025-12-01,Ponto Certo Conveniência,SKU-10203,Trade Marketing,Promoção,0.3473,Desconto de preço negociado para o mês
+2025-12-01,Ponto Certo Conveniência,SKU-20101,Planejador de Demanda,Promoção,0.244,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-12-01,Ponto Certo Conveniência,SKU-30201,Trade Marketing,Merchandising,0.1418,Display de checkout negociado
+2025-12-01,Rede Horizonte Supermercados,SKU-10102,Planejador de Demanda,Promoção,0.1384,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-12-01,Rede Horizonte Supermercados,SKU-10201,Planejador de Demanda,Promoção,0.8426,Promoção acordada com o cliente - tabloide + desconto de preço
+2025-12-01,Rede Horizonte Supermercados,SKU-10203,Planejador de Demanda,Promoção,0.1754,Promoção do plano de negócios conjunto (JBP) confirmada
+2025-12-01,Rede Horizonte Supermercados,SKU-40201,Trade Marketing,Merchandising,0.2943,Espaço extra de gôndola nas lojas-chave
+2025-12-01,Serra Gaúcha Supermercados,SKU-10201,Trade Marketing,Merchandising,0.6077,Ponta de gôndola confirmada
+2025-12-01,Serra Gaúcha Supermercados,SKU-10202,Trade Marketing,Merchandising,0.1025,Display de checkout negociado
+2025-12-01,Serra Gaúcha Supermercados,SKU-20102,Trade Marketing,Merchandising,0.1429,Display de checkout negociado
+2025-12-01,Serra Gaúcha Supermercados,SKU-20203,Trade Marketing,Merchandising,0.5974,Espaço extra de gôndola nas lojas-chave
+2025-12-01,Vila Verde Mercados,SKU-10202,Trade Marketing,Merchandising,0.1124,Ponta de gôndola confirmada
+2025-12-01,Vila Verde Mercados,SKU-20101,Diretor de Vendas,Nova loja,0.2172,Abertura de novas lojas prevista
+2025-12-01,Vila Verde Mercados,SKU-30101,Trade Marketing,Merchandising,0.1371,Ponta de gôndola confirmada
+2025-12-01,Vila Verde Mercados,SKU-40103,Trade Marketing,Merchandising,0.1179,Espaço extra de gôndola nas lojas-chave
+2025-12-01,Vila Verde Mercados,SKU-40203,Diretor de Vendas,Nova loja,0.2715,Abertura de novas lojas prevista
+2026-01-01,Amazônia Distribuição,SKU-10102,Trade Marketing,Merchandising,0.1286,Espaço extra de gôndola nas lojas-chave
+2026-01-01,Atlas Hipermercados,SKU-10201,Trade Marketing,Merchandising,0.1198,Espaço extra de gôndola nas lojas-chave
+2026-01-01,Atlas Hipermercados,SKU-20102,Planejador de Demanda,Promoção,0.797,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-01-01,Atlas Hipermercados,SKU-20201,Marketing,Campanha,0.1557,Campanha da marca deve impulsionar o sell-out
+2026-01-01,Atlas Hipermercados,SKU-30102,Trade Marketing,Merchandising,0.4112,Display de checkout negociado
+2026-01-01,Atlas Hipermercados,SKU-30202,Trade Marketing,Merchandising,0.0699,Ponta de gôndola confirmada
+2026-01-01,Atlas Hipermercados,SKU-40202,Trade Marketing,Promoção,0.173,Desconto de preço negociado para o mês
+2026-01-01,Bom Sabor Distribuidora,SKU-20101,Trade Marketing,Promoção,0.3509,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-01-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Promoção,0.5155,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-01-01,Bom Sabor Distribuidora,SKU-20202,Diretor de Vendas,Campanha,0.084,Campanha da marca deve impulsionar o sell-out
+2026-01-01,Bom Sabor Distribuidora,SKU-20203,Planejador de Demanda,Promoção,0.1725,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-01-01,Bom Sabor Distribuidora,SKU-40201,Diretor de Vendas,Ação de concorrente,0.1217,Concorrente em ruptura - oportunidade
+2026-01-01,FarmaVida Drogarias,SKU-20201,Diretor de Vendas,Ganho de cliente,0.1467,Cliente sinalizou pedidos mais fortes
+2026-01-01,Litoral Market,SKU-10101,Trade Marketing,Merchandising,0.1039,Espaço extra de gôndola nas lojas-chave
+2026-01-01,Litoral Market,SKU-20102,Diretor de Vendas,Ação de concorrente,0.1467,Concorrente em ruptura - oportunidade
+2026-01-01,Litoral Market,SKU-20103,Trade Marketing,Promoção,0.1705,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-01-01,Litoral Market,SKU-30103,Trade Marketing,Promoção,0.2632,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-01-01,Litoral Market,SKU-40201,Trade Marketing,Merchandising,0.1604,Display de checkout negociado
+2026-01-01,MaxiCompra Atacarejo,SKU-10103,Trade Marketing,Merchandising,0.1974,Espaço extra de gôndola nas lojas-chave
+2026-01-01,MaxiCompra Atacarejo,SKU-40101,Planejador de Demanda,Perda de cliente,-0.1399,Cliente reduzindo os níveis de estoque
+2026-01-01,Nordeste Atacadista,SKU-10201,Planejador de Demanda,Promoção,0.5065,Desconto de preço negociado para o mês
+2026-01-01,Nordeste Atacadista,SKU-20101,Trade Marketing,Merchandising,0.071,Display de checkout negociado
+2026-01-01,Ponto Certo Conveniência,SKU-10203,Trade Marketing,Merchandising,0.1364,Ponta de gôndola confirmada
+2026-01-01,Rede Horizonte Supermercados,SKU-10202,Key Account (KAM),Ganho de cliente,0.1154,Cliente sinalizou pedidos mais fortes
+2026-01-01,Rede Horizonte Supermercados,SKU-20102,Planejador de Demanda,Promoção,0.6043,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-01-01,Rede Horizonte Supermercados,SKU-30203,Trade Marketing,Promoção,0.376,Desconto de preço negociado para o mês
+2026-01-01,Serra Gaúcha Supermercados,SKU-20102,Planejador de Demanda,Promoção,0.4828,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-01-01,Serra Gaúcha Supermercados,SKU-20203,Trade Marketing,Merchandising,0.085,Ponta de gôndola confirmada
+2026-01-01,Serra Gaúcha Supermercados,SKU-30202,Trade Marketing,Merchandising,0.3279,Ponta de gôndola confirmada
+2026-01-01,Serra Gaúcha Supermercados,SKU-40201,Trade Marketing,Merchandising,0.1865,Ponta de gôndola confirmada
+2026-01-01,Vila Verde Mercados,SKU-10103,Diretor de Vendas,Ganho de distribuição,0.1625,Expectativa de novas listagens em lojas adicionais
+2026-01-01,Vila Verde Mercados,SKU-10202,Marketing,Ganho de distribuição,0.1945,Expectativa de novas listagens em lojas adicionais
+2026-02-01,Amazônia Distribuição,SKU-30101,Planejador de Demanda,Mudança de preço,-0.2062,Aumento de preço pode reduzir o volume
+2026-02-01,Amazônia Distribuição,SKU-40102,Trade Marketing,Merchandising,0.1083,Display de checkout negociado
+2026-02-01,Amazônia Distribuição,SKU-40103,Marketing,Ação de concorrente,0.2942,Concorrente em ruptura - oportunidade
+2026-02-01,Atlas Hipermercados,SKU-10201,Diretor de Vendas,Ganho de cliente,0.2742,Cliente sinalizou pedidos mais fortes
+2026-02-01,Atlas Hipermercados,SKU-20201,Trade Marketing,Merchandising,0.2516,Display de checkout negociado
+2026-02-01,Bom Sabor Distribuidora,SKU-10102,Trade Marketing,Merchandising,0.1618,Ponta de gôndola confirmada
+2026-02-01,Bom Sabor Distribuidora,SKU-10103,Trade Marketing,Merchandising,0.1912,Display de checkout negociado
+2026-02-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Promoção,0.4351,Desconto de preço negociado para o mês
+2026-02-01,Bom Sabor Distribuidora,SKU-40201,Key Account (KAM),Perda de cliente,-0.1706,Cliente reduzindo os níveis de estoque
+2026-02-01,ClickCesta Online,SKU-10203,Trade Marketing,Merchandising,0.1296,Ponta de gôndola confirmada
+2026-02-01,ClickCesta Online,SKU-20102,Planejador de Demanda,Promoção,0.7117,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,ClickCesta Online,SKU-20203,Planejador de Demanda,Promoção,0.3643,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,ClickCesta Online,SKU-30202,Key Account (KAM),Ganho de cliente,0.1168,Cliente sinalizou pedidos mais fortes
+2026-02-01,ClickCesta Online,SKU-40101,Trade Marketing,Merchandising,0.1762,Display de checkout negociado
+2026-02-01,CuraMais Farmácias,SKU-30102,Marketing,Ganho de distribuição,0.2783,Expectativa de novas listagens em lojas adicionais
+2026-02-01,FarmaVida Drogarias,SKU-10103,Trade Marketing,Merchandising,0.0818,Ponta de gôndola confirmada
+2026-02-01,FarmaVida Drogarias,SKU-30103,Planejador de Demanda,Promoção,0.2033,Desconto de preço negociado para o mês
+2026-02-01,FarmaVida Drogarias,SKU-30201,Planejador de Demanda,Promoção,0.2133,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,Litoral Market,SKU-10201,Diretor de Vendas,Ganho de cliente,0.088,Cliente sinalizou pedidos mais fortes
+2026-02-01,Litoral Market,SKU-10203,Trade Marketing,Promoção,0.4669,Desconto de preço negociado para o mês
+2026-02-01,Litoral Market,SKU-20203,Planejador de Demanda,Promoção,0.2502,Desconto de preço negociado para o mês
+2026-02-01,Litoral Market,SKU-40201,Trade Marketing,Promoção,0.3121,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,MaxiCompra Atacarejo,SKU-10203,Planejador de Demanda,Promoção,0.1327,Desconto de preço negociado para o mês
+2026-02-01,MaxiCompra Atacarejo,SKU-20102,Trade Marketing,Merchandising,0.1141,Display de checkout negociado
+2026-02-01,MaxiCompra Atacarejo,SKU-20202,Planejador de Demanda,Promoção,0.3634,Desconto de preço negociado para o mês
+2026-02-01,MaxiCompra Atacarejo,SKU-40101,Key Account (KAM),Campanha,0.186,Campanha da marca deve impulsionar o sell-out
+2026-02-01,Nordeste Atacadista,SKU-20101,Planejador de Demanda,Promoção,0.1511,Desconto de preço negociado para o mês
+2026-02-01,Nordeste Atacadista,SKU-20202,Trade Marketing,Merchandising,0.2034,Ponta de gôndola confirmada
+2026-02-01,Planalto Atacado,SKU-10201,Planejador de Demanda,Promoção,0.6858,Desconto de preço negociado para o mês
+2026-02-01,Planalto Atacado,SKU-20201,Key Account (KAM),Ação de concorrente,0.2667,Concorrente em ruptura - oportunidade
+2026-02-01,Planalto Atacado,SKU-30203,Key Account (KAM),Ganho de distribuição,0.1379,Expectativa de novas listagens em lojas adicionais
+2026-02-01,Planalto Atacado,SKU-40102,Trade Marketing,Promoção,0.2175,Desconto de preço negociado para o mês
+2026-02-01,Ponto Certo Conveniência,SKU-10101,Key Account (KAM),Nova loja,0.1834,Abertura de novas lojas prevista
+2026-02-01,Ponto Certo Conveniência,SKU-20101,Trade Marketing,Promoção,0.2707,Desconto de preço negociado para o mês
+2026-02-01,Ponto Certo Conveniência,SKU-20102,Planejador de Demanda,Promoção,0.8342,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-02-01,Ponto Certo Conveniência,SKU-40103,Trade Marketing,Merchandising,0.0967,Display de checkout negociado
+2026-02-01,Rede Horizonte Supermercados,SKU-10201,Trade Marketing,Merchandising,1.0865,Display de checkout negociado
+2026-02-01,Rede Horizonte Supermercados,SKU-10203,Trade Marketing,Promoção,0.3013,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,Rede Horizonte Supermercados,SKU-30101,Planejador de Demanda,Perda de cliente,-0.1832,Cliente reduzindo os níveis de estoque
+2026-02-01,Rede Horizonte Supermercados,SKU-40201,Diretor de Vendas,Campanha,0.1636,Campanha da marca deve impulsionar o sell-out
+2026-02-01,Rede Horizonte Supermercados,SKU-40202,Trade Marketing,Merchandising,0.1616,Espaço extra de gôndola nas lojas-chave
+2026-02-01,Serra Gaúcha Supermercados,SKU-10101,Key Account (KAM),Ganho de distribuição,0.2571,Expectativa de novas listagens em lojas adicionais
+2026-02-01,Serra Gaúcha Supermercados,SKU-10103,Trade Marketing,Promoção,0.1899,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-02-01,Serra Gaúcha Supermercados,SKU-10201,Trade Marketing,Promoção,0.7672,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-02-01,Serra Gaúcha Supermercados,SKU-10202,Planejador de Demanda,Promoção,0.2739,Desconto de preço negociado para o mês
+2026-02-01,Serra Gaúcha Supermercados,SKU-20101,Diretor de Vendas,Ação de concorrente,0.1094,Concorrente em ruptura - oportunidade
+2026-02-01,Serra Gaúcha Supermercados,SKU-30101,Trade Marketing,Promoção,0.446,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,Vila Verde Mercados,SKU-10103,Planejador de Demanda,Promoção,0.5387,Desconto de preço negociado para o mês
+2026-02-01,Vila Verde Mercados,SKU-10201,Planejador de Demanda,Promoção,0.6001,Desconto de preço negociado para o mês
+2026-02-01,Vila Verde Mercados,SKU-20102,Planejador de Demanda,Promoção,0.7952,Desconto de preço negociado para o mês
+2026-02-01,Vila Verde Mercados,SKU-20103,Trade Marketing,Promoção,0.1365,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-02-01,Vila Verde Mercados,SKU-30103,Marketing,Nova loja,0.092,Abertura de novas lojas prevista
+2026-03-01,Atlas Hipermercados,SKU-10101,Planejador de Demanda,Promoção,0.2501,Desconto de preço negociado para o mês
+2026-03-01,Atlas Hipermercados,SKU-10202,Diretor de Vendas,Ganho de distribuição,0.2203,Expectativa de novas listagens em lojas adicionais
+2026-03-01,Atlas Hipermercados,SKU-30103,Trade Marketing,Merchandising,0.1729,Ponta de gôndola confirmada
+2026-03-01,Atlas Hipermercados,SKU-30203,Trade Marketing,Promoção,0.432,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-03-01,Bom Sabor Distribuidora,SKU-20101,Trade Marketing,Promoção,0.2951,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-03-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Merchandising,0.0372,Espaço extra de gôndola nas lojas-chave
+2026-03-01,Bom Sabor Distribuidora,SKU-20203,Diretor de Vendas,Ação de concorrente,0.1618,Concorrente em ruptura - oportunidade
+2026-03-01,Bom Sabor Distribuidora,SKU-30203,Trade Marketing,Merchandising,0.1329,Ponta de gôndola confirmada
+2026-03-01,Bom Sabor Distribuidora,SKU-40201,Trade Marketing,Merchandising,0.0875,Espaço extra de gôndola nas lojas-chave
+2026-03-01,CuraMais Farmácias,SKU-30201,Key Account (KAM),Ganho de distribuição,0.2715,Expectativa de novas listagens em lojas adicionais
+2026-03-01,FarmaVida Drogarias,SKU-10101,Trade Marketing,Promoção,0.5012,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-03-01,Litoral Market,SKU-10101,Planejador de Demanda,Promoção,0.154,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-03-01,MaxiCompra Atacarejo,SKU-20101,Diretor de Vendas,Ganho de distribuição,0.145,Expectativa de novas listagens em lojas adicionais
+2026-03-01,MaxiCompra Atacarejo,SKU-20203,Trade Marketing,Promoção,0.1504,Desconto de preço negociado para o mês
+2026-03-01,MaxiCompra Atacarejo,SKU-30101,Trade Marketing,Promoção,0.2499,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-03-01,Nordeste Atacadista,SKU-10103,Trade Marketing,Merchandising,0.3798,Ponta de gôndola confirmada
+2026-03-01,Planalto Atacado,SKU-10102,Trade Marketing,Promoção,0.165,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-03-01,Ponto Certo Conveniência,SKU-10203,Planejador de Demanda,Promoção,0.466,Desconto de preço negociado para o mês
+2026-03-01,Rede Horizonte Supermercados,SKU-10101,Planejador de Demanda,Promoção,0.171,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-03-01,Rede Horizonte Supermercados,SKU-10202,Trade Marketing,Merchandising,0.0973,Espaço extra de gôndola nas lojas-chave
+2026-03-01,Rede Horizonte Supermercados,SKU-20103,Trade Marketing,Merchandising,0.2076,Espaço extra de gôndola nas lojas-chave
+2026-03-01,Rede Horizonte Supermercados,SKU-30101,Planejador de Demanda,Promoção,0.3832,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-03-01,Serra Gaúcha Supermercados,SKU-20102,Trade Marketing,Promoção,1.0291,Desconto de preço negociado para o mês
+2026-03-01,Vila Verde Mercados,SKU-10101,Trade Marketing,Merchandising,0.3276,Display de checkout negociado
+2026-03-01,Vila Verde Mercados,SKU-20103,Trade Marketing,Merchandising,0.1357,Display de checkout negociado
+2026-04-01,Atlas Hipermercados,SKU-20102,Planejador de Demanda,Perda de cliente,-0.0976,Cliente reduzindo os níveis de estoque
+2026-04-01,Atlas Hipermercados,SKU-30201,Key Account (KAM),Ganho de distribuição,0.2519,Expectativa de novas listagens em lojas adicionais
+2026-04-01,Bom Sabor Distribuidora,SKU-10201,Diretor de Vendas,Nova loja,0.1502,Abertura de novas lojas prevista
+2026-04-01,ClickCesta Online,SKU-20203,Trade Marketing,Merchandising,0.0771,Espaço extra de gôndola nas lojas-chave
+2026-04-01,ClickCesta Online,SKU-30203,Trade Marketing,Promoção,0.2244,Desconto de preço negociado para o mês
+2026-04-01,ClickCesta Online,SKU-40102,Key Account (KAM),Perda de cliente,-0.0917,Cliente reduzindo os níveis de estoque
+2026-04-01,FarmaVida Drogarias,SKU-30103,Trade Marketing,Merchandising,0.4736,Display de checkout negociado
+2026-04-01,Litoral Market,SKU-40102,Planejador de Demanda,Promoção,0.2848,Desconto de preço negociado para o mês
+2026-04-01,Litoral Market,SKU-40202,Trade Marketing,Promoção,0.1423,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-04-01,Litoral Market,SKU-40203,Key Account (KAM),Ação de concorrente,0.2898,Concorrente em ruptura - oportunidade
+2026-04-01,MaxiCompra Atacarejo,SKU-20202,Trade Marketing,Merchandising,0.401,Display de checkout negociado
+2026-04-01,MaxiCompra Atacarejo,SKU-30203,Trade Marketing,Merchandising,0.5372,Ponta de gôndola confirmada
+2026-04-01,Nordeste Atacadista,SKU-10102,Planejador de Demanda,Promoção,0.1601,Desconto de preço negociado para o mês
+2026-04-01,Nordeste Atacadista,SKU-20202,Trade Marketing,Promoção,0.1756,Desconto de preço negociado para o mês
+2026-04-01,Nordeste Atacadista,SKU-40101,Trade Marketing,Merchandising,0.1133,Display de checkout negociado
+2026-04-01,Planalto Atacado,SKU-10103,Marketing,Ganho de distribuição,0.283,Expectativa de novas listagens em lojas adicionais
+2026-04-01,Planalto Atacado,SKU-10201,Planejador de Demanda,Promoção,0.7577,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-04-01,Planalto Atacado,SKU-20201,Trade Marketing,Merchandising,0.1363,Ponta de gôndola confirmada
+2026-04-01,Ponto Certo Conveniência,SKU-10202,Trade Marketing,Merchandising,0.1519,Display de checkout negociado
+2026-04-01,Rede Horizonte Supermercados,SKU-20103,Trade Marketing,Merchandising,0.1615,Display de checkout negociado
+2026-04-01,Vila Verde Mercados,SKU-20103,Trade Marketing,Merchandising,0.1418,Display de checkout negociado
+2026-04-01,Vila Verde Mercados,SKU-20202,Trade Marketing,Promoção,0.2397,Desconto de preço negociado para o mês
+2026-04-01,Vila Verde Mercados,SKU-40101,Key Account (KAM),Ganho de cliente,0.1326,Cliente sinalizou pedidos mais fortes
+2026-04-01,Vila Verde Mercados,SKU-40202,Trade Marketing,Merchandising,0.1341,Display de checkout negociado
+2026-04-01,Vila Verde Mercados,SKU-40203,Planejador de Demanda,Mudança de preço,-0.1124,Aumento de preço pode reduzir o volume
+2026-05-01,Amazônia Distribuição,SKU-10102,Trade Marketing,Merchandising,0.133,Ponta de gôndola confirmada
+2026-05-01,Amazônia Distribuição,SKU-20102,Trade Marketing,Merchandising,0.1436,Ponta de gôndola confirmada
+2026-05-01,Amazônia Distribuição,SKU-20103,Trade Marketing,Promoção,0.1302,Desconto de preço negociado para o mês
+2026-05-01,Amazônia Distribuição,SKU-40202,Diretor de Vendas,Nova loja,0.145,Abertura de novas lojas prevista
+2026-05-01,Atlas Hipermercados,SKU-10102,Trade Marketing,Promoção,0.2599,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-05-01,Atlas Hipermercados,SKU-20201,Trade Marketing,Merchandising,0.2231,Display de checkout negociado
+2026-05-01,Bom Sabor Distribuidora,SKU-10103,Trade Marketing,Merchandising,0.1955,Display de checkout negociado
+2026-05-01,Bom Sabor Distribuidora,SKU-30203,Planejador de Demanda,Promoção,0.2146,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-05-01,Litoral Market,SKU-10201,Trade Marketing,Merchandising,0.1345,Ponta de gôndola confirmada
+2026-05-01,Litoral Market,SKU-20102,Trade Marketing,Promoção,1.1315,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-05-01,MaxiCompra Atacarejo,SKU-10203,Planejador de Demanda,Promoção,0.2343,Desconto de preço negociado para o mês
+2026-05-01,MaxiCompra Atacarejo,SKU-40202,Planejador de Demanda,Ação de concorrente,-0.1301,Promoção do concorrente prevista
+2026-05-01,Nordeste Atacadista,SKU-10201,Planejador de Demanda,Promoção,0.8294,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-05-01,Nordeste Atacadista,SKU-20201,Trade Marketing,Merchandising,0.1493,Ponta de gôndola confirmada
+2026-05-01,Nordeste Atacadista,SKU-20203,Trade Marketing,Promoção,0.243,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-05-01,Planalto Atacado,SKU-20101,Key Account (KAM),Ganho de cliente,0.24,Cliente sinalizou pedidos mais fortes
+2026-05-01,Planalto Atacado,SKU-20103,Diretor de Vendas,Nova loja,0.1214,Abertura de novas lojas prevista
+2026-05-01,Planalto Atacado,SKU-20202,Trade Marketing,Merchandising,0.135,Display de checkout negociado
+2026-05-01,Ponto Certo Conveniência,SKU-10101,Diretor de Vendas,Ganho de distribuição,0.2987,Expectativa de novas listagens em lojas adicionais
+2026-05-01,Rede Horizonte Supermercados,SKU-10102,Trade Marketing,Promoção,0.2277,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-05-01,Rede Horizonte Supermercados,SKU-30102,Trade Marketing,Merchandising,0.3132,Display de checkout negociado
+2026-05-01,Rede Horizonte Supermercados,SKU-30202,Trade Marketing,Promoção,0.2243,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-05-01,Serra Gaúcha Supermercados,SKU-20202,Trade Marketing,Promoção,0.1789,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-05-01,Serra Gaúcha Supermercados,SKU-30103,Key Account (KAM),Ação de concorrente,0.2049,Concorrente em ruptura - oportunidade
+2026-05-01,Vila Verde Mercados,SKU-20102,Key Account (KAM),Perda de cliente,-0.0837,Cliente reduzindo os níveis de estoque
+2026-05-01,Vila Verde Mercados,SKU-20203,Trade Marketing,Merchandising,0.5179,Display de checkout negociado
+2026-05-01,Vila Verde Mercados,SKU-40103,Planejador de Demanda,Ação de concorrente,-0.0876,Promoção do concorrente prevista
+2026-06-01,Amazônia Distribuição,SKU-20101,Diretor de Vendas,Ganho de cliente,0.2646,Cliente sinalizou pedidos mais fortes
+2026-06-01,Amazônia Distribuição,SKU-20102,Diretor de Vendas,Nova loja,0.241,Abertura de novas lojas prevista
+2026-06-01,Amazônia Distribuição,SKU-20202,Trade Marketing,Merchandising,0.1285,Display de checkout negociado
+2026-06-01,Amazônia Distribuição,SKU-40202,Diretor de Vendas,Campanha,0.1694,Campanha da marca deve impulsionar o sell-out
+2026-06-01,Atlas Hipermercados,SKU-10101,Trade Marketing,Promoção,0.1796,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-06-01,Atlas Hipermercados,SKU-10203,Trade Marketing,Promoção,0.1659,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-06-01,Atlas Hipermercados,SKU-20102,Diretor de Vendas,Ganho de cliente,0.187,Cliente sinalizou pedidos mais fortes
+2026-06-01,Atlas Hipermercados,SKU-40101,Trade Marketing,Merchandising,0.1723,Espaço extra de gôndola nas lojas-chave
+2026-06-01,Bom Sabor Distribuidora,SKU-20201,Trade Marketing,Merchandising,0.2881,Ponta de gôndola confirmada
+2026-06-01,Bom Sabor Distribuidora,SKU-20203,Planejador de Demanda,Perda de cliente,-0.2096,Cliente reduzindo os níveis de estoque
+2026-06-01,Bom Sabor Distribuidora,SKU-40203,Diretor de Vendas,Ganho de distribuição,0.2438,Expectativa de novas listagens em lojas adicionais
+2026-06-01,ClickCesta Online,SKU-20203,Key Account (KAM),Ação de concorrente,-0.1214,Promoção do concorrente prevista
+2026-06-01,ClickCesta Online,SKU-40203,Trade Marketing,Promoção,0.2263,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-06-01,CuraMais Farmácias,SKU-30103,Trade Marketing,Promoção,0.1886,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-06-01,Litoral Market,SKU-10102,Planejador de Demanda,Perda de cliente,-0.1263,Cliente reduzindo os níveis de estoque
+2026-06-01,Litoral Market,SKU-10202,Planejador de Demanda,Promoção,0.2287,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-06-01,Litoral Market,SKU-20101,Trade Marketing,Merchandising,0.1239,Display de checkout negociado
+2026-06-01,Litoral Market,SKU-30203,Trade Marketing,Merchandising,0.308,Espaço extra de gôndola nas lojas-chave
+2026-06-01,MaxiCompra Atacarejo,SKU-20101,Trade Marketing,Merchandising,0.1776,Espaço extra de gôndola nas lojas-chave
+2026-06-01,MaxiCompra Atacarejo,SKU-20102,Trade Marketing,Merchandising,0.0774,Ponta de gôndola confirmada
+2026-06-01,MaxiCompra Atacarejo,SKU-40102,Trade Marketing,Promoção,0.3512,Desconto de preço negociado para o mês
+2026-06-01,Nordeste Atacadista,SKU-10201,Trade Marketing,Promoção,0.4628,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-06-01,Nordeste Atacadista,SKU-40101,Trade Marketing,Promoção,0.2746,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-06-01,Planalto Atacado,SKU-10103,Key Account (KAM),Campanha,0.1683,Campanha da marca deve impulsionar o sell-out
+2026-06-01,Planalto Atacado,SKU-20202,Trade Marketing,Merchandising,0.1137,Ponta de gôndola confirmada
+2026-06-01,Ponto Certo Conveniência,SKU-20102,Trade Marketing,Promoção,0.7936,Desconto de preço negociado para o mês
+2026-06-01,Ponto Certo Conveniência,SKU-30201,Key Account (KAM),Ganho de distribuição,0.0839,Expectativa de novas listagens em lojas adicionais
+2026-06-01,Ponto Certo Conveniência,SKU-40103,Trade Marketing,Merchandising,0.2234,Display de checkout negociado
+2026-06-01,Ponto Certo Conveniência,SKU-40202,Trade Marketing,Merchandising,0.153,Ponta de gôndola confirmada
+2026-06-01,Rede Horizonte Supermercados,SKU-10103,Key Account (KAM),Perda de cliente,-0.1753,Cliente reduzindo os níveis de estoque
+2026-06-01,Rede Horizonte Supermercados,SKU-10201,Trade Marketing,Merchandising,0.1594,Espaço extra de gôndola nas lojas-chave
+2026-06-01,Rede Horizonte Supermercados,SKU-20103,Key Account (KAM),Ação de concorrente,0.08,Concorrente em ruptura - oportunidade
+2026-06-01,Rede Horizonte Supermercados,SKU-30102,Diretor de Vendas,Ganho de cliente,0.1685,Cliente sinalizou pedidos mais fortes
+2026-06-01,Serra Gaúcha Supermercados,SKU-10103,Trade Marketing,Promoção,0.161,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-06-01,Serra Gaúcha Supermercados,SKU-20202,Trade Marketing,Promoção,0.1441,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-06-01,Serra Gaúcha Supermercados,SKU-40101,Trade Marketing,Promoção,0.3135,Desconto de preço negociado para o mês
+2026-06-01,Vila Verde Mercados,SKU-10101,Trade Marketing,Merchandising,0.1361,Display de checkout negociado
+2026-06-01,Vila Verde Mercados,SKU-10201,Diretor de Vendas,Ganho de cliente,0.1648,Cliente sinalizou pedidos mais fortes
+2026-06-01,Vila Verde Mercados,SKU-20203,Trade Marketing,Merchandising,0.176,Display de checkout negociado
+2026-06-01,Vila Verde Mercados,SKU-40203,Planejador de Demanda,Promoção,0.3163,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-07-01,Amazônia Distribuição,SKU-20202,Trade Marketing,Merchandising,0.1268,Display de checkout negociado
+2026-07-01,Amazônia Distribuição,SKU-30101,Key Account (KAM),Campanha,0.0893,Campanha da marca deve impulsionar o sell-out
+2026-07-01,Amazônia Distribuição,SKU-40102,Key Account (KAM),Perda de cliente,-0.1339,Cliente reduzindo os níveis de estoque
+2026-07-01,Atlas Hipermercados,SKU-10203,Trade Marketing,Merchandising,0.1564,Display de checkout negociado
+2026-07-01,Atlas Hipermercados,SKU-30102,Trade Marketing,Promoção,0.1419,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-07-01,Atlas Hipermercados,SKU-30201,Planejador de Demanda,Mudança de preço,-0.1396,Aumento de preço pode reduzir o volume
+2026-07-01,Bom Sabor Distribuidora,SKU-20202,Trade Marketing,Merchandising,0.1666,Ponta de gôndola confirmada
+2026-07-01,Bom Sabor Distribuidora,SKU-20203,Key Account (KAM),Campanha,0.1211,Campanha da marca deve impulsionar o sell-out
+2026-07-01,ClickCesta Online,SKU-30202,Key Account (KAM),Ganho de distribuição,0.0991,Expectativa de novas listagens em lojas adicionais
+2026-07-01,ClickCesta Online,SKU-40202,Trade Marketing,Promoção,0.3189,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-07-01,CuraMais Farmácias,SKU-30102,Trade Marketing,Merchandising,0.1076,Espaço extra de gôndola nas lojas-chave
+2026-07-01,FarmaVida Drogarias,SKU-30102,Key Account (KAM),Ganho de distribuição,0.1516,Expectativa de novas listagens em lojas adicionais
+2026-07-01,FarmaVida Drogarias,SKU-30103,Key Account (KAM),Ação de concorrente,0.2036,Concorrente em ruptura - oportunidade
+2026-07-01,Litoral Market,SKU-10201,Planejador de Demanda,Promoção,0.4843,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-07-01,Litoral Market,SKU-20102,Planejador de Demanda,Promoção,0.7668,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-07-01,Litoral Market,SKU-40101,Trade Marketing,Merchandising,0.143,Espaço extra de gôndola nas lojas-chave
+2026-07-01,Litoral Market,SKU-40201,Trade Marketing,Promoção,0.4745,Desconto de preço negociado para o mês
+2026-07-01,Planalto Atacado,SKU-10203,Trade Marketing,Promoção,0.1781,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-07-01,Planalto Atacado,SKU-20201,Planejador de Demanda,Mudança de preço,-0.1296,Aumento de preço pode reduzir o volume
+2026-07-01,Ponto Certo Conveniência,SKU-20102,Planejador de Demanda,Promoção,0.5237,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-07-01,Ponto Certo Conveniência,SKU-20103,Key Account (KAM),Perda de cliente,-0.1654,Cliente reduzindo os níveis de estoque
+2026-07-01,Rede Horizonte Supermercados,SKU-10201,Diretor de Vendas,Ação de concorrente,0.0933,Concorrente em ruptura - oportunidade
+2026-07-01,Rede Horizonte Supermercados,SKU-10203,Trade Marketing,Merchandising,0.0842,Espaço extra de gôndola nas lojas-chave
+2026-07-01,Rede Horizonte Supermercados,SKU-30202,Trade Marketing,Merchandising,0.0818,Display de checkout negociado
+2026-07-01,Serra Gaúcha Supermercados,SKU-30203,Planejador de Demanda,Promoção,0.2309,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-07-01,Vila Verde Mercados,SKU-10202,Trade Marketing,Promoção,0.1667,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-07-01,Vila Verde Mercados,SKU-20203,Trade Marketing,Merchandising,0.1391,Espaço extra de gôndola nas lojas-chave
+2026-07-01,Vila Verde Mercados,SKU-30103,Trade Marketing,Merchandising,0.1565,Display de checkout negociado
+2026-07-01,Vila Verde Mercados,SKU-30201,Key Account (KAM),Campanha,0.2195,Campanha da marca deve impulsionar o sell-out
+2026-08-01,Amazônia Distribuição,SKU-10203,Trade Marketing,Promoção,0.1958,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-08-01,Amazônia Distribuição,SKU-40103,Key Account (KAM),Nova loja,0.1799,Abertura de novas lojas prevista
+2026-08-01,Atlas Hipermercados,SKU-10202,Planejador de Demanda,Promoção,0.3521,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-08-01,Atlas Hipermercados,SKU-20101,Trade Marketing,Merchandising,0.1038,Espaço extra de gôndola nas lojas-chave
+2026-08-01,Atlas Hipermercados,SKU-20201,Trade Marketing,Promoção,0.2561,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-08-01,Bom Sabor Distribuidora,SKU-20101,Planejador de Demanda,Promoção,0.2882,Desconto de preço negociado para o mês
+2026-08-01,FarmaVida Drogarias,SKU-30102,Planejador de Demanda,Promoção,0.3852,Desconto de preço negociado para o mês
+2026-08-01,Litoral Market,SKU-10203,Trade Marketing,Promoção,0.4447,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-08-01,Litoral Market,SKU-30203,Trade Marketing,Merchandising,0.1219,Ponta de gôndola confirmada
+2026-08-01,Litoral Market,SKU-40203,Key Account (KAM),Nova loja,0.2633,Abertura de novas lojas prevista
+2026-08-01,MaxiCompra Atacarejo,SKU-10101,Trade Marketing,Merchandising,0.0954,Display de checkout negociado
+2026-08-01,MaxiCompra Atacarejo,SKU-10102,Trade Marketing,Merchandising,0.3234,Ponta de gôndola confirmada
+2026-08-01,MaxiCompra Atacarejo,SKU-20102,Planejador de Demanda,Promoção,0.3947,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-08-01,MaxiCompra Atacarejo,SKU-30203,Planejador de Demanda,Promoção,0.4606,Desconto de preço negociado para o mês
+2026-08-01,MaxiCompra Atacarejo,SKU-40201,Trade Marketing,Promoção,0.1684,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-08-01,Nordeste Atacadista,SKU-40201,Planejador de Demanda,Promoção,0.1361,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-08-01,Planalto Atacado,SKU-10201,Trade Marketing,Merchandising,-0.0298,Espaço extra de gôndola nas lojas-chave
+2026-08-01,Ponto Certo Conveniência,SKU-40103,Trade Marketing,Merchandising,0.4544,Espaço extra de gôndola nas lojas-chave
+2026-08-01,Rede Horizonte Supermercados,SKU-20102,Planejador de Demanda,Promoção,1.1433,Desconto de preço negociado para o mês
+2026-08-01,Rede Horizonte Supermercados,SKU-30101,Key Account (KAM),Mudança de preço,-0.1028,Aumento de preço pode reduzir o volume
+2026-08-01,Serra Gaúcha Supermercados,SKU-10103,Planejador de Demanda,Promoção,0.1796,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-08-01,Serra Gaúcha Supermercados,SKU-10203,Planejador de Demanda,Ação de concorrente,-0.1874,Promoção do concorrente prevista
+2026-08-01,Serra Gaúcha Supermercados,SKU-20202,Planejador de Demanda,Promoção,0.3273,Desconto de preço negociado para o mês
+2026-08-01,Serra Gaúcha Supermercados,SKU-40103,Trade Marketing,Promoção,0.1402,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-08-01,Vila Verde Mercados,SKU-30102,Planejador de Demanda,Perda de cliente,-0.1258,Cliente reduzindo os níveis de estoque
+2026-09-01,Amazônia Distribuição,SKU-10103,Planejador de Demanda,Promoção,0.2519,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Amazônia Distribuição,SKU-20101,Planejador de Demanda,Promoção,0.4091,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Amazônia Distribuição,SKU-20102,Planejador de Demanda,Promoção,0.8577,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Atlas Hipermercados,SKU-10101,Trade Marketing,Merchandising,0.2354,Ponta de gôndola confirmada
+2026-09-01,Atlas Hipermercados,SKU-40201,Key Account (KAM),Ganho de distribuição,0.2444,Expectativa de novas listagens em lojas adicionais
+2026-09-01,Bom Sabor Distribuidora,SKU-10201,Trade Marketing,Promoção,1.0575,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-09-01,Bom Sabor Distribuidora,SKU-20102,Trade Marketing,Promoção,0.7338,Desconto de preço negociado para o mês
+2026-09-01,Bom Sabor Distribuidora,SKU-40203,Diretor de Vendas,Ação de concorrente,0.2698,Concorrente em ruptura - oportunidade
+2026-09-01,ClickCesta Online,SKU-30101,Diretor de Vendas,Ganho de cliente,0.2533,Cliente sinalizou pedidos mais fortes
+2026-09-01,ClickCesta Online,SKU-40101,Planejador de Demanda,Mudança de preço,-0.1517,Aumento de preço pode reduzir o volume
+2026-09-01,CuraMais Farmácias,SKU-10101,Trade Marketing,Merchandising,0.1021,Ponta de gôndola confirmada
+2026-09-01,CuraMais Farmácias,SKU-30201,Planejador de Demanda,Promoção,0.2566,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-09-01,FarmaVida Drogarias,SKU-30102,Trade Marketing,Merchandising,0.271,Espaço extra de gôndola nas lojas-chave
+2026-09-01,FarmaVida Drogarias,SKU-30201,Diretor de Vendas,Ganho de cliente,0.1142,Cliente sinalizou pedidos mais fortes
+2026-09-01,Litoral Market,SKU-10201,Trade Marketing,Merchandising,0.1345,Display de checkout negociado
+2026-09-01,Litoral Market,SKU-30102,Marketing,Ganho de distribuição,0.2009,Expectativa de novas listagens em lojas adicionais
+2026-09-01,Litoral Market,SKU-40203,Planejador de Demanda,Promoção,0.3271,Desconto de preço negociado para o mês
+2026-09-01,MaxiCompra Atacarejo,SKU-10102,Key Account (KAM),Mudança de preço,-0.2037,Aumento de preço pode reduzir o volume
+2026-09-01,MaxiCompra Atacarejo,SKU-30201,Trade Marketing,Promoção,0.2201,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-09-01,MaxiCompra Atacarejo,SKU-40101,Trade Marketing,Promoção,0.3209,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Nordeste Atacadista,SKU-10201,Trade Marketing,Merchandising,0.1637,Ponta de gôndola confirmada
+2026-09-01,Nordeste Atacadista,SKU-10202,Trade Marketing,Merchandising,0.0928,Ponta de gôndola confirmada
+2026-09-01,Nordeste Atacadista,SKU-20101,Diretor de Vendas,Ação de concorrente,0.1924,Concorrente em ruptura - oportunidade
+2026-09-01,Nordeste Atacadista,SKU-40102,Trade Marketing,Merchandising,0.1646,Espaço extra de gôndola nas lojas-chave
+2026-09-01,Nordeste Atacadista,SKU-40202,Key Account (KAM),Ganho de cliente,0.291,Cliente sinalizou pedidos mais fortes
+2026-09-01,Planalto Atacado,SKU-20103,Key Account (KAM),Ganho de distribuição,0.2816,Expectativa de novas listagens em lojas adicionais
+2026-09-01,Planalto Atacado,SKU-30203,Planejador de Demanda,Promoção,0.1086,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-09-01,Ponto Certo Conveniência,SKU-10202,Trade Marketing,Promoção,0.2338,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-09-01,Ponto Certo Conveniência,SKU-40202,Trade Marketing,Merchandising,0.1616,Ponta de gôndola confirmada
+2026-09-01,Rede Horizonte Supermercados,SKU-10103,Trade Marketing,Promoção,0.1844,Promoção do plano de negócios conjunto (JBP) confirmada
+2026-09-01,Rede Horizonte Supermercados,SKU-20102,Trade Marketing,Promoção,0.4884,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Rede Horizonte Supermercados,SKU-20201,Trade Marketing,Merchandising,0.16,Display de checkout negociado
+2026-09-01,Rede Horizonte Supermercados,SKU-30101,Trade Marketing,Promoção,0.2513,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Rede Horizonte Supermercados,SKU-30202,Key Account (KAM),Ação de concorrente,0.177,Concorrente em ruptura - oportunidade
+2026-09-01,Serra Gaúcha Supermercados,SKU-10201,Planejador de Demanda,Promoção,0.8967,Promoção acordada com o cliente - tabloide + desconto de preço
+2026-09-01,Serra Gaúcha Supermercados,SKU-20202,Diretor de Vendas,Ganho de distribuição,0.2923,Expectativa de novas listagens em lojas adicionais
+2026-09-01,Vila Verde Mercados,SKU-10101,Trade Marketing,Merchandising,0.1643,Display de checkout negociado
+2026-09-01,Vila Verde Mercados,SKU-20102,Planejador de Demanda,Promoção,0.6646,Desconto de preço negociado para o mês

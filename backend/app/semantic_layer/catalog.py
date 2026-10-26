@@ -1,8 +1,8 @@
-"""Semantic layer: governed metric & dimension catalog plus a tiny query engine.
+"""Camada semântica: catálogo governado de métricas e dimensões + um pequeno motor de consulta.
 
-The AI Analyst never writes free SQL. It resolves a question to a
-(metric, dimension, filters, period) request that this layer executes
-deterministically against DuckDB-backed data.
+O Analista de IA nunca escreve SQL livre. Ele traduz a pergunta em uma requisição
+(métrica, dimensão, filtros, período) que esta camada executa de forma determinística
+sobre os dados no DuckDB. Chaves e códigos ficam em inglês; rótulos e descrições em pt-BR.
 """
 
 from __future__ import annotations
@@ -16,62 +16,66 @@ import pandas as pd
 from app.services.context import PlanningContext, filter_ids
 
 METRICS: dict[str, dict[str, Any]] = {
-    "actual": {"label": "Actual", "format": "measure", "description": "Historical sales (sell-in), units or revenue."},
-    "forecast": {
-        "label": "Statistical Forecast",
+    "actual": {
+        "label": "Real",
         "format": "measure",
-        "description": "Champion-model base forecast (P50), before commercial overrides.",
+        "description": "Vendas históricas (sell-in), em unidades ou receita.",
+    },
+    "forecast": {
+        "label": "Forecast estatístico",
+        "format": "measure",
+        "description": "Forecast base do modelo Campeão (P50), antes dos ajustes comerciais.",
     },
     "consensus": {
-        "label": "Consensus Forecast",
+        "label": "Forecast de consenso",
         "format": "measure",
-        "description": "Statistical forecast + commercial overrides (incremental demand).",
+        "description": "Forecast estatístico + ajustes comerciais (demanda incremental).",
     },
-    "budget": {"label": "Budget", "format": "measure", "description": "Annual budget (financial plan)."},
-    "target": {"label": "Sales Target", "format": "measure", "description": "Commercial sales target."},
+    "budget": {"label": "Orçamento", "format": "measure", "description": "Orçamento anual (plano financeiro)."},
+    "target": {"label": "Meta", "format": "measure", "description": "Meta comercial de vendas."},
     "wmape": {
         "label": "WMAPE",
         "format": "percent",
-        "description": "Weighted MAPE = sum|F-A| / sum|A| over the rolling-origin backtest (lower is better).",
+        "description": "MAPE ponderado = soma|F-R| / soma|R| no backtest com origem móvel (quanto menor, melhor).",
     },
-    "accuracy": {"label": "Forecast Accuracy", "format": "percent", "description": "1 - WMAPE (floored at 0)."},
+    "accuracy": {"label": "Acurácia", "format": "percent", "description": "1 - WMAPE (mínimo de 0)."},
     "bias": {
-        "label": "Bias",
+        "label": "Viés",
         "format": "percent",
-        "description": "sum(F-A) / sum(A). Positive = over-forecast, negative = under-forecast.",
+        "description": "soma(F-R) / soma(R). Positivo = superestimado; negativo = subestimado.",
     },
-    "gap_vs_budget": {"label": "Gap vs Budget", "format": "measure", "description": "Consensus - Budget."},
-    "gap_vs_target": {"label": "Gap vs Target", "format": "measure", "description": "Consensus - Target."},
+    "gap_vs_budget": {"label": "Gap vs orçamento", "format": "measure", "description": "Consenso - Orçamento."},
+    "gap_vs_target": {"label": "Gap vs meta", "format": "measure", "description": "Consenso - Meta."},
     "uplift": {
-        "label": "Incremental (events)",
+        "label": "Incremental (eventos)",
         "format": "measure",
-        "description": "Consensus - Statistical: demand added by commercial events.",
+        "description": "Consenso - Estatístico: demanda adicionada pelos eventos comerciais.",
     },
     "fva": {
-        "label": "Forecast Value Added",
+        "label": "FVA (valor agregado ao forecast)",
         "format": "percent",
-        "description": "WMAPE(statistical) - WMAPE(consensus) on overridden cells.",
+        "description": "WMAPE(estatístico) - WMAPE(consenso) nas células com ajuste comercial.",
     },
     "distribution": {
-        "label": "Numeric Distribution",
+        "label": "Distribuição numérica",
         "format": "number",
-        "description": "% of stores listing the SKU.",
+        "description": "% das lojas que listam o SKU.",
     },
-    "price": {"label": "Average Net Price", "format": "currency", "description": "Revenue / Units."},
-    "p10": {"label": "P10", "format": "measure", "description": "Pessimistic quantile of the forecast."},
-    "p90": {"label": "P90", "format": "measure", "description": "Optimistic quantile of the forecast."},
+    "price": {"label": "Preço líquido médio", "format": "currency", "description": "Receita / Unidades."},
+    "p10": {"label": "P10", "format": "measure", "description": "Quantil pessimista do forecast."},
+    "p90": {"label": "P90", "format": "measure", "description": "Quantil otimista do forecast."},
 }
 
 DIMENSIONS: dict[str, dict[str, str]] = {
-    "period": {"label": "Month", "column": "date"},
-    "region": {"label": "Region", "column": "region"},
-    "channel": {"label": "Channel", "column": "channel"},
-    "customer": {"label": "Customer", "column": "customer"},
-    "category": {"label": "Category", "column": "category"},
-    "brand": {"label": "Brand", "column": "brand"},
+    "period": {"label": "Mês", "column": "date"},
+    "region": {"label": "Região", "column": "region"},
+    "channel": {"label": "Canal", "column": "channel"},
+    "customer": {"label": "Cliente", "column": "customer"},
+    "category": {"label": "Categoria", "column": "category"},
+    "brand": {"label": "Marca", "column": "brand"},
     "sku": {"label": "SKU", "column": "sku"},
-    "model": {"label": "Model", "column": "champion"},
-    "scenario": {"label": "Scenario", "column": "scenario"},
+    "model": {"label": "Modelo", "column": "champion"},
+    "scenario": {"label": "Cenário", "column": "scenario"},
 }
 
 
@@ -86,7 +90,7 @@ class SemanticQuery:
     limit: int = 10
 
     def describe(self) -> str:
-        where = " AND ".join(f"{k} = '{v}'" for k, v in self.filters.items() if v) or "all"
+        where = " AND ".join(f"{k} = '{v}'" for k, v in self.filters.items() if v) or "todos"
         period = f" PERIOD {', '.join(self.months)}" if self.months else ""
         return (
             f"SELECT {self.metric}({self.measure}) BY {self.by} WHERE {where}{period} "
@@ -95,11 +99,11 @@ class SemanticQuery:
 
 
 def run_query(ctx: PlanningContext, q: SemanticQuery) -> pd.DataFrame:
-    """Execute a semantic query; returns columns [member, value, volume, ...]."""
+    """Executa uma consulta semântica; retorna as colunas [member, value, volume, ...]."""
     if q.metric not in METRICS:
-        raise ValueError(f"Unknown metric '{q.metric}'")
+        raise ValueError(f"Métrica desconhecida: '{q.metric}'")
     if q.by not in DIMENSIONS:
-        raise ValueError(f"Unknown dimension '{q.by}'")
+        raise ValueError(f"Dimensão desconhecida: '{q.by}'")
     ids = filter_ids(ctx, q.filters)
     col = DIMENSIONS[q.by]["column"]
     s = ctx.series[ctx.series["series_id"].isin(ids)]
@@ -166,7 +170,7 @@ def run_query(ctx: PlanningContext, q: SemanticQuery) -> pd.DataFrame:
         df["value"] = df[q.metric]
         df["volume"] = df["actual"]
     else:
-        raise ValueError(f"Metric '{q.metric}' is not queryable by dimension")
+        raise ValueError(f"A métrica '{q.metric}' não pode ser consultada por dimensão")
     df = df.dropna(subset=["value"])
     df = df.sort_values("value", ascending=q.order == "asc")
     df.index.name = "member"

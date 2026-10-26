@@ -10,18 +10,23 @@ from __future__ import annotations
 import logging
 import threading
 from contextlib import asynccontextmanager
+from http import HTTPStatus
 from typing import Any
 
 from fastapi import FastAPI, Request
+from fastapi.encoders import jsonable_encoder
+from fastapi.exception_handlers import http_exception_handler
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app import db
 from app.ai import llm
-from app.api import data, export, forecast, planning
-from app.config import APP_NAME, APP_TAGLINE, APP_VERSION, AUTHOR, settings
+from app.api import data, deviations, export, forecast, journey, planning
+from app.config import APP_NAME, APP_VERSION, AUTHOR, settings
 from app.forecasting.models import model_catalog
-from app.services import datasets, runs
+from app.services import datasets, ptbr, runs
 from app.services.context import NoDatasetError
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -57,7 +62,7 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(
     title=f"{APP_NAME} API",
-    description=f"{APP_TAGLINE}. {AUTHOR['signature_en']} — {AUTHOR['title_en']}.",
+    description=f"{ptbr.APP_TAGLINE}. {AUTHOR['signature_pt']} · {AUTHOR['title_pt']}.",
     version=APP_VERSION,
     lifespan=lifespan,
     contact={"name": AUTHOR["name"], "url": AUTHOR["linkedin"]},
@@ -68,7 +73,46 @@ app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins), al
 
 @app.exception_handler(NoDatasetError)
 async def no_dataset(_: Request, exc: NoDatasetError) -> JSONResponse:
-    return JSONResponse(status_code=409, content={"detail": str(exc), "code": "no_dataset"})
+    detail = str(exc) or "Nenhuma base ativa. Carregue um arquivo ou a base de demonstração."
+    return JSONResponse(status_code=409, content={"detail": detail, "code": "no_dataset"})
+
+
+# Portuguese text for the framework's default error details (unknown route, wrong method ...).
+DEFAULT_ERROR_DETAIL = {
+    400: "Requisição inválida.",
+    401: "Autenticação necessária.",
+    403: "Acesso negado.",
+    404: "Recurso não encontrado.",
+    405: "Método não permitido para este endpoint.",
+    413: "Conteúdo maior que o limite permitido.",
+    415: "Tipo de conteúdo não suportado.",
+    500: "Erro interno do servidor.",
+}
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_error(request: Request, exc: StarletteHTTPException):
+    """Keep the endpoints' own (Portuguese) details; translate the framework's default English phrases."""
+    try:
+        default = HTTPStatus(exc.status_code).phrase
+    except ValueError:
+        default = None
+    if exc.status_code in DEFAULT_ERROR_DETAIL and exc.detail in (None, "", default):
+        exc = StarletteHTTPException(exc.status_code, DEFAULT_ERROR_DETAIL[exc.status_code], headers=exc.headers)
+    return await http_exception_handler(request, exc)
+
+
+@app.exception_handler(RequestValidationError)
+async def invalid_request(_: Request, exc: RequestValidationError) -> JSONResponse:
+    """Portuguese message for malformed requests (the raw pydantic errors stay under "errors")."""
+    fields = sorted({".".join(str(p) for p in e.get("loc", ())[1:]) or "corpo" for e in exc.errors()})
+    return JSONResponse(
+        status_code=422,
+        content={
+            "detail": f"Requisição inválida. Verifique o(s) campo(s): {', '.join(fields)}.",
+            "errors": jsonable_encoder(exc.errors()),
+        },
+    )
 
 
 @app.get("/api/health", tags=["system"])
@@ -86,16 +130,20 @@ def health() -> dict[str, Any]:
 def meta() -> dict[str, Any]:
     return {
         "app": APP_NAME,
-        "tagline": APP_TAGLINE,
+        "tagline": ptbr.APP_TAGLINE,
         "version": APP_VERSION,
-        "author": AUTHOR,
-        "models": model_catalog(),
+        "author": {
+            "name": AUTHOR["name"],
+            "title": AUTHOR["title_pt"],
+            "signature": AUTHOR["signature_pt"],
+            "linkedin": AUTHOR["linkedin"],
+        },
+        "models": ptbr.model_catalog(model_catalog()),
         "horizons": [3, 6, 12, 18, 24],
-        "ai": llm.status(),
+        "ai": llm.status(max_wait=0.5),  # never hold the first page load on a slow Ollama
         "database": "DuckDB",
-        "db_path": str(settings.db_path),
     }
 
 
-for r in (data.router, forecast.router, planning.router, export.router):
+for r in (data.router, forecast.router, planning.router, export.router, deviations.router, journey.router):
     app.include_router(r)

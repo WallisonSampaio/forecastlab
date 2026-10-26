@@ -1,0 +1,331 @@
+{
+  "available": true,
+  "cmp": "ac_fc",
+  "lens": "forecast",
+  "measure": "revenue",
+  "period": {
+    "code": "bt",
+    "label": "Janela de backtest (out/2025–set/2026)",
+    "months": [
+      "2025-10-01",
+      "2025-11-01",
+      "2025-12-01",
+      "2026-01-01",
+      "2026-02-01",
+      "2026-03-01",
+      "2026-04-01",
+      "2026-05-01",
+      "2026-06-01",
+      "2026-07-01",
+      "2026-08-01",
+      "2026-09-01"
+    ],
+    "kind": "backtest"
+  },
+  "periods": [
+    {
+      "code": "bt",
+      "label": "Janela de backtest (out/2025–set/2026)"
+    },
+    {
+      "code": "2025-10",
+      "label": "out/2025"
+    },
+    {
+      "code": "2025-11",
+      "label": "nov/2025"
+    },
+    {
+      "code": "2025-12",
+      "label": "dez/2025"
+    },
+    {
+      "code": "2026-01",
+      "label": "jan/2026"
+    },
+    {
+      "code": "2026-02",
+      "label": "fev/2026"
+    },
+    {
+      "code": "2026-03",
+      "label": "mar/2026"
+    },
+    {
+      "code": "2026-04",
+      "label": "abr/2026"
+    },
+    {
+      "code": "2026-05",
+      "label": "mai/2026"
+    },
+    {
+      "code": "2026-06",
+      "label": "jun/2026"
+    },
+    {
+      "code": "2026-07",
+      "label": "jul/2026"
+    },
+    {
+      "code": "2026-08",
+      "label": "ago/2026"
+    },
+    {
+      "code": "2026-09",
+      "label": "set/2026"
+    }
+  ],
+  "comparisons": [
+    {
+      "cmp": "fc_pl",
+      "label": "Consenso × Orçamento · próximos 12 meses",
+      "available": true
+    },
+    {
+      "cmp": "fc_tg",
+      "label": "Consenso × Meta · próximos 12 meses",
+      "available": true
+    },
+    {
+      "cmp": "ac_pl",
+      "label": "Real × Orçamento · últimos 12 meses",
+      "available": true
+    },
+    {
+      "cmp": "ac_fc",
+      "label": "Real × Estatístico (campeão)",
+      "available": true
+    },
+    {
+      "cmp": "ac_cs",
+      "label": "Real × Consenso histórico (com ajustes)",
+      "available": true
+    }
+  ],
+  "node": {
+    "label": "Empresa toda",
+    "path": [],
+    "n_series": 220
+  },
+  "headline": "Empresa toda: o forecast estatístico errou 14,8% (R$ 15,40 mi) na janela de backtest (out/2025–set/2026); demanda intermitente ou volátil explica 27% e o viés é de -3,3% (equilibrado).",
+  "notices": [
+    "Real × Previsão medido fora da amostra: backtest com origem móvel e 1–3 meses de antecedência."
+  ],
+  "kpis": [
+    {
+      "id": "accuracy",
+      "label": "Acurácia",
+      "value": 0.852000443169493,
+      "format": "percent",
+      "hint": "WMAPE 14,8% · em unidades"
+    },
+    {
+      "id": "bias",
+      "label": "Viés",
+      "value": -0.03336359885134758,
+      "format": "percent_signed",
+      "delta": "Equilibrado",
+      "delta_tone": "neutral",
+      "hint": "positivo = superestimou"
+    },
+    {
+      "id": "abs_error",
+      "label": "Erro absoluto",
+      "value": 15400360.109171828,
+      "format": "currency",
+      "hint": "32% sistemático"
+    },
+    {
+      "id": "top_cause",
+      "label": "Causa principal",
+      "value": 0.2743945769451683,
+      "format": "text",
+      "text": "Demanda intermitente ou volátil",
+      "hint": "27% do erro"
+    }
+  ],
+  "breakdown": {
+    "level": "region",
+    "level_label": "Região",
+    "next_level": "channel",
+    "levels": [
+      {
+        "value": "region",
+        "label": "Região",
+        "disabled": false
+      },
+      {
+        "value": "channel",
+        "label": "Canal",
+        "disabled": false
+      },
+      {
+        "value": "customer",
+        "label": "Cliente",
+        "disabled": false
+      },
+      {
+        "value": "category",
+        "label": "Categoria",
+        "disabled": false
+      },
+      {
+        "value": "brand",
+        "label": "Marca",
+        "disabled": false
+      },
+      {
+        "value": "sku",
+        "label": "SKU",
+        "disabled": false
+      },
+      {
+        "value": "series",
+        "label": "Série",
+        "disabled": true,
+        "reason": "Filtre um cliente ou SKU (ou um recorte com até 60 séries)"
+      },
+      {
+        "value": "champion",
+        "label": "Modelo campeão",
+        "disabled": false
+      },
+      {
+        "value": "series_type",
+        "label": "Padrão de demanda",
+        "disabled": false
+      }
+    ],
+    "rows": [
+      {
+        "key": "Sudeste",
+        "label": "Sudeste",
+        "actual": 38863265.53,
+        "forecast": 38371660.08677249,
+        "abs_error": 6543925.282172925,
+        "net_error": -491605.44322751195,
+        "wmape": 0.14205797321370672,
+        "bias": -0.016230860747046078,
+        "bias_class": "Balanced",
+        "systematic": 1813650.476440748,
+        "noise": 4730274.805732177,
+        "share": 0.4249202769145398,
+        "cum_share": 0.4249202769145398,
+        "top_cause": {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil",
+          "group": "inherent",
+          "share": 0.2988812045443177
+        },
+        "is_exception": false,
+        "n_series": 69,
+        "drillable": true
+      },
+      {
+        "key": "Nordeste",
+        "label": "Nordeste",
+        "actual": 15687393.06,
+        "forecast": 15064689.079838308,
+        "abs_error": 3126038.5161381746,
+        "net_error": -622703.9801616918,
+        "wmape": 0.15458468623207014,
+        "bias": -0.05149118542202943,
+        "bias_class": "Under",
+        "systematic": 1011618.4859642505,
+        "noise": 2114420.030173924,
+        "share": 0.20298476749751024,
+        "cum_share": 0.6279050444120501,
+        "top_cause": {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil",
+          "group": "inherent",
+          "share": 0.32395011957631065
+        },
+        "is_exception": false,
+        "n_series": 52,
+        "drillable": true
+      },
+      {
+        "key": "Sul",
+        "label": "Sul",
+        "actual": 16612115.81,
+        "forecast": 16241915.722623654,
+        "abs_error": 3123665.78548187,
+        "net_error": -370200.08737634623,
+        "wmape": 0.1522619246553934,
+        "bias": -0.0334568230504832,
+        "bias_class": "Balanced",
+        "systematic": 949553.9081495428,
+        "noise": 2174111.8773323274,
+        "share": 0.202830697680994,
+        "cum_share": 0.8307357420930441,
+        "top_cause": {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil",
+          "group": "inherent",
+          "share": 0.25363520119644806
+        },
+        "is_exception": false,
+        "n_series": 49,
+        "drillable": true
+      },
+      {
+        "key": "Centro-Oeste",
+        "label": "Centro-Oeste",
+        "actual": 11654460.44,
+        "forecast": 11078220.643953241,
+        "abs_error": 2063277.1987632292,
+        "net_error": -576239.7960467587,
+        "wmape": 0.152724280662255,
+        "bias": -0.06012441244897392,
+        "bias_class": "Under",
+        "systematic": 938461.7955037866,
+        "noise": 1124815.4032594427,
+        "share": 0.13397590602666656,
+        "cum_share": 0.9647116481197107,
+        "top_cause": {
+          "code": "promocao",
+          "label": "Promoção não antecipada",
+          "group": "controllable",
+          "share": 0.21513952516761267
+        },
+        "is_exception": false,
+        "n_series": 36,
+        "drillable": true
+      },
+      {
+        "key": "Norte",
+        "label": "Norte",
+        "actual": 3189467.58,
+        "forecast": 3110298.709909725,
+        "abs_error": 543453.3266156288,
+        "net_error": -79168.87009027504,
+        "wmape": 0.14868166011145204,
+        "bias": -0.04585188570103305,
+        "bias_class": "Balanced",
+        "systematic": 225626.11632458313,
+        "noise": 317827.21029104566,
+        "share": 0.03528835188028948,
+        "cum_share": 1.0,
+        "top_cause": {
+          "code": "patamar",
+          "label": "Mudança de patamar",
+          "group": "controllable",
+          "share": 0.20443213683368858
+        },
+        "is_exception": false,
+        "n_series": 14,
+        "drillable": true
+      }
+    ],
+    "others": null,
+    "n_members": 5
+  },
+  "concentration": {
+    "n_top": 2,
+    "share": 0.62790504441205,
+    "members": ["Sudeste", "Nordeste"],
+    "n_members": 5
+  }
+}

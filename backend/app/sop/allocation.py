@@ -15,11 +15,22 @@ from typing import Any
 import pandas as pd
 
 from app.services.context import Z90, PlanningContext, agg_sigma, clean, filter_ids
+from app.services.ptbr import DIMENSION
 
 from .feasibility import classify
 
 METHODS = ["historical", "potential", "forecast", "strategic"]
 DIMENSIONS = ["region", "channel", "customer", "category", "sku"]
+METHOD_LABEL = {
+    "historical": "histórico",
+    "potential": "potencial",
+    "forecast": "forecast",
+    "strategic": "estratégico",
+}
+
+
+def _options(codes: list[str], labels: dict[str, str]) -> str:
+    return ", ".join(f"{c} ({labels[c]})" for c in codes)
 
 
 def _weights(
@@ -60,7 +71,7 @@ def _weights(
         if w.sum() <= 0:
             w = pd.Series(1.0, index=members)
     else:
-        raise ValueError(f"method must be one of {METHODS}")
+        raise ValueError(f"Método de alocação inválido. Use um destes códigos: {_options(METHODS, METHOD_LABEL)}")
     w = w.reindex(members).fillna(0.0).clip(lower=0)
     return w / w.sum() if w.sum() else pd.Series(1.0 / len(members), index=members)
 
@@ -75,7 +86,7 @@ def allocate(
     measure: str = "revenue",
 ) -> dict[str, Any]:
     if dimension not in DIMENSIONS:
-        raise ValueError(f"dimension must be one of {DIMENSIONS}")
+        raise ValueError(f"Dimensão inválida. Use um destes códigos: {_options(DIMENSIONS, DIMENSION)}")
     ids = filter_ids(ctx, filters)
     s = ctx.series[ctx.series["series_id"].isin(ids)]
     if s.empty:

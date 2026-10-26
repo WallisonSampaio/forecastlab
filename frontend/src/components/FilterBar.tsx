@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { FilterX, SlidersHorizontal } from "lucide-react";
 import { useMemo } from "react";
 
@@ -24,21 +25,21 @@ export function useDimensions() {
 }
 
 const LABELS: Record<FilterDim, string> = {
-  region: "Region",
-  channel: "Channel",
-  customer: "Customer",
-  category: "Category",
-  brand: "Brand",
+  region: "Região",
+  channel: "Canal",
+  customer: "Cliente",
+  category: "Categoria",
+  brand: "Marca",
   sku: "SKU",
 };
 
-const PLURAL: Record<FilterDim, string> = {
-  region: "regions",
-  channel: "channels",
-  customer: "customers",
-  category: "categories",
-  brand: "brands",
-  sku: "SKUs",
+const ALL: Record<FilterDim, string> = {
+  region: "Todas as regiões",
+  channel: "Todos os canais",
+  customer: "Todos os clientes",
+  category: "Todas as categorias",
+  brand: "Todas as marcas",
+  sku: "Todos os SKUs",
 };
 
 export function FilterBar({
@@ -81,9 +82,12 @@ export function FilterBar({
 
   const n = activeFilterCount(filters);
   return (
-    <div className="card mb-5 flex flex-wrap items-center gap-2 px-3 py-2.5">
-      <span className="flex items-center gap-1.5 px-1 text-xs font-semibold text-muted">
-        <SlidersHorizontal size={14} /> Filters
+    <div className="card mb-6 flex flex-wrap items-center gap-2 px-4 py-3">
+      <span className="flex items-center gap-2 pr-1 text-xs font-bold uppercase tracking-wider text-muted">
+        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#eaf2ff] text-brand">
+          <SlidersHorizontal size={14} />
+        </span>
+        Filtros
       </span>
       {dims.map((d) => (
         <select
@@ -91,9 +95,12 @@ export function FilterBar({
           aria-label={LABELS[d]}
           value={filters[d] ?? ""}
           onChange={(e) => setFilter(d, e.target.value || undefined)}
-          className={`input w-auto max-w-[220px] py-1.5 text-[13px] ${filters[d] ? "border-brand/50 bg-blue-50/50" : ""}`}
+          className={clsx(
+            "input w-auto max-w-[230px] py-2 text-[13px] font-medium",
+            filters[d] && "border-brand/40 bg-[#eef4ff] text-[#2364d2]",
+          )}
         >
-          <option value="">All {PLURAL[d]}</option>
+          <option value="">{ALL[d]}</option>
           {(options[d] ?? []).map((o) => (
             <option key={o.value} value={o.value}>
               {o.label}
@@ -102,8 +109,8 @@ export function FilterBar({
         </select>
       ))}
       {n > 0 && (
-        <button type="button" className="btn-ghost px-2 py-1.5 text-xs" onClick={clear}>
-          <FilterX size={14} /> Clear ({n})
+        <button type="button" className="btn-ghost px-2.5 py-2 text-xs" onClick={clear}>
+          <FilterX size={14} /> Limpar ({n})
         </button>
       )}
       {showMeasure && (
@@ -112,8 +119,8 @@ export function FilterBar({
             value={measure}
             onChange={setMeasure}
             options={[
-              { value: "revenue", label: "Revenue (R$)" },
-              { value: "units", label: "Units" },
+              { value: "revenue", label: "Receita (R$)" },
+              { value: "units", label: "Unidades" },
             ]}
           />
         </div>

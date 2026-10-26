@@ -1,6 +1,6 @@
 export const BRAND = {
   app: "ForecastLab",
-  tagline: "AI Demand Planning & S&OP Decision Intelligence",
+  tagline: "Planejamento de Demanda & S&OP com Inteligência de Decisão",
   author: "Wallison Sampaio",
   signatureEn: "Developed by Wallison Sampaio",
   signaturePt: "Desenvolvido por Wallison Sampaio",

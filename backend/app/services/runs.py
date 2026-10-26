@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import threading
 import time
 import traceback
@@ -23,6 +24,9 @@ log = logging.getLogger("forecastlab.runs")
 
 _jobs: dict[str, dict[str, Any]] = {}
 _run_lock = threading.Lock()
+
+COMPLETED = "Concluído"
+_LEGACY_FALLBACK = re.compile(r"^(\d+) series fell back to Naive$")
 
 
 class RunBlockedError(RuntimeError):
@@ -60,10 +64,27 @@ def get_job(run_id: str) -> dict[str, Any] | None:
     return _run_row(df.iloc[0].to_dict())
 
 
+def _completed_message(n_fallback: int) -> str:
+    if not n_fallback:
+        return COMPLETED
+    return f"{COMPLETED} - {n_fallback} série(s) usaram o modelo Naive como contingência"
+
+
+def _localize_message(msg: Any) -> Any:
+    """Run messages stored by older (English) versions -> Portuguese."""
+    if not isinstance(msg, str):
+        return msg
+    if msg == "OK":
+        return COMPLETED
+    m = _LEGACY_FALLBACK.match(msg)
+    return _completed_message(int(m.group(1))) if m else msg
+
+
 def _run_row(r: dict[str, Any]) -> dict[str, Any]:
     r["params"] = json.loads(r.pop("params_json") or "{}")
     r["summary"] = json.loads(r.pop("summary_json") or "{}")
     r["progress"] = 1.0 if r["status"] == "completed" else 0.0
+    r["message"] = _localize_message(r.get("message"))
     return r
 
 
@@ -80,15 +101,15 @@ def start_run(
     params = params or RunParams()
     version = dataset_version or datasets.active_version()
     if not version:
-        raise RunBlockedError("No active dataset. Upload a file or load the demo dataset first.")
+        raise RunBlockedError("Nenhuma base ativa. Carregue um arquivo ou a base de demonstração primeiro.")
     ds = datasets.get_dataset(version)
     if ds is None or ds["status"] == "blocked":
-        raise RunBlockedError("Forecast execution blocked: the dataset has critical validation errors.")
+        raise RunBlockedError("Execução do forecast bloqueada: a base tem erros críticos de validação.")
     unknown = [m for m in params.models if m not in MODEL_REGISTRY]
     if unknown:
-        raise ValueError(f"Unknown model(s): {', '.join(unknown)}")
+        raise ValueError(f"Modelo(s) desconhecido(s): {', '.join(unknown)}")
     if not _run_lock.acquire(blocking=False):
-        raise RunBlockedError("A forecast run is already in progress.")
+        raise RunBlockedError("Já existe uma execução de forecast em andamento.")
     run_id = _new_run_id()
     while run_id in _jobs or db.scalar("SELECT 1 FROM forecast_runs WHERE run_id = ?", [run_id]):
         time.sleep(1)
@@ -98,7 +119,7 @@ def start_run(
         "dataset_version": version,
         "status": "queued",
         "progress": 0.0,
-        "step": "Queued",
+        "step": "Na fila",
         "created_at": datetime.now(),
         "horizon": params.horizon,
         "params": asdict(params),
@@ -148,7 +169,7 @@ def _execute(run_id: str, version: str, params: RunParams, workers: int | None) 
     try:
         sales = datasets.get_sales(version)
         out = run_engine(sales, params, progress, workers=workers)
-        job["step"] = "Saving results to the model registry"
+        job["step"] = "Salvando resultados no registro de modelos"
         job["progress"] = 0.93
         _persist(run_id, version, out)
         summary = _summary(out)
@@ -163,7 +184,7 @@ def _execute(run_id: str, version: str, params: RunParams, workers: int | None) 
                     out.n_series,
                     out.n_models,
                     json.dumps(summary, default=str),
-                    f"{len(out.errors)} series fell back to Naive" if out.errors else "OK",
+                    _completed_message(len(out.errors)),
                     run_id,
                 ],
             )
@@ -181,13 +202,20 @@ def _execute(run_id: str, version: str, params: RunParams, workers: int | None) 
                 refresh_presets(ctx)
             except Exception:
                 log.exception("Could not refresh scenario presets")
-        job.update(status="completed", progress=1.0, step="Completed", duration_s=duration, summary=summary)
+        job.update(
+            status="completed",
+            progress=1.0,
+            step=COMPLETED,
+            duration_s=duration,
+            summary=summary,
+            message=_completed_message(len(out.errors)),
+        )
     except Exception as exc:
         log.exception("Forecast run %s failed", run_id)
-        job.update(status="failed", step="Failed", message=str(exc))
+        job.update(status="failed", step="Falhou", message=f"A execução falhou: {exc}")
         db.execute(
             "UPDATE forecast_runs SET status='failed', finished_at=?, message=? WHERE run_id=?",
-            [datetime.now(), f"{exc}\n{traceback.format_exc()[-1500:]}", run_id],
+            [datetime.now(), f"A execução falhou: {exc}\n{traceback.format_exc()[-1500:]}", run_id],
         )
     finally:
         _run_lock.release()

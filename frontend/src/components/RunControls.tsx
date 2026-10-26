@@ -1,13 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Activity, Download, Play } from "lucide-react";
+import { Activity, FileSpreadsheet, FileText, Play } from "lucide-react";
 import { useState } from "react";
 
 import { useJob } from "../hooks/useApi";
 import { useFilters } from "../hooks/useFilters";
-import { api } from "../services/api";
+import { JOURNEY_KEY } from "../hooks/useJourney";
+import { api, type Params } from "../services/api";
+import type { Filters } from "../types";
 import { EmptyState, ErrorState, Field, Modal, ProgressBar } from "./ui";
 
-export function RunForecastButton({ label = "Run forecast" }: { label?: string }) {
+export function RunForecastButton({ label = "Rodar forecast" }: { label?: string }) {
   const [open, setOpen] = useState(false);
   const [horizon, setHorizon] = useState(12);
   const [folds, setFolds] = useState(4);
@@ -27,6 +29,8 @@ export function RunForecastButton({ label = "Run forecast" }: { label?: string }
       }),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["job"] });
+      // The journey polls every 30 s while idle: refresh it now so the stepper shows the run at once.
+      qc.invalidateQueries({ queryKey: JOURNEY_KEY });
       setOpen(false);
     },
   });
@@ -35,25 +39,25 @@ export function RunForecastButton({ label = "Run forecast" }: { label?: string }
     <>
       <button type="button" className="btn-primary" disabled={busy} onClick={() => setOpen(true)}>
         {busy ? <Activity size={16} className="animate-pulse" /> : <Play size={16} />}
-        {busy ? "Forecast running…" : label}
+        {busy ? "Forecast em execução…" : label}
       </button>
-      <Modal open={open} title="Run forecast" onClose={() => setOpen(false)}>
+      <Modal open={open} title="Rodar forecast" onClose={() => setOpen(false)}>
         <div className="space-y-4">
           <p className="text-sm text-muted">
-            Profiles every Customer × SKU series, routes candidate models, runs a rolling-origin backtest,
-            selects Champion/Challenger and produces P10/P50/P90 forecasts.
+            Analisa o perfil de cada série Cliente × SKU, seleciona os modelos candidatos, executa o backtest
+            com origem móvel, escolhe Campeão e Desafiante e gera o forecast P10/P50/P90.
           </p>
           <div className="grid grid-cols-3 gap-3">
-            <Field label="Forecast horizon">
+            <Field label="Horizonte do forecast">
               <select className="input" value={horizon} onChange={(e) => setHorizon(Number(e.target.value))}>
                 {[3, 6, 12, 18, 24].map((h) => (
                   <option key={h} value={h}>
-                    {h} months
+                    {h} meses
                   </option>
                 ))}
               </select>
             </Field>
-            <Field label="Backtest folds">
+            <Field label="Janelas de backtest">
               <select className="input" value={folds} onChange={(e) => setFolds(Number(e.target.value))}>
                 {[2, 3, 4, 5, 6].map((h) => (
                   <option key={h} value={h}>
@@ -62,7 +66,7 @@ export function RunForecastButton({ label = "Run forecast" }: { label?: string }
                 ))}
               </select>
             </Field>
-            <Field label="Months per fold">
+            <Field label="Meses por janela">
               <select className="input" value={foldH} onChange={(e) => setFoldH(Number(e.target.value))}>
                 {[1, 2, 3, 4, 6].map((h) => (
                   <option key={h} value={h}>
@@ -73,17 +77,17 @@ export function RunForecastButton({ label = "Run forecast" }: { label?: string }
             </Field>
           </div>
           <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" checked={clean} onChange={(e) => setClean(e.target.checked)} /> Clean
-            stock-out months in training (unconstrained demand)
+            <input type="checkbox" checked={clean} onChange={(e) => setClean(e.target.checked)} /> Corrigir
+            meses com ruptura no treino (demanda irrestrita)
           </label>
           <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" checked={all} onChange={(e) => setAll(e.target.checked)} /> Disable model
-            router — run all 15 models on every series (slower)
+            <input type="checkbox" checked={all} onChange={(e) => setAll(e.target.checked)} /> Desligar o
+            roteador de modelos — rodar os 15 modelos em todas as séries (mais lento)
           </label>
           <ErrorState error={run.error} />
           <div className="flex justify-end gap-2">
             <button type="button" className="btn-secondary" onClick={() => setOpen(false)}>
-              Cancel
+              Cancelar
             </button>
             <button
               type="button"
@@ -91,7 +95,7 @@ export function RunForecastButton({ label = "Run forecast" }: { label?: string }
               onClick={() => run.mutate()}
               disabled={run.isPending}
             >
-              <Play size={16} /> Start run
+              <Play size={16} /> Iniciar execução
             </button>
           </div>
         </div>
@@ -106,8 +110,8 @@ export function NoRunState() {
   return (
     <div className="card">
       <EmptyState
-        title={job ? "Forecast run in progress" : "No forecast yet"}
-        icon={<Activity size={20} className={job ? "animate-pulse text-brand" : ""} />}
+        title={job ? "Forecast em execução" : "Ainda não há forecast"}
+        icon={<Activity className={job ? "animate-pulse" : ""} />}
       >
         {job ? (
           <div className="w-80">
@@ -117,7 +121,7 @@ export function NoRunState() {
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3">
-            <span>Run the forecast engine to backtest the models and produce the 12-month plan.</span>
+            <span>Rode o motor de forecast para testar os modelos e gerar o plano de 12 meses.</span>
             <RunForecastButton />
           </div>
         )}
@@ -126,24 +130,24 @@ export function NoRunState() {
   );
 }
 
-export function ExportMenu() {
+/**
+ * Excel export + the executive report download ("Baixar relatório (HTML)", spec §2.2.1): the same
+ * 7-chapter story as the screen. `scope` (the report scope) overrides the global filters when given.
+ */
+export function ExportMenu({ scope }: { scope?: Filters } = {}) {
   const { filters } = useFilters();
-  const q = new URLSearchParams(
-    Object.entries(filters).filter(([, v]) => v) as [string, string][],
-  ).toString();
-  const suffix = q ? `?${q}` : "";
+  const active: Params = { ...(scope ?? filters) };
   return (
-    <div className="flex gap-2">
-      <a className="btn-secondary" href={`/api/export/excel${suffix}`}>
-        <Download size={15} /> Excel
+    <div className="flex flex-wrap gap-2">
+      <a className="btn-secondary" href={api.url("/api/export/excel", active)}>
+        <FileSpreadsheet size={15} className="text-emerald-600" /> Excel
       </a>
       <a
         className="btn-secondary"
-        href={`/api/export/executive-html${suffix}`}
-        target="_blank"
-        rel="noreferrer"
+        href={api.url("/api/export/executive-html", { download: true, ...active })}
+        download
       >
-        <Download size={15} /> Executive report
+        <FileText size={15} className="text-brand" /> Baixar relatório (HTML)
       </a>
     </div>
   );

@@ -100,7 +100,7 @@ def resolve_run(version: str) -> str | None:
 def get_context() -> PlanningContext:
     version = datasets.active_version()
     if not version:
-        raise NoDatasetError("No active dataset. Upload data or load the demo dataset.")
+        raise NoDatasetError("Nenhuma base ativa. Carregue um arquivo ou a base de demonstração.")
     run_id = resolve_run(version)
     key = (version, run_id, _overrides_rev)
     with _cache_lock:

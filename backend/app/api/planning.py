@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import asyncio
+import threading
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import BaseModel, Field
+from starlette.concurrency import run_in_threadpool
 
-from app.ai import analyst, llm
+from app.ai import analyst, llm, narration
 from app.alerts.engine import build_alerts, summary
 from app.fva.fva import fva_report
 from app.scenarios import store
@@ -25,7 +28,7 @@ router = APIRouter(prefix="/api", tags=["planning"])
 
 
 class ScenarioRequest(BaseModel):
-    name: str = "Custom scenario"
+    name: str = "Cenário personalizado"
     description: str = ""
     params: dict[str, Any] = Field(default_factory=dict)
 
@@ -47,7 +50,24 @@ class AllocationRequest(BaseModel):
 class AskRequest(BaseModel):
     question: str
     filters: dict[str, Any] = Field(default_factory=dict)
+    # False: no narration offered and no LLM routing (pure deterministic answer).
     use_llm: bool = True
+    # True: a question the rules did not understand is classified by the local LLM (validated).
+    route_with_llm: bool = False
+
+
+class NarrateDraft(BaseModel):
+    answer: str = ""
+    insights: list[str] = Field(default_factory=list)
+    recommendations: list[str] = Field(default_factory=list)
+    facts: dict[str, Any] | list[Any] | None = None
+
+
+class NarrateRequest(BaseModel):
+    question: str = ""
+    lang: str = "pt"
+    filters: dict[str, Any] = Field(default_factory=dict)
+    answer: NarrateDraft
 
 
 # ---------------------------------------------------------------------------- overview
@@ -73,7 +93,7 @@ def update_scenario(scenario_id: str, req: ScenarioRequest) -> dict[str, Any]:
     try:
         return store.update_scenario(scenario_id, req.name, req.description, req.params)
     except KeyError as exc:
-        raise HTTPException(404, "Scenario not found") from exc
+        raise HTTPException(404, "Cenário não encontrado") from exc
     except PermissionError as exc:
         raise HTTPException(403, str(exc)) from exc
 
@@ -83,7 +103,7 @@ def delete_scenario(scenario_id: str) -> dict[str, str]:
     try:
         store.delete_scenario(scenario_id)
     except KeyError as exc:
-        raise HTTPException(404, "Scenario not found") from exc
+        raise HTTPException(404, "Cenário não encontrado") from exc
     except PermissionError as exc:
         raise HTTPException(403, str(exc)) from exc
     return {"deleted": scenario_id}
@@ -94,7 +114,7 @@ def duplicate_scenario(scenario_id: str) -> dict[str, Any]:
     try:
         return store.duplicate_scenario(scenario_id)
     except KeyError as exc:
-        raise HTTPException(404, "Scenario not found") from exc
+        raise HTTPException(404, "Cenário não encontrado") from exc
 
 
 @router.post("/scenarios/simulate")
@@ -192,12 +212,45 @@ def ai_status(refresh: bool = False) -> dict[str, Any]:
 
 
 @router.get("/ai/suggestions")
-def ai_suggestions(lang: str = "en") -> list[str]:
-    return analyst.SUGGESTIONS.get(lang, analyst.SUGGESTIONS["en"])
+def ai_suggestions(lang: str = "pt") -> list[str]:
+    suggestions: dict[str, list[str]] = analyst.SUGGESTIONS
+    return suggestions.get(lang) or suggestions.get("pt") or next(iter(suggestions.values()), [])
 
 
 @router.post("/ai/ask")
 def ai_ask(req: AskRequest, ctx: PlanningContext = Depends(ctx_dep)) -> dict[str, Any]:
+    """Deterministic answer in < 1,5 s; never waits for the LLM unless ``route_with_llm`` is set."""
     if not req.question.strip():
-        raise HTTPException(400, "Question is empty")
-    return analyst.ask(ctx, req.question[:500], req.filters, req.use_llm)
+        raise HTTPException(400, "A pergunta está vazia.")
+    return analyst.ask(ctx, req.question[:500], req.filters, req.use_llm, req.route_with_llm)
+
+
+@router.post("/ai/narrate")
+async def ai_narrate(req: NarrateRequest, request: Request) -> dict[str, Any]:
+    """Background rewrite of a computed answer by the local LLM (numeric grounding guard).
+
+    Closing the request (the page aborted a stale narration) stops the generation in Ollama.
+    """
+    if not req.answer.answer.strip():
+        raise HTTPException(400, "Não há resposta calculada para refinar.")
+    gone = threading.Event()
+
+    async def watch_disconnect() -> None:
+        while not gone.is_set():
+            if await request.is_disconnected():
+                gone.set()
+                return
+            await asyncio.sleep(0.5)
+
+    watcher = asyncio.create_task(watch_disconnect())
+    try:
+        return await run_in_threadpool(
+            narration.narrate,
+            req.question[:500],
+            req.lang,
+            req.filters,
+            req.answer.model_dump(),
+            gone.is_set,
+        )
+    finally:
+        watcher.cancel()

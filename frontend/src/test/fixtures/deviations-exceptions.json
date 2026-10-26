@@ -1,0 +1,1126 @@
+{
+  "total": 26,
+  "rows": [
+    {
+      "series_id": "Litoral Market|SKU-30102",
+      "customer": "Litoral Market",
+      "sku": "SKU-30102",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "label": "Litoral Market · SKU-30102 PuraPele Protetor Solar FPS50 120ml",
+      "product": "PuraPele Protetor Solar FPS50 120ml",
+      "impact": 317781.52719798364,
+      "x": 373557.6128020164,
+      "p": 691339.14,
+      "variance": -317781.52719798364,
+      "variance_pct": -0.4596608362112749,
+      "prob_hit": 2.117264275924846e-5,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Holt-Winters",
+      "series_type_label": "Sazonal",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-30102"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-30102",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30102"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-30102"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30102"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-30101",
+      "customer": "Litoral Market",
+      "sku": "SKU-30101",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "label": "Litoral Market · SKU-30101 PuraPele Hidratante Corporal 200ml",
+      "product": "PuraPele Hidratante Corporal 200ml",
+      "impact": 131889.8672459959,
+      "x": 472879.3627540042,
+      "p": 604769.2300000001,
+      "variance": -131889.8672459959,
+      "variance_pct": -0.21808296570577157,
+      "prob_hit": 0.019201172698275815,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Regression",
+      "series_type_label": "Sazonal",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-30101"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-30101",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30101"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-30101"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30101"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Bom Sabor Distribuidora|SKU-30103",
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-30103",
+      "region": "Nordeste",
+      "channel": "Varejo Tradicional",
+      "category": "Cuidados Pessoais",
+      "label": "Bom Sabor Distribuidora · SKU-30103 PuraPele Kit Presente",
+      "product": "PuraPele Kit Presente",
+      "impact": 112711.20999999999,
+      "x": 0.0,
+      "p": 112711.20999999999,
+      "variance": -112711.20999999999,
+      "variance_pct": -1.0,
+      "prob_hit": 0.0,
+      "top_cause": null,
+      "confidence": "Low",
+      "champion": "Moving Average",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "mix",
+          "label": "Mix desfavorável"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Bom Sabor Distribuidora|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Bom Sabor Distribuidora",
+              "sku": "SKU-30103"
+            },
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Bom Sabor Distribuidora?",
+            "filters": {
+              "customer": "Bom Sabor Distribuidora",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-30202",
+      "customer": "Litoral Market",
+      "sku": "SKU-30202",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "label": "Litoral Market · SKU-30202 Brisa Desodorante Aerosol 150ml",
+      "product": "Brisa Desodorante Aerosol 150ml",
+      "impact": 103777.48741235229,
+      "x": 356493.43258764775,
+      "p": 460270.92000000004,
+      "variance": -103777.48741235229,
+      "variance_pct": -0.22547044121829873,
+      "prob_hit": 0.02698448103386486,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Regression",
+      "series_type_label": "Em declínio",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-30202"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-30202",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30202"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-30202"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30202"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-30103",
+      "customer": "Litoral Market",
+      "sku": "SKU-30103",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "label": "Litoral Market · SKU-30103 PuraPele Kit Presente",
+      "product": "PuraPele Kit Presente",
+      "impact": 99252.03,
+      "x": 0.0,
+      "p": 99252.03,
+      "variance": -99252.03,
+      "variance_pct": -1.0,
+      "prob_hit": 0.0,
+      "top_cause": null,
+      "confidence": "Low",
+      "champion": "Moving Average",
+      "series_type_label": "Inativa",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30103"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-40102",
+      "customer": "Litoral Market",
+      "sku": "SKU-40102",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Limpeza",
+      "label": "Litoral Market · SKU-40102 LimpaMax Desinfetante 2L",
+      "product": "LimpaMax Desinfetante 2L",
+      "impact": 97753.01333333337,
+      "x": 455933.4266666667,
+      "p": 553686.4400000001,
+      "variance": -97753.01333333337,
+      "variance_pct": -0.17654940824148294,
+      "prob_hit": 0.02549180444172372,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Moving Average",
+      "series_type_label": "Mudança estrutural",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-40102"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-40102",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-40102"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-40102"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-40102"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-20101",
+      "customer": "Litoral Market",
+      "sku": "SKU-20101",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Snacks",
+      "label": "Litoral Market · SKU-20101 Crocantes Batata Clássica 90g",
+      "product": "Crocantes Batata Clássica 90g",
+      "impact": 88167.64664643555,
+      "x": 320143.5633535644,
+      "p": 408311.20999999996,
+      "variance": -88167.64664643555,
+      "variance_pct": -0.21593246643028868,
+      "prob_hit": 0.011766453473798233,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Regression",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-20101"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-20101",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20101"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-20101"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20101"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Nordeste Atacadista|SKU-10201",
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-10201",
+      "region": "Nordeste",
+      "channel": "Atacarejo",
+      "category": "Bebidas",
+      "label": "Nordeste Atacadista · SKU-10201 Frutalle Suco de Laranja 1L",
+      "product": "Frutalle Suco de Laranja 1L",
+      "impact": 116376.57511365804,
+      "x": 466180.964886342,
+      "p": 582557.54,
+      "variance": -116376.57511365804,
+      "variance_pct": -0.19976837843976414,
+      "prob_hit": 0.2627458276087018,
+      "top_cause": null,
+      "confidence": "Medium",
+      "champion": "Random Forest",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Nordeste Atacadista|SKU-10201"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Nordeste Atacadista",
+            "sku": "SKU-10201",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Nordeste Atacadista",
+              "sku": "SKU-10201"
+            },
+            "customer": "Nordeste Atacadista",
+            "sku": "SKU-10201"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Nordeste Atacadista?",
+            "filters": {
+              "customer": "Nordeste Atacadista",
+              "sku": "SKU-10201"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-10201",
+      "customer": "Litoral Market",
+      "sku": "SKU-10201",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Bebidas",
+      "label": "Litoral Market · SKU-10201 Frutalle Suco de Laranja 1L",
+      "product": "Frutalle Suco de Laranja 1L",
+      "impact": 97636.8879494488,
+      "x": 253238.52205055117,
+      "p": 350875.41,
+      "variance": -97636.8879494488,
+      "variance_pct": -0.2782665446673758,
+      "prob_hit": 0.14476607573976508,
+      "top_cause": null,
+      "confidence": "Medium",
+      "champion": "Regression",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-10201"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-10201",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-10201"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-10201"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-10201"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-20202",
+      "customer": "Litoral Market",
+      "sku": "SKU-20202",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Snacks",
+      "label": "Litoral Market · SKU-20202 NutriBar Proteína 45g",
+      "product": "NutriBar Proteína 45g",
+      "impact": 74284.94903974002,
+      "x": 330723.05096026004,
+      "p": 405008.00000000006,
+      "variance": -74284.94903974002,
+      "variance_pct": -0.18341600422643506,
+      "prob_hit": 0.05110429791600957,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "ARIMA",
+      "series_type_label": "Crescente",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-20202"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-20202",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20202"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-20202"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20202"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-20102",
+      "customer": "Litoral Market",
+      "sku": "SKU-20102",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Snacks",
+      "label": "Litoral Market · SKU-20102 Crocantes Batata Queijo 90g",
+      "product": "Crocantes Batata Queijo 90g",
+      "impact": 97569.51778926386,
+      "x": 394917.25221073616,
+      "p": 492486.77,
+      "variance": -97569.51778926386,
+      "variance_pct": -0.19811601799833903,
+      "prob_hit": 0.3116568166288075,
+      "top_cause": null,
+      "confidence": "Medium",
+      "champion": "Regression",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-20102"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-20102",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20102"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-20102"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20102"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-30203",
+      "customer": "Litoral Market",
+      "sku": "SKU-30203",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "label": "Litoral Market · SKU-30203 Brisa Men Sport 150ml",
+      "product": "Brisa Men Sport 150ml",
+      "impact": 74232.61638482561,
+      "x": 289593.3836151744,
+      "p": 363826.0,
+      "variance": -74232.61638482561,
+      "variance_pct": -0.20403329169665063,
+      "prob_hit": 0.22285507603084986,
+      "top_cause": null,
+      "confidence": "Medium",
+      "champion": "Random Forest",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-30203"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-30203",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30203"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-30203"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30203"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Bom Sabor Distribuidora|SKU-40202",
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-40202",
+      "region": "Nordeste",
+      "channel": "Varejo Tradicional",
+      "category": "Limpeza",
+      "label": "Bom Sabor Distribuidora · SKU-40202 Fresco Aromatizador Automotivo",
+      "product": "Fresco Aromatizador Automotivo",
+      "impact": 51073.28,
+      "x": 0.0,
+      "p": 51073.28,
+      "variance": -51073.28,
+      "variance_pct": -1.0,
+      "prob_hit": 0.0,
+      "top_cause": null,
+      "confidence": "Low",
+      "champion": "Naive",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "mix",
+          "label": "Mix desfavorável"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Bom Sabor Distribuidora|SKU-40202"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-40202",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Bom Sabor Distribuidora",
+              "sku": "SKU-40202"
+            },
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-40202"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Bom Sabor Distribuidora?",
+            "filters": {
+              "customer": "Bom Sabor Distribuidora",
+              "sku": "SKU-40202"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-20103",
+      "customer": "Litoral Market",
+      "sku": "SKU-20103",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Snacks",
+      "label": "Litoral Market · SKU-20103 Crocantes Pacote Festa 300g",
+      "product": "Crocantes Pacote Festa 300g",
+      "impact": 55178.38870453648,
+      "x": 340415.4712954635,
+      "p": 395593.86,
+      "variance": -55178.38870453648,
+      "variance_pct": -0.1394824194302118,
+      "prob_hit": 0.09842153051352298,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Holt-Winters",
+      "series_type_label": "Sazonal",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-20103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-20103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20103"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-20103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-20103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-10101",
+      "customer": "Litoral Market",
+      "sku": "SKU-10101",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Bebidas",
+      "label": "Litoral Market · SKU-10101 AquaViva Água Mineral 500ml",
+      "product": "AquaViva Água Mineral 500ml",
+      "impact": 53632.15569361404,
+      "x": 174925.084306386,
+      "p": 228557.24000000005,
+      "variance": -53632.15569361404,
+      "variance_pct": -0.23465524738404275,
+      "prob_hit": 0.08265857435053925,
+      "top_cause": null,
+      "confidence": "High",
+      "champion": "Regression",
+      "series_type_label": "Sazonal",
+      "tags": [
+        {
+          "code": "premissa_otimista",
+          "label": "Premissa de crescimento otimista"
+        },
+        {
+          "code": "queda_estrutural",
+          "label": "Queda estrutural"
+        }
+      ],
+      "recommended_action": {
+        "code": "premissa_otimista",
+        "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-10101"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-10101",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-10101"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-10101"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Como está o cliente Litoral Market?",
+            "filters": {
+              "customer": "Litoral Market",
+              "sku": "SKU-10101"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

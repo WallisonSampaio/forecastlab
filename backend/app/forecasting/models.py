@@ -71,7 +71,7 @@ class BaseModel:
 # --------------------------------------------------------------------------- baselines
 class Naive(BaseModel):
     name = "Naive"
-    description = "Last observed value carried forward."
+    description = "Repete o último valor observado."
     min_obs = 1
 
     def _forecast(self, y, h, X_train, X_future):
@@ -80,7 +80,7 @@ class Naive(BaseModel):
 
 class SeasonalNaive(BaseModel):
     name = "Seasonal Naive"
-    description = "Same month of the previous year."
+    description = "Repete o mesmo mês do ano anterior."
     min_obs = SEASON
 
     def _forecast(self, y, h, X_train, X_future):
@@ -90,7 +90,7 @@ class SeasonalNaive(BaseModel):
 
 class MovingAverage(BaseModel):
     name = "Moving Average"
-    description = "Average of the last k months."
+    description = "Média dos últimos k meses."
     min_obs = 3
 
     def __init__(self, window: int = 3):
@@ -105,7 +105,7 @@ class MovingAverage(BaseModel):
 class SES(BaseModel):
     name = "SES"
     family = "Exponential Smoothing"
-    description = "Simple exponential smoothing (level only)."
+    description = "Suavização exponencial simples (apenas nível)."
     min_obs = 6
 
     def _forecast(self, y, h, X_train, X_future):
@@ -118,7 +118,7 @@ class SES(BaseModel):
 class Holt(BaseModel):
     name = "Holt"
     family = "Exponential Smoothing"
-    description = "Holt's linear trend method with damped trend."
+    description = "Método de Holt com tendência linear amortecida."
     min_obs = 10
 
     def _forecast(self, y, h, X_train, X_future):
@@ -139,7 +139,7 @@ class Holt(BaseModel):
 class HoltWinters(BaseModel):
     name = "Holt-Winters"
     family = "Exponential Smoothing"
-    description = "Additive damped trend with additive/multiplicative seasonality."
+    description = "Tendência amortecida aditiva com sazonalidade aditiva ou multiplicativa."
     min_obs = 2 * SEASON
 
     def _forecast(self, y, h, X_train, X_future):
@@ -160,7 +160,7 @@ class HoltWinters(BaseModel):
 class ETS(BaseModel):
     name = "ETS"
     family = "Exponential Smoothing"
-    description = "Automatic ETS: best trend/season combination by AICc, then refined."
+    description = "ETS automático: melhor combinação de tendência e sazonalidade pelo AICc, depois refinada."
     min_obs = 8
 
     def _forecast(self, y, h, X_train, X_future):
@@ -207,7 +207,7 @@ class ETS(BaseModel):
 class ARIMA(BaseModel):
     name = "ARIMA"
     family = "ARIMA"
-    description = "ARIMA(1,1,1); drift included when the mean change is significant (|t| > 2)."
+    description = "ARIMA(1,1,1); inclui drift quando a variação média é significativa (|t| > 2)."
     min_obs = 12
 
     def _forecast(self, y, h, X_train, X_future):
@@ -230,7 +230,7 @@ class ARIMA(BaseModel):
 class SARIMA(BaseModel):
     name = "SARIMA"
     family = "ARIMA"
-    description = "Seasonal 'airline' model SARIMA(0,1,1)(0,1,1)12 on log scale."
+    description = "Modelo sazonal 'airline' SARIMA(0,1,1)(0,1,1)12 em escala logarítmica."
     min_obs = 3 * SEASON
 
     def _forecast(self, y, h, X_train, X_future):
@@ -269,7 +269,7 @@ def _croston_core(y: np.ndarray, alpha: float) -> tuple[float, float]:
 class Croston(BaseModel):
     name = "Croston"
     family = "Intermittent"
-    description = "Croston's method: separate smoothing of demand size and interval."
+    description = "Método de Croston: suavização separada do tamanho da demanda e do intervalo entre pedidos."
     min_obs = 6
     alpha = 0.1
 
@@ -280,7 +280,7 @@ class Croston(BaseModel):
 
 class SBA(Croston):
     name = "SBA"
-    description = "Syntetos-Boylan Approximation (bias-corrected Croston)."
+    description = "Aproximação de Syntetos-Boylan (Croston com correção de viés)."
 
     def _forecast(self, y, h, X_train, X_future):
         z, p = _croston_core(y, self.alpha)
@@ -290,7 +290,7 @@ class SBA(Croston):
 class TSB(BaseModel):
     name = "TSB"
     family = "Intermittent"
-    description = "Teunter-Syntetos-Babai: smooths demand probability every period (handles obsolescence)."
+    description = "Teunter-Syntetos-Babai: suaviza a probabilidade de demanda a cada período (trata obsolescência)."
     min_obs = 6
     alpha = 0.1
     beta = 0.1
@@ -341,7 +341,10 @@ def _refs(X_train: pd.DataFrame) -> dict[str, float]:
 class Regression(BaseModel):
     name = "Regression"
     family = "Regression"
-    description = "Ridge regression on log demand: trend + month seasonality + promotion, price, distribution, merchandising, marketing, holidays."
+    description = (
+        "Regressão Ridge sobre o log da demanda: tendência, sazonalidade mensal, promoção, preço, "
+        "distribuição, merchandising, marketing e feriados."
+    )
     min_obs = 18
     uses_drivers = True
     ridge = 1.0
@@ -419,7 +422,7 @@ class _TreeModel(BaseModel):
 
 class RandomForest(_TreeModel):
     name = "Random Forest"
-    description = "Random forest on lag-12, calendar and driver features (log target)."
+    description = "Random Forest com lag de 12 meses, calendário e variáveis explicativas (alvo em log)."
 
     def _estimator(self):
         from sklearn.ensemble import RandomForestRegressor
@@ -431,7 +434,7 @@ class RandomForest(_TreeModel):
 
 class GradientBoosting(_TreeModel):
     name = "Gradient Boosting"
-    description = "Gradient boosted trees (scikit-learn) on lag-12, calendar and driver features."
+    description = "Gradient Boosting (scikit-learn) com lag de 12 meses, calendário e variáveis explicativas."
 
     def _estimator(self):
         from sklearn.ensemble import GradientBoostingRegressor

@@ -3,22 +3,22 @@
 
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
-  /* Brand chrome: yellow + blue theme */
-  --color-ink: #1f2430;
-  --color-ink-2: #3d4250;
-  --color-muted: #6b7080;
-  --color-line: #e3e3e3;
-  --color-plane: #ededed;
+  /* Premium soft UI — brand blue + sun yellow on airy pastel surfaces */
+  --color-ink: #1b1f3b;
+  --color-ink-2: #4a4f6a;
+  --color-muted: #8489a3;
+  --color-line: #e7eaf5;
+  --color-plane: #f3f5fc;
   --color-card: #ffffff;
   --color-brand: #3483fa;
-  --color-brand-dark: #2968c8;
+  --color-brand-dark: #2364d2;
   --color-navy: #2d3277;
-  --color-navy-dark: #232862;
+  --color-navy-dark: #20245a;
   --color-sun: #ffe600;
-  --color-sun-soft: #fff159;
-  --color-sidebar: #2d3277;
+  --color-sun-soft: #fff4a3;
+  --color-lilac: #eef0ff;
   /* Chart series (validated categorical slots 1-5, see docs/architecture.md) */
-  --color-s-actual: #0b1220;
+  --color-s-actual: #1b1f3b;
   --color-s-base: #2a78d6;
   --color-s-budget: #eb6834;
   --color-s-consensus: #1baf7a;
@@ -30,27 +30,34 @@
   --color-serious: #ec835a;
   --color-critical: #d03b3b;
   --color-under: #2a78d6;
+  --radius-4xl: 2rem;
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
-  background: var(--color-plane);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1100px 620px at -10% -10%, #dfe9ff 0%, transparent 60%),
+    radial-gradient(900px 520px at 110% -5%, #fff7c7 0%, transparent 55%),
+    radial-gradient(800px 600px at 60% 120%, #ece8ff 0%, transparent 60%),
+    linear-gradient(180deg, #f6f8fe 0%, #eff2fb 100%);
+  background-attachment: fixed;
 }
 
 .tabular {
   font-variant-numeric: tabular-nums;
 }
 
+/* Glassy card with soft lift */
 @utility card {
-  @apply rounded-xl border border-line bg-card shadow-[0_1px_2px_rgba(15,23,42,0.04)];
+  @apply rounded-3xl border border-white/80 bg-white/85 shadow-[0_12px_32px_-14px_rgba(45,50,119,0.22),0_2px_6px_-2px_rgba(45,50,119,0.06)] backdrop-blur-xl;
 }
 
 @utility label-xs {
@@ -58,37 +65,87 @@ body {
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
 }
 @utility btn-primary {
-  @apply btn bg-brand text-white hover:bg-brand-dark;
+  @apply btn bg-gradient-to-r from-[#3483fa] to-[#5b9cff] text-white shadow-[0_10px_22px_-10px_rgba(52,131,250,0.85)] hover:brightness-105 active:brightness-95;
 }
 @utility btn-secondary {
-  @apply btn border border-line bg-white text-ink hover:bg-slate-50;
+  @apply btn border border-line bg-white/90 text-ink shadow-[0_2px_8px_-4px_rgba(45,50,119,0.18)] hover:bg-white;
 }
 @utility btn-ghost {
-  @apply btn text-ink-2 hover:bg-slate-100;
+  @apply btn font-medium text-ink-2 hover:bg-white/70;
 }
 
 @utility input {
-  @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15;
+  @apply w-full rounded-xl border border-line bg-white/90 px-3.5 py-2.5 text-sm text-ink shadow-[inset_0_1px_2px_rgba(45,50,119,0.04)] outline-none transition placeholder:text-muted focus:border-brand focus:ring-4 focus:ring-brand/10;
 }
 
-.table-base {
-  @apply w-full border-collapse text-sm;
+/*
+ * Tables. Inside `@layer components` so Tailwind utilities on the same elements win:
+ * `text-right` on a <th>, `[&_td]:py-1.5` (DataTable dense), `whitespace-normal` on a cell…
+ * Unlayered rules would beat every utility layer regardless of specificity.
+ */
+@layer components {
+  .table-base {
+    @apply w-full border-collapse text-sm;
+  }
+  .table-base th {
+    @apply sticky top-0 z-10 whitespace-nowrap border-b border-line bg-[#f7f8fe] px-3.5 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-muted;
+  }
+  .table-base td {
+    @apply whitespace-nowrap border-b border-[#f0f2fa] px-3.5 py-2.5 align-middle;
+  }
+  /* Free-text cells (descriptions, comments) may wrap. */
+  .table-base td .wrap {
+    @apply inline-block min-w-[220px] whitespace-normal;
+  }
+  .table-base tr:hover td {
+    @apply bg-[#f4f7ff];
+  }
+
+  /* IBCS forecast (FC) hatch for HTML marks; ECharts uses the FC_DECAL token (lib/ibcs.ts). */
+  .ibcs-hatch {
+    background-color: #fff;
+    background-image: repeating-linear-gradient(135deg, #1b1f3b 0 1.5px, #fff 1.5px 5px);
+  }
+  /* Light gray hatch: root-cause group "Sem causa identificada". */
+  .ibcs-hatch-light {
+    background-color: #fff;
+    background-image: repeating-linear-gradient(135deg, #a3a8bf 0 1.5px, #fff 1.5px 5px);
+  }
 }
-.table-base th {
-  @apply sticky top-0 z-10 whitespace-nowrap border-b border-line bg-slate-50 px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider text-muted;
+
+/* Right sheet (components/Drawer.tsx). */
+@keyframes fl-drawer-in {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
 }
-.table-base td {
-  @apply whitespace-nowrap border-b border-slate-100 px-3 py-2 align-middle;
+@keyframes fl-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-/* Free-text cells (descriptions, comments) may wrap. */
-.table-base td .wrap {
-  @apply inline-block min-w-[220px] whitespace-normal;
+.drawer-panel {
+  animation: fl-drawer-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.table-base tr:hover td {
-  @apply bg-slate-50/70;
+.drawer-backdrop {
+  animation: fl-fade-in 0.2s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer-panel,
+  .drawer-backdrop {
+    animation: none;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -96,7 +153,7 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #cfd5ea;
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: content-box;

@@ -10,8 +10,10 @@ import pandas as pd
 
 from app import db
 from app.forecasting.models import MODEL_REGISTRY
+from app.forecasting.profiling import localize_reason
 from app.metrics import bias_class, forecast_accuracy
 from app.reconciliation.hierarchy import RECONCILERS
+from app.services import ptbr
 from app.services.context import (
     PlanningContext,
     backtest_metrics,
@@ -23,6 +25,7 @@ from app.services.context import (
 )
 
 LEVELS = ["company", "region", "channel", "customer", "category", "brand", "sku"]
+COMPANY_LABEL = "Empresa (total)"
 
 
 def _series_row(ctx: PlanningContext, series_id: str) -> pd.Series:
@@ -79,6 +82,8 @@ def series_detail(ctx: PlanningContext, series_id: str, measure: str = "units") 
         return out
     wm, b = row.get("wmape"), row.get("bias")
     prof = db.query_df("SELECT * FROM series_profiles WHERE run_id = ? AND series_id = ?", [ctx.run_id, series_id])
+    if len(prof):  # runs saved by older (English) versions
+        prof["classification_reason"] = prof["classification_reason"].map(localize_reason)
     reg = db.query_df(
         "SELECT model, status, wmape, bias, mae, rmse, mape, smape, mase, wmape_std, n_folds, fold_wmape, rank, "
         "parameters, champion_flag, challenger_flag, model_version FROM model_registry "
@@ -102,7 +107,10 @@ def series_detail(ctx: PlanningContext, series_id: str, measure: str = "units") 
         mask = (ov["customer"].isna() | (ov["customer"] == row["customer"])) & (
             ov["sku"].isna() | (ov["sku"] == row["sku"])
         )
-        ov = ov[mask]
+        ov = ov[mask].copy()
+        # event types / planners saved by older (English) versions are shown with the Portuguese label
+        ov["event_type"] = ov["event_type"].map(lambda v: ptbr.label(ptbr.EVENT_TYPE, v))
+        ov["created_by"] = ov["created_by"].map(lambda v: ptbr.label(ptbr.PLANNER, v))
     out.update(
         {
             "selection": clean(
@@ -176,10 +184,11 @@ def hierarchy_table(
     ctx: PlanningContext, level: str, filters: dict[str, Any] | None, measure: str = "units", method: str = "bottom_up"
 ) -> dict[str, Any]:
     if level not in LEVELS:
-        raise ValueError(f"level must be one of {LEVELS}")
+        options = ", ".join(f"{lv} ({ptbr.DIMENSION[lv]})" for lv in LEVELS)
+        raise ValueError(f"Nível inválido. Use um destes códigos: {options}")
     ids = filter_ids(ctx, filters)
     s = ctx.series[ctx.series["series_id"].isin(ids)].copy()
-    s["company"] = s.get("company", "ForecastLab Demo Co.")
+    s["company"] = s.get("company", COMPANY_LABEL)
     col = "revenue" if measure == "revenue" else "units"
     a = ctx.actuals[ctx.actuals["series_id"].isin(ids)].merge(s[["series_id", level]], on="series_id")
     ltm = a[a["date"].isin(ctx.ltm_dates)].groupby(level)[col].sum()
@@ -266,7 +275,7 @@ def model_distribution(ctx: PlanningContext, filters: dict[str, Any] | None = No
         return {"by_model": [], "by_type": [], "by_family": []}
     ids = filter_ids(ctx, filters)
     s = ctx.series[ctx.series["series_id"].isin(ids)].copy()
-    s["family"] = s["champion"].map(lambda m: MODEL_REGISTRY[m].family if m in MODEL_REGISTRY else "n/a")
+    s["family"] = s["champion"].map(lambda m: MODEL_REGISTRY[m].family if m in MODEL_REGISTRY else "n/d")
     by_type = s.groupby(["series_type", "champion"]).size().reset_index(name="count")
     return {
         "by_model": [{"model": k, "count": int(v)} for k, v in s["champion"].value_counts().items()],

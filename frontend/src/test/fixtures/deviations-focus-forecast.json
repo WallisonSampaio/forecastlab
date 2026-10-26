@@ -1,0 +1,298 @@
+{
+  "available": true,
+  "cmp": "ac_fc",
+  "lens": "forecast",
+  "measure": "revenue",
+  "period": {
+    "code": "bt",
+    "label": "Janela de backtest (out/2025–set/2026)",
+    "months": [
+      "2025-10-01",
+      "2025-11-01",
+      "2025-12-01",
+      "2026-01-01",
+      "2026-02-01",
+      "2026-03-01",
+      "2026-04-01",
+      "2026-05-01",
+      "2026-06-01",
+      "2026-07-01",
+      "2026-08-01",
+      "2026-09-01"
+    ],
+    "kind": "backtest"
+  },
+  "focus": {
+    "level": null,
+    "member": null,
+    "label": "Empresa toda"
+  },
+  "headline": "Empresa toda: o forecast estatístico errou 14,8% (R$ 15,40 mi) na janela de backtest (out/2025–set/2026); demanda intermitente ou volátil explica 27% e o viés é de -3,3% (equilibrado).",
+  "bridge": null,
+  "drivers": null,
+  "causes": [
+    {
+      "code": "promocao",
+      "label": "Promoção não antecipada",
+      "group": "controllable",
+      "group_label": "Controlável pelo processo",
+      "abs_error": 2917648.136396092,
+      "share": 0.1894532410744382,
+      "net_error": -2917648.136396092,
+      "direction": "under",
+      "n_cells": 247,
+      "n_series": 142
+    },
+    {
+      "code": "patamar",
+      "label": "Mudança de patamar",
+      "group": "controllable",
+      "group_label": "Controlável pelo processo",
+      "abs_error": 1643184.3399084937,
+      "share": 0.10669778682187307,
+      "net_error": -10272.072187493975,
+      "direction": "mixed",
+      "n_cells": 437,
+      "n_series": 47
+    },
+    {
+      "code": "merchandising",
+      "label": "Merchandising não antecipado",
+      "group": "controllable",
+      "group_label": "Controlável pelo processo",
+      "abs_error": 926151.4383730013,
+      "share": 0.060138297533797486,
+      "net_error": -926151.4383730013,
+      "direction": "under",
+      "n_cells": 120,
+      "n_series": 92
+    },
+    {
+      "code": "ruptura",
+      "label": "Ruptura de estoque",
+      "group": "controllable",
+      "group_label": "Controlável pelo processo",
+      "abs_error": 786165.8351260873,
+      "share": 0.05104853584935841,
+      "net_error": 786165.8351260873,
+      "direction": "over",
+      "n_cells": 56,
+      "n_series": 50
+    },
+    {
+      "code": "preco",
+      "label": "Mudança de preço",
+      "group": "controllable",
+      "group_label": "Controlável pelo processo",
+      "abs_error": 445993.7386507372,
+      "share": 0.02895995518865312,
+      "net_error": 445993.7386507372,
+      "direction": "over",
+      "n_cells": 103,
+      "n_series": 62
+    },
+    {
+      "code": "distribuicao",
+      "label": "Mudança de distribuição",
+      "group": "controllable",
+      "group_label": "Controlável pelo processo",
+      "abs_error": 135736.35152283908,
+      "share": 0.008813842699821026,
+      "net_error": -135736.35152283908,
+      "direction": "under",
+      "n_cells": 21,
+      "n_series": 12
+    },
+    {
+      "code": "volatilidade",
+      "label": "Demanda intermitente ou volátil",
+      "group": "inherent",
+      "group_label": "Inerente à demanda",
+      "abs_error": 4225775.29695945,
+      "share": 0.2743945769451683,
+      "net_error": 13144.721205591426,
+      "direction": "mixed",
+      "n_cells": 403,
+      "n_series": 47
+    },
+    {
+      "code": "ruido",
+      "label": "Variação normal (dentro da faixa P10–P90)",
+      "group": "inherent",
+      "group_label": "Inerente à demanda",
+      "abs_error": 3044347.8536293046,
+      "share": 0.1976803030609794,
+      "net_error": 656840.1733707496,
+      "direction": "over",
+      "n_cells": 1027,
+      "n_series": 131
+    },
+    {
+      "code": "nao_explicado",
+      "label": "Sem causa identificada",
+      "group": "unexplained",
+      "group_label": "Sem causa identificada",
+      "abs_error": 1275357.1186058226,
+      "share": 0.08281346082591093,
+      "net_error": -52254.64677632282,
+      "direction": "mixed",
+      "n_cells": 130,
+      "n_series": 75
+    }
+  ],
+  "split": {
+    "systematic": 4938910.782382911,
+    "noise": 10461449.326788917,
+    "systematic_share": 0.3207009931827176
+  },
+  "by_model": [
+    {
+      "model": "Regression",
+      "label": "Regressão",
+      "abs_error": 5060769.729598146,
+      "share": 0.32861372680396983,
+      "wmape": 0.13402212055444884
+    },
+    {
+      "model": "SBA",
+      "label": "SBA",
+      "abs_error": 1988424.8153999993,
+      "share": 0.1291154753073452,
+      "wmape": 1.266380634257459
+    },
+    {
+      "model": "ETS",
+      "label": "ETS",
+      "abs_error": 1733372.6660066992,
+      "share": 0.11255403469262858,
+      "wmape": 0.14524957883482412
+    }
+  ],
+  "fva": null,
+  "monthly": [
+    {
+      "date": "2025-10-01",
+      "actual": 6148819.77,
+      "forecast": 6301625.610203896,
+      "error": 152805.84020389535,
+      "abs_error": 1062132.838179531,
+      "wmape": 0.1327610847769186
+    },
+    {
+      "date": "2025-11-01",
+      "actual": 7762528.45,
+      "forecast": 7151125.165503089,
+      "error": -611403.2844969109,
+      "abs_error": 1444956.013031471,
+      "wmape": 0.1538736407516932
+    },
+    {
+      "date": "2025-12-01",
+      "actual": 9637899.29,
+      "forecast": 8389615.707224648,
+      "error": -1248283.582775353,
+      "abs_error": 1878433.5722764186,
+      "wmape": 0.14327566550656318
+    },
+    {
+      "date": "2026-01-01",
+      "actual": 7052049.53,
+      "forecast": 7082900.247277146,
+      "error": 30850.717277147007,
+      "abs_error": 1204367.8732585986,
+      "wmape": 0.1432551491221337
+    },
+    {
+      "date": "2026-02-01",
+      "actual": 7309457.2,
+      "forecast": 7043020.7850062065,
+      "error": -266436.41499379417,
+      "abs_error": 1518143.3032426857,
+      "wmape": 0.19195450099457745
+    },
+    {
+      "date": "2026-03-01",
+      "actual": 6539589.35,
+      "forecast": 6759265.390949926,
+      "error": 219676.0409499266,
+      "abs_error": 1108179.1095360597,
+      "wmape": 0.1428438444658722
+    },
+    {
+      "date": "2026-04-01",
+      "actual": 6434401.25,
+      "forecast": 6627019.785254793,
+      "error": 192618.5352547932,
+      "abs_error": 1103735.1971779512,
+      "wmape": 0.13122303724657758
+    },
+    {
+      "date": "2026-05-01",
+      "actual": 7290590.43,
+      "forecast": 6743785.698802944,
+      "error": -546804.731197056,
+      "abs_error": 1370040.3895063633,
+      "wmape": 0.1540825937071732
+    },
+    {
+      "date": "2026-06-01",
+      "actual": 6889865.08,
+      "forecast": 6740698.60290307,
+      "error": -149166.4770969295,
+      "abs_error": 1175304.9068818782,
+      "wmape": 0.14020484759651247
+    },
+    {
+      "date": "2026-07-01",
+      "actual": 6971833.64,
+      "forecast": 7108958.032600619,
+      "error": 137124.3926006188,
+      "abs_error": 1072476.8873032415,
+      "wmape": 0.12261435975513929
+    },
+    {
+      "date": "2026-08-01",
+      "actual": 6870932.520000001,
+      "forecast": 6913906.8688640725,
+      "error": 42974.34886407236,
+      "abs_error": 1090702.6670353855,
+      "wmape": 0.14186986366975968
+    },
+    {
+      "date": "2026-09-01",
+      "actual": 7098735.91,
+      "forecast": 7004862.348507008,
+      "error": -93873.56149299323,
+      "abs_error": 1371887.3517422436,
+      "wmape": 0.16804399483195487
+    }
+  ],
+  "quarters": null,
+  "diagnosis": [
+    "32% do erro é viés sistemático; o restante é ruído que se compensa.",
+    "Demanda intermitente ou volátil: R$ 4,23 mi de erro em 403 meses-série, com erros nos dois sentidos.",
+    "Entre as causas controláveis, promoção não antecipada lidera: R$ 2,92 mi (19% do erro)."
+  ],
+  "actions": [
+    {
+      "kind": "create_override",
+      "label": "Criar ajuste comercial · Planalto Atacado · SKU-10201",
+      "prefill": {
+        "customer": "Planalto Atacado",
+        "sku": "SKU-10201",
+        "date": "2027-02-01",
+        "event_type": "Promoção",
+        "uplift_pct": 0.5,
+        "comment": "Sugerido pelo deep dive: promoção não antecipada em fev/2026"
+      }
+    },
+    {
+      "kind": "ask_ai",
+      "label": "Perguntar à IA",
+      "prefill": {
+        "question": "Quais clientes estão subestimados?",
+        "filters": {}
+      }
+    }
+  ]
+}

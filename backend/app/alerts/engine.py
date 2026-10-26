@@ -14,20 +14,24 @@ import pandas as pd
 
 from app import db
 from app.services.context import Z90, PlanningContext, agg_sigma, clean
+from app.services.ptbr import dec, model, money, pct, series_type
 
 ALERT_TYPES = {
-    "high_error": {"title": "High Forecast Error", "color": "red", "icon": "🔴"},
-    "severe_over": {"title": "Severe Overforecast", "color": "red", "icon": "🔴"},
-    "severe_under": {"title": "Severe Underforecast", "color": "blue", "icon": "🔵"},
-    "target_above_p90": {"title": "Target Above P90", "color": "orange", "icon": "🟠"},
-    "structural_change": {"title": "Forecast Structural Change", "color": "orange", "icon": "🟠"},
-    "challenger_improving": {"title": "Challenger Model Improving", "color": "yellow", "icon": "🟡"},
-    "opportunity": {"title": "Commercial Opportunity", "color": "green", "icon": "🟢"},
+    "high_error": {"title": "Erro de forecast elevado", "color": "red", "icon": "🔴"},
+    "severe_over": {"title": "Superestimação severa", "color": "red", "icon": "🔴"},
+    "severe_under": {"title": "Subestimação severa", "color": "blue", "icon": "🔵"},
+    "target_above_p90": {"title": "Meta acima do P90", "color": "orange", "icon": "🟠"},
+    "structural_change": {"title": "Mudança estrutural no forecast", "color": "orange", "icon": "🟠"},
+    "challenger_improving": {"title": "Desafiante melhorando", "color": "yellow", "icon": "🟡"},
+    "opportunity": {"title": "Oportunidade comercial", "color": "green", "icon": "🟢"},
 }
 SEVERITY_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 MAX_PER_TYPE = 12
 
 _cache: dict[tuple, list[dict[str, Any]]] = {}
+# The context that owns the cached alerts. Compared by identity and kept alive, so a rebuilt context
+# (e.g. after an override is saved) that reuses the old memory address never gets stale alerts.
+_cache_owner: list[PlanningContext] = []
 
 
 def _alert(
@@ -66,11 +70,12 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
     if not ctx.has_run:
         return []
     key = (ctx.version, ctx.run_id, id(ctx))
-    if key in _cache:
+    if key in _cache and _cache_owner and _cache_owner[0] is ctx:
         return _cache[key]
     s = ctx.series.set_index("series_id")
     rev12 = ctx.forecast.assign(r=ctx.forecast["consensus"] * ctx.forecast["price"]).groupby("series_id")["r"].sum()
     total_rev = float(rev12.sum()) or 1.0
+    horizon = f"{len(ctx.future_dates)} meses"
     alerts: list[dict[str, Any]] = []
 
     def ent(sid: str) -> dict[str, Any]:
@@ -99,14 +104,14 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
                         "high_error",
                         sev,
                         ent(sid),
-                        f"WMAPE {w:.0%}",
+                        f"WMAPE {pct(w)}",
                         rev * w,
-                        f"Backtest error of {w:.0%} for the champion model ({r['champion']}).",
-                        f"Series classified as {r['series_type']}; even the best of {len(json.loads(r['candidates']))} "
-                        f"candidate models misses by {w:.0%} on average. Revenue exposed in the next 12 months: "
-                        f"{rev:,.0f}.",
-                        "Check data quality (outliers, stock-outs), confirm the demand pattern with Sales and consider "
-                        "managing this item with safety stock instead of forecast precision.",
+                        f"Erro de {pct(w)} fora da amostra (backtest) no modelo campeão ({model(r['champion'])}).",
+                        f"Série classificada como {series_type(r['series_type'])}; mesmo o melhor dos "
+                        f"{len(json.loads(r['candidates']))} modelos candidatos erra, em média, {pct(w)}. "
+                        f"Receita exposta no horizonte do forecast ({horizon}): {money(rev)}.",
+                        "Verifique a qualidade dos dados (outliers, rupturas), confirme o padrão de demanda com Vendas "
+                        "e considere gerenciar este item com estoque de segurança em vez de buscar precisão no forecast.",
                         w,
                     ),
                 )
@@ -121,15 +126,17 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
                         kind,
                         "high" if abs(b) > 0.25 else "medium",
                         ent(sid),
-                        f"Bias {b:+.0%}",
+                        f"Viés {pct(b, signed=True)}",
                         rev * abs(b),
-                        f"Systematic {'over' if b > 0 else 'under'}-forecast of {abs(b):.0%} in the backtest.",
-                        f"The {r['champion']} forecast has been consistently {'above' if b > 0 else 'below'} actual sales "
-                        f"over the last 12 months - a sign of a level change the model is still adapting to.",
-                        "Review recent level shifts, delistings or new listings and validate the next months with the "
-                        "account team."
+                        f"{'Superestimação' if b > 0 else 'Subestimação'} sistemática de {pct(abs(b))} no backtest.",
+                        f"O forecast do modelo {model(r['champion'])} ficou consistentemente "
+                        f"{'acima' if b > 0 else 'abaixo'} das vendas reais no backtest — sinal de uma "
+                        "mudança de patamar à qual o modelo ainda está se adaptando.",
+                        "Revise mudanças recentes de patamar, deslistagens ou novas listagens e valide os próximos "
+                        "meses com o time da conta."
                         if b > 0
-                        else "Check for unconstrained demand (stock-outs), new distribution or growth not yet captured.",
+                        else "Verifique demanda não atendida (rupturas), ganho de distribuição ou crescimento ainda "
+                        "não capturado pelo modelo.",
                         b,
                     ),
                 )
@@ -155,15 +162,16 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
                         "structural_change",
                         "medium",
                         ent(sid),
-                        f"Tracking signal {ts:+.1f}",
+                        f"Sinal de rastreamento {dec(ts, 1, signed=True)}",
                         rev * 0.1,
-                        "Demand behaviour changed recently."
+                        "O comportamento da demanda mudou recentemente."
                         if r["series_type"] != "Structural Change"
-                        else "A level shift was detected in the history.",
-                        f"Tracking signal over the last 6 backtest months is {ts:+.1f} (|TS| > 4.5 indicates persistent "
-                        f"bias). Series type: {r['series_type']}.",
-                        "Confirm the cause (price change, competitor, listing) and decide whether to shorten the "
-                        "training window or add a commercial override.",
+                        else "Uma mudança de patamar foi detectada no histórico.",
+                        "O sinal de rastreamento (tracking signal) dos últimos 6 meses do backtest é "
+                        f"{dec(ts, 1, signed=True)} (|TS| ≥ 4,5 indica viés persistente). "
+                        f"Tipo da série: {series_type(r['series_type'])}.",
+                        "Confirme a causa (mudança de preço, concorrente, listagem) e decida entre encurtar a janela "
+                        "de treino ou registrar um ajuste comercial.",
                         ts,
                     ),
                 )
@@ -194,12 +202,13 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
                         "challenger_improving",
                         "low",
                         ent(sid),
-                        f"{fw_cl[-1]:.0%} vs {fw_ch[-1]:.0%}",
+                        f"WMAPE {pct(fw_cl[-1])} vs {pct(fw_ch[-1])} do campeão",
                         rev * (fw_ch[-1] - fw_cl[-1]),
-                        f"Challenger {cl['model'].iloc[0]} beat champion {ch['model'].iloc[0]} in the two most recent folds.",
-                        "Over the full backtest the champion still wins, but recent folds favour the challenger - "
-                        "the demand pattern may be shifting.",
-                        "Monitor the next cycle; if the challenger keeps winning, promote it to champion.",
+                        f"O desafiante {model(cl['model'].iloc[0])} superou o campeão {model(ch['model'].iloc[0])} "
+                        "nas duas janelas de validação mais recentes.",
+                        "No backtest completo o campeão ainda vence, mas as janelas recentes favorecem o desafiante — "
+                        "o padrão de demanda pode estar mudando.",
+                        "Monitore o próximo ciclo; se o desafiante continuar vencendo, promova-o a campeão.",
                         fw_cl[-1],
                     ),
                 )
@@ -228,13 +237,13 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
                             "target_above_p90",
                             "high",
                             entity,
-                            f"Target {target / cons - 1:+.0%} vs consensus",
+                            f"Meta {pct(target / cons - 1 if cons else None, signed=True)} vs consenso",
                             target - cons,
-                            "The 12-month sales target is above the P90 of the forecast.",
-                            f"Target {target:,.0f} vs consensus {cons:,.0f} (P90 {p90:,.0f}). Fewer than 1 in 10 "
-                            "plausible outcomes reach this target without new commercial actions.",
-                            "Run the Target Feasibility analysis, recalibrate the target or document the growth levers "
-                            "(distribution, promotions) needed to close the gap.",
+                            f"A meta de vendas do horizonte ({horizon}) está acima do P90 do forecast.",
+                            f"Meta {money(target)} vs consenso {money(cons)} (P90 {money(p90)}). Menos de 1 em cada "
+                            "10 cenários plausíveis atinge essa meta sem novas ações comerciais.",
+                            "Rode a análise de Viabilidade da Meta, recalibre a meta ou documente as alavancas de "
+                            "crescimento (distribuição, promoções) necessárias para fechar o gap.",
                             target / cons - 1 if cons else None,
                         ),
                     )
@@ -248,12 +257,13 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
                             "opportunity",
                             "low",
                             entity,
-                            f"Consensus {cons / budget - 1:+.0%} vs budget",
+                            f"Consenso {pct(cons / budget - 1, signed=True)} vs orçamento",
                             cons - budget,
-                            "Demand is running ahead of the budget.",
-                            f"Consensus {cons:,.0f} vs budget {budget:,.0f}. Momentum (trend, distribution or channel "
-                            "growth) is not reflected in the plan.",
-                            "Secure supply for the upside, consider raising the target and replicate what is working.",
+                            "A demanda está acima do orçamento.",
+                            f"Consenso {money(cons)} vs orçamento {money(budget)}. O momento positivo (tendência, "
+                            "distribuição ou crescimento do canal) não está refletido no plano.",
+                            "Garanta abastecimento para a demanda adicional, avalie elevar a meta e replique o que está "
+                            "funcionando.",
                             cons / budget - 1,
                         ),
                     )
@@ -267,8 +277,28 @@ def build_alerts(ctx: PlanningContext) -> list[dict[str, Any]]:
         alerts.extend(a for _, a in items[:MAX_PER_TYPE])
     alerts.sort(key=lambda a: (SEVERITY_ORDER[a["severity"]], -(a["potential_impact"] or 0)))
     _cache.clear()
+    _cache_owner[:] = [ctx]
     _cache[key] = alerts
     return alerts
+
+
+def filter_alerts(ctx: PlanningContext, alerts: list[dict[str, Any]], ids) -> list[dict[str, Any]]:
+    """Alerts inside a filtered scope (``ids`` = series ids from ``context.filter_ids``).
+
+    Series alerts are kept when their series is in scope; customer alerts (target above P90, opportunity)
+    when the customer has at least one series in scope. With every series in scope the list is unchanged.
+    """
+    in_scope = set(ids)
+    if len(in_scope) >= len(ctx.series):
+        return alerts
+    customers = set(ctx.series.loc[ctx.series["series_id"].isin(in_scope), "customer"])
+    out = []
+    for a in alerts:
+        entity = a.get("entity") or {}
+        sid = entity.get("series_id")
+        if (sid in in_scope) if sid is not None else (entity.get("customer") in customers):
+            out.append(a)
+    return out
 
 
 def summary(alerts: list[dict[str, Any]]) -> dict[str, Any]:

@@ -13,9 +13,42 @@ def test_fva_override_example_from_prd():
     r = evaluate_override(statistical=100, override_pct=0.20, actual=103)
     assert r["consensus"] == pytest.approx(120)
     assert r["outcome"] == "Worsened"
-    assert r["message"] == "Override reduced forecast accuracy."
+    assert r["message"] == "O ajuste reduziu a acurácia do forecast."
     good = evaluate_override(statistical=100, override_pct=0.20, actual=118)
     assert good["outcome"] == "Improved" and good["fva_units"] == pytest.approx(16)
+    assert good["message"] == "O ajuste melhorou a acurácia do forecast."
+    neutral = evaluate_override(statistical=100, override_pct=0.0, actual=103)
+    assert neutral["outcome"] == "Neutral"
+    assert neutral["message"] == "O ajuste não teve efeito relevante na acurácia."
+
+
+def test_feasibility_texts_are_portuguese():
+    from app.sop.feasibility import CLASSES, _recommendation
+
+    assert [c["label"] for c in CLASSES.values()] == ["Realista", "Desafiadora", "Agressiva", "Subestimada"]
+    txt = _recommendation("AGGRESSIVE", 1_930_000, 0.148, "revenue")
+    assert "+14,8%" in txt and "R$ 1,93 mi" in txt
+    assert "1.234 unidades" in _recommendation("STRETCH", 1234, 0.05, "units")
+
+
+def test_event_library_uses_shared_portuguese_types():
+    from app.services.overrides import EVENT_LIBRARY
+
+    assert [e["type"] for e in EVENT_LIBRARY] == [
+        "Promoção",
+        "Merchandising",
+        "Ganho de distribuição",
+        "Perda de distribuição",
+        "Nova loja",
+        "Ganho de cliente",
+        "Perda de cliente",
+        "Campanha",
+        "Mudança de preço",
+        "Lançamento",
+        "Deslistagem",
+        "Ação de concorrente",
+    ]
+    assert all(e["description"] for e in EVENT_LIBRARY)
 
 
 @pytest.mark.parametrize(
@@ -91,12 +124,13 @@ def test_override_moves_consensus_by_uplift(api_client, ctx):
             "customer": cust,
             "sku": sku,
             "date": str(month.date()),
-            "event_type": "Promotion",
+            "event_type": "Promoção",
             "uplift_pct": 0.15,
-            "comment": "test",
+            "comment": "teste",
         },
     )
     assert r.status_code == 200, r.text
+    assert r.json()["event_type"] == "Promoção" and r.json()["created_by"] == "Planejador de Demanda"
     from app.services.context import get_context
 
     f = get_context().forecast
@@ -107,7 +141,89 @@ def test_override_moves_consensus_by_uplift(api_client, ctx):
     assert f.loc[(f["series_id"] == sid) & (f["date"] == month), "consensus"].item() == pytest.approx(base)
 
 
+def test_override_validation_messages_are_portuguese(api_client, ctx):
+    month = str(ctx.future_dates[0].date())
+    r = api_client.post("/api/overrides", json={"date": month, "event_type": "Festa", "uplift_pct": 0.1})
+    assert r.status_code == 400 and r.json()["detail"].startswith("Tipo de evento inválido")
+    r = api_client.post("/api/overrides", json={"date": month, "event_type": "Campanha", "uplift_pct": 9})
+    assert r.status_code == 400 and r.json()["detail"] == "O ajuste deve ficar entre -100% e +500%"
+    r = api_client.post("/api/overrides", json={"date": "2001-01-01", "event_type": "Campanha", "uplift_pct": 0.1})
+    assert r.status_code == 400 and "horizonte do forecast" in r.json()["detail"]
+    assert api_client.delete("/api/overrides/OVR-NAOEXISTE").json()["detail"] == "Ajuste comercial não encontrado"
+
+
+def test_legacy_english_overrides_still_display(api_client, ctx):
+    """Overrides saved by the English version keep working and are shown with Portuguese labels."""
+    from app import db
+    from app.services import context
+
+    sid = ctx.series["series_id"].iloc[0]
+    cust, sku = sid.split("|")
+    legacy = pd.DataFrame(
+        [
+            {
+                "override_id": "OVR-LEGACY01",
+                "dataset_version": ctx.version,
+                "customer": cust,
+                "sku": sku,
+                "date": ctx.future_dates[2],
+                "event_type": "Distribution Gain",
+                "uplift_pct": 0.05,
+                "comment": "legacy",
+                "created_by": "Key Account Manager",
+                "created_at": pd.Timestamp("2025-01-01"),
+            }
+        ]
+    )
+    db.insert_df("overrides", legacy)
+    context.bump_overrides()
+    try:
+        rows = {o["override_id"]: o for o in api_client.get("/api/overrides").json()}
+        assert rows["OVR-LEGACY01"]["event_type"] == "Ganho de distribuição"
+        assert rows["OVR-LEGACY01"]["created_by"] == "Key Account (KAM)"
+        detail = api_client.get("/api/forecast/series-detail", params={"series_id": sid}).json()
+        legacy_row = next(o for o in detail["overrides"] if o["override_id"] == "OVR-LEGACY01")
+        assert (legacy_row["event_type"], legacy_row["created_by"]) == ("Ganho de distribuição", "Key Account (KAM)")
+        assert api_client.get("/api/export/excel").status_code == 200
+        upd = api_client.put(
+            "/api/overrides/OVR-LEGACY01",
+            json={
+                "customer": cust,
+                "sku": sku,
+                "date": str(ctx.future_dates[2].date()),
+                "event_type": "Promotion",
+                "uplift_pct": 0.05,
+                "created_by": "Sales Director",
+            },
+        )
+        assert upd.status_code == 200, upd.text
+        assert upd.json()["event_type"] == "Promoção" and upd.json()["created_by"] == "Diretor de Vendas"
+    finally:
+        api_client.delete("/api/overrides/OVR-LEGACY01")
+
+
+def test_presets_migrate_from_english(ctx):
+    """Databases created by the English version get the Portuguese preset names and descriptions."""
+    from app import db
+    from app.scenarios import store
+
+    store.ensure_presets(ctx)
+    db.execute(
+        "UPDATE scenarios SET name = 'Conservative', description = ? WHERE scenario_id = 'SCN-CONSERVATIVE'",
+        ["Price pass-through, slight distribution loss, lower marketing and a softer market."],
+    )
+    db.execute("UPDATE scenarios SET name = 'Meu agressivo' WHERE scenario_id = 'SCN-AGGRESSIVE'")
+    store.refresh_presets(ctx)
+    by_id = {s["scenario_id"]: s for s in store.list_scenarios()}
+    assert by_id["SCN-CONSERVATIVE"]["name"] == "Conservador"
+    assert by_id["SCN-CONSERVATIVE"]["description"].startswith("Repasse de preço")
+    assert by_id["SCN-AGGRESSIVE"]["name"] == "Meu agressivo"  # renamed by the user: kept
+    assert by_id["SCN-BASE"]["name"] == "Base"
+    db.execute("UPDATE scenarios SET name = 'Agressivo' WHERE scenario_id = 'SCN-AGGRESSIVE'")
+
+
 def test_hierarchy_levels_sum_to_total(api_client):
     region = api_client.get("/api/forecast/hierarchy", params={"level": "region"}).json()["rows"]
     company = api_client.get("/api/forecast/hierarchy", params={"level": "company"}).json()["rows"]
     assert sum(r["forecast_12m"] for r in region) == pytest.approx(company[0]["forecast_12m"])
+    assert company[0]["member"] == "Empresa (total)"

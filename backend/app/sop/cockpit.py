@@ -74,7 +74,7 @@ def cockpit(ctx: PlanningContext, filters: dict[str, Any] | None = None, measure
     }
     tl = timeline(ctx, filters, measure, history_months=24)
     future = tl[tl["date"] > ctx.last_actual].copy()
-    future["quarter"] = [f"Q{i // 3 + 1}" for i in range(len(future))]
+    future["quarter"] = [f"T{i // 3 + 1}" for i in range(len(future))]  # T = trimestre do horizonte
     quarters = future.groupby("quarter", sort=True)[["base", "consensus", "budget", "target"]].sum().reset_index()
     quarters["gap_vs_budget"] = quarters["consensus"] - quarters["budget"]
     quarters["start"] = future.groupby("quarter")["date"].min().values
@@ -95,7 +95,7 @@ def cockpit(ctx: PlanningContext, filters: dict[str, Any] | None = None, measure
 
 
 def overview(ctx: PlanningContext, filters: dict[str, Any] | None = None) -> dict[str, Any]:
-    from app.alerts.engine import build_alerts
+    from app.alerts.engine import build_alerts, filter_alerts
 
     ids = filter_ids(ctx, filters)
     out: dict[str, Any] = {
@@ -111,7 +111,8 @@ def overview(ctx: PlanningContext, filters: dict[str, Any] | None = None) -> dic
     tr = horizon_totals(ctx, ids, "revenue")
     s = ctx.series[ctx.series["series_id"].isin(ids)]
     over = s[(s["bias"] > 0.05)]
-    alerts = build_alerts(ctx)
+    # Alerts, their counts and "SKUs em risco" follow the same filters as the other KPIs.
+    alerts = filter_alerts(ctx, build_alerts(ctx), ids)
     risk_skus = {
         a["entity"].get("sku") for a in alerts if a["severity"] in ("critical", "high") and a["entity"].get("sku")
     }

@@ -1,0 +1,722 @@
+{
+  "available": true,
+  "cmp": "fc_pl",
+  "lens": "plan",
+  "measure": "revenue",
+  "period": {
+    "code": "h",
+    "label": "Próximos 12 meses (out/2026–set/2027)",
+    "months": [
+      "2026-10-01",
+      "2026-11-01",
+      "2026-12-01",
+      "2027-01-01",
+      "2027-02-01",
+      "2027-03-01",
+      "2027-04-01",
+      "2027-05-01",
+      "2027-06-01",
+      "2027-07-01",
+      "2027-08-01",
+      "2027-09-01"
+    ],
+    "kind": "future"
+  },
+  "series_id": "Litoral Market|SKU-30102",
+  "label": "Litoral Market · SKU-30102 PuraPele Protetor Solar FPS50 120ml",
+  "header": {
+    "customer": "Litoral Market",
+    "sku": "SKU-30102",
+    "product": "PuraPele Protetor Solar FPS50 120ml",
+    "region": "Nordeste",
+    "channel": "Varejo Moderno",
+    "category": "Cuidados Pessoais",
+    "series_type_label": "Sazonal",
+    "confidence": "High",
+    "champion": "Holt-Winters",
+    "challenger": "SARIMA"
+  },
+  "summary": {
+    "reference": 691339.14,
+    "compared": 373557.6128020164,
+    "variance": -317781.52719798364,
+    "variance_pct": -0.4596608362112749,
+    "realized_variance_pct": -0.2299362460696353,
+    "prob_hit": 2.117264275924846e-5
+  },
+  "timeline": [
+    {
+      "date": "2024-10-01",
+      "actual": 39431.68,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2024-11-01",
+      "actual": 62520.75,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2024-12-01",
+      "actual": 128433.28,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-01-01",
+      "actual": 75966.72,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-02-01",
+      "actual": 67043.2,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-03-01",
+      "actual": 43496.32,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-04-01",
+      "actual": 24137.28,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-05-01",
+      "actual": 14688.0,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-06-01",
+      "actual": 12386.88,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-07-01",
+      "actual": 16156.8,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-08-01",
+      "actual": 18164.16,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-09-01",
+      "actual": 30893.76,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": null,
+      "budget": null,
+      "target": null
+    },
+    {
+      "date": "2025-10-01",
+      "actual": 44676.84,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 40297.00399730097,
+      "budget": 51977.09,
+      "target": 52999.85
+    },
+    {
+      "date": "2025-11-01",
+      "actual": 62766.72,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 71043.02689727329,
+      "budget": 102976.62,
+      "target": 108343.56
+    },
+    {
+      "date": "2025-12-01",
+      "actual": 125827.2,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 131495.46840268144,
+      "budget": 167518.64,
+      "target": 172625.74
+    },
+    {
+      "date": "2026-01-01",
+      "actual": 91897.92,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 94166.63346923243,
+      "budget": 101177.08,
+      "target": 106185.24
+    },
+    {
+      "date": "2026-02-01",
+      "actual": 69816.96,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 79950.97556800915,
+      "budget": 88575.72,
+      "target": 92971.54
+    },
+    {
+      "date": "2026-03-01",
+      "actual": 46218.24,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 51610.71931147352,
+      "budget": 58552.77,
+      "target": 61989.63
+    },
+    {
+      "date": "2026-04-01",
+      "actual": 22927.59,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 15828.505090967703,
+      "budget": 30969.0,
+      "target": 32358.32
+    },
+    {
+      "date": "2026-05-01",
+      "actual": 22251.72,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 10757.334977485623,
+      "budget": 18365.07,
+      "target": 19420.24
+    },
+    {
+      "date": "2026-06-01",
+      "actual": 11645.76,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 8726.509068545614,
+      "budget": 15562.0,
+      "target": 16283.39
+    },
+    {
+      "date": "2026-07-01",
+      "actual": 12945.51,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 11565.321132429648,
+      "budget": 20514.75,
+      "target": 21554.09
+    },
+    {
+      "date": "2026-08-01",
+      "actual": 16376.85,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 14160.386553950348,
+      "budget": 22670.14,
+      "target": 23956.05
+    },
+    {
+      "date": "2026-09-01",
+      "actual": 24851.22,
+      "base": null,
+      "consensus": null,
+      "incremental": null,
+      "p10": null,
+      "p90": null,
+      "challenger": null,
+      "backtest": 18518.291662053296,
+      "budget": 38227.89,
+      "target": 39923.14
+    },
+    {
+      "date": "2026-10-01",
+      "actual": null,
+      "base": 28405.62526841434,
+      "consensus": 28405.62526841434,
+      "incremental": 0.0,
+      "p10": 22746.98308161839,
+      "p90": 34064.26745521029,
+      "challenger": 50930.45570061362,
+      "backtest": null,
+      "budget": 61672.71,
+      "target": 64381.64
+    },
+    {
+      "date": "2026-11-01",
+      "actual": null,
+      "base": 44905.91825068209,
+      "consensus": 44905.91825068209,
+      "incremental": 0.0,
+      "p10": 36903.38972549871,
+      "p90": 52908.446775865465,
+      "challenger": 64391.8305259976,
+      "backtest": null,
+      "budget": 79999.48,
+      "target": 84431.58
+    },
+    {
+      "date": "2026-12-01",
+      "actual": null,
+      "base": 93963.21983961681,
+      "consensus": 93963.21983961681,
+      "incremental": 0.0,
+      "p10": 84162.16407023357,
+      "p90": 103764.27560900005,
+      "challenger": 129086.79610470742,
+      "backtest": null,
+      "budget": 155138.5,
+      "target": 163828.67
+    },
+    {
+      "date": "2027-01-01",
+      "actual": null,
+      "base": 64832.003549257955,
+      "consensus": 64832.003549257955,
+      "incremental": 0.0,
+      "p10": 53514.71917566606,
+      "p90": 76149.28792284985,
+      "challenger": 94278.0917987709,
+      "backtest": null,
+      "budget": 116342.52,
+      "target": 121273.55
+    },
+    {
+      "date": "2027-02-01",
+      "actual": null,
+      "base": 50687.08869313104,
+      "consensus": 50687.08869313104,
+      "incremental": 0.0,
+      "p10": 38033.980103107235,
+      "p90": 63340.19728315484,
+      "challenger": 71624.80804411412,
+      "backtest": null,
+      "budget": 88894.77,
+      "target": 92819.06
+    },
+    {
+      "date": "2027-03-01",
+      "actual": null,
+      "base": 27600.384605102478,
+      "consensus": 27600.384605102478,
+      "incremental": 0.0,
+      "p10": 13739.598610465631,
+      "p90": 41461.17059973932,
+      "challenger": 47414.424962640405,
+      "backtest": null,
+      "budget": 57672.01,
+      "target": 60513.53
+    },
+    {
+      "date": "2027-04-01",
+      "actual": null,
+      "base": 13635.139816093093,
+      "consensus": 12271.625834483784,
+      "incremental": -1363.5139816093097,
+      "p10": 0.0,
+      "p90": 28606.499800653874,
+      "challenger": 22149.23265977469,
+      "backtest": null,
+      "budget": 26973.61,
+      "target": 28238.68
+    },
+    {
+      "date": "2027-05-01",
+      "actual": null,
+      "base": 9299.66082294472,
+      "consensus": 9299.66082294472,
+      "incremental": 0.0,
+      "p10": 0.0,
+      "p90": 25304.717873311474,
+      "challenger": 21496.255522722367,
+      "backtest": null,
+      "budget": 26533.9,
+      "target": 27835.68
+    },
+    {
+      "date": "2027-06-01",
+      "actual": null,
+      "base": 7315.605097871557,
+      "consensus": 7315.605097871557,
+      "incremental": 0.0,
+      "p10": 0.0,
+      "p90": 24291.531658259395,
+      "challenger": 11249.537372057257,
+      "backtest": null,
+      "budget": 13883.42,
+      "target": 14695.3
+    },
+    {
+      "date": "2027-07-01",
+      "actual": null,
+      "base": 8973.089830375957,
+      "consensus": 8973.089830375957,
+      "incremental": 0.0,
+      "p10": 0.0,
+      "p90": 26867.287604567126,
+      "challenger": 12505.26263561919,
+      "backtest": null,
+      "budget": 15432.74,
+      "target": 16300.39
+    },
+    {
+      "date": "2027-08-01",
+      "actual": null,
+      "base": 10739.99782108685,
+      "consensus": 10739.99782108685,
+      "incremental": 0.0,
+      "p10": 0.0,
+      "p90": 29507.590777565183,
+      "challenger": 15820.377331422653,
+      "backtest": null,
+      "budget": 19405.47,
+      "target": 20467.31
+    },
+    {
+      "date": "2027-09-01",
+      "actual": null,
+      "base": 14563.393189048798,
+      "consensus": 14563.393189048798,
+      "incremental": 0.0,
+      "p10": 0.0,
+      "p90": 34165.50472781528,
+      "challenger": 24007.70604984637,
+      "backtest": null,
+      "budget": 29390.01,
+      "target": 30842.29
+    }
+  ],
+  "evidence": null,
+  "months": [
+    {
+      "date": "2026-10-01",
+      "x": 28405.62526841434,
+      "p": 61672.71,
+      "py": 44676.84,
+      "target": 64381.64,
+      "low": 22746.98308161839,
+      "high": 34064.26745521029,
+      "variance": -33267.08473158566,
+      "variance_pct": -0.539413376379693
+    },
+    {
+      "date": "2026-11-01",
+      "x": 44905.91825068209,
+      "p": 79999.48,
+      "py": 62766.72,
+      "target": 84431.58,
+      "low": 36903.38972549871,
+      "high": 52908.446775865465,
+      "variance": -35093.56174931791,
+      "variance_pct": -0.43867237323689995
+    },
+    {
+      "date": "2026-12-01",
+      "x": 93963.21983961681,
+      "p": 155138.5,
+      "py": 125827.2,
+      "target": 163828.67,
+      "low": 84162.16407023357,
+      "high": 103764.27560900005,
+      "variance": -61175.28016038319,
+      "variance_pct": -0.3943268766965208
+    },
+    {
+      "date": "2027-01-01",
+      "x": 64832.003549257955,
+      "p": 116342.52,
+      "py": 91897.92,
+      "target": 121273.55,
+      "low": 53514.71917566606,
+      "high": 76149.28792284985,
+      "variance": -51510.51645074205,
+      "variance_pct": -0.44274884582818086
+    },
+    {
+      "date": "2027-02-01",
+      "x": 50687.08869313104,
+      "p": 88894.77,
+      "py": 69816.96,
+      "target": 92819.06,
+      "low": 38033.980103107235,
+      "high": 63340.19728315484,
+      "variance": -38207.681306868966,
+      "variance_pct": -0.42980797753196237
+    },
+    {
+      "date": "2027-03-01",
+      "x": 27600.384605102478,
+      "p": 57672.01,
+      "py": 46218.24,
+      "target": 60513.53,
+      "low": 13739.598610465631,
+      "high": 41461.17059973932,
+      "variance": -30071.625394897525,
+      "variance_pct": -0.5214249580497978
+    },
+    {
+      "date": "2027-04-01",
+      "x": 12271.625834483784,
+      "p": 26973.61,
+      "py": 22927.59,
+      "target": 28238.68,
+      "low": 0.0,
+      "high": 25745.84982058849,
+      "variance": -14701.984165516216,
+      "variance_pct": -0.5450506686170749
+    },
+    {
+      "date": "2027-05-01",
+      "x": 9299.66082294472,
+      "p": 26533.9,
+      "py": 22251.72,
+      "target": 27835.68,
+      "low": 0.0,
+      "high": 25304.717873311474,
+      "variance": -17234.239177055282,
+      "variance_pct": -0.6495177556655931
+    },
+    {
+      "date": "2027-06-01",
+      "x": 7315.605097871557,
+      "p": 13883.42,
+      "py": 11645.76,
+      "target": 14695.3,
+      "low": 0.0,
+      "high": 24291.531658259395,
+      "variance": -6567.8149021284435,
+      "variance_pct": -0.47306894858244175
+    },
+    {
+      "date": "2027-07-01",
+      "x": 8973.089830375957,
+      "p": 15432.74,
+      "py": 12945.51,
+      "target": 16300.39,
+      "low": 0.0,
+      "high": 26867.287604567126,
+      "variance": -6459.650169624043,
+      "variance_pct": -0.41856793865665093
+    },
+    {
+      "date": "2027-08-01",
+      "x": 10739.99782108685,
+      "p": 19405.47,
+      "py": 16376.85,
+      "target": 20467.31,
+      "low": 0.0,
+      "high": 29507.590777565183,
+      "variance": -8665.47217891315,
+      "variance_pct": -0.44654791555747686
+    },
+    {
+      "date": "2027-09-01",
+      "x": 14563.393189048798,
+      "p": 29390.01,
+      "py": 24851.22,
+      "target": 30842.29,
+      "low": 0.0,
+      "high": 34165.50472781528,
+      "variance": -14826.6168109512,
+      "variance_pct": -0.5044781138540341
+    }
+  ],
+  "effects": {
+    "volume": -305193.30036448047,
+    "mix": 8.224991204318012,
+    "price": -11232.93784309826,
+    "events": -1363.5139816093097
+  },
+  "tags": [
+    {
+      "code": "premissa_otimista",
+      "label": "Premissa de crescimento otimista"
+    },
+    {
+      "code": "queda_estrutural",
+      "label": "Queda estrutural"
+    }
+  ],
+  "recommended_action": {
+    "code": "premissa_otimista",
+    "label": "Revisar a premissa de crescimento do orçamento com o Key Account e o FP&A."
+  },
+  "actions": [
+    {
+      "kind": "open_workspace",
+      "label": "Abrir no workspace",
+      "prefill": {
+        "series_id": "Litoral Market|SKU-30102"
+      }
+    },
+    {
+      "kind": "create_override",
+      "label": "Criar ajuste comercial",
+      "prefill": {
+        "customer": "Litoral Market",
+        "sku": "SKU-30102",
+        "date": "2026-10-01"
+      }
+    },
+    {
+      "kind": "simulate",
+      "label": "Simular cenário",
+      "prefill": {
+        "scope": {
+          "customer": "Litoral Market",
+          "sku": "SKU-30102"
+        },
+        "customer": "Litoral Market",
+        "sku": "SKU-30102"
+      }
+    },
+    {
+      "kind": "ask_ai",
+      "label": "Perguntar à IA",
+      "prefill": {
+        "question": "Como está o cliente Litoral Market?",
+        "filters": {
+          "customer": "Litoral Market",
+          "sku": "SKU-30102"
+        }
+      }
+    }
+  ],
+  "future_overrides": [
+    {
+      "date": "2027-04-01",
+      "event_type": "Perda de cliente",
+      "uplift_pct": -0.1,
+      "comment": "Cliente reduzindo o sortimento em 3 lojas"
+    }
+  ],
+  "notices": []
+}

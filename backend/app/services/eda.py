@@ -10,7 +10,7 @@ import pandas as pd
 
 from app import db
 from app.forecasting.panel import build_panel
-from app.forecasting.profiling import profile_series
+from app.forecasting.profiling import localize_reason, profile_series
 from app.services.context import PlanningContext, clean, filter_ids, records
 
 
@@ -125,6 +125,8 @@ def series_profiles(ctx: PlanningContext, filters: dict[str, Any] | None = None)
     )
     if "champion" in ctx.series:
         prof = prof.merge(ctx.series[["series_id", "champion", "wmape", "confidence"]], on="series_id", how="left")
+    if "classification_reason" in prof:  # runs saved by older (English) versions
+        prof["classification_reason"] = prof["classification_reason"].map(localize_reason)
     counts = prof["series_type"].value_counts()
     keep = [c for c in prof.columns if c not in ("candidate_models", "break_index")]
     return {

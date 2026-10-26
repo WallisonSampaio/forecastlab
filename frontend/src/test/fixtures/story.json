@@ -1,0 +1,1166 @@
+{
+  "available": true,
+  "reference": {
+    "cycle_label": "out/2026",
+    "last_actual": "2026-09-01",
+    "horizon_label": "out/2026–set/2027",
+    "horizon_months": 12,
+    "ltm_label": "out/2025–set/2026",
+    "backtest_label": "out/2025–set/2026",
+    "lag_label": "1–3 meses",
+    "scope_label": "Empresa toda",
+    "dataset_version": "dataset_2026_10_v01",
+    "run_id": "RUN-20261026-053746",
+    "plan_source": "Orçamento anual e metas de vendas sintéticos",
+    "plan_derived": false,
+    "has_plan": true
+  },
+  "governing_thought": "Vamos crescer 7,3% nos próximos 12 meses, mas fechar R$ 4,09 mi abaixo do orçamento: 2 clientes concentram 59% das perdas e a meta tem 29% de chance.",
+  "scqa": {
+    "situacao": "Fechamos os últimos 12 meses com R$ 87,86 mi (+15,2% vs ano anterior) e 96,1% do orçamento.",
+    "complicacao": "O consenso para os próximos 12 meses (out/2026–set/2027) soma R$ 94,30 mi: R$ 4,09 mi abaixo do orçamento e R$ 11,70 mi abaixo da meta.",
+    "resposta": "5 decisões para hoje: decidir sobre a meta; corrigir o viés de 68 séries."
+  },
+  "chapters": [
+    {
+      "id": "resumo",
+      "index": 1,
+      "title": "Resumo executivo",
+      "short": "Resumo",
+      "question": "Qual é a mensagem principal para a reunião de S&OP?",
+      "headline": "Vamos crescer 7,3% nos próximos 12 meses, mas fechar R$ 4,09 mi abaixo do orçamento: 2 clientes concentram 59% das perdas e a meta tem 29% de chance.",
+      "context": "Realizado out/2025–set/2026 · projeção out/2026–set/2027 · Receita (R$) · Empresa toda",
+      "takeaways": [],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "kpis",
+        "data": {
+          "cards": [
+            {
+              "id": "actual_ltm",
+              "label": "Real · últimos 12 meses",
+              "value": 87860615.79,
+              "format": "currency",
+              "text": null,
+              "delta": "+15,2% vs ano anterior",
+              "delta_tone": "good",
+              "hint": "-3,9% vs orçamento"
+            },
+            {
+              "id": "consensus",
+              "label": "Consenso · próximos 12 meses",
+              "value": 94301270.0,
+              "format": "currency",
+              "text": null,
+              "delta": "-4,2% vs orçamento",
+              "delta_tone": "bad",
+              "hint": "+7,3% vs últimos 12 meses"
+            },
+            {
+              "id": "prob_target",
+              "label": "Chance de bater a meta",
+              "value": 0.290362,
+              "format": "percent",
+              "text": null,
+              "delta": "Desafiadora",
+              "delta_tone": "neutral",
+              "hint": "meta R$ 106,00 mi"
+            },
+            {
+              "id": "accuracy",
+              "label": "Acurácia do forecast",
+              "value": 0.852,
+              "format": "percent",
+              "text": null,
+              "delta": "Confiável para decisão",
+              "delta_tone": "good",
+              "hint": "viés -3,3%"
+            }
+          ]
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "fc_pl",
+          "periodo": "h",
+          "nivel": "customer"
+        }
+      },
+      "secondary_action": null,
+      "ask_ai": "Quais os principais riscos?",
+      "facts": {
+        "has_plan": 1,
+        "ac_ltm": 87860615.79,
+        "ac_vs_py": 0.151823,
+        "pl_ltm": 91444610.62,
+        "attain_pl": 0.960807,
+        "fc": 94301270.0,
+        "fc_vs_ltm": 0.073305,
+        "gap_pl": -4086087.14,
+        "gap_pl_pct": -0.041531,
+        "gap_tg": -11702453.39,
+        "target": 106003723.39,
+        "prob_tg": 0.290362,
+        "class_code": "STRETCH",
+        "class_tg": "Desafiadora",
+        "n_top": 2,
+        "share_top": 0.594785,
+        "level": "customer",
+        "accuracy": 0.852,
+        "bias": -0.033364,
+        "verdict": "confiavel",
+        "verdict_label": "Confiável para decisão",
+        "p10": 67148329.34,
+        "p90": 121454210.65
+      }
+    },
+    {
+      "id": "realizado",
+      "index": 2,
+      "title": "Realizado vs orçamento",
+      "short": "Realizado",
+      "question": "Como fechamos os últimos 12 meses frente ao orçamento — e por quê?",
+      "headline": "Vendemos 4,0% mais unidades que o orçado, mas a receita ficou 3,9% abaixo do orçamento (R$ 3,58 mi): preço (-R$ 5,00 mi) e mix (-R$ 2,26 mi) anularam o ganho de volume.",
+      "context": "Real × Orçamento · out/2025–set/2026 · Receita (R$) · Empresa toda",
+      "takeaways": [
+        {
+          "text": "Crescemos **+15,2%** sobre o ano anterior (R$ 76,28 mi → R$ 87,86 mi) e atingimos **96,1%** do orçamento e 89,2% da meta.",
+          "link": null
+        },
+        {
+          "text": "**45%** do efeito preço veio de meses com promoção; nos meses regulares o preço realizado ficou **-3,6%** vs o orçado.",
+          "link": null
+        },
+        {
+          "text": "**Rede Horizonte Supermercados** responde por 29% das perdas vs orçamento (-R$ 1,58 mi).",
+          "link": {
+            "label": "Ver no deep dive",
+            "params": {
+              "cmp": "ac_pl",
+              "periodo": "u12m",
+              "nivel": "customer",
+              "sel": "Rede Horizonte Supermercados"
+            }
+          }
+        }
+      ],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "bridge",
+        "data": {
+          "steps": [
+            {
+              "key": "reference",
+              "label": "Orçamento",
+              "value": 91444610.62,
+              "kind": "total",
+              "help": "Orçamento do recorte no período.",
+              "notation": "PL"
+            },
+            {
+              "key": "volume",
+              "label": "Volume",
+              "value": 3673482.96,
+              "kind": "delta",
+              "help": "Diferença de unidades frente ao orçado, valorizada ao preço médio orçado do recorte."
+            },
+            {
+              "key": "mix",
+              "label": "Mix",
+              "value": -2262475.93,
+              "kind": "delta",
+              "help": "Composição Cliente × SKU × mês: vender mais (ou menos) itens de preço orçado acima da média."
+            },
+            {
+              "key": "price",
+              "label": "Preço",
+              "value": -4995001.86,
+              "kind": "delta",
+              "help": "Preço realizado de cada série frente ao preço implícito no orçamento."
+            },
+            {
+              "key": "compared",
+              "label": "Real",
+              "value": 87860615.79,
+              "kind": "total",
+              "help": "Venda realizada no período.",
+              "notation": "AC"
+            }
+          ],
+          "note": "Volume valorizado ao preço médio orçado; mix no nível Cliente × SKU × mês."
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "ac_pl",
+          "periodo": "u12m",
+          "nivel": "customer"
+        }
+      },
+      "secondary_action": null,
+      "ask_ai": "Quanto vendemos nos últimos 12 meses?",
+      "facts": {
+        "ac": 87860615.79,
+        "pl": 91444610.62,
+        "py": 76279585.95,
+        "tg": 98544476.46,
+        "v": -3583994.83,
+        "v_pct": -0.039193,
+        "units_pct": 0.040172,
+        "vol": 3673482.96,
+        "mix": -2262475.93,
+        "price": -4995001.86,
+        "price_promo": -2236569.45,
+        "reg_price_gap": -0.035526,
+        "avg_price_gap": -0.054483,
+        "ac_vs_py": 0.151823,
+        "attain_pl": 0.960807,
+        "attain_tg": 0.891583,
+        "top_adv": "Rede Horizonte Supermercados",
+        "top_adv_key": "Rede Horizonte Supermercados",
+        "top_adv_v": -1576773.98,
+        "top_adv_share": 0.29316,
+        "top_fav": "Planalto Atacado",
+        "top_fav_key": "Planalto Atacado",
+        "top_fav_v": 731175.56
+      }
+    },
+    {
+      "id": "precisao",
+      "index": 3,
+      "title": "Precisão do forecast",
+      "short": "Precisão",
+      "question": "Quanto o forecast errou, em que direção e por quê?",
+      "headline": "O forecast errou 14,8% fora da amostra — 12,5 p.p. a menos que o método ingênuo — e 45% do erro tem causa controlável: promoção não antecipada lidera (19%).",
+      "context": "Real × Estatístico (campeão) · backtest out/2025–set/2026, 1–3 meses de antecedência · WMAPE em unidades · Empresa toda",
+      "takeaways": [
+        {
+          "text": "Viés de **-3,3%** (equilibrado): **32%** do erro é sistemático; o restante é ruído que se compensa.",
+          "link": null
+        },
+        {
+          "text": "Os ajustes comerciais melhoraram a acurácia em **1,1 p.p.** (56% dos ajustes agregaram valor); ajustes de **campanha** pioraram 12,6 p.p.",
+          "link": null
+        },
+        {
+          "text": "**3** clientes concentram 40% do erro (Atlas Hipermercados, MaxiCompra Atacarejo e Rede Horizonte Supermercados).",
+          "link": {
+            "label": "Ver no deep dive",
+            "params": {
+              "cmp": "ac_fc",
+              "nivel": "customer"
+            }
+          }
+        }
+      ],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "cause_bars",
+        "data": {
+          "causes": [
+            {
+              "code": "promocao",
+              "label": "Promoção não antecipada",
+              "group": "controllable",
+              "group_label": "Controlável pelo processo",
+              "abs_error": 2917648.14,
+              "share": 0.189453,
+              "net_error": -2917648.14,
+              "direction": "under",
+              "n_cells": 247,
+              "n_series": 142
+            },
+            {
+              "code": "patamar",
+              "label": "Mudança de patamar",
+              "group": "controllable",
+              "group_label": "Controlável pelo processo",
+              "abs_error": 1643184.34,
+              "share": 0.106698,
+              "net_error": -10272.07,
+              "direction": "mixed",
+              "n_cells": 437,
+              "n_series": 47
+            },
+            {
+              "code": "merchandising",
+              "label": "Merchandising não antecipado",
+              "group": "controllable",
+              "group_label": "Controlável pelo processo",
+              "abs_error": 926151.44,
+              "share": 0.060138,
+              "net_error": -926151.44,
+              "direction": "under",
+              "n_cells": 120,
+              "n_series": 92
+            },
+            {
+              "code": "ruptura",
+              "label": "Ruptura de estoque",
+              "group": "controllable",
+              "group_label": "Controlável pelo processo",
+              "abs_error": 786165.84,
+              "share": 0.051049,
+              "net_error": 786165.84,
+              "direction": "over",
+              "n_cells": 56,
+              "n_series": 50
+            },
+            {
+              "code": "preco",
+              "label": "Mudança de preço",
+              "group": "controllable",
+              "group_label": "Controlável pelo processo",
+              "abs_error": 445993.74,
+              "share": 0.02896,
+              "net_error": 445993.74,
+              "direction": "over",
+              "n_cells": 103,
+              "n_series": 62
+            },
+            {
+              "code": "distribuicao",
+              "label": "Mudança de distribuição",
+              "group": "controllable",
+              "group_label": "Controlável pelo processo",
+              "abs_error": 135736.35,
+              "share": 0.008814,
+              "net_error": -135736.35,
+              "direction": "under",
+              "n_cells": 21,
+              "n_series": 12
+            },
+            {
+              "code": "volatilidade",
+              "label": "Demanda intermitente ou volátil",
+              "group": "inherent",
+              "group_label": "Inerente à demanda",
+              "abs_error": 4225775.3,
+              "share": 0.274395,
+              "net_error": 13144.72,
+              "direction": "mixed",
+              "n_cells": 403,
+              "n_series": 47
+            },
+            {
+              "code": "ruido",
+              "label": "Variação normal (dentro da faixa P10–P90)",
+              "group": "inherent",
+              "group_label": "Inerente à demanda",
+              "abs_error": 3044347.85,
+              "share": 0.19768,
+              "net_error": 656840.17,
+              "direction": "over",
+              "n_cells": 1027,
+              "n_series": 131
+            },
+            {
+              "code": "nao_explicado",
+              "label": "Sem causa identificada",
+              "group": "unexplained",
+              "group_label": "Sem causa identificada",
+              "abs_error": 1275357.12,
+              "share": 0.082813,
+              "net_error": -52254.65,
+              "direction": "mixed",
+              "n_cells": 130,
+              "n_series": 75
+            }
+          ],
+          "total_abs_error": 15400360.11,
+          "note": "Erro fora da amostra (backtest com origem móvel, 1–3 meses de antecedência). WMAPE em unidades; impacto valorizado ao preço realizado. Cada mês-série recebe uma única causa, pela ordem de prioridade, e só quando o sinal do erro é coerente com a causa."
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "ac_fc",
+          "periodo": "bt",
+          "nivel": "customer"
+        }
+      },
+      "secondary_action": null,
+      "ask_ai": "Quais ajustes comerciais pioraram a acurácia?",
+      "facts": {
+        "wmape": 0.148,
+        "naive": 0.272819,
+        "gain_pp": 0.124819,
+        "bias": -0.033364,
+        "bias_label": "Equilibrado",
+        "controllable_share": 0.445112,
+        "inherent_share": 0.472075,
+        "cause1": "Promoção não antecipada",
+        "cause1_code": "promocao",
+        "cause1_share": 0.189453,
+        "systematic_share": 0.320701,
+        "has_history": 1,
+        "fva_pp": 0.01133,
+        "value_added": 0.557065,
+        "worst_event": "Campanha",
+        "worst_event_pp": -0.126128,
+        "n_top_err": 3,
+        "share_top_err": 0.397452,
+        "names": "Atlas Hipermercados, MaxiCompra Atacarejo e Rede Horizonte Supermercados",
+        "total_abs_error": 15400360.11
+      }
+    },
+    {
+      "id": "projecao",
+      "index": 4,
+      "title": "Próximos 12 meses",
+      "short": "Próximos 12 meses",
+      "question": "Para onde vamos, frente ao orçamento e à meta?",
+      "headline": "O consenso projeta R$ 94,30 mi até set/2027 (+7,3% vs últimos 12 meses): R$ 4,09 mi abaixo do orçamento e R$ 11,70 mi abaixo da meta.",
+      "context": "Consenso × Orçamento · out/2026–set/2027 · Receita (R$) · Empresa toda",
+      "takeaways": [
+        {
+          "text": "**T1 · out–dez/2026** é o trimestre mais crítico (-R$ 1,65 mi); **dez/2026** sozinho responde por -R$ 1,34 mi.",
+          "link": null
+        },
+        {
+          "text": "O orçamento está dentro da faixa provável P10–P90 (R$ 67,15 mi–R$ 121,45 mi); a meta está dentro dela.",
+          "link": null
+        },
+        {
+          "text": "Eventos comerciais cadastrados somam **+R$ 129,0 mil** (6 ajustes).",
+          "link": null
+        }
+      ],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "monthly_variance",
+        "data": {
+          "x_kind": "FC",
+          "rows": [
+            {
+              "date": "2026-10-01",
+              "x": 7477216.43,
+              "p": 7207727.92,
+              "py": 6344973.51,
+              "target": 7762098.61,
+              "low": 6541741.08,
+              "high": 8412691.78,
+              "variance": 269488.51,
+              "variance_pct": 0.037389
+            },
+            {
+              "date": "2026-11-01",
+              "x": 8544928.72,
+              "p": 9121388.1,
+              "py": 7976219.17,
+              "target": 9827305.58,
+              "low": 7217981.41,
+              "high": 9871876.03,
+              "variance": -576459.38,
+              "variance_pct": -0.063199
+            },
+            {
+              "date": "2026-12-01",
+              "x": 9975358.04,
+              "p": 11318891.32,
+              "py": 9923580.96,
+              "target": 12148825.68,
+              "low": 8347873.58,
+              "high": 11602842.51,
+              "variance": -1343533.28,
+              "variance_pct": -0.118698
+            },
+            {
+              "date": "2027-01-01",
+              "x": 8155468.85,
+              "p": 8307744.09,
+              "py": 7267167.17,
+              "target": 8939029.44,
+              "low": 6281330.41,
+              "high": 10029607.3,
+              "variance": -152275.24,
+              "variance_pct": -0.018329
+            },
+            {
+              "date": "2027-02-01",
+              "x": 8287982.78,
+              "p": 8798147.13,
+              "py": 7603394.11,
+              "target": 9468903.32,
+              "low": 6175594.01,
+              "high": 10400371.56,
+              "variance": -510164.35,
+              "variance_pct": -0.057985
+            },
+            {
+              "date": "2027-03-01",
+              "x": 7776305.34,
+              "p": 7739476.96,
+              "py": 6771409.89,
+              "target": 8347742.22,
+              "low": 5484868.07,
+              "high": 10067742.61,
+              "variance": 36828.38,
+              "variance_pct": 0.004759
+            },
+            {
+              "date": "2027-04-01",
+              "x": 7090536.63,
+              "p": 7179485.49,
+              "py": 6574542.83,
+              "target": 7751163.31,
+              "low": 4630109.0,
+              "high": 9550964.25,
+              "variance": -88948.86,
+              "variance_pct": -0.012389
+            },
+            {
+              "date": "2027-05-01",
+              "x": 7441555.05,
+              "p": 8130091.99,
+              "py": 7434193.02,
+              "target": 8748977.52,
+              "low": 4793265.61,
+              "high": 10089844.49,
+              "variance": -688536.94,
+              "variance_pct": -0.08469
+            },
+            {
+              "date": "2027-06-01",
+              "x": 7308766.35,
+              "p": 7694402.86,
+              "py": 7023633.06,
+              "target": 8308887.21,
+              "low": 4502340.3,
+              "high": 10115192.4,
+              "variance": -385636.51,
+              "variance_pct": -0.050119
+            },
+            {
+              "date": "2027-07-01",
+              "x": 7475063.19,
+              "p": 7589758.49,
+              "py": 6971833.64,
+              "target": 8196186.23,
+              "low": 4516830.39,
+              "high": 10433295.99,
+              "variance": -114695.3,
+              "variance_pct": -0.015112
+            },
+            {
+              "date": "2027-08-01",
+              "x": 7370136.61,
+              "p": 7561156.25,
+              "py": 6870932.52,
+              "target": 8173261.63,
+              "low": 4267515.87,
+              "high": 10472757.34,
+              "variance": -191019.64,
+              "variance_pct": -0.025263
+            },
+            {
+              "date": "2027-09-01",
+              "x": 7397952.0,
+              "p": 7739086.54,
+              "py": 7098735.91,
+              "target": 8331342.64,
+              "low": 4157370.33,
+              "high": 10638533.67,
+              "variance": -341134.54,
+              "variance_pct": -0.044079
+            }
+          ],
+          "quarters": [
+            {
+              "code": "t1",
+              "label": "T1 · out–dez/2026",
+              "start": "2026-10-01",
+              "end": "2026-12-01",
+              "variance": -1650504.14
+            },
+            {
+              "code": "t2",
+              "label": "T2 · jan–mar/2027",
+              "start": "2027-01-01",
+              "end": "2027-03-01",
+              "variance": -625611.2
+            },
+            {
+              "code": "t3",
+              "label": "T3 · abr–jun/2027",
+              "start": "2027-04-01",
+              "end": "2027-06-01",
+              "variance": -1163122.31
+            },
+            {
+              "code": "t4",
+              "label": "T4 · jul–set/2027",
+              "start": "2027-07-01",
+              "end": "2027-09-01",
+              "variance": -646849.48
+            }
+          ],
+          "x_label": "Consenso",
+          "p_label": "Orçamento"
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "fc_pl",
+          "periodo": "h",
+          "nivel": "region"
+        }
+      },
+      "secondary_action": null,
+      "ask_ai": "Por que o forecast de dezembro de 2026 está abaixo do orçamento?",
+      "facts": {
+        "has_plan": 1,
+        "fc": 94301270.0,
+        "fc_vs_ltm": 0.073305,
+        "horizon_end": "2027-09-01",
+        "gap_pl": -4086087.14,
+        "gap_tg": -11702453.39,
+        "budget": 98387357.14,
+        "target": 106003723.39,
+        "p10": 67148329.34,
+        "p90": 121454210.65,
+        "worst_q": "T1 · out–dez/2026",
+        "worst_q_gap": -1650504.14,
+        "worst_q_start": "2026-10-01",
+        "worst_q_end": "2026-12-01",
+        "worst_month": "2026-12-01",
+        "worst_month_gap": -1343533.28,
+        "events": 129011.93,
+        "n_events": 6
+      }
+    },
+    {
+      "id": "gap",
+      "index": 5,
+      "title": "Gap vs orçamento",
+      "short": "Gap vs orçamento",
+      "question": "Quem explica o gap vs orçamento — e é premissa ou demanda?",
+      "headline": "2 clientes concentram 59% das perdas vs orçamento: Litoral Market e Rede Horizonte Supermercados orçaram +23,5% e +21,4% de crescimento; o forecast indica -3,7% e +6,2%.",
+      "context": "Consenso × Orçamento por cliente · out/2026–set/2027 · Receita (R$) · Empresa toda",
+      "takeaways": [
+        {
+          "text": "Por quê: volume **-R$ 1,40 mi**, mix **-R$ 2,10 mi**, preço **-R$ 711,5 mil**, eventos **+R$ 129,0 mil** — o orçamento assume preço +0,8% vs o atual.",
+          "link": null
+        },
+        {
+          "text": "Upside: 5 clientes acima do orçamento somam **+R$ 886,9 mil**; ClickCesta Online lidera (+R$ 418,2 mil).",
+          "link": null
+        },
+        {
+          "text": "Litoral Market tem **13%** de chance de atingir o orçamento e já ficou **-17,2%** vs orçamento nos últimos 12 meses — desvio recorrente, não ruído.",
+          "link": {
+            "label": "Ver no deep dive",
+            "params": {
+              "cmp": "fc_pl",
+              "periodo": "h",
+              "nivel": "customer",
+              "sel": "Litoral Market"
+            }
+          }
+        }
+      ],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "variance_bars",
+        "data": {
+          "rows": [
+            {
+              "key": "Litoral Market",
+              "label": "Litoral Market",
+              "x": 5596541.49,
+              "p": 7177766.5,
+              "variance": -1581225.01,
+              "variance_pct": -0.220295,
+              "share_of_adverse": 0.317963,
+              "share_of_favorable": null,
+              "cum_share": 0.317963,
+              "prob_hit": 0.130175,
+              "growth_plan": 0.235036,
+              "growth_fc": -0.037036,
+              "realized_variance_pct": -0.172125,
+              "effects": {
+                "volume": -1060431.44,
+                "mix": -369986.35,
+                "price": -108710.85,
+                "events": -42096.37
+              },
+              "tags": [
+                {
+                  "code": "premissa_otimista",
+                  "label": "Premissa de crescimento otimista"
+                },
+                {
+                  "code": "queda_estrutural",
+                  "label": "Queda estrutural"
+                }
+              ],
+              "is_exception": true,
+              "n_series": 21,
+              "drillable": true
+            },
+            {
+              "key": "Rede Horizonte Supermercados",
+              "label": "Rede Horizonte Supermercados",
+              "x": 9626562.65,
+              "p": 11003195.99,
+              "variance": -1376633.34,
+              "variance_pct": -0.125112,
+              "share_of_adverse": 0.276822,
+              "share_of_favorable": null,
+              "cum_share": 0.594785,
+              "prob_hit": 0.244031,
+              "growth_plan": 0.213698,
+              "growth_fc": 0.06185,
+              "realized_variance_pct": -0.148157,
+              "effects": {
+                "volume": -1215645.97,
+                "mix": -187904.29,
+                "price": 13045.19,
+                "events": 13871.73
+              },
+              "tags": [
+                {
+                  "code": "premissa_otimista",
+                  "label": "Premissa de crescimento otimista"
+                }
+              ],
+              "is_exception": true,
+              "n_series": 20,
+              "drillable": true
+            },
+            {
+              "key": "Atlas Hipermercados",
+              "label": "Atlas Hipermercados",
+              "x": 19398896.72,
+              "p": 20110553.55,
+              "variance": -711656.83,
+              "variance_pct": -0.035387,
+              "share_of_adverse": 0.143105,
+              "share_of_favorable": null,
+              "cum_share": 0.73789,
+              "prob_hit": 0.431419,
+              "growth_plan": 0.124054,
+              "growth_fc": 0.084277,
+              "realized_variance_pct": -0.080615,
+              "effects": {
+                "volume": 389692.17,
+                "mix": -598382.99,
+                "price": -572722.03,
+                "events": 69756.02
+              },
+              "tags": [
+                {
+                  "code": "preco",
+                  "label": "Preço abaixo do orçado"
+                },
+                {
+                  "code": "mix",
+                  "label": "Mix desfavorável"
+                }
+              ],
+              "is_exception": false,
+              "n_series": 20,
+              "drillable": true
+            },
+            {
+              "key": "Nordeste Atacadista",
+              "label": "Nordeste Atacadista",
+              "x": 5386470.7,
+              "p": 5806907.99,
+              "variance": -420437.29,
+              "variance_pct": -0.072403,
+              "share_of_adverse": 0.084544,
+              "share_of_favorable": null,
+              "cum_share": 0.822434,
+              "prob_hit": 0.382059,
+              "growth_plan": 0.121995,
+              "growth_fc": 0.040759,
+              "realized_variance_pct": -0.007783,
+              "effects": {
+                "volume": -209820.29,
+                "mix": -53629.91,
+                "price": -156987.09,
+                "events": 0.0
+              },
+              "tags": [
+                {
+                  "code": "premissa_otimista",
+                  "label": "Premissa de crescimento otimista"
+                }
+              ],
+              "is_exception": false,
+              "n_series": 15,
+              "drillable": true
+            },
+            {
+              "key": "Serra Gaúcha Supermercados",
+              "label": "Serra Gaúcha Supermercados",
+              "x": 6022329.66,
+              "p": 6399532.09,
+              "variance": -377202.43,
+              "variance_pct": -0.058942,
+              "share_of_adverse": 0.07585,
+              "share_of_favorable": null,
+              "cum_share": 0.898285,
+              "prob_hit": 0.413544,
+              "growth_plan": 0.090492,
+              "growth_fc": 0.026216,
+              "realized_variance_pct": -0.024808,
+              "effects": {
+                "volume": -235220.18,
+                "mix": -195150.48,
+                "price": 53168.23,
+                "events": 0.0
+              },
+              "tags": [
+                {
+                  "code": "mix",
+                  "label": "Mix desfavorável"
+                }
+              ],
+              "is_exception": false,
+              "n_series": 21,
+              "drillable": true
+            },
+            {
+              "key": "Bom Sabor Distribuidora",
+              "label": "Bom Sabor Distribuidora",
+              "x": 5274149.57,
+              "p": 5603525.68,
+              "variance": -329376.11,
+              "variance_pct": -0.05878,
+              "share_of_adverse": 0.066233,
+              "share_of_favorable": null,
+              "cum_share": 0.964518,
+              "prob_hit": 0.421811,
+              "growth_plan": 0.11235,
+              "growth_fc": 0.046966,
+              "realized_variance_pct": -0.022924,
+              "effects": {
+                "volume": -142667.14,
+                "mix": -149929.77,
+                "price": -36779.2,
+                "events": 0.0
+              },
+              "tags": [
+                {
+                  "code": "mix",
+                  "label": "Mix desfavorável"
+                }
+              ],
+              "is_exception": false,
+              "n_series": 16,
+              "drillable": true
+            },
+            {
+              "key": "ClickCesta Online",
+              "label": "ClickCesta Online",
+              "x": 6590133.0,
+              "p": 6171937.51,
+              "variance": 418195.49,
+              "variance_pct": 0.067758,
+              "share_of_adverse": null,
+              "share_of_favorable": 0.471527,
+              "cum_share": 0.471527,
+              "prob_hit": 0.627684,
+              "growth_plan": 0.087526,
+              "growth_fc": 0.161214,
+              "realized_variance_pct": 0.122613,
+              "effects": {
+                "volume": 639733.72,
+                "mix": -161509.04,
+                "price": -60029.2,
+                "events": 0.0
+              },
+              "tags": [
+                {
+                  "code": "volume",
+                  "label": "Volume acima do orçado"
+                }
+              ],
+              "is_exception": false,
+              "n_series": 13,
+              "drillable": true
+            },
+            {
+              "key": "CuraMais Farmácias",
+              "label": "CuraMais Farmácias",
+              "x": 2374481.46,
+              "p": 2199261.95,
+              "variance": 175219.51,
+              "variance_pct": 0.079672,
+              "share_of_adverse": null,
+              "share_of_favorable": 0.197565,
+              "cum_share": 0.669092,
+              "prob_hit": 0.623005,
+              "growth_plan": 0.10082,
+              "growth_fc": 0.188525,
+              "realized_variance_pct": -0.091457,
+              "effects": {
+                "volume": 48342.75,
+                "mix": 120963.97,
+                "price": 5912.79,
+                "events": 0.0
+              },
+              "tags": [
+                {
+                  "code": "momentum_nao_orcado",
+                  "label": "Crescimento não orçado"
+                },
+                {
+                  "code": "mix",
+                  "label": "Mix favorável"
+                }
+              ],
+              "is_exception": false,
+              "n_series": 8,
+              "drillable": true
+            }
+          ],
+          "others": {
+            "n": 6,
+            "value": 117028.87
+          },
+          "level": "customer",
+          "level_label": "Cliente"
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "fc_pl",
+          "periodo": "h",
+          "nivel": "customer",
+          "sel": "Litoral Market"
+        }
+      },
+      "secondary_action": null,
+      "ask_ai": "Como está o cliente Litoral Market?",
+      "facts": {
+        "v": -4086087.14,
+        "v_pct": -0.041531,
+        "level": "customer",
+        "n_top": 2,
+        "share": 0.594785,
+        "vol": -1402421.17,
+        "mix": -2101152.54,
+        "price": -711525.36,
+        "events": 129011.93,
+        "plan_price_premium": 0.007975,
+        "n_pos": 5,
+        "pos": 886896.3,
+        "top_pos": "ClickCesta Online",
+        "top_pos_v": 418195.49,
+        "p_top1": 0.130175,
+        "rv_top1": -0.172125,
+        "n1": "Litoral Market",
+        "key1": "Litoral Market",
+        "v1": -1581225.01,
+        "tag1": "Premissa de crescimento otimista",
+        "tag1_code": "premissa_otimista",
+        "gp1": 0.235036,
+        "gf1": -0.037036,
+        "n2": "Rede Horizonte Supermercados",
+        "key2": "Rede Horizonte Supermercados",
+        "v2": -1376633.34,
+        "tag2": "Premissa de crescimento otimista",
+        "tag2_code": "premissa_otimista",
+        "gp2": 0.213698,
+        "gf2": 0.06185,
+        "n3": "Atlas Hipermercados",
+        "key3": "Atlas Hipermercados",
+        "v3": -711656.83,
+        "tag3": "Preço abaixo do orçado",
+        "tag3_code": "preco"
+      }
+    },
+    {
+      "id": "meta",
+      "index": 6,
+      "title": "Viabilidade da meta",
+      "short": "Meta",
+      "question": "Qual a chance de bater a meta e o que seria preciso?",
+      "headline": "A meta de R$ 106,00 mi é desafiadora: 29% de chance — fechar R$ 11,70 mi exige +13,3% de distribuição numérica.",
+      "context": "Consenso × Meta · out/2026–set/2027 · Receita (R$) · Empresa toda",
+      "takeaways": [
+        {
+          "text": "A meta está acima do consenso (P50), mas dentro da faixa P10–P90.",
+          "link": null
+        },
+        {
+          "text": "Crescimento exigido **+20,6%** vs previsto +7,3% e histórico +15,2%.",
+          "link": null
+        },
+        {
+          "text": "Menor chance por região: **Nordeste** (24%); nenhuma região com meta agressiva.",
+          "link": null
+        }
+      ],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "feasibility_range",
+        "data": {
+          "p10": 67148329.34,
+          "p50": 94301270.0,
+          "p90": 121454210.65,
+          "target": 106003723.39,
+          "budget": 98387357.14,
+          "consensus": 94301270.0,
+          "probability": 0.290362,
+          "classification": "STRETCH",
+          "display": {
+            "color": "yellow",
+            "label": "Desafiadora"
+          }
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "fc_tg",
+          "periodo": "h",
+          "nivel": "region"
+        }
+      },
+      "secondary_action": {
+        "label": "Simular alavanca",
+        "route": "/app/scenarios?distribution_change_pct=0.133"
+      },
+      "ask_ai": "A meta é realista?",
+      "facts": {
+        "target": 106003723.39,
+        "prob": 0.290362,
+        "classification": "STRETCH",
+        "class_label": "Desafiadora",
+        "gap": 11702453.39,
+        "lever": "Distribution",
+        "lever_change": 0.132664,
+        "required_growth": 0.206499,
+        "forecast_growth": 0.073305,
+        "historical_growth": 0.151823,
+        "p10": 67148329.34,
+        "p90": 121454210.65,
+        "feas_dim": "region",
+        "r1": "Nordeste",
+        "p1": 0.235789,
+        "n_by": 5,
+        "n_aggr": 0
+      }
+    },
+    {
+      "id": "decisoes",
+      "index": 7,
+      "title": "Decisões para hoje",
+      "short": "Decisões",
+      "question": "O que precisamos decidir hoje?",
+      "headline": "5 decisões para hoje — a maior envolve R$ 11,70 mi: decidir sobre a meta, corrigir o viés de 68 séries e cadastrar o calendário promocional.",
+      "context": "Desvios, viabilidade, erro e ajustes · out/2026–set/2027 · Empresa toda",
+      "takeaways": [],
+      "status": "ok",
+      "notice": null,
+      "visual": {
+        "kind": "decision_table",
+        "data": {
+          "rows": [
+            {
+              "code": "D4",
+              "decision": "Decidir: recalibrar a meta ou aprovar +13,3% de distribuição numérica",
+              "short": "decidir sobre a meta",
+              "evidence": "29% de chance de bater a meta",
+              "impact": 11702453.39,
+              "impact_basis": "horizonte",
+              "owner": "Diretoria Comercial",
+              "link": {
+                "label": "Simular alavanca",
+                "route": "/app/scenarios?distribution_change_pct=0.133"
+              }
+            },
+            {
+              "code": "D5",
+              "decision": "Corrigir o viés de 68 séries",
+              "short": "corrigir o viés de 68 séries",
+              "evidence": "Sinal de rastreamento ou viés fora do limite no backtest",
+              "impact": 5501150.82,
+              "impact_basis": "horizonte",
+              "owner": "Planejamento de Demanda",
+              "link": {
+                "label": "Ver no deep dive",
+                "route": "/app/desvios?lente=previsao&cmp=ac_fc&nivel=series"
+              }
+            },
+            {
+              "code": "D2",
+              "decision": "Cadastrar o calendário promocional como ajuste comercial antes do consenso",
+              "short": "cadastrar o calendário promocional",
+              "evidence": "25% do erro veio de promoções/merchandising não antecipados",
+              "impact": 3843799.57,
+              "impact_basis": "backtest_anualizado",
+              "owner": "Trade Marketing + Demanda",
+              "link": {
+                "label": "Ver no deep dive",
+                "route": "/app/desvios?lente=previsao&cmp=ac_fc&nivel=customer&causa=promocao"
+              }
+            },
+            {
+              "code": "D1",
+              "decision": "Revisar o orçamento de Litoral Market e Rede Horizonte Supermercados",
+              "short": "revisar o orçamento de 2 clientes",
+              "evidence": "Litoral Market: orçamento supõe +23,5% de crescimento vs -3,7% previstos, e já ficou -17,2% vs orçamento nos últimos 12 meses",
+              "impact": 2957858.36,
+              "impact_basis": "horizonte",
+              "owner": "Key Account + FP&A",
+              "link": {
+                "label": "Ver no deep dive",
+                "route": "/app/desvios?nivel=customer"
+              }
+            },
+            {
+              "code": "D3",
+              "decision": "Garantir abastecimento para o upside de ClickCesta Online, CuraMais Farmácias, Amazônia Distribuição e mais 2 clientes",
+              "short": "garantir abastecimento para o upside",
+              "evidence": "5 clientes acima do orçamento",
+              "impact": 886896.3,
+              "impact_basis": "horizonte",
+              "owner": "Supply + Key Account",
+              "link": {
+                "label": "Ver no deep dive",
+                "route": "/app/desvios?nivel=customer"
+              }
+            }
+          ]
+        }
+      },
+      "investigate": {
+        "label": "Investigar no deep dive",
+        "params": {
+          "cmp": "fc_pl",
+          "periodo": "h",
+          "nivel": "series"
+        }
+      },
+      "secondary_action": null,
+      "ask_ai": null,
+      "facts": {
+        "n": 5,
+        "d1_code": "D4",
+        "d2_code": "D5",
+        "d3_code": "D2",
+        "d1_short": "decidir sobre a meta",
+        "d2_short": "corrigir o viés de 68 séries",
+        "d3_short": "cadastrar o calendário promocional",
+        "d1_impact": 11702453.39,
+        "d2_impact": 5501150.82,
+        "d3_impact": 3843799.57
+      }
+    }
+  ]
+}

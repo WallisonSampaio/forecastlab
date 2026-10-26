@@ -72,7 +72,7 @@ def run_engine(
 ) -> EngineOutput:
     t0 = time.perf_counter()
     progress = progress or (lambda done, total, step: None)
-    progress(0, 1, "Building series panel")
+    progress(0, 1, "Montando o painel de séries")
     panel = build_panel(sales, params.horizon)
     total = len(panel)
     workers = workers if workers is not None else default_workers()
@@ -81,10 +81,10 @@ def run_engine(
     def _sequential(items):
         for s in items:
             results.append(process_series_safe(s, params))
-            progress(len(results), total, f"Backtesting {s.series_id}")
+            progress(len(results), total, f"Testando {s.series_id.replace('|', ' · ')}")
 
     if workers > 1 and total >= 16:
-        progress(0, total, f"Backtesting models on {total} series ({workers} workers)")
+        progress(0, total, f"Testando modelos em {total} séries ({workers} processos)")
         for var in _BLAS_VARS:  # inherited by the spawned workers before numpy loads
             os.environ.setdefault(var, "1")
         try:
@@ -94,7 +94,7 @@ def run_engine(
                 futures = {ex.submit(process_series_safe, s, params): s for s in panel}
                 for fut in as_completed(futures):
                     results.append(fut.result())
-                    progress(len(results), total, f"Backtesting {futures[fut].series_id}")
+                    progress(len(results), total, f"Testando {futures[fut].series_id.replace('|', ' · ')}")
         except (BrokenProcessPool, OSError, RuntimeError) as exc:  # pragma: no cover - environment specific
             log.warning("Process pool unavailable (%s); running sequentially", exc)
             done = {r["series_id"] for r in results}
@@ -102,7 +102,7 @@ def run_engine(
     else:
         _sequential(panel)
 
-    progress(total, total, "Assembling results")
+    progress(total, total, "Consolidando resultados")
     results.sort(key=lambda r: r["series_id"])
     sel_rows, prof_rows, reg_rows, bt_rows, fc_rows, errors = [], [], [], [], [], []
     for r in results:

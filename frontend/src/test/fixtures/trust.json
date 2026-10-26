@@ -1,0 +1,429 @@
+{
+  "_comment": "GET /api/models/trust (spec §4.3.2) fixtures. 'confiavel' is the real B3 answer (services/trust.py) on a copy of the seed-42 demo base (dataset_2026_10_v01), rounded; run_id/finished_at/duration_s follow the journey fixture (RUN-20261026-053746, 294 s). 'indisponivel' is the no-run answer.",
+  "confiavel": {
+    "available": true,
+    "run": {
+      "run_id": "RUN-20261026-053746",
+      "finished_at": "2026-10-26T05:42:40",
+      "duration_s": 294.2,
+      "n_series": 220,
+      "n_models": 15,
+      "n_folds": 4,
+      "fold_horizon": 3,
+      "horizon": 12,
+      "avg_candidates": 5.91,
+      "backtest_start": "2025-10-01",
+      "backtest_end": "2026-09-01",
+      "n_fallback": 0,
+      "lag_label": "1–3 meses"
+    },
+    "accuracy": 0.852,
+    "wmape": 0.148,
+    "bias": -0.0334,
+    "bias_class": "Balanced",
+    "bias_label": "Equilibrado",
+    "naive_wmape": 0.2728,
+    "gain_vs_naive_pp": 0.1248,
+    "error_reduction_vs_naive": 0.4575,
+    "consensus_wmape": 0.1367,
+    "fva_pp": 0.0113,
+    "wmape_by_lag": [
+      {
+        "lag": 1,
+        "wmape": 0.1327
+      },
+      {
+        "lag": 2,
+        "wmape": 0.1616
+      },
+      {
+        "lag": 3,
+        "wmape": 0.1483
+      }
+    ],
+    "confidence_series": {
+      "High": 135,
+      "Medium": 45,
+      "Low": 40
+    },
+    "confidence_revenue_share": {
+      "High": 0.6903,
+      "Medium": 0.2312,
+      "Low": 0.0785
+    },
+    "champions": [
+      {
+        "model": "Regression",
+        "label": "Regressão",
+        "family": "Regression",
+        "family_label": "Regressão",
+        "series": 85,
+        "share": 0.3864,
+        "wmape_won": 0.134,
+        "is_reference": false
+      },
+      {
+        "model": "Naive",
+        "label": "Naive",
+        "family": "Baseline",
+        "family_label": "Linha de base",
+        "series": 21,
+        "share": 0.0955,
+        "wmape_won": 0.1938,
+        "is_reference": true
+      },
+      {
+        "model": "ETS",
+        "label": "ETS",
+        "family": "Exponential Smoothing",
+        "family_label": "Suavização exponencial",
+        "series": 20,
+        "share": 0.0909,
+        "wmape_won": 0.1452,
+        "is_reference": false
+      },
+      {
+        "model": "Moving Average",
+        "label": "Média Móvel",
+        "family": "Baseline",
+        "family_label": "Linha de base",
+        "series": 14,
+        "share": 0.0636,
+        "wmape_won": 0.1878,
+        "is_reference": false
+      },
+      {
+        "model": "Holt-Winters",
+        "label": "Holt-Winters",
+        "family": "Exponential Smoothing",
+        "family_label": "Suavização exponencial",
+        "series": 13,
+        "share": 0.0591,
+        "wmape_won": 0.111,
+        "is_reference": false
+      },
+      {
+        "model": "SES",
+        "label": "SES",
+        "family": "Exponential Smoothing",
+        "family_label": "Suavização exponencial",
+        "series": 13,
+        "share": 0.0591,
+        "wmape_won": 0.2049,
+        "is_reference": false
+      },
+      {
+        "model": "Seasonal Naive",
+        "label": "Naive Sazonal",
+        "family": "Baseline",
+        "family_label": "Linha de base",
+        "series": 13,
+        "share": 0.0591,
+        "wmape_won": 0.1831,
+        "is_reference": false
+      },
+      {
+        "model": "SBA",
+        "label": "SBA",
+        "family": "Intermittent",
+        "family_label": "Demanda intermitente",
+        "series": 10,
+        "share": 0.0455,
+        "wmape_won": 1.2664,
+        "is_reference": false
+      },
+      {
+        "model": "Holt",
+        "label": "Holt",
+        "family": "Exponential Smoothing",
+        "family_label": "Suavização exponencial",
+        "series": 9,
+        "share": 0.0409,
+        "wmape_won": 0.1076,
+        "is_reference": false
+      },
+      {
+        "model": "ARIMA",
+        "label": "ARIMA",
+        "family": "ARIMA",
+        "family_label": "ARIMA",
+        "series": 6,
+        "share": 0.0273,
+        "wmape_won": 0.1117,
+        "is_reference": false
+      },
+      {
+        "model": "Random Forest",
+        "label": "Random Forest",
+        "family": "Machine Learning",
+        "family_label": "Machine Learning",
+        "series": 6,
+        "share": 0.0273,
+        "wmape_won": 0.2122,
+        "is_reference": false
+      },
+      {
+        "model": "Gradient Boosting",
+        "label": "Gradient Boosting",
+        "family": "Machine Learning",
+        "family_label": "Machine Learning",
+        "series": 5,
+        "share": 0.0227,
+        "wmape_won": 0.1675,
+        "is_reference": false
+      },
+      {
+        "model": "SARIMA",
+        "label": "SARIMA",
+        "family": "ARIMA",
+        "family_label": "ARIMA",
+        "series": 3,
+        "share": 0.0136,
+        "wmape_won": 0.081,
+        "is_reference": false
+      },
+      {
+        "model": "TSB",
+        "label": "TSB",
+        "family": "Intermittent",
+        "family_label": "Demanda intermitente",
+        "series": 2,
+        "share": 0.0091,
+        "wmape_won": 1.1915,
+        "is_reference": false
+      }
+    ],
+    "by_pattern": [
+      {
+        "series_type": "Seasonal",
+        "label": "Sazonal",
+        "n": 66,
+        "top_model": "Regression",
+        "top_model_label": "Regressão",
+        "top_model_series": 31
+      },
+      {
+        "series_type": "Promo Driven",
+        "label": "Dirigida por promoção",
+        "n": 31,
+        "top_model": "Regression",
+        "top_model_label": "Regressão",
+        "top_model_series": 17
+      },
+      {
+        "series_type": "Stable",
+        "label": "Estável",
+        "n": 25,
+        "top_model": "Regression",
+        "top_model_label": "Regressão",
+        "top_model_series": 14
+      },
+      {
+        "series_type": "Intermittent",
+        "label": "Intermitente",
+        "n": 24,
+        "top_model": "SBA",
+        "top_model_label": "SBA",
+        "top_model_series": 10
+      },
+      {
+        "series_type": "Trending",
+        "label": "Crescente",
+        "n": 16,
+        "top_model": "Regression",
+        "top_model_label": "Regressão",
+        "top_model_series": 11
+      },
+      {
+        "series_type": "Volatile",
+        "label": "Volátil",
+        "n": 16,
+        "top_model": "SES",
+        "top_model_label": "SES",
+        "top_model_series": 6
+      },
+      {
+        "series_type": "Declining",
+        "label": "Em declínio",
+        "n": 12,
+        "top_model": "Regression",
+        "top_model_label": "Regressão",
+        "top_model_series": 6
+      },
+      {
+        "series_type": "Short History",
+        "label": "Histórico curto",
+        "n": 12,
+        "top_model": "Naive",
+        "top_model_label": "Naive",
+        "top_model_series": 4
+      },
+      {
+        "series_type": "Distribution Driven",
+        "label": "Dirigida por distribuição",
+        "n": 9,
+        "top_model": "Regression",
+        "top_model_label": "Regressão",
+        "top_model_series": 6
+      },
+      {
+        "series_type": "Structural Change",
+        "label": "Mudança estrutural",
+        "n": 5,
+        "top_model": "Moving Average",
+        "top_model_label": "Média Móvel",
+        "top_model_series": 3
+      },
+      {
+        "series_type": "Inactive",
+        "label": "Inativa",
+        "n": 4,
+        "top_model": "Moving Average",
+        "top_model_label": "Média Móvel",
+        "top_model_series": 2
+      }
+    ],
+    "pattern_insight": "Nas 66 séries sazonais, Regressão venceu 31 — cada padrão de demanda tem seu modelo.",
+    "backtest_monthly": [
+      {
+        "date": "2025-10-01",
+        "actual": 6148819.77,
+        "statistical": 6301625.61,
+        "naive": 6149945.03
+      },
+      {
+        "date": "2025-11-01",
+        "actual": 7762528.45,
+        "statistical": 7151125.17,
+        "naive": 6121680.39
+      },
+      {
+        "date": "2025-12-01",
+        "actual": 9637899.29,
+        "statistical": 8389615.71,
+        "naive": 6150346.42
+      },
+      {
+        "date": "2026-01-01",
+        "actual": 7052049.53,
+        "statistical": 7082900.25,
+        "naive": 9719249.98
+      },
+      {
+        "date": "2026-02-01",
+        "actual": 7309457.2,
+        "statistical": 7043020.79,
+        "naive": 9638248.81
+      },
+      {
+        "date": "2026-03-01",
+        "actual": 6539589.35,
+        "statistical": 6759265.39,
+        "naive": 9736580.93
+      },
+      {
+        "date": "2026-04-01",
+        "actual": 6434401.25,
+        "statistical": 6627019.79,
+        "naive": 7096333.98
+      },
+      {
+        "date": "2026-05-01",
+        "actual": 7290590.43,
+        "statistical": 6743785.7,
+        "naive": 7060342.14
+      },
+      {
+        "date": "2026-06-01",
+        "actual": 6889865.08,
+        "statistical": 6740698.6,
+        "naive": 7055901.17
+      },
+      {
+        "date": "2026-07-01",
+        "actual": 6971833.64,
+        "statistical": 7108958.03,
+        "naive": 7122049.31
+      },
+      {
+        "date": "2026-08-01",
+        "actual": 6870932.52,
+        "statistical": 6913906.87,
+        "naive": 7073956.92
+      },
+      {
+        "date": "2026-09-01",
+        "actual": 7098735.91,
+        "statistical": 7004862.35,
+        "naive": 7080529.2
+      }
+    ],
+    "caution": [
+      {
+        "series_id": "MaxiCompra Atacarejo|SKU-20102",
+        "customer": "MaxiCompra Atacarejo",
+        "sku": "SKU-20102",
+        "product": "Crocantes Batata Queijo 90g",
+        "wmape": 0.2684,
+        "bias": -0.0651,
+        "confidence": "Low",
+        "series_type_label": "Dirigida por promoção",
+        "revenue_12m": 1026074.46
+      },
+      {
+        "series_id": "Atlas Hipermercados|SKU-40201",
+        "customer": "Atlas Hipermercados",
+        "sku": "SKU-40201",
+        "product": "Fresco Aromatizador Lavanda 360ml",
+        "wmape": 0.3556,
+        "bias": -0.1274,
+        "confidence": "Medium",
+        "series_type_label": "Volátil",
+        "revenue_12m": 695346.67
+      },
+      {
+        "series_id": "MaxiCompra Atacarejo|SKU-40201",
+        "customer": "MaxiCompra Atacarejo",
+        "sku": "SKU-40201",
+        "product": "Fresco Aromatizador Lavanda 360ml",
+        "wmape": 0.2632,
+        "bias": 0.0101,
+        "confidence": "Low",
+        "series_type_label": "Volátil",
+        "revenue_12m": 616973.5
+      },
+      {
+        "series_id": "Rede Horizonte Supermercados|SKU-20102",
+        "customer": "Rede Horizonte Supermercados",
+        "sku": "SKU-20102",
+        "product": "Crocantes Batata Queijo 90g",
+        "wmape": 0.2952,
+        "bias": -0.1882,
+        "confidence": "Low",
+        "series_type_label": "Dirigida por promoção",
+        "revenue_12m": 563622.45
+      },
+      {
+        "series_id": "Planalto Atacado|SKU-30203",
+        "customer": "Planalto Atacado",
+        "sku": "SKU-30203",
+        "product": "Brisa Men Sport 150ml",
+        "wmape": 0.3413,
+        "bias": -0.2388,
+        "confidence": "Low",
+        "series_type_label": "Volátil",
+        "revenue_12m": 537219.37
+      }
+    ],
+    "verdict": {
+      "code": "confiavel",
+      "label": "Confiável para decisão",
+      "headline": "O forecast acerta 85,2% fora da amostra, erra 12,5 p.p. menos que o método ingênuo e 69% da receita prevista vem de séries com confiança alta.",
+      "reasons": []
+    }
+  },
+  "indisponivel": {
+    "available": false,
+    "reason": "Ainda não há uma execução de forecast concluída."
+  }
+}

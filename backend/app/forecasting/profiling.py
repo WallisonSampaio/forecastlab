@@ -12,10 +12,13 @@ Statistics follow standard demand-planning practice:
 from __future__ import annotations
 
 import math
+import re
 import warnings
 from typing import Any
 
 import numpy as np
+
+from app.services.ptbr import dec, num, pct
 
 SERIES_TYPES = [
     "Stable",
@@ -172,25 +175,67 @@ def profile_series(
 def classify(p: dict[str, Any], y: np.ndarray) -> tuple[str, str]:
     n = p["n_obs"]
     if n >= 6 and float(np.sum(y[-6:])) == 0:
-        return "Inactive", "No demand in the last 6 months (possible delisting)"
+        return "Inactive", "Sem demanda nos últimos 6 meses (possível deslistagem)"
     if n < SHORT_HISTORY:
-        return "Short History", f"Only {n} months of history (< {SHORT_HISTORY})"
+        return "Short History", f"Apenas {n} meses de histórico (< {SHORT_HISTORY})"
     if p["adi"] >= ADI_THRESHOLD:
-        return "Intermittent", f"ADI {p['adi']:.2f} >= {ADI_THRESHOLD} ({p['zero_pct']:.0%} zero months)"
+        return "Intermittent", (
+            f"ADI {dec(p['adi'])} ≥ {dec(ADI_THRESHOLD)} ({pct(p['zero_pct'])} de meses sem demanda)"
+        )
     if p["distribution_corr"] >= 0.6 and p["distribution_range"] >= 15:
         return "Distribution Driven", (
-            f"Demand tracks numeric distribution (corr {p['distribution_corr']:.2f}, "
-            f"range {p['distribution_range']:.0f} pts)"
+            f"Demanda acompanha a distribuição numérica (corr {dec(p['distribution_corr'])}, "
+            f"amplitude {num(p['distribution_range'])} pts)"
         )
     if p["structural_break"]:
-        return "Structural Change", f"Level shift of {p['break_shift_pct']:+.0%} detected at month {p['break_index']}"
+        return "Structural Change", (
+            f"Mudança de patamar de {pct(p['break_shift_pct'], signed=True)} detectada no mês {p['break_index']}"
+        )
     if p["seasonal_strength"] >= SEASONAL_THRESHOLD:
-        return "Seasonal", f"Seasonal strength {p['seasonal_strength']:.2f} >= {SEASONAL_THRESHOLD}"
+        return "Seasonal", f"Força sazonal {dec(p['seasonal_strength'])} ≥ {dec(SEASONAL_THRESHOLD)}"
     if p["promo_lift"] >= 0.35 and p["promo_corr"] >= 0.4:
-        return "Promo Driven", f"Promotion lift {p['promo_lift']:+.0%} (corr {p['promo_corr']:.2f})"
+        return "Promo Driven", (
+            f"Uplift de promoção de {pct(p['promo_lift'], signed=True)} (corr {dec(p['promo_corr'])})"
+        )
     if p["trend_strength"] >= TREND_THRESHOLD and abs(p["trend_slope_pct"]) >= 0.06:
         label = "Trending" if p["trend_slope_pct"] > 0 else "Declining"
-        return label, f"Trend strength {p['trend_strength']:.2f}, {p['trend_slope_pct']:+.0%} per year"
+        return label, (f"Tendência forte {dec(p['trend_strength'])}, {pct(p['trend_slope_pct'], signed=True)} ao ano")
     if p["residual_cv"] >= VOLATILITY_THRESHOLD:
-        return "Volatile", f"Residual CV {p['residual_cv']:.2f} >= {VOLATILITY_THRESHOLD}"
-    return "Stable", f"Low volatility (residual CV {p['residual_cv']:.2f}), no dominant pattern"
+        return "Volatile", f"CV residual {dec(p['residual_cv'])} ≥ {dec(VOLATILITY_THRESHOLD)}"
+    return "Stable", f"Baixa volatilidade (CV residual {dec(p['residual_cv'])}), sem padrão dominante"
+
+
+# Classification reasons stored by older (English) versions of the engine -> current Portuguese text.
+_N = r"([+-]?\d+(?:\.\d+)?)"
+_LEGACY_REASONS = [
+    (
+        re.compile(r"^No demand in the last (\d+) months \(possible delisting\)$"),
+        "Sem demanda nos últimos {0} meses (possível deslistagem)",
+    ),
+    (re.compile(r"^Only (\d+) months of history \(< (\d+)\)$"), "Apenas {0} meses de histórico (< {1})"),
+    (re.compile(rf"^ADI {_N} >= {_N} \({_N}% zero months\)$"), "ADI {0} ≥ {1} ({2}% de meses sem demanda)"),
+    (
+        re.compile(rf"^Demand tracks numeric distribution \(corr {_N}, range {_N} pts\)$"),
+        "Demanda acompanha a distribuição numérica (corr {0}, amplitude {1} pts)",
+    ),
+    (re.compile(rf"^Level shift of {_N}% detected at month (\d+)$"), "Mudança de patamar de {0}% detectada no mês {1}"),
+    (re.compile(rf"^Seasonal strength {_N} >= {_N}$"), "Força sazonal {0} ≥ {1}"),
+    (re.compile(rf"^Promotion lift {_N}% \(corr {_N}\)$"), "Uplift de promoção de {0}% (corr {1})"),
+    (re.compile(rf"^Trend strength {_N}, {_N}% per year$"), "Tendência forte {0}, {1}% ao ano"),
+    (re.compile(rf"^Residual CV {_N} >= {_N}$"), "CV residual {0} ≥ {1}"),
+    (
+        re.compile(rf"^Low volatility \(residual CV {_N}\), no dominant pattern$"),
+        "Baixa volatilidade (CV residual {0}), sem padrão dominante",
+    ),
+]
+
+
+def localize_reason(reason: Any) -> Any:
+    """Classification reason written by an older (English) run -> Portuguese; current text passes through."""
+    if not isinstance(reason, str):
+        return reason
+    for pattern, template in _LEGACY_REASONS:
+        m = pattern.match(reason)
+        if m:
+            return template.format(*(g.replace(".", ",") for g in m.groups()))
+    return reason

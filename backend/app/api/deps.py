@@ -27,7 +27,9 @@ def ctx_dep() -> PlanningContext:
 
 def require_run(ctx: PlanningContext) -> PlanningContext:
     if not ctx.has_run:
-        raise HTTPException(status_code=409, detail="No completed forecast run yet. Run the forecast first.")
+        raise HTTPException(
+            status_code=409, detail="Ainda não há uma execução de forecast concluída. Execute o forecast primeiro."
+        )
     return ctx
 
 

@@ -12,6 +12,10 @@ export interface Column<T> {
   render?: (row: T) => ReactNode;
   sortValue?: (row: T) => number | string | null | undefined;
   width?: number;
+  /** Free-text column: cells wrap (`break-words`) instead of staying on one line. */
+  wrap?: boolean;
+  /** Minimum width in px (useful with `wrap`). */
+  minWidth?: number;
 }
 
 interface Props<T> {
@@ -43,6 +47,8 @@ export function DataTable<T extends Record<string, any>>({
 }: Props<T>) {
   const [sort, setSort] = useState(initialSort);
   const [q, setQ] = useState("");
+  const toggleSort = (key: string) =>
+    setSort((s) => (s?.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "desc" }));
   const view = useMemo(() => {
     let out = rows;
     if (q) {
@@ -76,32 +82,41 @@ export function DataTable<T extends Record<string, any>>({
   return (
     <div>
       {searchable && (
-        <div className="relative mb-3 max-w-xs">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
+        <div className="relative mb-3 max-w-sm">
+          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
           <input
-            className="input pl-8"
-            placeholder="Search…"
+            className="input pl-9"
+            placeholder="Buscar…"
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
         </div>
       )}
-      <div className="overflow-auto rounded-lg border border-line" style={{ maxHeight }}>
-        <table className={clsx("table-base tabular", dense && "[&_td]:py-1.5")}>
+      <div className="overflow-auto rounded-2xl border border-line bg-white/70" style={{ maxHeight }}>
+        <table className={clsx("table-base tabular", dense && "[&_td]:py-1.5 [&_th]:py-2")}>
           <thead>
             <tr>
               {columns.map((c) => (
                 <th
                   key={c.key}
-                  style={{ width: c.width }}
-                  className={clsx("cursor-pointer select-none", c.align === "right" && "text-right")}
-                  onClick={() =>
-                    setSort((s) =>
-                      s?.key === c.key
-                        ? { key: c.key, dir: s.dir === "asc" ? "desc" : "asc" }
-                        : { key: c.key, dir: "desc" },
-                    )
+                  scope="col"
+                  tabIndex={0}
+                  aria-sort={
+                    sort?.key === c.key ? (sort.dir === "asc" ? "ascending" : "descending") : undefined
                   }
+                  style={{ width: c.width, minWidth: c.minWidth }}
+                  className={clsx(
+                    "cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand",
+                    c.align === "right" && "text-right",
+                    c.align === "center" && "text-center",
+                  )}
+                  onClick={() => toggleSort(c.key)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      toggleSort(c.key);
+                    }
+                  }}
                 >
                   <span className="inline-flex items-center gap-1">
                     {c.label}
@@ -116,7 +131,7 @@ export function DataTable<T extends Record<string, any>>({
             {view.length === 0 && (
               <tr>
                 <td colSpan={columns.length} className="py-8 text-center text-muted">
-                  {empty ?? "No rows"}
+                  {empty ?? "Nenhuma linha"}
                 </td>
               </tr>
             )}
@@ -126,17 +141,16 @@ export function DataTable<T extends Record<string, any>>({
                 <tr
                   key={key}
                   onClick={onRowClick ? () => onRowClick(r) : undefined}
-                  className={clsx(
-                    onRowClick && "cursor-pointer",
-                    activeKey === key && "[&>td]:bg-blue-50/70",
-                  )}
+                  className={clsx(onRowClick && "cursor-pointer", activeKey === key && "[&>td]:bg-[#eaf2ff]")}
                 >
                   {columns.map((c) => (
                     <td
                       key={c.key}
+                      style={c.minWidth ? { minWidth: c.minWidth } : undefined}
                       className={clsx(
                         c.align === "right" && "text-right",
                         c.align === "center" && "text-center",
+                        c.wrap && "whitespace-normal break-words",
                       )}
                     >
                       {c.render ? c.render(r) : formatValue(r[c.key], c.format)}
@@ -148,7 +162,9 @@ export function DataTable<T extends Record<string, any>>({
           </tbody>
         </table>
       </div>
-      <div className="mt-1.5 text-right text-[11px] text-muted">{view.length} rows</div>
+      <div className="mt-1.5 text-right text-[11px] text-muted">
+        {view.length.toLocaleString("pt-BR")} {view.length === 1 ? "linha" : "linhas"}
+      </div>
     </div>
   );
 }

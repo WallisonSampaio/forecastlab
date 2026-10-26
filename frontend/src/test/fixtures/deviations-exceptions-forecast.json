@@ -1,0 +1,1198 @@
+{
+  "total": 70,
+  "rows": [
+    {
+      "series_id": "Atlas Hipermercados|SKU-30103",
+      "label": "Atlas Hipermercados · SKU-30103 PuraPele Kit Presente",
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Sudeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "impact": 618729.7110843775,
+      "abs_error": 618729.7110843775,
+      "wmape": 1.1551534235205378,
+      "bias": -0.15712023027616456,
+      "tracking_signal": 4.36481367425887,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "SBA",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Atlas Hipermercados|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Atlas Hipermercados",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Atlas Hipermercados",
+              "sku": "SKU-30103"
+            },
+            "customer": "Atlas Hipermercados",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Atlas Hipermercados SKU-30103?",
+            "filters": {
+              "region": "Sudeste",
+              "channel": "Varejo Moderno",
+              "customer": "Atlas Hipermercados",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Nordeste Atacadista|SKU-30103",
+      "label": "Nordeste Atacadista · SKU-30103 PuraPele Kit Presente",
+      "customer": "Nordeste Atacadista",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Nordeste",
+      "channel": "Atacarejo",
+      "category": "Cuidados Pessoais",
+      "impact": 297093.9236076133,
+      "abs_error": 297093.9236076133,
+      "wmape": 1.1735255992490556,
+      "bias": -0.2603086086589928,
+      "tracking_signal": 3.3733327865796237,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "SBA",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Nordeste Atacadista|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Nordeste Atacadista",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Nordeste Atacadista",
+              "sku": "SKU-30103"
+            },
+            "customer": "Nordeste Atacadista",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Nordeste Atacadista SKU-30103?",
+            "filters": {
+              "region": "Nordeste",
+              "channel": "Atacarejo",
+              "customer": "Nordeste Atacadista",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Serra Gaúcha Supermercados|SKU-30103",
+      "label": "Serra Gaúcha Supermercados · SKU-30103 PuraPele Kit Presente",
+      "customer": "Serra Gaúcha Supermercados",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Sul",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "impact": 250322.2187161374,
+      "abs_error": 250322.2187161374,
+      "wmape": 1.2851232173471812,
+      "bias": -0.26521808345394354,
+      "tracking_signal": -0.6859906431804401,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "SBA",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Serra Gaúcha Supermercados|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Serra Gaúcha Supermercados",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Serra Gaúcha Supermercados",
+              "sku": "SKU-30103"
+            },
+            "customer": "Serra Gaúcha Supermercados",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Serra Gaúcha Supermercados SKU-30103?",
+            "filters": {
+              "region": "Sul",
+              "channel": "Varejo Moderno",
+              "customer": "Serra Gaúcha Supermercados",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Atlas Hipermercados|SKU-40201",
+      "label": "Atlas Hipermercados · SKU-40201 Fresco Aromatizador Lavanda 360ml",
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-40201",
+      "product": "Fresco Aromatizador Lavanda 360ml",
+      "region": "Sudeste",
+      "channel": "Varejo Moderno",
+      "category": "Limpeza",
+      "impact": 222004.89160941777,
+      "abs_error": 222004.89160941777,
+      "wmape": 0.35560737978680795,
+      "bias": -0.12742508206304848,
+      "tracking_signal": -1.5284700758654624,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Medium",
+      "champion": "Gradient Boosting",
+      "series_type_label": "Volátil",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Atlas Hipermercados|SKU-40201"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Atlas Hipermercados",
+            "sku": "SKU-40201",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Atlas Hipermercados",
+              "sku": "SKU-40201"
+            },
+            "customer": "Atlas Hipermercados",
+            "sku": "SKU-40201"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Atlas Hipermercados SKU-40201?",
+            "filters": {
+              "region": "Sudeste",
+              "channel": "Varejo Moderno",
+              "customer": "Atlas Hipermercados",
+              "category": "Limpeza",
+              "brand": "Fresco",
+              "sku": "SKU-40201"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "ClickCesta Online|SKU-30103",
+      "label": "ClickCesta Online · SKU-30103 PuraPele Kit Presente",
+      "customer": "ClickCesta Online",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Sudeste",
+      "channel": "E-commerce",
+      "category": "Cuidados Pessoais",
+      "impact": 214699.3176095231,
+      "abs_error": 214699.3176095231,
+      "wmape": 1.395358822984992,
+      "bias": 0.2740552792473181,
+      "tracking_signal": 3.0347791239042206,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "SBA",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "ClickCesta Online|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "ClickCesta Online",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "ClickCesta Online",
+              "sku": "SKU-30103"
+            },
+            "customer": "ClickCesta Online",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de ClickCesta Online SKU-30103?",
+            "filters": {
+              "region": "Sudeste",
+              "channel": "E-commerce",
+              "customer": "ClickCesta Online",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Litoral Market|SKU-30103",
+      "label": "Litoral Market · SKU-30103 PuraPele Kit Presente",
+      "customer": "Litoral Market",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Nordeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "impact": 192265.09999999998,
+      "abs_error": 192265.09999999998,
+      "wmape": 2.333333333333333,
+      "bias": 0.33333333333333326,
+      "tracking_signal": 0.0,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "Moving Average",
+      "series_type_label": "Inativa",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Litoral Market|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Litoral Market",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Litoral Market",
+              "sku": "SKU-30103"
+            },
+            "customer": "Litoral Market",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Litoral Market SKU-30103?",
+            "filters": {
+              "region": "Nordeste",
+              "channel": "Varejo Moderno",
+              "customer": "Litoral Market",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Atlas Hipermercados|SKU-30102",
+      "label": "Atlas Hipermercados · SKU-30102 PuraPele Protetor Solar FPS50 120ml",
+      "customer": "Atlas Hipermercados",
+      "sku": "SKU-30102",
+      "product": "PuraPele Protetor Solar FPS50 120ml",
+      "region": "Sudeste",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "impact": 183090.43499638917,
+      "abs_error": 183090.43499638917,
+      "wmape": 0.13515657084929425,
+      "bias": -0.027777534010701342,
+      "tracking_signal": -5.458533828831844,
+      "top_cause": {
+        "code": "patamar",
+        "label": "Mudança de patamar",
+        "group": "controllable"
+      },
+      "confidence": "High",
+      "champion": "ETS",
+      "series_type_label": "Sazonal",
+      "tags": [
+        {
+          "code": "patamar",
+          "label": "Mudança de patamar"
+        }
+      ],
+      "recommended_action": {
+        "code": "patamar",
+        "label": "Viés persistente: encurtar a janela de treino, registrar a mudança de patamar ou promover o desafiante."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Atlas Hipermercados|SKU-30102"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Atlas Hipermercados",
+            "sku": "SKU-30102",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Atlas Hipermercados",
+              "sku": "SKU-30102"
+            },
+            "customer": "Atlas Hipermercados",
+            "sku": "SKU-30102"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Atlas Hipermercados SKU-30102?",
+            "filters": {
+              "region": "Sudeste",
+              "channel": "Varejo Moderno",
+              "customer": "Atlas Hipermercados",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30102"
+            }
+          }
+        },
+        {
+          "kind": "open_workspace",
+          "label": "Abrir no workspace",
+          "prefill": {
+            "series_id": "Atlas Hipermercados|SKU-30102"
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "FarmaVida Drogarias|SKU-30103",
+      "label": "FarmaVida Drogarias · SKU-30103 PuraPele Kit Presente",
+      "customer": "FarmaVida Drogarias",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Sudeste",
+      "channel": "Farma",
+      "category": "Cuidados Pessoais",
+      "impact": 168644.17930402726,
+      "abs_error": 168644.17930402726,
+      "wmape": 1.299510041185891,
+      "bias": -0.16231930935093417,
+      "tracking_signal": -0.6238117056197117,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "SBA",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "FarmaVida Drogarias|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "FarmaVida Drogarias",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "FarmaVida Drogarias",
+              "sku": "SKU-30103"
+            },
+            "customer": "FarmaVida Drogarias",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de FarmaVida Drogarias SKU-30103?",
+            "filters": {
+              "region": "Sudeste",
+              "channel": "Farma",
+              "customer": "FarmaVida Drogarias",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Planalto Atacado|SKU-30203",
+      "label": "Planalto Atacado · SKU-30203 Brisa Men Sport 150ml",
+      "customer": "Planalto Atacado",
+      "sku": "SKU-30203",
+      "product": "Brisa Men Sport 150ml",
+      "region": "Centro-Oeste",
+      "channel": "Atacarejo",
+      "category": "Cuidados Pessoais",
+      "impact": 164955.29303061462,
+      "abs_error": 164955.29303061462,
+      "wmape": 0.3413319053599581,
+      "bias": -0.2388000078636108,
+      "tracking_signal": -3.6907618582150987,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "Gradient Boosting",
+      "series_type_label": "Volátil",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Planalto Atacado|SKU-30203"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Planalto Atacado",
+            "sku": "SKU-30203",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Planalto Atacado",
+              "sku": "SKU-30203"
+            },
+            "customer": "Planalto Atacado",
+            "sku": "SKU-30203"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Planalto Atacado SKU-30203?",
+            "filters": {
+              "region": "Centro-Oeste",
+              "channel": "Atacarejo",
+              "customer": "Planalto Atacado",
+              "category": "Cuidados Pessoais",
+              "brand": "Brisa",
+              "sku": "SKU-30203"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Rede Horizonte Supermercados|SKU-20102",
+      "label": "Rede Horizonte Supermercados · SKU-20102 Crocantes Batata Queijo 90g",
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-20102",
+      "product": "Crocantes Batata Queijo 90g",
+      "region": "Sul",
+      "channel": "Varejo Moderno",
+      "category": "Snacks",
+      "impact": 162944.22692091833,
+      "abs_error": 162944.22692091833,
+      "wmape": 0.2951611388014872,
+      "bias": -0.18818542850592285,
+      "tracking_signal": -3.414831007038581,
+      "top_cause": {
+        "code": "promocao",
+        "label": "Promoção não antecipada",
+        "group": "controllable"
+      },
+      "confidence": "Low",
+      "champion": "Regression",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "promocao",
+          "label": "Promoção não antecipada"
+        }
+      ],
+      "recommended_action": {
+        "code": "promocao",
+        "label": "Cadastrar a promoção de ago/2026 como ajuste comercial."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Rede Horizonte Supermercados|SKU-20102"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Rede Horizonte Supermercados",
+            "sku": "SKU-20102",
+            "date": "2027-08-01",
+            "event_type": "Promoção",
+            "uplift_pct": 0.5,
+            "comment": "Sugerido pelo deep dive: promoção não antecipada em ago/2026"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Rede Horizonte Supermercados",
+              "sku": "SKU-20102"
+            },
+            "customer": "Rede Horizonte Supermercados",
+            "sku": "SKU-20102"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Rede Horizonte Supermercados SKU-20102?",
+            "filters": {
+              "region": "Sul",
+              "channel": "Varejo Moderno",
+              "customer": "Rede Horizonte Supermercados",
+              "category": "Snacks",
+              "brand": "Crocantes",
+              "sku": "SKU-20102"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "ClickCesta Online|SKU-20102",
+      "label": "ClickCesta Online · SKU-20102 Crocantes Batata Queijo 90g",
+      "customer": "ClickCesta Online",
+      "sku": "SKU-20102",
+      "product": "Crocantes Batata Queijo 90g",
+      "region": "Sudeste",
+      "channel": "E-commerce",
+      "category": "Snacks",
+      "impact": 157866.28958684937,
+      "abs_error": 157866.28958684937,
+      "wmape": 0.22976431147626108,
+      "bias": -0.19151633454696373,
+      "tracking_signal": -4.269223161433375,
+      "top_cause": {
+        "code": "promocao",
+        "label": "Promoção não antecipada",
+        "group": "controllable"
+      },
+      "confidence": "Medium",
+      "champion": "Regression",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "promocao",
+          "label": "Promoção não antecipada"
+        }
+      ],
+      "recommended_action": {
+        "code": "promocao",
+        "label": "Cadastrar a promoção de set/2026 como ajuste comercial."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "ClickCesta Online|SKU-20102"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "ClickCesta Online",
+            "sku": "SKU-20102",
+            "date": "2027-09-01",
+            "event_type": "Promoção",
+            "uplift_pct": 0.5,
+            "comment": "Sugerido pelo deep dive: promoção não antecipada em set/2026"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "ClickCesta Online",
+              "sku": "SKU-20102"
+            },
+            "customer": "ClickCesta Online",
+            "sku": "SKU-20102"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de ClickCesta Online SKU-20102?",
+            "filters": {
+              "region": "Sudeste",
+              "channel": "E-commerce",
+              "customer": "ClickCesta Online",
+              "category": "Snacks",
+              "brand": "Crocantes",
+              "sku": "SKU-20102"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Bom Sabor Distribuidora|SKU-30203",
+      "label": "Bom Sabor Distribuidora · SKU-30203 Brisa Men Sport 150ml",
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-30203",
+      "product": "Brisa Men Sport 150ml",
+      "region": "Nordeste",
+      "channel": "Varejo Tradicional",
+      "category": "Cuidados Pessoais",
+      "impact": 153186.64,
+      "abs_error": 153186.64,
+      "wmape": 0.43995440296380733,
+      "bias": -0.12271302365346252,
+      "tracking_signal": 3.0445246690734056,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Medium",
+      "champion": "Seasonal Naive",
+      "series_type_label": "Volátil",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Bom Sabor Distribuidora|SKU-30203"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-30203",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Bom Sabor Distribuidora",
+              "sku": "SKU-30203"
+            },
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-30203"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Bom Sabor Distribuidora SKU-30203?",
+            "filters": {
+              "region": "Nordeste",
+              "channel": "Varejo Tradicional",
+              "customer": "Bom Sabor Distribuidora",
+              "category": "Cuidados Pessoais",
+              "brand": "Brisa",
+              "sku": "SKU-30203"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Bom Sabor Distribuidora|SKU-10201",
+      "label": "Bom Sabor Distribuidora · SKU-10201 Frutalle Suco de Laranja 1L",
+      "customer": "Bom Sabor Distribuidora",
+      "sku": "SKU-10201",
+      "product": "Frutalle Suco de Laranja 1L",
+      "region": "Nordeste",
+      "channel": "Varejo Tradicional",
+      "category": "Bebidas",
+      "impact": 148827.6721227556,
+      "abs_error": 148827.6721227556,
+      "wmape": 0.34794887137023156,
+      "bias": -0.17742767580936117,
+      "tracking_signal": -3.0430760317739423,
+      "top_cause": {
+        "code": "promocao",
+        "label": "Promoção não antecipada",
+        "group": "controllable"
+      },
+      "confidence": "Medium",
+      "champion": "Regression",
+      "series_type_label": "Dirigida por promoção",
+      "tags": [
+        {
+          "code": "promocao",
+          "label": "Promoção não antecipada"
+        }
+      ],
+      "recommended_action": {
+        "code": "promocao",
+        "label": "Cadastrar a promoção de jul/2026 como ajuste comercial."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Bom Sabor Distribuidora|SKU-10201"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-10201",
+            "date": "2027-07-01",
+            "event_type": "Promoção",
+            "uplift_pct": 0.5,
+            "comment": "Sugerido pelo deep dive: promoção não antecipada em jul/2026"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Bom Sabor Distribuidora",
+              "sku": "SKU-10201"
+            },
+            "customer": "Bom Sabor Distribuidora",
+            "sku": "SKU-10201"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Bom Sabor Distribuidora SKU-10201?",
+            "filters": {
+              "region": "Nordeste",
+              "channel": "Varejo Tradicional",
+              "customer": "Bom Sabor Distribuidora",
+              "category": "Bebidas",
+              "brand": "Frutalle",
+              "sku": "SKU-10201"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "Rede Horizonte Supermercados|SKU-30103",
+      "label": "Rede Horizonte Supermercados · SKU-30103 PuraPele Kit Presente",
+      "customer": "Rede Horizonte Supermercados",
+      "sku": "SKU-30103",
+      "product": "PuraPele Kit Presente",
+      "region": "Sul",
+      "channel": "Varejo Moderno",
+      "category": "Cuidados Pessoais",
+      "impact": 133672.0,
+      "abs_error": 133672.0,
+      "wmape": 4.055299539170507,
+      "bias": 2.0552995391705062,
+      "tracking_signal": -1.9646342924242403e-16,
+      "top_cause": {
+        "code": "volatilidade",
+        "label": "Demanda intermitente ou volátil",
+        "group": "inherent"
+      },
+      "confidence": "Low",
+      "champion": "Moving Average",
+      "series_type_label": "Intermitente",
+      "tags": [
+        {
+          "code": "volatilidade",
+          "label": "Demanda intermitente ou volátil"
+        }
+      ],
+      "recommended_action": {
+        "code": "volatilidade",
+        "label": "Gerir com estoque de segurança, não com precisão de ponto."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "Rede Horizonte Supermercados|SKU-30103"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "Rede Horizonte Supermercados",
+            "sku": "SKU-30103",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "Rede Horizonte Supermercados",
+              "sku": "SKU-30103"
+            },
+            "customer": "Rede Horizonte Supermercados",
+            "sku": "SKU-30103"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de Rede Horizonte Supermercados SKU-30103?",
+            "filters": {
+              "region": "Sul",
+              "channel": "Varejo Moderno",
+              "customer": "Rede Horizonte Supermercados",
+              "category": "Cuidados Pessoais",
+              "brand": "PuraPele",
+              "sku": "SKU-30103"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "series_id": "CuraMais Farmácias|SKU-30203",
+      "label": "CuraMais Farmácias · SKU-30203 Brisa Men Sport 150ml",
+      "customer": "CuraMais Farmácias",
+      "sku": "SKU-30203",
+      "product": "Brisa Men Sport 150ml",
+      "region": "Sul",
+      "channel": "Farma",
+      "category": "Cuidados Pessoais",
+      "impact": 131544.99556763205,
+      "abs_error": 131544.99556763205,
+      "wmape": 0.45641444443735807,
+      "bias": 0.14780668429138588,
+      "tracking_signal": 5.507120517919211,
+      "top_cause": {
+        "code": "patamar",
+        "label": "Mudança de patamar",
+        "group": "controllable"
+      },
+      "confidence": "Low",
+      "champion": "SES",
+      "series_type_label": "Volátil",
+      "tags": [
+        {
+          "code": "patamar",
+          "label": "Mudança de patamar"
+        }
+      ],
+      "recommended_action": {
+        "code": "patamar",
+        "label": "Viés persistente: encurtar a janela de treino, registrar a mudança de patamar ou promover o desafiante."
+      },
+      "actions": [
+        {
+          "kind": "open_series",
+          "label": "Abrir ficha",
+          "prefill": {
+            "series_id": "CuraMais Farmácias|SKU-30203"
+          }
+        },
+        {
+          "kind": "create_override",
+          "label": "Criar ajuste comercial",
+          "prefill": {
+            "customer": "CuraMais Farmácias",
+            "sku": "SKU-30203",
+            "date": "2026-10-01"
+          }
+        },
+        {
+          "kind": "simulate",
+          "label": "Simular cenário",
+          "prefill": {
+            "scope": {
+              "customer": "CuraMais Farmácias",
+              "sku": "SKU-30203"
+            },
+            "customer": "CuraMais Farmácias",
+            "sku": "SKU-30203"
+          }
+        },
+        {
+          "kind": "ask_ai",
+          "label": "Perguntar à IA",
+          "prefill": {
+            "question": "Qual o WMAPE de CuraMais Farmácias SKU-30203?",
+            "filters": {
+              "region": "Sul",
+              "channel": "Farma",
+              "customer": "CuraMais Farmácias",
+              "category": "Cuidados Pessoais",
+              "brand": "Brisa",
+              "sku": "SKU-30203"
+            }
+          }
+        },
+        {
+          "kind": "open_workspace",
+          "label": "Abrir no workspace",
+          "prefill": {
+            "series_id": "CuraMais Farmácias|SKU-30203"
+          }
+        }
+      ]
+    }
+  ]
+}

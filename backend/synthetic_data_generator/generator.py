@@ -1,15 +1,17 @@
-"""Reproducible synthetic demand generator for ForecastLab.
+"""Gerador reprodutível de demanda sintética do ForecastLab.
 
-The data is not random noise: every series is built from explicit, plausible
-economic components so that forecasting models, driver analysis and S&OP
-logic have real signal to discover:
+Os dados não são ruído aleatório: cada série é construída a partir de
+componentes econômicos explícitos e plausíveis, para que os modelos de
+forecast, a análise de drivers e a lógica de S&OP tenham sinal real a descobrir:
 
-    units = level x trend x seasonality x calendar events x store openings
-            x distribution effect x relative price effect x promotion
-            x merchandising x marketing x structural breaks x noise
-            x (1 - stock-out loss)
+    unidades = nível x tendência x sazonalidade x eventos do calendário
+               x aberturas de loja x efeito distribuição x efeito preço relativo
+               x promoção x merchandising x marketing x quebras estruturais
+               x ruído x (1 - perda por ruptura)
 
-The same ``random_seed`` always produces exactly the same dataset.
+O mesmo ``random_seed`` sempre produz exatamente o mesmo conjunto de dados.
+Os rótulos exibidos ao usuário estão em português do Brasil; os sorteios
+aleatórios dependem apenas de códigos (cliente, SKU), nunca de rótulos.
 """
 
 from __future__ import annotations
@@ -29,10 +31,30 @@ from .catalog import (
     COMPANY,
     CUSTOMERS,
     DISTRIBUTION_ELASTICITY,
+    ECOMMERCE,
+    EV_ACAO_CONCORRENTE,
+    EV_CAMPANHA,
+    EV_DESLISTAGEM,
+    EV_GANHO_CLIENTE,
+    EV_GANHO_DISTRIBUICAO,
+    EV_LANCAMENTO,
+    EV_MERCHANDISING,
+    EV_MUDANCA_PRECO,
+    EV_NOVA_LOJA,
+    EV_PERDA_CLIENTE,
+    EV_PERDA_DISTRIBUICAO,
+    EV_PROMOCAO,
     EVENT_UPLIFTS,
+    HOLIDAY_SENSITIVE_CHANNELS,
     MARKETING_ELASTICITY,
     PATTERN_LABELS,
+    PHARMACY_CHANNEL,
     PHARMACY_EXTRA_SKUS,
+    PLANNER_DEMAND_PLANNER,
+    PLANNER_KAM,
+    PLANNER_MARKETING,
+    PLANNER_SALES_DIRECTOR,
+    PLANNER_TRADE_MARKETING,
     PRICE_ELASTICITY,
     PRODUCTS,
     SEASONAL_PROFILES,
@@ -67,7 +89,7 @@ class SyntheticDataset:
 
 
 def _rng(seed: int, *keys: object) -> np.random.Generator:
-    """Deterministic sub-generator: independent of call order and process."""
+    """Sub-gerador determinístico: independente da ordem de chamada e do processo."""
     key = zlib.crc32("|".join(str(k) for k in keys).encode("utf-8"))
     return np.random.default_rng([int(seed), key])
 
@@ -85,13 +107,13 @@ def _assortment(seed: int) -> dict[str, list[Product]]:
         r = _rng(seed, "assortment", cust.code)
         for prod in PRODUCTS:
             prob = CHANNEL_ASSORTMENT[cust.channel].get(prod.category, 0.0)
-            if cust.channel == "Pharmacy" and prod.sku in PHARMACY_EXTRA_SKUS:
+            if cust.channel == PHARMACY_CHANNEL and prod.sku in PHARMACY_EXTRA_SKUS:
                 prob = 0.6
             if prod.sku in BULK_SKUS and cust.channel not in BULK_CHANNELS:
                 prob = 0.0
             if r.random() < prob:
                 listing[cust.code].append(prod)
-    # Guarantee that every SKU is listed by at least three customers.
+    # Garante que todo SKU seja listado por pelo menos três clientes.
     by_scale = sorted(CUSTOMERS, key=lambda c: -c.scale)
     for prod in PRODUCTS:
         holders = [c for c in CUSTOMERS if prod in listing[c.code]]
@@ -106,7 +128,7 @@ def _assortment(seed: int) -> dict[str, list[Product]]:
 
 
 def _sku_price_path(seed: int, prod: Product, n: int, months: pd.DatetimeIndex) -> tuple[np.ndarray, list[dict]]:
-    """Nominal list price: yearly April increases plus SKU-specific repositioning."""
+    """Preço de tabela nominal: reajustes anuais em abril + reposicionamentos por SKU."""
     r = _rng(seed, "price", prod.sku)
     price = np.full(n, prod.list_price, dtype=float)
     events: list[dict] = []
@@ -114,12 +136,21 @@ def _sku_price_path(seed: int, prod: Product, n: int, months: pd.DatetimeIndex) 
         if d.month == 4 and i > 0:
             inc = r.uniform(0.035, 0.065)
             price[i:] *= 1 + inc
-    if prod.sku == "SKU-30202":  # aggressive price increase -> structural drop
+    if prod.sku == "SKU-30202":  # aumento de preço agressivo -> queda estrutural
         price[34:] *= 1.15
-        events.append({"type": "Price Increase", "month_index": 34, "change": 0.15})
-    if prod.sku == "SKU-20101":  # price repositioning to fight private labels
+        events.append(
+            {"type": EV_MUDANCA_PRECO, "detail": "Aumento de preço agressivo", "month_index": 34, "change": 0.15}
+        )
+    if prod.sku == "SKU-20101":  # reposicionamento de preço contra marcas próprias
         price[40:] *= 0.92
-        events.append({"type": "Price Reduction", "month_index": 40, "change": -0.08})
+        events.append(
+            {
+                "type": EV_MUDANCA_PRECO,
+                "detail": "Redução de preço (reposicionamento contra marcas próprias)",
+                "month_index": 40,
+                "change": -0.08,
+            }
+        )
     return price, events
 
 
@@ -147,7 +178,7 @@ def _simulate_series(
 
     level = prod.base_units * cust.scale * r.uniform(0.75, 1.25)
 
-    # --- trend / life cycle -------------------------------------------------
+    # --- tendência / ciclo de vida ------------------------------------------------
     trend = np.ones(n)
     active = np.ones(n, dtype=bool)
     if prod.pattern == "trending":
@@ -159,7 +190,7 @@ def _simulate_series(
         active[:launch] = False
         age = np.clip(t - launch, 0, None)
         trend = np.where(active, 0.35 + 0.65 * (1 - np.exp(-(age + 1) / 3.5)), 0.0)
-        info["events"].append({"type": "New Product", "month_index": launch})
+        info["events"].append({"type": EV_LANCAMENTO, "month_index": launch})
     trend *= (1 + cust.monthly_growth) ** t
 
     structural = np.ones(n)
@@ -167,18 +198,18 @@ def _simulate_series(
         if prod.sku == "SKU-40102":
             brk = 42 + int(r.integers(0, 4))
             structural[brk:] = r.uniform(1.40, 1.55)
-            info["events"].append({"type": "Customer Gain (institutional contract)", "month_index": brk})
+            info["events"].append({"type": f"{EV_GANHO_CLIENTE} (contrato institucional)", "month_index": brk})
         else:
             brk = 34
             structural[brk:] = r.uniform(0.70, 0.78)
-            info["events"].append({"type": "Competitor Action", "month_index": brk})
+            info["events"].append({"type": EV_ACAO_CONCORRENTE, "month_index": brk})
 
     if prod.delisting and r.random() < 0.45:
         delist = 49 + int(r.integers(0, 5))
         active[delist:] = False
-        info["events"].append({"type": "Delisting", "month_index": delist})
+        info["events"].append({"type": EV_DESLISTAGEM, "month_index": delist})
 
-    # --- seasonality and calendar events -------------------------------------
+    # --- sazonalidade e eventos do calendário ---------------------------------------
     prof = _profile(prod.seasonal_profile)
     amp = r.uniform(0.85, 1.15)
     season = 1 + (prof[moy - 1] - 1) * amp
@@ -186,7 +217,7 @@ def _simulate_series(
     for i, f in enumerate(cal):
         e = 1.0
         if f["black_friday"]:
-            bf = EVENT_UPLIFTS["black_friday"][cat] * (1.6 if cust.channel == "E-commerce" else 1.0)
+            bf = EVENT_UPLIFTS["black_friday"][cat] * (1.6 if cust.channel == ECOMMERCE else 1.0)
             e *= 1 + bf
         if f["christmas"]:
             e *= 1 + EVENT_UPLIFTS["christmas"][cat]
@@ -194,7 +225,7 @@ def _simulate_series(
             e *= 1 + EVENT_UPLIFTS["carnaval"][cat]
         if f["mothers_day"]:
             e *= 1 + EVENT_UPLIFTS["mothers_day"][cat]
-        if cust.channel in ("Traditional Trade", "Cash & Carry"):
+        if cust.channel in HOLIDAY_SENSITIVE_CHANNELS:
             e *= 1 - 0.008 * int(f["holidays"])
         events[i] = e
 
@@ -202,28 +233,28 @@ def _simulate_series(
     for idx, up in cust.store_openings:
         stores[idx:] *= 1 + up
 
-    # --- distribution ----------------------------------------------------------
+    # --- distribuição ---------------------------------------------------------------
     if prod.pattern == "distribution_driven":
         d0 = r.uniform(28, 38)
         dist = np.full(n, d0)
         for g_month in sorted(r.choice(np.arange(8, 56), size=4, replace=False)):
             dist[g_month:] += r.uniform(9, 15)
-            info["events"].append({"type": "Distribution Gain", "month_index": int(g_month)})
+            info["events"].append({"type": EV_GANHO_DISTRIBUICAO, "month_index": int(g_month)})
     else:
         d0 = r.uniform(60, 92)
         dist = np.full(n, d0)
         if r.random() < 0.25:
             g_month = int(r.integers(6, 56))
             dist[g_month:] += r.uniform(5, 12)
-            info["events"].append({"type": "Distribution Gain", "month_index": g_month})
+            info["events"].append({"type": EV_GANHO_DISTRIBUICAO, "month_index": g_month})
         if r.random() < 0.10:
             l_month = int(r.integers(6, 56))
             dist[l_month:] -= r.uniform(8, 15)
-            info["events"].append({"type": "Distribution Loss", "month_index": l_month})
+            info["events"].append({"type": EV_PERDA_DISTRIBUICAO, "month_index": l_month})
     dist = np.clip(dist + r.normal(0, 1.0, n), 5, 100)
     dist_eff = (dist / d0) ** DISTRIBUTION_ELASTICITY
 
-    # --- price & promotion ----------------------------------------------------------
+    # --- preço e promoção --------------------------------------------------------------
     cpi = (1 + MONTHLY_INFLATION) ** t
     list_price = price_path * cust.price_index
     real_ratio = price_path / (prod.list_price * cpi)
@@ -250,7 +281,7 @@ def _simulate_series(
     mkt = base_mkt * np.where(campaigns, r.uniform(2.5, 4.0, n), r.uniform(0.85, 1.15, n))
     mkt_eff = (mkt / base_mkt) ** MARKETING_ELASTICITY
 
-    # --- stock-outs, noise, outliers ---------------------------------------------
+    # --- rupturas, ruído, outliers ---------------------------------------------------
     so_prob = 0.04 if prod.pattern == "volatile" else 0.025
     stockout = (r.random(n) < so_prob).astype(int)
     so_loss = np.where(stockout == 1, r.uniform(0.25, 0.6, n), 0.0)
@@ -258,7 +289,7 @@ def _simulate_series(
     sigma = NOISE_SIGMA.get(prod.pattern, 0.08)
     noise = np.exp(r.normal(-(sigma**2) / 2, sigma, n)) if sigma > 0 else np.ones(n)
 
-    event_mult = promo_eff * merch_eff  # what an informed planner could anticipate
+    event_mult = promo_eff * merch_eff  # o que um planejador bem informado conseguiria antecipar
     mean_units = level * trend * season * events * stores * dist_eff * price_eff * structural
 
     if prod.pattern == "intermittent":
@@ -273,7 +304,7 @@ def _simulate_series(
     if r.random() < 0.03:
         spike = int(r.integers(12, n - 2))
         units[spike] *= 2.6
-        info["events"].append({"type": "One-off bulk order (outlier)", "month_index": spike})
+        info["events"].append({"type": "Pedido pontual atípico (outlier)", "month_index": spike})
 
     units = np.where(active, np.round(np.clip(units, 0, None)), 0.0)
     off = ~active
@@ -294,7 +325,7 @@ def _simulate_series(
             "MerchandisingEvent": merch,
         }
     )
-    # Pre-launch and post-delisting months do not exist in a real sales extract.
+    # Meses anteriores ao lançamento e posteriores à deslistagem não existem num extrato real de vendas.
     first_active = int(np.argmax(active)) if active.any() else n
     keep = np.zeros(n, dtype=bool)
     keep[first_active:] = True
@@ -308,10 +339,10 @@ def _simulate_series(
 def _historical_overrides(
     seed: int, sales: pd.DataFrame, event_mult: dict[tuple[str, str], np.ndarray], months: pd.DatetimeIndex
 ) -> pd.DataFrame:
-    """Planner adjustments made over the last 12 months (for FVA analysis).
+    """Ajustes comerciais feitos pelos planejadores nos últimos 12 meses (para a análise de FVA).
 
-    Informed overrides anticipate real promotions/merchandising (they add
-    value); optimistic or politically-motivated overrides usually destroy it.
+    Ajustes bem informados antecipam promoções/merchandising reais (agregam
+    valor); ajustes otimistas ou "políticos" normalmente destroem valor.
     """
     r = _rng(seed, "overrides")
     last12 = months[-12:]
@@ -328,23 +359,29 @@ def _historical_overrides(
             strict=True,
         )
     }
+    # A ordem e a quantidade de itens de cada lista são as mesmas da versão original:
+    # os sorteios (r.choice / r.integers) escolhem índices, então os números não mudam.
     promo_comments = [
-        "Promotion agreed with customer - leaflet + price off",
-        "Joint business plan promo confirmed",
-        "Price-off negotiated for the month",
+        "Promoção acordada com o cliente - tabloide + desconto de preço",
+        "Promoção do plano de negócios conjunto (JBP) confirmada",
+        "Desconto de preço negociado para o mês",
     ]
-    merch_comments = ["End-cap display confirmed", "Extra shelf space in key stores", "Checkout display negotiated"]
+    merch_comments = [
+        "Ponta de gôndola confirmada",
+        "Espaço extra de gôndola nas lojas-chave",
+        "Display de checkout negociado",
+    ]
     optimistic = [
-        ("Customer Gain", "Customer signalled stronger orders"),
-        ("Campaign", "Brand campaign should lift sell-out"),
-        ("Distribution Gain", "Expect new listings in additional stores"),
-        ("New Store", "New stores expected to open"),
-        ("Competitor Action", "Competitor out of stock - opportunity"),
+        (EV_GANHO_CLIENTE, "Cliente sinalizou pedidos mais fortes"),
+        (EV_CAMPANHA, "Campanha da marca deve impulsionar o sell-out"),
+        (EV_GANHO_DISTRIBUICAO, "Expectativa de novas listagens em lojas adicionais"),
+        (EV_NOVA_LOJA, "Abertura de novas lojas prevista"),
+        (EV_ACAO_CONCORRENTE, "Concorrente em ruptura - oportunidade"),
     ]
     pessimistic = [
-        ("Customer Loss", "Customer reducing inventory levels"),
-        ("Competitor Action", "Competitor promotion expected"),
-        ("Price Change", "Price increase may reduce volume"),
+        (EV_PERDA_CLIENTE, "Cliente reduzindo os níveis de estoque"),
+        (EV_ACAO_CONCORRENTE, "Promoção do concorrente prevista"),
+        (EV_MUDANCA_PRECO, "Aumento de preço pode reduzir o volume"),
     ]
     for (cust_name, sku), mult in event_mult.items():
         for k, d in enumerate(last12):
@@ -355,14 +392,14 @@ def _historical_overrides(
             true_uplift = float(mult[idx] - 1)
             if row["Promotion"] == 1 and r.random() < 0.55:
                 adj = true_uplift * r.uniform(0.65, 1.15)
-                planner = r.choice(["Trade Marketing", "Demand Planner"])
+                planner = r.choice([PLANNER_TRADE_MARKETING, PLANNER_DEMAND_PLANNER])
                 rows.append(
                     dict(
                         Date=d,
                         Customer=cust_name,
                         SKU=sku,
-                        Planner=planner,
-                        EventType="Promotion",
+                        Planner=str(planner),
+                        EventType=EV_PROMOCAO,
                         AdjustmentPct=round(adj, 4),
                         Comment=str(r.choice(promo_comments)),
                     )
@@ -374,8 +411,8 @@ def _historical_overrides(
                         Date=d,
                         Customer=cust_name,
                         SKU=sku,
-                        Planner="Trade Marketing",
-                        EventType="Merchandising",
+                        Planner=PLANNER_TRADE_MARKETING,
+                        EventType=EV_MERCHANDISING,
                         AdjustmentPct=round(adj, 4),
                         Comment=str(r.choice(merch_comments)),
                     )
@@ -384,11 +421,11 @@ def _historical_overrides(
                 if r.random() < 0.72:
                     ev, comment = optimistic[int(r.integers(0, len(optimistic)))]
                     adj = r.uniform(0.08, 0.30)
-                    planner = r.choice(["Sales Director", "Key Account Manager", "Marketing"], p=[0.4, 0.45, 0.15])
+                    planner = r.choice([PLANNER_SALES_DIRECTOR, PLANNER_KAM, PLANNER_MARKETING], p=[0.4, 0.45, 0.15])
                 else:
                     ev, comment = pessimistic[int(r.integers(0, len(pessimistic)))]
                     adj = -r.uniform(0.08, 0.22)
-                    planner = r.choice(["Key Account Manager", "Demand Planner"])
+                    planner = r.choice([PLANNER_KAM, PLANNER_DEMAND_PLANNER])
                 rows.append(
                     dict(
                         Date=d,
@@ -405,11 +442,11 @@ def _historical_overrides(
 
 
 def _plan(seed: int, sales: pd.DataFrame, months: pd.DatetimeIndex, horizon: int) -> pd.DataFrame:
-    """Annual budget and sales targets: last 12 history months + forecast horizon.
+    """Orçamento anual e metas de vendas: últimos 12 meses do histórico + horizonte do forecast.
 
-    Budgets are built the way many companies build them: last year's actuals
-    times a growth assumption. That bakes in realistic S&OP gaps (optimistic
-    plans for declining customers, under-estimated growth for e-commerce, ...).
+    O orçamento é montado como em muitas empresas: real do ano anterior vezes
+    uma premissa de crescimento. Isso embute gaps de S&OP realistas (planos
+    otimistas para clientes em queda, crescimento subestimado no e-commerce, ...).
     """
     r = _rng(seed, "plan")
     future = pd.date_range(months[-1] + pd.offsets.MonthBegin(1), periods=horizon, freq="MS")
@@ -434,7 +471,7 @@ def _plan(seed: int, sales: pd.DataFrame, months: pd.DatetimeIndex, horizon: int
             budget = max(0.0, ly_units * (1 + growth))
             stretch = cust.target_stretch + r.normal(0, 0.01)
             if prod.pattern == "trending" and cust.target_stretch < 0.1:
-                stretch -= 0.03  # targets that ignore momentum -> under-estimated
+                stretch -= 0.03  # metas que ignoram o momentum -> subestimadas
             target = max(0.0, budget * (1 + stretch))
             plan_price = float(price.loc[(cust_name, sku)]) * 1.03
             rows.append(
@@ -452,17 +489,24 @@ def _plan(seed: int, sales: pd.DataFrame, months: pd.DatetimeIndex, horizon: int
 
 
 def _future_overrides(months: pd.DatetimeIndex, listing: dict[str, list[Product]]) -> pd.DataFrame:
-    """A handful of pending commercial events so the Consensus differs from Base."""
+    """Alguns eventos comerciais pendentes, para que o Consenso seja diferente do forecast base."""
     f = pd.date_range(months[-1] + pd.offsets.MonthBegin(1), periods=12, freq="MS")
     by_code = {c.code: c for c in CUSTOMERS}
     candidates = [
-        ("C001", "SKU-20102", f[1], "Promotion", 0.35, "Black Friday leaflet - Cheese Chips price-off"),
-        ("C001", "SKU-30102", f[2], "Merchandising", 0.15, "Summer sunscreen end-caps in all stores"),
-        ("C003", None, f[4], "New Store", 0.08, "Two new MaxiCompra stores opening (all SKUs)"),
-        ("C006", "SKU-20202", f[0], "Campaign", 0.20, "Digital campaign for NutriBar Protein"),
-        ("C002", "SKU-10201", f[3], "Promotion", 0.30, "Summer juice promotion agreed in JBP"),
-        ("C012", None, f[6], "Customer Loss", -0.10, "Customer reducing assortment in 3 stores"),
-        ("C008", "SKU-30101", f[7], "Distribution Gain", 0.12, "Moisturizer listed in 40 additional stores"),
+        (
+            "C001",
+            "SKU-20102",
+            f[1],
+            EV_PROMOCAO,
+            0.35,
+            "Tabloide de Black Friday - desconto em Crocantes Batata Queijo",
+        ),
+        ("C001", "SKU-30102", f[2], EV_MERCHANDISING, 0.15, "Pontas de gôndola de protetor solar em todas as lojas"),
+        ("C003", None, f[4], EV_NOVA_LOJA, 0.08, "Abertura de duas novas lojas MaxiCompra (todos os SKUs)"),
+        ("C006", "SKU-20202", f[0], EV_CAMPANHA, 0.20, "Campanha digital de NutriBar Proteína"),
+        ("C002", "SKU-10201", f[3], EV_PROMOCAO, 0.30, "Promoção de verão de sucos acordada no JBP"),
+        ("C012", None, f[6], EV_PERDA_CLIENTE, -0.10, "Cliente reduzindo o sortimento em 3 lojas"),
+        ("C008", "SKU-30101", f[7], EV_GANHO_DISTRIBUICAO, 0.12, "Hidratante listado em mais 40 lojas"),
     ]
     rows = []
     for code, sku, d, ev, up, comment in candidates:
@@ -479,7 +523,7 @@ def generate_dataset(
     n_months: int = 60,
     horizon: int = 12,
 ) -> SyntheticDataset:
-    """Generate the full demo dataset (sales history, plan, overrides)."""
+    """Gera a base de demonstração completa (histórico de vendas, plano, ajustes comerciais)."""
     end = pd.Timestamp(end_month + "-01")
     months = pd.date_range(end=end, periods=n_months, freq="MS")
     cal = [month_features(d.year, d.month) for d in months]
@@ -508,7 +552,7 @@ def generate_dataset(
     prod_by_sku = {p.sku: p for p in PRODUCTS}
     holidays = {d: int(f["holidays"]) for d, f in zip(months, cal, strict=True)}
 
-    # Customer potential = addressable annual units (listed + unlisted headroom).
+    # Potencial do cliente = unidades anuais endereçáveis (itens listados + espaço não listado).
     potentials = {}
     for cust in CUSTOMERS:
         r = _rng(random_seed, "potential", cust.code)
@@ -573,7 +617,9 @@ def generate_dataset(
         "price_events": {p.sku: price_paths[p.sku][1] for p in PRODUCTS if price_paths[p.sku][1]},
         "store_openings": {c.name: [list(x) for x in c.store_openings] for c in CUSTOMERS if c.store_openings},
         "series_events": [i for i in infos if i["events"]],
-        "disclaimer": "All data is synthetic and fictitious. No real company, customer or product is represented.",
+        "disclaimer": (
+            "Todos os dados são sintéticos e fictícios. Nenhuma empresa, cliente ou produto real está representado."
+        ),
     }
     return SyntheticDataset(
         sales=sales, plan=plan, historical_overrides=hist_ov, future_overrides=fut_ov, metadata=metadata

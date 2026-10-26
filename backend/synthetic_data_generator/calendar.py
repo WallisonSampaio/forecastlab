@@ -1,4 +1,4 @@
-"""Brazilian retail calendar helpers (holidays and commercial events)."""
+"""Calendário do varejo brasileiro (feriados e datas comerciais)."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from functools import lru_cache
 
 
 def easter(year: int) -> date:
-    """Gregorian Easter Sunday (anonymous Gregorian algorithm)."""
+    """Domingo de Páscoa gregoriano (algoritmo gregoriano anônimo)."""
     a = year % 19
     b, c = divmod(year, 100)
     d, e = divmod(b, 4)
@@ -23,16 +23,16 @@ def easter(year: int) -> date:
 
 @lru_cache(maxsize=64)
 def national_holidays(year: int) -> tuple[date, ...]:
-    """National holidays (plus Carnaval and Corpus Christi, widely observed)."""
+    """Feriados nacionais (mais Carnaval e Corpus Christi, amplamente observados)."""
     e = easter(year)
     fixed = [(1, 1), (4, 21), (5, 1), (9, 7), (10, 12), (11, 2), (11, 15), (12, 25)]
     days = [date(year, m, d) for m, d in fixed]
     if year >= 2024:
-        days.append(date(year, 11, 20))  # Consciência Negra became national in 2024
+        days.append(date(year, 11, 20))  # Consciência Negra virou feriado nacional em 2024
     days += [
-        e - timedelta(days=48),  # Carnaval Monday
-        e - timedelta(days=47),  # Carnaval Tuesday
-        e - timedelta(days=2),  # Good Friday
+        e - timedelta(days=48),  # segunda-feira de Carnaval
+        e - timedelta(days=47),  # terça-feira de Carnaval
+        e - timedelta(days=2),  # Sexta-feira Santa
         e + timedelta(days=60),  # Corpus Christi
     ]
     return tuple(sorted(days))

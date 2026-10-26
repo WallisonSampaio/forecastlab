@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import uuid
 from datetime import datetime
 from functools import lru_cache
@@ -13,10 +14,25 @@ import pandas as pd
 
 from app import db
 from app.ingestion.schema import CANONICAL
-from app.validation.health import ValidationReport, validate_and_normalize
+from app.validation.health import ValidationReport, localize_report, validate_and_normalize
 from synthetic_data_generator import generate_dataset
 
 PLAN_COLUMNS = ["date", "customer", "sku", "budget_units", "target_units", "budget_revenue", "target_revenue"]
+
+DEMO_NAME = "Base sintética de demonstração (seed {seed})"
+DEMO_PLAN_SOURCE = "Orçamento anual e metas de vendas sintéticos"
+DERIVED_PLAN_SOURCE = "Derivado: orçamento = mesmo mês do ano anterior x 1,05; meta = orçamento x 1,05 (desafio)"
+UPLOADED_PLAN_SOURCE = "Plano enviado no arquivo"
+UPLOADED_PLAN_SHEET_SOURCE = "Aba de plano enviada no arquivo"
+
+# Texts stored by older (English) versions, shown in Portuguese.
+_LEGACY_DEMO_NAME = re.compile(r"^Synthetic demo dataset \(seed (\d+)\)$")
+LEGACY_PLAN_SOURCES = {
+    "Synthetic annual budget & sales targets": DEMO_PLAN_SOURCE,
+    "Derived: same month last year x 1.05 (budget), x 1.05 stretch (target)": DERIVED_PLAN_SOURCE,
+    "Uploaded plan": UPLOADED_PLAN_SOURCE,
+    "Uploaded plan sheet": UPLOADED_PLAN_SHEET_SOURCE,
+}
 
 
 def next_version(now: datetime | None = None) -> str:
@@ -32,11 +48,28 @@ def active_version() -> str | None:
     return db.get_state("active_dataset")
 
 
+def _legacy_name(name: Any) -> Any:
+    """Dataset names written by older (English) versions -> Portuguese."""
+    if isinstance(name, str):
+        m = _LEGACY_DEMO_NAME.match(name)
+        if m:
+            return DEMO_NAME.format(seed=m.group(1))
+    return name
+
+
+def _legacy_plan_source(src: Any) -> Any:
+    return LEGACY_PLAN_SOURCES.get(src, src) if isinstance(src, str) else src
+
+
 def list_datasets() -> pd.DataFrame:
-    return db.query_df(
+    df = db.query_df(
         "SELECT dataset_version, name, source, file_name, created_at, n_rows, n_series, n_skus, n_customers, "
         "start_date, end_date, quality_score, status, is_active, plan_source FROM datasets ORDER BY created_at DESC"
     )
+    if not df.empty:
+        df["name"] = df["name"].map(_legacy_name)
+        df["plan_source"] = df["plan_source"].map(_legacy_plan_source)
+    return df
 
 
 def get_dataset(version: str) -> dict[str, Any] | None:
@@ -44,7 +77,9 @@ def get_dataset(version: str) -> dict[str, Any] | None:
     if df.empty:
         return None
     row = df.iloc[0].to_dict()
-    row["validation"] = json.loads(row.pop("validation_json") or "{}")
+    row["name"] = _legacy_name(row.get("name"))
+    row["plan_source"] = _legacy_plan_source(row.get("plan_source"))
+    row["validation"] = localize_report(json.loads(row.pop("validation_json") or "{}"))
     row["metadata"] = json.loads(row.pop("metadata_json") or "{}")
     return row
 
@@ -60,7 +95,7 @@ def activate(version: str) -> None:
 def derive_plan(
     sales: pd.DataFrame, horizon: int = 12, budget_growth: float = 0.05, target_stretch: float = 0.05
 ) -> pd.DataFrame:
-    """Budget = same month last year x (1 + growth); Target = Budget x (1 + stretch).
+    """Orçamento = mesmo mês do ano anterior x (1 + crescimento); Meta = Orçamento x (1 + desafio).
 
     Used when an uploaded dataset has no plan file. Covers the last 12 history
     months and the forecast horizon.
@@ -122,7 +157,7 @@ def store_dataset(
     s["dataset_version"] = version
     if plan is None or plan.empty:
         plan = derive_plan(s)
-        plan_source = plan_source or "Derived: same month last year x 1.05 (budget), x 1.05 stretch (target)"
+        plan_source = plan_source or DERIVED_PLAN_SOURCE
     p = plan.copy()
     p["dataset_version"] = version
     summary = report.summary
@@ -144,7 +179,7 @@ def store_dataset(
                 float(report.quality.get("overall", 0)),
                 report.status,
                 False,
-                plan_source or "Uploaded plan",
+                plan_source or UPLOADED_PLAN_SOURCE,
                 json.dumps(report.to_dict(), default=str),
                 json.dumps(metadata or {}, default=str),
             ],
@@ -159,7 +194,7 @@ def store_dataset(
         f = future_overrides.copy()
         f["dataset_version"] = version
         f["override_id"] = [f"OVR-{uuid.uuid4().hex[:8].upper()}" for _ in range(len(f))]
-        f["created_by"] = f.get("created_by", "Demo seed")
+        f["created_by"] = f.get("created_by", "Base de demonstração")
         f["created_at"] = datetime.now()
         db.insert_df("overrides", f)
     if activate_now:
@@ -231,11 +266,11 @@ def load_demo_dataset(seed: int = 42, activate_now: bool = True) -> str:
     return store_dataset(
         _canonical_from_generator(ds.sales) if norm is None else norm,
         report,
-        name=f"Synthetic demo dataset (seed {seed})",
+        name=DEMO_NAME.format(seed=seed),
         source="synthetic_generator",
         file_name=None,
         plan=plan,
-        plan_source="Synthetic annual budget & sales targets",
+        plan_source=DEMO_PLAN_SOURCE,
         historical_overrides=hist,
         future_overrides=fut,
         metadata=ds.metadata,

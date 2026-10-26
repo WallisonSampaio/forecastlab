@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field
 from app import db
 from app.forecasting.models import model_catalog
 from app.forecasting.worker import RunParams
-from app.services import overrides, runs
+from app.services import overrides, ptbr, runs
 from app.services.context import PlanningContext, invalidate
 from app.services.forecast_views import (
     aggregate_view,
@@ -30,7 +30,7 @@ router = APIRouter(prefix="/api", tags=["forecasting"])
 
 
 class RunRequest(BaseModel):
-    horizon: int = Field(12, description="Forecast horizon in months (3, 6, 12, 18 or 24)")
+    horizon: int = Field(12, description="Horizonte do forecast em meses (3, 6, 12, 18 ou 24)")
     n_folds: int = Field(4, ge=1, le=8)
     fold_horizon: int = Field(3, ge=1, le=12)
     clean_stockouts: bool = True
@@ -45,13 +45,13 @@ class OverrideRequest(BaseModel):
     event_type: str
     uplift_pct: float
     comment: str | None = ""
-    created_by: str | None = "Demand Planner"
+    created_by: str | None = overrides.DEFAULT_PLANNER
 
 
 @router.post("/forecast/run")
 def run(req: RunRequest) -> dict[str, Any]:
     if req.horizon not in (3, 6, 12, 18, 24):
-        raise HTTPException(400, "horizon must be one of 3, 6, 12, 18, 24")
+        raise HTTPException(400, "Horizonte inválido. Use 3, 6, 12, 18 ou 24 meses.")
     try:
         run_id = runs.start_run(RunParams(**req.model_dump()))
     except runs.RunBlockedError as exc:
@@ -81,7 +81,7 @@ def get_run(run_id: str) -> dict[str, Any]:
 
     job = runs.get_job(run_id)
     if job is None:
-        raise HTTPException(404, "Run not found")
+        raise HTTPException(404, "Execução não encontrada")
     return clean(job)
 
 
@@ -89,7 +89,7 @@ def get_run(run_id: str) -> dict[str, Any]:
 def activate_run(run_id: str) -> dict[str, Any]:
     owner = db.scalar("SELECT dataset_version FROM forecast_runs WHERE run_id = ? AND status = 'completed'", [run_id])
     if not owner:
-        raise HTTPException(404, "Completed run not found")
+        raise HTTPException(404, "Execução concluída não encontrada")
     from app.services import datasets
 
     if owner != datasets.active_version():
@@ -101,7 +101,7 @@ def activate_run(run_id: str) -> dict[str, Any]:
 
 @router.get("/forecast/models")
 def models() -> list[dict[str, Any]]:
-    return model_catalog()
+    return ptbr.model_catalog(model_catalog())
 
 
 @router.get("/forecast/series")
@@ -116,7 +116,7 @@ def detail(
     try:
         return series_detail(ctx, series_id, measure)
     except KeyError as exc:
-        raise HTTPException(404, f"Series '{series_id}' not found") from exc
+        raise HTTPException(404, f"Série '{series_id.replace('|', ' · ')}' não encontrada") from exc
 
 
 @router.get("/forecast/aggregate")
@@ -198,7 +198,7 @@ def update_override(override_id: str, req: OverrideRequest) -> dict[str, Any]:
     except overrides.OverrideError as exc:
         raise HTTPException(400, str(exc)) from exc
     except KeyError as exc:
-        raise HTTPException(404, "Override not found") from exc
+        raise HTTPException(404, "Ajuste comercial não encontrado") from exc
 
 
 @router.delete("/overrides/{override_id}")
@@ -206,5 +206,5 @@ def delete_override(override_id: str) -> dict[str, str]:
     try:
         overrides.delete_override(override_id)
     except KeyError as exc:
-        raise HTTPException(404, "Override not found") from exc
+        raise HTTPException(404, "Ajuste comercial não encontrado") from exc
     return {"deleted": override_id}

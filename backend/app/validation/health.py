@@ -17,10 +17,96 @@ import numpy as np
 import pandas as pd
 
 from app.ingestion.schema import NUMERIC, OPTIONAL, REQUIRED, map_columns
+from app.services.ptbr import num
 
 MIN_HISTORY_FOR_FORECAST = 6
 SHORT_HISTORY = 12
 MAX_EXAMPLES = 5
+
+# Portuguese display names of the canonical columns (used in validation messages).
+COLUMN_LABEL = {
+    "date": "Data",
+    "region": "Região",
+    "channel": "Canal",
+    "customer": "Cliente",
+    "customer_location": "Localização",
+    "customer_potential": "Potencial",
+    "sku": "SKU",
+    "product": "Produto",
+    "category": "Categoria",
+    "brand": "Marca",
+    "units": "Unidades",
+    "revenue": "Receita",
+    "price": "Preço",
+    "promotion": "Promoção",
+    "distribution": "Distribuição",
+    "stockout": "Ruptura",
+    "holiday": "Feriados",
+    "marketing_investment": "Investimento em marketing",
+    "merchandising_event": "Merchandising",
+}
+BLOCKING_MESSAGE = "Execução do forecast bloqueada. Corrija os erros críticos listados abaixo."
+
+
+def _col(c: str) -> str:
+    return COLUMN_LABEL.get(c, c)
+
+
+def issue_message(code: str, count: int = 0, items: list[Any] | None = None, months_found: int | None = None) -> str:
+    """Portuguese message of a validation issue.
+
+    Also used to re-render reports stored by older (English) versions of the app.
+    """
+    n = num(count)
+    cols = ", ".join(_col(str(c)) for c in (items or []))
+    fixed = {
+        "missing_columns": f"Coluna(s) obrigatória(s) ausente(s): {cols}",
+        "empty": "O arquivo não tem linhas de dados.",
+        "invalid_dates": f"{n} linha(s) com data inválida",
+        "future_dates": f"{n} linha(s) com data no futuro",
+        "missing_units": f"{n} linha(s) sem unidades (tratadas como 0)",
+        "negative_units": f"{n} linha(s) com unidades negativas (devoluções devem ser abatidas antes do envio)",
+        "distribution_range": f"{n} valor(es) de distribuição fora do intervalo 0-100",
+        "duplicated_rows": f"{n} linha(s) totalmente duplicada(s) (removidas)",
+        "aggregated_to_monthly": f"{n} linha(s) com o mesmo Cliente x SKU x Mês foram agregadas",
+        "short_history": f"{n} série(s) com menos de {SHORT_HISTORY} meses de histórico "
+        "(serão usados modelos para histórico curto)",
+        "insufficient_history": f"São necessários pelo menos {MIN_HISTORY_FOR_FORECAST} meses de histórico"
+        + (f" (encontrados: {months_found})." if months_found is not None else "."),
+        "zero_demand_periods": f"{n} combinação(ões) série-mês com demanda zero "
+        "(meses ausentes são tratados como zero)",
+        "outliers": f"{n} outlier(s) sem explicação (z-score robusto > 5 após remover a sazonalidade; "
+        "meses com promoção, merchandising ou ruptura são desconsiderados)",
+        "optional_columns_missing": f"Colunas opcionais não informadas: {cols}",
+    }
+    if code in fixed:
+        return fixed[code]
+    for prefix, template in (
+        ("missing_", "{n} linha(s) sem {col}"),
+        ("non_numeric_", "{n} valor(es) não numérico(s) em {col}"),
+        ("negative_", "{n} valor(es) negativo(s) em {col}"),
+    ):
+        if code.startswith(prefix):
+            c = code[len(prefix) :]
+            col = _col(c).lower() if prefix == "missing_" and c != "sku" else _col(c)
+            return template.format(n=n, col=col)
+    return code
+
+
+def localize_report(d: dict[str, Any]) -> dict[str, Any]:
+    """Re-render the messages of a stored validation report in Portuguese (reports saved by older versions)."""
+    if not d:
+        return d
+    months = ((d.get("summary") or {}).get("history") or {}).get("max_months")
+    for issue in d.get("issues") or []:
+        code = issue.get("code")
+        if not code:
+            continue
+        items = issue.get("examples") if code in ("missing_columns", "optional_columns_missing") else None
+        issue["message"] = issue_message(code, issue.get("count") or 0, items, months)
+    if d.get("blocking_message"):
+        d["blocking_message"] = BLOCKING_MESSAGE
+    return d
 
 
 @dataclass
@@ -44,9 +130,7 @@ class ValidationReport:
 
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
-        d["blocking_message"] = (
-            None if self.can_forecast else "Forecast execution blocked. Fix the critical issues listed below."
-        )
+        d["blocking_message"] = None if self.can_forecast else BLOCKING_MESSAGE
         return d
 
 
@@ -84,13 +168,13 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "critical",
                 "missing_columns",
-                f"Missing required column(s): {', '.join(missing_req)}",
+                issue_message("missing_columns", len(missing_req), missing_req),
                 len(missing_req),
                 missing_req,
             )
         )
     if n_rows == 0:
-        issues.append(Issue("critical", "empty", "The file has no data rows."))
+        issues.append(Issue("critical", "empty", issue_message("empty")))
     if missing_req or n_rows == 0:
         report = ValidationReport(
             "blocked", False, {"rows": n_rows}, _quality(0, 0, 0, 0), issues, mapping, missing_opt
@@ -106,7 +190,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
                 Issue(
                     "critical",
                     f"missing_{c}",
-                    f"{n} row(s) without {c}",
+                    issue_message(f"missing_{c}", n),
                     n,
                     _examples(raw.rename(columns=mapping), df[c].isna(), REQUIRED),
                 )
@@ -121,7 +205,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "critical",
                 "invalid_dates",
-                f"{n_invalid_dates} row(s) with an invalid date",
+                issue_message("invalid_dates", n_invalid_dates),
                 n_invalid_dates,
                 _examples(df, invalid_dates, ["date", "customer", "sku"]),
             )
@@ -133,7 +217,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "warning",
                 "future_dates",
-                f"{int(future_mask.sum())} row(s) dated in the future",
+                issue_message("future_dates", int(future_mask.sum())),
                 int(future_mask.sum()),
                 _examples(df, future_mask, ["date", "customer", "sku"]),
             )
@@ -150,7 +234,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
                 Issue(
                     sev,
                     f"non_numeric_{c}",
-                    f"{int(bad.sum())} non-numeric value(s) in {c}",
+                    issue_message(f"non_numeric_{c}", int(bad.sum())),
                     int(bad.sum()),
                     _examples(df, bad, ["date", "customer", "sku", c]),
                 )
@@ -160,7 +244,12 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
     if units_missing:
         sev = "critical" if units_missing / n_rows > 0.2 else "warning"
         issues.append(
-            Issue(sev, "missing_units", f"{units_missing} row(s) without units (treated as 0)", units_missing)
+            Issue(
+                sev,
+                "missing_units",
+                issue_message("missing_units", units_missing),
+                units_missing,
+            )
         )
     neg_units = df["units"] < 0
     n_negative = int(neg_units.sum())
@@ -169,7 +258,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "critical",
                 "negative_units",
-                f"{n_negative} row(s) with negative units (returns must be netted before upload)",
+                issue_message("negative_units", n_negative),
                 n_negative,
                 _examples(df, neg_units, ["date", "customer", "sku", "units"]),
             )
@@ -178,15 +267,15 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
         if c in df.columns and (df[c] < 0).any():
             n = int((df[c] < 0).sum())
             n_negative += n
-            issues.append(Issue("warning", f"negative_{c}", f"{n} negative value(s) in {c}", n))
+            issues.append(Issue("warning", f"negative_{c}", issue_message(f"negative_{c}", n), n))
     if "distribution" in df.columns and ((df["distribution"] > 100) | (df["distribution"] < 0)).any():
         n = int(((df["distribution"] > 100) | (df["distribution"] < 0)).sum())
-        issues.append(Issue("warning", "distribution_range", f"{n} distribution value(s) outside 0-100", n))
+        issues.append(Issue("warning", "distribution_range", issue_message("distribution_range", n), n))
 
     # ---- duplicates & granularity ---------------------------------------------------------------
     dup_rows = int(raw.duplicated().sum())
     if dup_rows:
-        issues.append(Issue("warning", "duplicated_rows", f"{dup_rows} fully duplicated row(s) (removed)", dup_rows))
+        issues.append(Issue("warning", "duplicated_rows", issue_message("duplicated_rows", dup_rows), dup_rows))
     valid = df.drop_duplicates()
     valid = valid[valid["date"].notna() & valid["customer"].notna() & valid["sku"].notna()]
     key_dups = int(valid.duplicated(["date", "customer", "sku"]).sum())
@@ -195,7 +284,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "info",
                 "aggregated_to_monthly",
-                f"{key_dups} row(s) share the same Customer x SKU x Month and were aggregated",
+                issue_message("aggregated_to_monthly", key_dups),
                 key_dups,
             )
         )
@@ -216,7 +305,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "warning",
                 "short_history",
-                f"{short} series with less than {SHORT_HISTORY} months of history (short-history models will be used)",
+                issue_message("short_history", short),
                 short,
             )
         )
@@ -225,7 +314,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "critical",
                 "insufficient_history",
-                f"At least {MIN_HISTORY_FOR_FORECAST} months of history are required (found {int(months.max())}).",
+                issue_message("insufficient_history", months_found=int(months.max())),
             )
         )
     if zero_periods:
@@ -233,7 +322,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "info",
                 "zero_demand_periods",
-                f"{zero_periods} series-month(s) with zero demand (missing months are treated as zero)",
+                issue_message("zero_demand_periods", zero_periods),
                 zero_periods,
             )
         )
@@ -243,7 +332,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "warning",
                 "outliers",
-                f"{n_outliers} unexplained outlier(s) (robust z-score > 5 after seasonality; promo/stock-out months excluded)",
+                issue_message("outliers", n_outliers),
                 n_outliers,
                 outlier_examples,
             )
@@ -253,7 +342,7 @@ def validate_and_normalize(raw: pd.DataFrame) -> tuple[ValidationReport, pd.Data
             Issue(
                 "info",
                 "optional_columns_missing",
-                f"Optional columns not provided: {', '.join(missing_opt)}",
+                issue_message("optional_columns_missing", len(missing_opt), missing_opt),
                 len(missing_opt),
                 missing_opt,
             )
@@ -341,8 +430,8 @@ def _aggregate_monthly(df: pd.DataFrame) -> pd.DataFrame:
         out["price"] = out["revenue"] / out["units"].replace(0, np.nan)
     out["customer_location"] = out.get("customer_location", out["customer"]).fillna(out["customer"])
     out["product"] = out.get("product", out["sku"]).fillna(out["sku"])
-    out["category"] = out.get("category", pd.Series("Uncategorized", index=out.index)).fillna("Uncategorized")
-    out["brand"] = out.get("brand", pd.Series("Unbranded", index=out.index)).fillna("Unbranded")
+    out["category"] = out.get("category", pd.Series("Sem categoria", index=out.index)).fillna("Sem categoria")
+    out["brand"] = out.get("brand", pd.Series("Sem marca", index=out.index)).fillna("Sem marca")
     for c in ("customer", "sku", "region", "channel", "customer_location", "product", "category", "brand"):
         out[c] = out[c].astype(str).str.strip()
     return out.sort_values(["customer", "sku", "date"]).reset_index(drop=True)
@@ -360,7 +449,7 @@ def _outliers(norm: pd.DataFrame) -> tuple[int, list[dict[str, Any]]]:
         u = g["units"].to_numpy(float)
         if u.size < 12 or (u > 0).mean() < 0.7:  # intermittent series: spikes are the pattern
             continue
-        lu = np.log1p(u)
+        lu = np.log1p(np.clip(u, 0, None))  # negative units are reported (and blocked) separately
         months = g["date"].dt.month.to_numpy()
         season = np.zeros_like(lu)
         if u.size >= 24:
@@ -396,5 +485,5 @@ def _outliers(norm: pd.DataFrame) -> tuple[int, list[dict[str, Any]]]:
 
 def score_label(score: float) -> str:
     if score is None or (isinstance(score, float) and math.isnan(score)):
-        return "n/a"
-    return "Excellent" if score >= 90 else "Good" if score >= 75 else "Fair" if score >= 60 else "Poor"
+        return "n/d"
+    return "Excelente" if score >= 90 else "Bom" if score >= 75 else "Regular" if score >= 60 else "Ruim"

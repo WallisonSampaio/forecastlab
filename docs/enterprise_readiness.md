@@ -1,25 +1,26 @@
-# Enterprise readiness (Phase 2)
+# Prontidão enterprise (Fase 2)
 
-> ForecastLab · Developed by Wallison Sampaio · [LinkedIn](https://www.linkedin.com/in/wallisonsampaio)
+> ForecastLab · Desenvolvido por Wallison Sampaio · [LinkedIn](https://www.linkedin.com/in/wallisonsampaio)
 
-Phase 1 runs 100% locally. The architecture is decoupled so each component can be swapped without rewriting the
-product.
+A Fase 1 roda 100% localmente. A arquitetura é desacoplada para que cada componente possa ser trocado sem reescrever
+o produto.
 
 ```text
-Local DuckDB            →  PostgreSQL / Azure SQL / Snowflake (SQL kept ANSI-portable; db.py is the only adapter)
-Local files             →  Data Lake (ADLS / S3 / GCS) via Parquet; ERP / SAP / Databricks ingestion jobs
-Local Ollama            →  Enterprise LLM (Azure OpenAI / Bedrock / Vertex) behind the same llm.py interface
-Local user              →  Microsoft Entra ID (OIDC) + RBAC
-In-process jobs         →  Queue + workers (Celery / Azure Functions / Databricks jobs)
-Docker Compose          →  AKS / Azure Container Apps / ECS, Terraform, CI/CD with environments
+DuckDB local            →  PostgreSQL / Azure SQL / Snowflake (SQL mantido portável em ANSI; db.py é o único adaptador)
+Arquivos locais         →  Data Lake (ADLS / S3 / GCS) via Parquet; jobs de ingestão de ERP / SAP / Databricks
+Ollama local            →  LLM corporativo (Azure OpenAI / Bedrock / Vertex) atrás da mesma interface llm.py
+Usuário local           →  Microsoft Entra ID (OIDC) + RBAC
+Jobs no mesmo processo  →  Fila + workers (Celery / Azure Functions / jobs do Databricks)
+Docker Compose          →  AKS / Azure Container Apps / ECS, Terraform, CI/CD com ambientes
 ```
 
-| Concern | Today | Enterprise path |
+| Tema | Hoje | Caminho enterprise |
 |---|---|---|
-| Storage | DuckDB file | `db.py` adapter for PostgreSQL/Azure SQL; tables already normalised with version keys |
-| Compute | Process pool per run | Distributed workers per series batch; same `process_series` function |
-| Model governance | Model & run registries in DB | MLflow registry, approval gates |
-| Data contracts | Validation module | Great Expectations / dbt tests on the lake |
-| Identity | None (local) | Entra ID, RBAC per region/channel, row-level filters in the context layer |
-| Observability | Logs | OpenTelemetry, run metrics dashboards |
-| Delivery | GitHub Actions (lint, test, build) | Environments, image signing, Terraform plans |
+| Armazenamento | Arquivo DuckDB | Adaptador `db.py` para PostgreSQL/Azure SQL; tabelas já normalizadas com chaves de versão |
+| Processamento | Pool de processos por execução | Workers distribuídos por lote de séries; a mesma função `process_series` |
+| Governança de modelos | Registro de modelos e de execuções no banco | Registro no MLflow, etapas de aprovação |
+| Contratos de dados | Módulo de validação (Diagnóstico da base) | Great Expectations / testes do dbt no data lake |
+| Identidade | Nenhuma (uso local) | Entra ID, RBAC por região/canal, filtros por linha na camada de contexto |
+| Observabilidade | Logs | OpenTelemetry, dashboards de métricas das execuções |
+| Entrega | GitHub Actions (lint, testes, build) | Ambientes, assinatura de imagens, planos do Terraform |
+| Idioma | Interface em português do Brasil, códigos internos em inglês | Internacionalização (i18n) com catálogo de traduções por usuário |
